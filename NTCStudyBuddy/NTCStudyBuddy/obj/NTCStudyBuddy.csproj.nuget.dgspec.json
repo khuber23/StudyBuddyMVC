@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\200142806\\OneDrive - Northcentral Technical College\\programming concepts\\Capstone\\Capstone_project\\NTCStudyBuddy\\NTCStudyBuddy\\NTCStudyBuddy\\NTCStudyBuddy.csproj": {}
+    "C:\\Users\\200142806\\OneDrive - Northcentral Technical College\\programming concepts\\Capstone\\test\\NTCStudyBuddy\\NTCStudyBuddy\\NTCStudyBuddy\\NTCStudyBuddy.csproj": {}
   },
   "projects": {
-    "C:\\Users\\200142806\\OneDrive - Northcentral Technical College\\programming concepts\\Capstone\\Capstone_project\\NTCStudyBuddy\\NTCStudyBuddy\\NTCStudyBuddy\\NTCStudyBuddy.csproj": {
+    "C:\\Users\\200142806\\OneDrive - Northcentral Technical College\\programming concepts\\Capstone\\test\\NTCStudyBuddy\\NTCStudyBuddy\\NTCStudyBuddy\\NTCStudyBuddy.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\200142806\\OneDrive - Northcentral Technical College\\programming concepts\\Capstone\\Capstone_project\\NTCStudyBuddy\\NTCStudyBuddy\\NTCStudyBuddy\\NTCStudyBuddy.csproj",
+        "projectUniqueName": "C:\\Users\\200142806\\OneDrive - Northcentral Technical College\\programming concepts\\Capstone\\test\\NTCStudyBuddy\\NTCStudyBuddy\\NTCStudyBuddy\\NTCStudyBuddy.csproj",
         "projectName": "NTCStudyBuddy",
-        "projectPath": "C:\\Users\\200142806\\OneDrive - Northcentral Technical College\\programming concepts\\Capstone\\Capstone_project\\NTCStudyBuddy\\NTCStudyBuddy\\NTCStudyBuddy\\NTCStudyBuddy.csproj",
+        "projectPath": "C:\\Users\\200142806\\OneDrive - Northcentral Technical College\\programming concepts\\Capstone\\test\\NTCStudyBuddy\\NTCStudyBuddy\\NTCStudyBuddy\\NTCStudyBuddy.csproj",
         "packagesPath": "C:\\Users\\200142806\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\200142806\\OneDrive - Northcentral Technical College\\programming concepts\\Capstone\\Capstone_project\\NTCStudyBuddy\\NTCStudyBuddy\\NTCStudyBuddy\\obj\\",
+        "outputPath": "C:\\Users\\200142806\\OneDrive - Northcentral Technical College\\programming concepts\\Capstone\\test\\NTCStudyBuddy\\NTCStudyBuddy\\NTCStudyBuddy\\obj\\",
         "projectStyle": "PackageReference",
         "crossTargeting": true,
         "fallbackFolders": [
