@@ -25,26 +25,17 @@ namespace NTCStudyBuddy
 		
 		public static void UpdateIdValues()
 		{
-<<<<<<< HEAD
-			global::Microsoft.Maui.Controls.Compatibility.Resource.Attribute.collectionViewStyle = global::NTCStudyBuddy.Resource.Attribute.collectionViewStyle;
-			global::Microsoft.Maui.Controls.Compatibility.Resource.Attribute.scrollViewStyle = global::NTCStudyBuddy.Resource.Attribute.scrollViewStyle;
-=======
 			global::Microsoft.Maui.Controls.Compatibility.Resource.Attribute.actionBarSize = global::NTCStudyBuddy.Resource.Attribute.actionBarSize;
 			global::Microsoft.Maui.Controls.Compatibility.Resource.Attribute.collectionViewStyle = global::NTCStudyBuddy.Resource.Attribute.collectionViewStyle;
 			global::Microsoft.Maui.Controls.Compatibility.Resource.Attribute.scrollViewStyle = global::NTCStudyBuddy.Resource.Attribute.scrollViewStyle;
 			global::Microsoft.Maui.Controls.Compatibility.Resource.Drawable.abc_ic_clear_material = global::NTCStudyBuddy.Resource.Drawable.abc_ic_clear_material;
 			global::Microsoft.Maui.Controls.Compatibility.Resource.Drawable.abc_ic_search_api_material = global::NTCStudyBuddy.Resource.Drawable.abc_ic_search_api_material;
->>>>>>> master
 			global::Microsoft.Maui.Controls.Compatibility.Resource.Style.collectionViewTheme = global::NTCStudyBuddy.Resource.Style.collectionViewTheme;
 			global::Microsoft.Maui.Controls.Compatibility.Resource.Style.scrollViewTheme = global::NTCStudyBuddy.Resource.Style.scrollViewTheme;
 			global::Microsoft.Maui.Controls.Resource.Animation.enterfromleft = global::NTCStudyBuddy.Resource.Animation.enterfromleft;
 			global::Microsoft.Maui.Controls.Resource.Animation.enterfromright = global::NTCStudyBuddy.Resource.Animation.enterfromright;
 			global::Microsoft.Maui.Controls.Resource.Animation.exittoleft = global::NTCStudyBuddy.Resource.Animation.exittoleft;
 			global::Microsoft.Maui.Controls.Resource.Animation.exittoright = global::NTCStudyBuddy.Resource.Animation.exittoright;
-<<<<<<< HEAD
-			global::Microsoft.Maui.Controls.Resource.Attribute.appBarLayoutStyle = global::NTCStudyBuddy.Resource.Attribute.appBarLayoutStyle;
-			global::Microsoft.Maui.Controls.Resource.Attribute.bottomNavigationViewStyle = global::NTCStudyBuddy.Resource.Attribute.bottomNavigationViewStyle;
-=======
 			global::Microsoft.Maui.Controls.Resource.Attribute.actionBarSize = global::NTCStudyBuddy.Resource.Attribute.actionBarSize;
 			global::Microsoft.Maui.Controls.Resource.Attribute.appBarLayoutStyle = global::NTCStudyBuddy.Resource.Attribute.appBarLayoutStyle;
 			global::Microsoft.Maui.Controls.Resource.Attribute.bottomNavigationViewStyle = global::NTCStudyBuddy.Resource.Attribute.bottomNavigationViewStyle;
@@ -52,7 +43,6 @@ namespace NTCStudyBuddy
 			global::Microsoft.Maui.Controls.Resource.Drawable.abc_ic_clear_material = global::NTCStudyBuddy.Resource.Drawable.abc_ic_clear_material;
 			global::Microsoft.Maui.Controls.Resource.Drawable.abc_ic_menu_overflow_material = global::NTCStudyBuddy.Resource.Drawable.abc_ic_menu_overflow_material;
 			global::Microsoft.Maui.Controls.Resource.Drawable.abc_ic_search_api_material = global::NTCStudyBuddy.Resource.Drawable.abc_ic_search_api_material;
->>>>>>> master
 			global::Microsoft.Maui.Controls.Resource.Id.navigationlayout_bottomtabs = global::NTCStudyBuddy.Resource.Id.navigationlayout_bottomtabs;
 			global::Microsoft.Maui.Controls.Resource.Id.navigationlayout_content = global::NTCStudyBuddy.Resource.Id.navigationlayout_content;
 			global::Microsoft.Maui.Controls.Resource.Id.navigationlayout_toptabs = global::NTCStudyBuddy.Resource.Id.navigationlayout_toptabs;
@@ -61,9 +51,6 @@ namespace NTCStudyBuddy
 			global::Microsoft.Maui.Controls.Resource.Layout.fragment_backstack = global::NTCStudyBuddy.Resource.Layout.fragment_backstack;
 			global::Microsoft.Maui.Controls.Resource.Layout.flyoutcontent = global::NTCStudyBuddy.Resource.Layout.flyoutcontent;
 			global::Microsoft.Maui.Controls.Resource.Layout.shellcontent = global::NTCStudyBuddy.Resource.Layout.shellcontent;
-<<<<<<< HEAD
-			global::Microsoft.Maui.Controls.Resource.String.overflow_tab_title = global::NTCStudyBuddy.Resource.String.overflow_tab_title;
-=======
 			global::Microsoft.Maui.Controls.Resource.Dimension.design_bottom_navigation_height = global::NTCStudyBuddy.Resource.Dimension.design_bottom_navigation_height;
 			global::Microsoft.Maui.Controls.Resource.Style.ThemeOverlay_AppCompat_Light = global::NTCStudyBuddy.Resource.Style.ThemeOverlay_AppCompat_Light;
 			global::Microsoft.Maui.Controls.Resource.Styleable.Toolbar = global::NTCStudyBuddy.Resource.Styleable.Toolbar;
@@ -73,37 +60,27 @@ namespace NTCStudyBuddy
 			global::Microsoft.Maui.Controls.Resource.String.overflow_tab_title = global::NTCStudyBuddy.Resource.String.overflow_tab_title;
 			global::Microsoft.Maui.Resource.Attribute.actionBarSize = global::NTCStudyBuddy.Resource.Attribute.actionBarSize;
 			global::Microsoft.Maui.Resource.Attribute.colorSwitchThumbNormal = global::NTCStudyBuddy.Resource.Attribute.colorSwitchThumbNormal;
->>>>>>> master
 			global::Microsoft.Maui.Resource.Attribute.maui_splash = global::NTCStudyBuddy.Resource.Attribute.maui_splash;
 			global::Microsoft.Maui.Resource.Attribute.scrollViewStyle = global::NTCStudyBuddy.Resource.Attribute.scrollViewStyle;
 			global::Microsoft.Maui.Resource.Animation.nav_default_enter_anim = global::NTCStudyBuddy.Resource.Animation.nav_default_enter_anim;
 			global::Microsoft.Maui.Resource.Animation.nav_default_exit_anim = global::NTCStudyBuddy.Resource.Animation.nav_default_exit_anim;
 			global::Microsoft.Maui.Resource.Animation.nav_default_pop_enter_anim = global::NTCStudyBuddy.Resource.Animation.nav_default_pop_enter_anim;
 			global::Microsoft.Maui.Resource.Animation.nav_default_pop_exit_anim = global::NTCStudyBuddy.Resource.Animation.nav_default_pop_exit_anim;
-<<<<<<< HEAD
-=======
 			global::Microsoft.Maui.Resource.Drawable.abc_ic_clear_material = global::NTCStudyBuddy.Resource.Drawable.abc_ic_clear_material;
->>>>>>> master
 			global::Microsoft.Maui.Resource.Id.navigation_layout = global::NTCStudyBuddy.Resource.Id.navigation_layout;
 			global::Microsoft.Maui.Resource.Id.navigationlayout_appbar = global::NTCStudyBuddy.Resource.Id.navigationlayout_appbar;
 			global::Microsoft.Maui.Resource.Id.navigationlayout_bottomtabs = global::NTCStudyBuddy.Resource.Id.navigationlayout_bottomtabs;
 			global::Microsoft.Maui.Resource.Id.navigationlayout_content = global::NTCStudyBuddy.Resource.Id.navigationlayout_content;
 			global::Microsoft.Maui.Resource.Id.navigationlayout_toptabs = global::NTCStudyBuddy.Resource.Id.navigationlayout_toptabs;
 			global::Microsoft.Maui.Resource.Id.nav_host = global::NTCStudyBuddy.Resource.Id.nav_host;
-<<<<<<< HEAD
-=======
 			global::Microsoft.Maui.Resource.Id.nav_host_fragment_container = global::NTCStudyBuddy.Resource.Id.nav_host_fragment_container;
 			global::Microsoft.Maui.Resource.Id.search_button = global::NTCStudyBuddy.Resource.Id.search_button;
 			global::Microsoft.Maui.Resource.Id.search_close_btn = global::NTCStudyBuddy.Resource.Id.search_close_btn;
->>>>>>> master
 			global::Microsoft.Maui.Resource.Layout.drawer_layout = global::NTCStudyBuddy.Resource.Layout.drawer_layout;
 			global::Microsoft.Maui.Resource.Layout.navigationlayout = global::NTCStudyBuddy.Resource.Layout.navigationlayout;
 			global::Microsoft.Maui.Resource.Layout.fragment_backstack = global::NTCStudyBuddy.Resource.Layout.fragment_backstack;
 			global::Microsoft.Maui.Resource.Style.Maui_MainTheme_NoActionBar = global::NTCStudyBuddy.Resource.Style.Maui_MainTheme_NoActionBar;
-<<<<<<< HEAD
-=======
 			global::Microsoft.Maui.Resource.Style.ThemeOverlay_AppCompat_Light = global::NTCStudyBuddy.Resource.Style.ThemeOverlay_AppCompat_Light;
->>>>>>> master
 			global::Microsoft.Maui.Resource.Style.scrollViewTheme = global::NTCStudyBuddy.Resource.Style.scrollViewTheme;
 		}
 		
@@ -111,30 +88,6 @@ namespace NTCStudyBuddy
 		{
 			
 			// aapt resource value: 0x7F010000
-<<<<<<< HEAD
-			public const int enterfromleft = 2130771968;
-			
-			// aapt resource value: 0x7F010001
-			public const int enterfromright = 2130771969;
-			
-			// aapt resource value: 0x7F010002
-			public const int exittoleft = 2130771970;
-			
-			// aapt resource value: 0x7F010003
-			public const int exittoright = 2130771971;
-			
-			// aapt resource value: 0x7F010004
-			public const int nav_default_enter_anim = 2130771972;
-			
-			// aapt resource value: 0x7F010005
-			public const int nav_default_exit_anim = 2130771973;
-			
-			// aapt resource value: 0x7F010006
-			public const int nav_default_pop_enter_anim = 2130771974;
-			
-			// aapt resource value: 0x7F010007
-			public const int nav_default_pop_exit_anim = 2130771975;
-=======
 			public const int abc_fade_in = 2130771968;
 			
 			// aapt resource value: 0x7F010001
@@ -265,7 +218,6 @@ namespace NTCStudyBuddy
 			
 			// aapt resource value: 0x7F01002B
 			public const int nav_default_pop_exit_anim = 2130772011;
->>>>>>> master
 			
 			static Animation()
 			{
@@ -277,25 +229,6 @@ namespace NTCStudyBuddy
 			}
 		}
 		
-<<<<<<< HEAD
-		public partial class Attribute
-		{
-			
-			// aapt resource value: 0x7F020000
-			public const int appBarLayoutStyle = 2130837504;
-			
-			// aapt resource value: 0x7F020001
-			public const int bottomNavigationViewStyle = 2130837505;
-			
-			// aapt resource value: 0x7F020002
-			public const int collectionViewStyle = 2130837506;
-			
-			// aapt resource value: 0x7F020003
-			public const int maui_splash = 2130837507;
-			
-			// aapt resource value: 0x7F020004
-			public const int scrollViewStyle = 2130837508;
-=======
 		public partial class Animator
 		{
 			
@@ -4028,7 +3961,6 @@ namespace NTCStudyBuddy
 			
 			// aapt resource value: 0x7F0304B3
 			public const int yearTodayStyle = 2130904243;
->>>>>>> master
 			
 			static Attribute()
 			{
@@ -4040,25 +3972,6 @@ namespace NTCStudyBuddy
 			}
 		}
 		
-<<<<<<< HEAD
-		public partial class Color
-		{
-			
-			// aapt resource value: 0x7F030000
-			public const int colorAccent = 2130903040;
-			
-			// aapt resource value: 0x7F030001
-			public const int colorActionMenuTextColor = 2130903041;
-			
-			// aapt resource value: 0x7F030002
-			public const int colorPrimary = 2130903042;
-			
-			// aapt resource value: 0x7F030003
-			public const int colorPrimaryDark = 2130903043;
-			
-			// aapt resource value: 0x7F030004
-			public const int maui_splash_color = 2130903044;
-=======
 		public partial class Boolean
 		{
 			
@@ -5922,7 +5835,6 @@ namespace NTCStudyBuddy
 			
 			// aapt resource value: 0x7F050264
 			public const int tooltip_background_light = 2131034724;
->>>>>>> master
 			
 			static Color()
 			{
@@ -5934,16 +5846,6 @@ namespace NTCStudyBuddy
 			}
 		}
 		
-<<<<<<< HEAD
-		public partial class Drawable
-		{
-			
-			// aapt resource value: 0x7F040000
-			public const int maui_splash = 2130968576;
-			
-			// aapt resource value: 0x7F040001
-			public const int maui_splash_image = 2130968577;
-=======
 		public partial class Dimension
 		{
 			
@@ -8353,7 +8255,6 @@ namespace NTCStudyBuddy
 			
 			// aapt resource value: 0x7F0700AF
 			public const int tooltip_frame_light = 2131165359;
->>>>>>> master
 			
 			static Drawable()
 			{
@@ -8368,37 +8269,6 @@ namespace NTCStudyBuddy
 		public partial class Id
 		{
 			
-<<<<<<< HEAD
-			// aapt resource value: 0x7F050000
-			public const int flyoutcontent_appbar = 2131034112;
-			
-			// aapt resource value: 0x7F050003
-			public const int navigationlayout_appbar = 2131034115;
-			
-			// aapt resource value: 0x7F050004
-			public const int navigationlayout_bottomtabs = 2131034116;
-			
-			// aapt resource value: 0x7F050005
-			public const int navigationlayout_content = 2131034117;
-			
-			// aapt resource value: 0x7F050006
-			public const int navigationlayout_toptabs = 2131034118;
-			
-			// aapt resource value: 0x7F050002
-			public const int navigation_layout = 2131034114;
-			
-			// aapt resource value: 0x7F050001
-			public const int nav_host = 2131034113;
-			
-			// aapt resource value: 0x7F050007
-			public const int shellcontent_appbar = 2131034119;
-			
-			// aapt resource value: 0x7F050008
-			public const int sliding_tabs = 2131034120;
-			
-			// aapt resource value: 0x7F050009
-			public const int toolbar = 2131034121;
-=======
 			// aapt resource value: 0x7F08000F
 			public const int accelerate = 2131230735;
 			
@@ -9961,7 +9831,6 @@ namespace NTCStudyBuddy
 			
 			// aapt resource value: 0x7F080208
 			public const int x_right = 2131231240;
->>>>>>> master
 			
 			static Id()
 			{
@@ -9973,31 +9842,6 @@ namespace NTCStudyBuddy
 			}
 		}
 		
-<<<<<<< HEAD
-		public partial class Layout
-		{
-			
-			// aapt resource value: 0x7F060002
-			public const int drawer_layout = 2131099650;
-			
-			// aapt resource value: 0x7F060003
-			public const int flyoutcontent = 2131099651;
-			
-			// aapt resource value: 0x7F060004
-			public const int fragment_backstack = 2131099652;
-			
-			// aapt resource value: 0x7F060005
-			public const int navigationlayout = 2131099653;
-			
-			// aapt resource value: 0x7F060006
-			public const int shellcontent = 2131099654;
-			
-			// aapt resource value: 0x7F060000
-			public const int Tabbar = 2131099648;
-			
-			// aapt resource value: 0x7F060001
-			public const int Toolbar = 2131099649;
-=======
 		public partial class Integer
 		{
 			
@@ -10671,7 +10515,6 @@ namespace NTCStudyBuddy
 			
 			// aapt resource value: 0x7F0B0001
 			public const int Toolbar = 2131427329;
->>>>>>> master
 			
 			static Layout()
 			{
@@ -10683,16 +10526,6 @@ namespace NTCStudyBuddy
 			}
 		}
 		
-<<<<<<< HEAD
-		public partial class String
-		{
-			
-			// aapt resource value: 0x7F070000
-			public const int maui_empty_unused = 2131165184;
-			
-			// aapt resource value: 0x7F070001
-			public const int overflow_tab_title = 2131165185;
-=======
 		public partial class Plurals
 		{
 			
@@ -11158,7 +10991,6 @@ namespace NTCStudyBuddy
 			
 			// aapt resource value: 0x7F0D0094
 			public const int status_bar_notification_info_overflow = 2131558548;
->>>>>>> master
 			
 			static String()
 			{
@@ -11173,49 +11005,6 @@ namespace NTCStudyBuddy
 		public partial class Style
 		{
 			
-<<<<<<< HEAD
-			// aapt resource value: 0x7F080000
-			public const int ActionMode = 2131230720;
-			
-			// aapt resource value: 0x7F080001
-			public const int AppTheme = 2131230721;
-			
-			// aapt resource value: 0x7F080002
-			public const int AppTheme_NoActionBar = 2131230722;
-			
-			// aapt resource value: 0x7F08000B
-			public const int collectionViewTheme = 2131230731;
-			
-			// aapt resource value: 0x7F080003
-			public const int MainTheme = 2131230723;
-			
-			// aapt resource value: 0x7F080004
-			public const int MainTheme_Base = 2131230724;
-			
-			// aapt resource value: 0x7F080005
-			public const int MainTheme_NoActionBar = 2131230725;
-			
-			// aapt resource value: 0x7F080006
-			public const int MauiCheckBox = 2131230726;
-			
-			// aapt resource value: 0x7F080007
-			public const int MauiMaterialButton = 2131230727;
-			
-			// aapt resource value: 0x7F080008
-			public const int Maui_MainTheme = 2131230728;
-			
-			// aapt resource value: 0x7F080009
-			public const int Maui_MainTheme_NoActionBar = 2131230729;
-			
-			// aapt resource value: 0x7F08000A
-			public const int Maui_SplashTheme = 2131230730;
-			
-			// aapt resource value: 0x7F08000C
-			public const int scrollViewScrollBars = 2131230732;
-			
-			// aapt resource value: 0x7F08000D
-			public const int scrollViewTheme = 2131230733;
-=======
 			// aapt resource value: 0x7F0E0000
 			public const int ActionMode = 2131623936;
 			
@@ -14422,7 +14211,6 @@ namespace NTCStudyBuddy
 			
 			// aapt resource value: 0x7F0E0429
 			public const int Widget_Support_CoordinatorLayout = 2131625001;
->>>>>>> master
 			
 			static Style()
 			{
@@ -14437,11 +14225,6 @@ namespace NTCStudyBuddy
 		public partial class Styleable
 		{
 			
-<<<<<<< HEAD
-			// aapt resource value: { 0x7F020002 }
-			public static int[] ItemsViewRendererTheme = new int[] {
-					2130837506};
-=======
 			// aapt resource value: { 0x7F030045,0x7F03004C,0x7F03004D,0x7F030119,0x7F03011A,0x7F03011B,0x7F03011C,0x7F03011D,0x7F03011E,0x7F030144,0x7F030159,0x7F03015A,0x7F030179,0x7F0301EF,0x7F0301F6,0x7F0301FC,0x7F0301FD,0x7F030201,0x7F030212,0x7F030228,0x7F0302A3,0x7F030320,0x7F030357,0x7F03035F,0x7F030360,0x7F0303DA,0x7F0303DE,0x7F030460,0x7F03046E }
 			public static int[] ActionBar = new int[] {
 					2130903109,
@@ -18748,16 +18531,10 @@ namespace NTCStudyBuddy
 			// aapt resource value: { 0x7F0300E5 }
 			public static int[] ItemsViewRendererTheme = new int[] {
 					2130903269};
->>>>>>> master
 			
 			// aapt resource value: 0
 			public const int ItemsViewRendererTheme_collectionViewStyle = 0;
 			
-<<<<<<< HEAD
-			// aapt resource value: { 0x7F020004 }
-			public static int[] ScrollViewRendererTheme = new int[] {
-					2130837508};
-=======
 			// aapt resource value: { 0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x7F03013D,0x7F0301E6,0x7F030315,0x7F030317,0x7F030488,0x7F03048A,0x7F03048C }
 			public static int[] KeyAttribute = new int[] {
 					0,
@@ -21068,13 +20845,10 @@ namespace NTCStudyBuddy
 			// aapt resource value: { 0x7F030382 }
 			public static int[] ScrollViewRendererTheme = new int[] {
 					2130903938};
->>>>>>> master
 			
 			// aapt resource value: 0
 			public const int ScrollViewRendererTheme_scrollViewStyle = 0;
 			
-<<<<<<< HEAD
-=======
 			// aapt resource value: { 0x0,0x0,0x0,0x0,0x7F0300D2,0x7F03010F,0x7F030150,0x7F0301E9,0x7F030209,0x7F030245,0x7F030364,0x7F030365,0x7F030383,0x7F030384,0x7F0303D9,0x7F0303E2,0x7F03049F }
 			public static int[] SearchView = new int[] {
 					0,
@@ -22545,7 +22319,6 @@ namespace NTCStudyBuddy
 			// aapt resource value: 4
 			public const int View_theme = 4;
 			
->>>>>>> master
 			static Styleable()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -22559,16 +22332,11 @@ namespace NTCStudyBuddy
 		public partial class Xml
 		{
 			
-<<<<<<< HEAD
-			// aapt resource value: 0x7F0A0000
-			public const int microsoft_maui_essentials_fileprovider_file_paths = 2131361792;
-=======
 			// aapt resource value: 0x7F100000
 			public const int image_share_filepaths = 2131755008;
 			
 			// aapt resource value: 0x7F100001
 			public const int microsoft_maui_essentials_fileprovider_file_paths = 2131755009;
->>>>>>> master
 			
 			static Xml()
 			{
