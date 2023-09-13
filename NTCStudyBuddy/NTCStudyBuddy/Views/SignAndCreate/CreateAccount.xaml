@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="NTCStudyBuddy.Views.CreateAccount"
+             x:Class="NTCStudyBuddy.Views.SignAndCreate.CreateAccount"
              Title="Create Account">
     <ScrollView>
         <Grid>
@@ -37,7 +37,7 @@
                         </Grid.ColumnDefinitions>
 
                         <ImageButton x:Name="UploadImageBtn"  Grid.Row="0" Grid.Column="0" HorizontalOptions="StartAndExpand" WidthRequest="25" HeightRequest="25" Source="upload.png"></ImageButton>
-                        <Image x:Name="ProfileImage" Grid.Row="0" Grid.Column="1"  Source="stockprofileimage.png" WidthRequest="50" HeightRequest="50" Margin="-875, 0, 0, 0"></Image>
+                        <Image x:Name="ProfileImage" Grid.Row="0" Grid.Column="1"  Source="stockprofileimage.png" WidthRequest="50" HeightRequest="50"></Image>
                     </Grid>
                 </StackLayout>
                 <StackLayout>

@@ -1,4 +1,4 @@
-namespace NTCStudyBuddy.Views;
+namespace NTCStudyBuddy.Views.SignAndCreate;
 
 public partial class SignIn : ContentPage
 {
