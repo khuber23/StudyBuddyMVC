@@ -27,11 +27,19 @@
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\200112158\\OneDrive - Northcentral Technical College\\Capstone\\NTCStudyBuddyProject\\NTCStudyBuddy\\NTCStudyBuddy\\NTCStudyBuddy\\NTCStudyBuddy.csproj",
       "projectName": "NTCStudyBuddy",
       "projectPath": "C:\\Users\\200112158\\OneDrive - Northcentral Technical College\\Capstone\\NTCStudyBuddyProject\\NTCStudyBuddy\\NTCStudyBuddy\\NTCStudyBuddy\\NTCStudyBuddy.csproj",
       "packagesPath": "C:\\Users\\200112158\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\200112158\\OneDrive - Northcentral Technical College\\Capstone\\NTCStudyBuddyProject\\NTCStudyBuddy\\NTCStudyBuddy\\NTCStudyBuddy\\obj\\",
+=======
+      "projectUniqueName": "C:\\Users\\200142806\\OneDrive - Northcentral Technical College\\programming concepts\\Capstone\\test\\NTCStudyBuddy\\NTCStudyBuddy\\NTCStudyBuddy\\NTCStudyBuddy.csproj",
+      "projectName": "NTCStudyBuddy",
+      "projectPath": "C:\\Users\\200142806\\OneDrive - Northcentral Technical College\\programming concepts\\Capstone\\test\\NTCStudyBuddy\\NTCStudyBuddy\\NTCStudyBuddy\\NTCStudyBuddy.csproj",
+      "packagesPath": "C:\\Users\\200142806\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\200142806\\OneDrive - Northcentral Technical College\\programming concepts\\Capstone\\test\\NTCStudyBuddy\\NTCStudyBuddy\\NTCStudyBuddy\\obj\\",
+>>>>>>> e03ff395e27b0b72d809c30d2bd676a9f3e30a65
       "projectStyle": "PackageReference",
       "crossTargeting": true,
       "configFilePaths": [
