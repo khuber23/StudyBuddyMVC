@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "YNTYajsPXDImO0gErW2r17IyhXPpH5ppLBLjabtSDA3Aag7kmiFlw6XViXxjnUZLCfys0Ubod4zVKaXjqA7U1A==",
+  "dgSpecHash": "88bYJL+Zsc+J9MuKnZ+CciD5vzGkEvMlFdiVGV8m1zEppPgF+CFM3LCSUl72s9cAw7fx+qrFrQKe4C5AOPJIgg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\180011854\\OneDrive - Northcentral Technical College\\Courses\\CAPSTONE\\NTCStudyBuddy\\NTCStudyBuddy\\NTCStudyBuddy.DataAccess\\NTCStudyBuddy.DataAccess.csproj",
+  "projectFilePath": "C:\\Users\\180011854\\OneDrive - Northcentral Technical College\\Courses\\CAPSTONE\\NTCStudyBuddy_FullProject\\NTCStudyBuddy\\NTCStudyBuddy_MVC\\NTCStudyBuddy.DataAccess\\NTCStudyBuddy.DataAccess.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\180011854\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.10\\microsoft.entityframeworkcore.7.0.10.nupkg.sha512",
     "C:\\Users\\180011854\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.10\\microsoft.entityframeworkcore.abstractions.7.0.10.nupkg.sha512",

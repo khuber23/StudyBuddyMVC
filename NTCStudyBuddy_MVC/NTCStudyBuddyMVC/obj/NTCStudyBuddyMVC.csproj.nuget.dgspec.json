@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\180011854\\OneDrive - Northcentral Technical College\\Courses\\CAPSTONE\\NTCStudyBuddy\\NTCStudyBuddy\\NTCStudyBuddyMVC\\NTCStudyBuddyMVC.csproj": {}
+    "C:\\Users\\180011854\\OneDrive - Northcentral Technical College\\Courses\\CAPSTONE\\NTCStudyBuddy_FullProject\\NTCStudyBuddy\\NTCStudyBuddy_MVC\\NTCStudyBuddyMVC\\NTCStudyBuddyMVC.csproj": {}
   },
   "projects": {
-    "C:\\Users\\180011854\\OneDrive - Northcentral Technical College\\Courses\\CAPSTONE\\NTCStudyBuddy\\NTCStudyBuddy\\NTCStudyBuddyMVC\\NTCStudyBuddyMVC.csproj": {
+    "C:\\Users\\180011854\\OneDrive - Northcentral Technical College\\Courses\\CAPSTONE\\NTCStudyBuddy_FullProject\\NTCStudyBuddy\\NTCStudyBuddy_MVC\\NTCStudyBuddyMVC\\NTCStudyBuddyMVC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\180011854\\OneDrive - Northcentral Technical College\\Courses\\CAPSTONE\\NTCStudyBuddy\\NTCStudyBuddy\\NTCStudyBuddyMVC\\NTCStudyBuddyMVC.csproj",
+        "projectUniqueName": "C:\\Users\\180011854\\OneDrive - Northcentral Technical College\\Courses\\CAPSTONE\\NTCStudyBuddy_FullProject\\NTCStudyBuddy\\NTCStudyBuddy_MVC\\NTCStudyBuddyMVC\\NTCStudyBuddyMVC.csproj",
         "projectName": "NTCStudyBuddyMVC",
-        "projectPath": "C:\\Users\\180011854\\OneDrive - Northcentral Technical College\\Courses\\CAPSTONE\\NTCStudyBuddy\\NTCStudyBuddy\\NTCStudyBuddyMVC\\NTCStudyBuddyMVC.csproj",
+        "projectPath": "C:\\Users\\180011854\\OneDrive - Northcentral Technical College\\Courses\\CAPSTONE\\NTCStudyBuddy_FullProject\\NTCStudyBuddy\\NTCStudyBuddy_MVC\\NTCStudyBuddyMVC\\NTCStudyBuddyMVC.csproj",
         "packagesPath": "C:\\Users\\180011854\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\180011854\\OneDrive - Northcentral Technical College\\Courses\\CAPSTONE\\NTCStudyBuddy\\NTCStudyBuddy\\NTCStudyBuddyMVC\\obj\\",
+        "outputPath": "C:\\Users\\180011854\\OneDrive - Northcentral Technical College\\Courses\\CAPSTONE\\NTCStudyBuddy_FullProject\\NTCStudyBuddy\\NTCStudyBuddy_MVC\\NTCStudyBuddyMVC\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
