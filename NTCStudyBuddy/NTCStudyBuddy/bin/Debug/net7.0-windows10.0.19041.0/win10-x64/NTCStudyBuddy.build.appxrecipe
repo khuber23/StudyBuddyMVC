@@ -877,8 +877,20 @@
     <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-400.png">
       <PackagePath>dotnet_bot.scale-400.png</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\green_checkmark.scale-100.jpg">
+      <PackagePath>green_checkmark.scale-100.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\green_checkmark.scale-100.png">
+      <PackagePath>green_checkmark.scale-100.png</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\ntclogo.scale-100.png">
       <PackagePath>ntclogo.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\stockprofileimage.scale-100.png">
+      <PackagePath>stockprofileimage.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\upload.scale-100.png">
+      <PackagePath>upload.scale-100.png</PackagePath>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

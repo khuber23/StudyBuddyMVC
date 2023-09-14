@@ -30,29 +30,29 @@
     <AppXManifest Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-09-13T15:24:47.559</Modified>
+      <Modified>2023-09-14T00:21:49.569</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2023-09-13T14:24:14.201</Modified>
+      <Modified>2023-09-14T00:21:49.109</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\NTCStudyBuddy.runtimeconfig.json">
       <PackagePath>NTCStudyBuddy.runtimeconfig.json</PackagePath>
-      <Modified>2023-09-12T19:26:45.593</Modified>
+      <Modified>2023-09-13T16:00:34.814</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\NTCStudyBuddy.dll">
       <PackagePath>NTCStudyBuddy.dll</PackagePath>
-      <Modified>2023-09-13T15:24:45.569</Modified>
+      <Modified>2023-09-14T00:21:46.556</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\apphost.exe">
       <PackagePath>NTCStudyBuddy.exe</PackagePath>
-      <Modified>2023-09-13T15:24:45.619</Modified>
+      <Modified>2023-09-14T00:21:46.611</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\NTCStudyBuddy.deps.json">
       <PackagePath>NTCStudyBuddy.deps.json</PackagePath>
-      <Modified>2023-09-13T14:11:19.011</Modified>
+      <Modified>2023-09-13T19:53:05.854</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\200142806\.nuget\packages\microsoft.netcore.app.runtime.win-x64\7.0.10\runtimes\win-x64\lib\net7.0\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -940,239 +940,255 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splashSplashScreen.scale-100.png">
       <PackagePath>splashSplashScreen.scale-100.png</PackagePath>
-      <Modified>2023-09-12T19:24:35.749</Modified>
+      <Modified>2023-09-13T15:56:16.386</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splashSplashScreen.scale-125.png">
       <PackagePath>splashSplashScreen.scale-125.png</PackagePath>
-      <Modified>2023-09-12T19:24:35.752</Modified>
+      <Modified>2023-09-13T15:56:16.388</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splashSplashScreen.scale-150.png">
       <PackagePath>splashSplashScreen.scale-150.png</PackagePath>
-      <Modified>2023-09-12T19:24:35.755</Modified>
+      <Modified>2023-09-13T15:56:16.390</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splashSplashScreen.scale-200.png">
       <PackagePath>splashSplashScreen.scale-200.png</PackagePath>
-      <Modified>2023-09-12T19:24:35.757</Modified>
+      <Modified>2023-09-13T15:56:16.392</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splashSplashScreen.scale-400.png">
       <PackagePath>splashSplashScreen.scale-400.png</PackagePath>
-      <Modified>2023-09-12T19:24:35.759</Modified>
+      <Modified>2023-09-13T15:56:16.394</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\f\OpenSans-Regular.ttf">
       <PackagePath>OpenSans-Regular.ttf</PackagePath>
-      <Modified>2023-09-12T19:24:35.694</Modified>
+      <Modified>2023-09-13T15:56:16.244</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\f\OpenSans-Semibold.ttf">
       <PackagePath>OpenSans-Semibold.ttf</PackagePath>
-      <Modified>2023-09-12T19:24:35.698</Modified>
+      <Modified>2023-09-13T15:56:16.247</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appicon.ico">
       <PackagePath>appicon.ico</PackagePath>
-      <Modified>2023-09-13T14:23:58.099</Modified>
+      <Modified>2023-09-13T18:59:47.985</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLargeTile.scale-100.png">
       <PackagePath>appiconLargeTile.scale-100.png</PackagePath>
-      <Modified>2023-09-13T14:23:58.788</Modified>
+      <Modified>2023-09-13T18:59:48.526</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLargeTile.scale-125.png">
       <PackagePath>appiconLargeTile.scale-125.png</PackagePath>
-      <Modified>2023-09-13T14:23:58.807</Modified>
+      <Modified>2023-09-13T18:59:48.544</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLargeTile.scale-150.png">
       <PackagePath>appiconLargeTile.scale-150.png</PackagePath>
-      <Modified>2023-09-13T14:23:58.824</Modified>
+      <Modified>2023-09-13T18:59:48.557</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLargeTile.scale-200.png">
       <PackagePath>appiconLargeTile.scale-200.png</PackagePath>
-      <Modified>2023-09-13T14:23:58.850</Modified>
+      <Modified>2023-09-13T18:59:48.578</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLargeTile.scale-400.png">
       <PackagePath>appiconLargeTile.scale-400.png</PackagePath>
-      <Modified>2023-09-13T14:23:58.937</Modified>
+      <Modified>2023-09-13T18:59:48.664</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-lightunplated_targetsize-16.png">
       <PackagePath>appiconLogo.altform-lightunplated_targetsize-16.png</PackagePath>
-      <Modified>2023-09-13T14:23:58.397</Modified>
+      <Modified>2023-09-13T18:59:48.202</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-lightunplated_targetsize-24.png">
       <PackagePath>appiconLogo.altform-lightunplated_targetsize-24.png</PackagePath>
-      <Modified>2023-09-13T14:23:58.404</Modified>
+      <Modified>2023-09-13T18:59:48.211</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-lightunplated_targetsize-256.png">
       <PackagePath>appiconLogo.altform-lightunplated_targetsize-256.png</PackagePath>
-      <Modified>2023-09-13T14:23:58.434</Modified>
+      <Modified>2023-09-13T18:59:48.236</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-lightunplated_targetsize-32.png">
       <PackagePath>appiconLogo.altform-lightunplated_targetsize-32.png</PackagePath>
-      <Modified>2023-09-13T14:23:58.410</Modified>
+      <Modified>2023-09-13T18:59:48.217</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-lightunplated_targetsize-48.png">
       <PackagePath>appiconLogo.altform-lightunplated_targetsize-48.png</PackagePath>
-      <Modified>2023-09-13T14:23:58.421</Modified>
+      <Modified>2023-09-13T18:59:48.226</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-unplated_targetsize-16.png">
       <PackagePath>appiconLogo.altform-unplated_targetsize-16.png</PackagePath>
-      <Modified>2023-09-13T14:23:58.354</Modified>
+      <Modified>2023-09-13T18:59:48.159</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-unplated_targetsize-24.png">
       <PackagePath>appiconLogo.altform-unplated_targetsize-24.png</PackagePath>
-      <Modified>2023-09-13T14:23:58.362</Modified>
+      <Modified>2023-09-13T18:59:48.168</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-unplated_targetsize-256.png">
       <PackagePath>appiconLogo.altform-unplated_targetsize-256.png</PackagePath>
-      <Modified>2023-09-13T14:23:58.390</Modified>
+      <Modified>2023-09-13T18:59:48.195</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-unplated_targetsize-32.png">
       <PackagePath>appiconLogo.altform-unplated_targetsize-32.png</PackagePath>
-      <Modified>2023-09-13T14:23:58.368</Modified>
+      <Modified>2023-09-13T18:59:48.178</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-unplated_targetsize-48.png">
       <PackagePath>appiconLogo.altform-unplated_targetsize-48.png</PackagePath>
-      <Modified>2023-09-13T14:23:58.378</Modified>
+      <Modified>2023-09-13T18:59:48.183</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.scale-100.png">
       <PackagePath>appiconLogo.scale-100.png</PackagePath>
-      <Modified>2023-09-13T14:23:58.132</Modified>
+      <Modified>2023-09-13T18:59:48.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.scale-125.png">
       <PackagePath>appiconLogo.scale-125.png</PackagePath>
-      <Modified>2023-09-13T14:23:58.154</Modified>
+      <Modified>2023-09-13T18:59:48.015</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.scale-150.png">
       <PackagePath>appiconLogo.scale-150.png</PackagePath>
-      <Modified>2023-09-13T14:23:58.170</Modified>
+      <Modified>2023-09-13T18:59:48.045</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.scale-200.png">
       <PackagePath>appiconLogo.scale-200.png</PackagePath>
-      <Modified>2023-09-13T14:23:58.187</Modified>
+      <Modified>2023-09-13T18:59:48.059</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.scale-400.png">
       <PackagePath>appiconLogo.scale-400.png</PackagePath>
-      <Modified>2023-09-13T14:23:58.220</Modified>
+      <Modified>2023-09-13T18:59:48.076</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.targetsize-16.png">
       <PackagePath>appiconLogo.targetsize-16.png</PackagePath>
-      <Modified>2023-09-13T14:23:58.233</Modified>
+      <Modified>2023-09-13T18:59:48.086</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.targetsize-24.png">
       <PackagePath>appiconLogo.targetsize-24.png</PackagePath>
-      <Modified>2023-09-13T14:23:58.288</Modified>
+      <Modified>2023-09-13T18:59:48.094</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.targetsize-256.png">
       <PackagePath>appiconLogo.targetsize-256.png</PackagePath>
-      <Modified>2023-09-13T14:23:58.338</Modified>
+      <Modified>2023-09-13T18:59:48.151</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.targetsize-32.png">
       <PackagePath>appiconLogo.targetsize-32.png</PackagePath>
-      <Modified>2023-09-13T14:23:58.305</Modified>
+      <Modified>2023-09-13T18:59:48.101</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.targetsize-48.png">
       <PackagePath>appiconLogo.targetsize-48.png</PackagePath>
-      <Modified>2023-09-13T14:23:58.321</Modified>
+      <Modified>2023-09-13T18:59:48.133</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconMediumTile.scale-100.png">
       <PackagePath>appiconMediumTile.scale-100.png</PackagePath>
-      <Modified>2023-09-13T14:23:58.551</Modified>
+      <Modified>2023-09-13T18:59:48.341</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconMediumTile.scale-125.png">
       <PackagePath>appiconMediumTile.scale-125.png</PackagePath>
-      <Modified>2023-09-13T14:23:58.562</Modified>
+      <Modified>2023-09-13T18:59:48.353</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconMediumTile.scale-150.png">
       <PackagePath>appiconMediumTile.scale-150.png</PackagePath>
-      <Modified>2023-09-13T14:23:58.572</Modified>
+      <Modified>2023-09-13T18:59:48.364</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconMediumTile.scale-200.png">
       <PackagePath>appiconMediumTile.scale-200.png</PackagePath>
-      <Modified>2023-09-13T14:23:58.585</Modified>
+      <Modified>2023-09-13T18:59:48.390</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconMediumTile.scale-400.png">
       <PackagePath>appiconMediumTile.scale-400.png</PackagePath>
-      <Modified>2023-09-13T14:23:58.609</Modified>
+      <Modified>2023-09-13T18:59:48.416</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconSmallTile.scale-100.png">
       <PackagePath>appiconSmallTile.scale-100.png</PackagePath>
-      <Modified>2023-09-13T14:23:58.484</Modified>
+      <Modified>2023-09-13T18:59:48.284</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconSmallTile.scale-125.png">
       <PackagePath>appiconSmallTile.scale-125.png</PackagePath>
-      <Modified>2023-09-13T14:23:58.491</Modified>
+      <Modified>2023-09-13T18:59:48.296</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconSmallTile.scale-150.png">
       <PackagePath>appiconSmallTile.scale-150.png</PackagePath>
-      <Modified>2023-09-13T14:23:58.506</Modified>
+      <Modified>2023-09-13T18:59:48.306</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconSmallTile.scale-200.png">
       <PackagePath>appiconSmallTile.scale-200.png</PackagePath>
-      <Modified>2023-09-13T14:23:58.520</Modified>
+      <Modified>2023-09-13T18:59:48.316</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconSmallTile.scale-400.png">
       <PackagePath>appiconSmallTile.scale-400.png</PackagePath>
-      <Modified>2023-09-13T14:23:58.540</Modified>
+      <Modified>2023-09-13T18:59:48.331</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconStoreLogo.scale-100.png">
       <PackagePath>appiconStoreLogo.scale-100.png</PackagePath>
-      <Modified>2023-09-13T14:23:58.441</Modified>
+      <Modified>2023-09-13T18:59:48.242</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconStoreLogo.scale-125.png">
       <PackagePath>appiconStoreLogo.scale-125.png</PackagePath>
-      <Modified>2023-09-13T14:23:58.448</Modified>
+      <Modified>2023-09-13T18:59:48.252</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconStoreLogo.scale-150.png">
       <PackagePath>appiconStoreLogo.scale-150.png</PackagePath>
-      <Modified>2023-09-13T14:23:58.458</Modified>
+      <Modified>2023-09-13T18:59:48.263</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconStoreLogo.scale-200.png">
       <PackagePath>appiconStoreLogo.scale-200.png</PackagePath>
-      <Modified>2023-09-13T14:23:58.467</Modified>
+      <Modified>2023-09-13T18:59:48.269</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconStoreLogo.scale-400.png">
       <PackagePath>appiconStoreLogo.scale-400.png</PackagePath>
-      <Modified>2023-09-13T14:23:58.476</Modified>
+      <Modified>2023-09-13T18:59:48.277</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconWideTile.scale-100.png">
       <PackagePath>appiconWideTile.scale-100.png</PackagePath>
-      <Modified>2023-09-13T14:23:58.619</Modified>
+      <Modified>2023-09-13T18:59:48.425</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconWideTile.scale-125.png">
       <PackagePath>appiconWideTile.scale-125.png</PackagePath>
-      <Modified>2023-09-13T14:23:58.631</Modified>
+      <Modified>2023-09-13T18:59:48.436</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconWideTile.scale-150.png">
       <PackagePath>appiconWideTile.scale-150.png</PackagePath>
-      <Modified>2023-09-13T14:23:58.646</Modified>
+      <Modified>2023-09-13T18:59:48.451</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconWideTile.scale-200.png">
       <PackagePath>appiconWideTile.scale-200.png</PackagePath>
-      <Modified>2023-09-13T14:23:58.672</Modified>
+      <Modified>2023-09-13T18:59:48.470</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconWideTile.scale-400.png">
       <PackagePath>appiconWideTile.scale-400.png</PackagePath>
-      <Modified>2023-09-13T14:23:58.774</Modified>
+      <Modified>2023-09-13T18:59:48.511</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-100.png">
       <PackagePath>dotnet_bot.scale-100.png</PackagePath>
-      <Modified>2023-09-13T14:23:58.081</Modified>
+      <Modified>2023-09-13T18:59:47.952</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-125.png">
       <PackagePath>dotnet_bot.scale-125.png</PackagePath>
-      <Modified>2023-09-13T14:23:58.105</Modified>
+      <Modified>2023-09-13T18:59:48.003</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-150.png">
       <PackagePath>dotnet_bot.scale-150.png</PackagePath>
-      <Modified>2023-09-13T14:23:58.145</Modified>
+      <Modified>2023-09-13T18:59:48.032</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-200.png">
       <PackagePath>dotnet_bot.scale-200.png</PackagePath>
-      <Modified>2023-09-13T14:23:58.203</Modified>
+      <Modified>2023-09-13T18:59:48.064</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-400.png">
       <PackagePath>dotnet_bot.scale-400.png</PackagePath>
-      <Modified>2023-09-13T14:23:58.303</Modified>
+      <Modified>2023-09-13T18:59:48.130</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\green_checkmark.scale-100.jpg">
+      <PackagePath>green_checkmark.scale-100.jpg</PackagePath>
+      <Modified>2023-09-13T18:59:46.798</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\green_checkmark.scale-100.png">
+      <PackagePath>green_checkmark.scale-100.png</PackagePath>
+      <Modified>2023-09-13T18:57:10.671</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\ntclogo.scale-100.png">
       <PackagePath>ntclogo.scale-100.png</PackagePath>
-      <Modified>2023-09-13T14:19:50.689</Modified>
+      <Modified>2023-09-13T15:56:07.691</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\stockprofileimage.scale-100.png">
+      <PackagePath>stockprofileimage.scale-100.png</PackagePath>
+      <Modified>2023-09-13T16:18:40.317</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\upload.scale-100.png">
+      <PackagePath>upload.scale-100.png</PackagePath>
+      <Modified>2023-09-13T16:33:33.070</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
