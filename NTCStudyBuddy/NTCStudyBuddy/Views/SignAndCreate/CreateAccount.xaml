@@ -41,7 +41,7 @@
                     </Grid>
                 </StackLayout>
                 <StackLayout>
-                    <Button x:Name="SaveBtn" Text="Save" Margin="0, 50" WidthRequest="200" HorizontalOptions="Start"></Button>
+                    <Button x:Name="SaveBtn" Text="Save" Margin="0, 50" WidthRequest="200" HorizontalOptions="Start" Clicked="CompleteCreation"></Button>
                 </StackLayout>
             </StackLayout>
         

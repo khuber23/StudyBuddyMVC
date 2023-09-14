@@ -30,13 +30,13 @@
     <AppXManifest Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-09-13T20:17:04.882</Modified>
+      <Modified>2023-09-14T00:21:49.569</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2023-09-13T19:53:07.171</Modified>
+      <Modified>2023-09-14T00:21:49.109</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\NTCStudyBuddy.runtimeconfig.json">
       <PackagePath>NTCStudyBuddy.runtimeconfig.json</PackagePath>
@@ -44,11 +44,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\NTCStudyBuddy.dll">
       <PackagePath>NTCStudyBuddy.dll</PackagePath>
-      <Modified>2023-09-13T20:17:03.258</Modified>
+      <Modified>2023-09-14T00:21:46.556</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\apphost.exe">
       <PackagePath>NTCStudyBuddy.exe</PackagePath>
-      <Modified>2023-09-13T20:17:03.279</Modified>
+      <Modified>2023-09-14T00:21:46.611</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\NTCStudyBuddy.deps.json">
       <PackagePath>NTCStudyBuddy.deps.json</PackagePath>
