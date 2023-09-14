@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\180011854\\OneDrive - Northcentral Technical College\\Courses\\CAPSTONE\\NTCStudyBuddy\\NTCStudyBuddy\\NTCStudyBuddy.DataAccess\\NTCStudyBuddy.DataAccess.csproj": {}
+    "C:\\Users\\200112158\\OneDrive - Northcentral Technical College\\Capstone\\NTCStudyBuddyProject\\NTCStudyBuddy\\NTCStudyBuddy_MVC\\NTCStudyBuddy.DataAccess\\NTCStudyBuddy.DataAccess.csproj": {}
   },
   "projects": {
-    "C:\\Users\\180011854\\OneDrive - Northcentral Technical College\\Courses\\CAPSTONE\\NTCStudyBuddy\\NTCStudyBuddy\\NTCStudyBuddy.DataAccess\\NTCStudyBuddy.DataAccess.csproj": {
+    "C:\\Users\\200112158\\OneDrive - Northcentral Technical College\\Capstone\\NTCStudyBuddyProject\\NTCStudyBuddy\\NTCStudyBuddy_MVC\\NTCStudyBuddy.DataAccess\\NTCStudyBuddy.DataAccess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\180011854\\OneDrive - Northcentral Technical College\\Courses\\CAPSTONE\\NTCStudyBuddy\\NTCStudyBuddy\\NTCStudyBuddy.DataAccess\\NTCStudyBuddy.DataAccess.csproj",
+        "projectUniqueName": "C:\\Users\\200112158\\OneDrive - Northcentral Technical College\\Capstone\\NTCStudyBuddyProject\\NTCStudyBuddy\\NTCStudyBuddy_MVC\\NTCStudyBuddy.DataAccess\\NTCStudyBuddy.DataAccess.csproj",
         "projectName": "NTCStudyBuddy.DataAccess",
-        "projectPath": "C:\\Users\\180011854\\OneDrive - Northcentral Technical College\\Courses\\CAPSTONE\\NTCStudyBuddy\\NTCStudyBuddy\\NTCStudyBuddy.DataAccess\\NTCStudyBuddy.DataAccess.csproj",
-        "packagesPath": "C:\\Users\\180011854\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\180011854\\OneDrive - Northcentral Technical College\\Courses\\CAPSTONE\\NTCStudyBuddy\\NTCStudyBuddy\\NTCStudyBuddy.DataAccess\\obj\\",
+        "projectPath": "C:\\Users\\200112158\\OneDrive - Northcentral Technical College\\Capstone\\NTCStudyBuddyProject\\NTCStudyBuddy\\NTCStudyBuddy_MVC\\NTCStudyBuddy.DataAccess\\NTCStudyBuddy.DataAccess.csproj",
+        "packagesPath": "C:\\Users\\200112158\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\200112158\\OneDrive - Northcentral Technical College\\Capstone\\NTCStudyBuddyProject\\NTCStudyBuddy\\NTCStudyBuddy_MVC\\NTCStudyBuddy.DataAccess\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\180011854\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\200112158\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,7 +22,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -45,9 +40,15 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
-            "Microsoft.EntityFrameworkCore": {
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
-              "version": "[7.0.10, )"
+              "version": "[6.0.13, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[6.0.13, )"
             }
           },
           "imports": [

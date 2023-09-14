@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using NTCStudyBuddy.DataAccess.Data;
 using NTCStudyBuddyMVC.Models;
 using System.Diagnostics;
 
@@ -7,10 +8,12 @@ namespace NTCStudyBuddyMVC.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly DataContext _dataContext;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, DataContext dataContext)
         {
             _logger = logger;
+            _dataContext= dataContext;
         }
 
         public IActionResult Index()

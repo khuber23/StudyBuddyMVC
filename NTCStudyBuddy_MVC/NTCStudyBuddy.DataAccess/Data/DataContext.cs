@@ -5,9 +5,24 @@ namespace NTCStudyBuddy.DataAccess.Data
 {
     public class DataContext : DbContext
     {
+        public DataContext() { }
+
         public DataContext(DbContextOptions<DataContext> options)
         : base(options)
         { }
+
+        public DbSet<User> Users { get; set; }
+        public DbSet<StudySession> StudySessions { get; set; }
+        public DbSet<Deck> Decks { get; set; }
+        public DbSet<DeckGroup> DeckGroups { get; set; }
+        public DbSet<FlashCard> FlashCards { get; set; }
+
+        // Transitional Tables 
+        public DbSet<UserDeck> UserDecks { get; set; }
+        public DbSet<UserDeckGroup> UserDeckGroups { get; set; }
+        public DbSet<DeckGroupDeck> DeckGroupDecks { get; set; }
+        public DbSet<DeckFlashCard> DeckFlashCards { get; set; }
+        public DbSet<StudySessionFlashCard> StudySessionsFlashCards { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -160,19 +175,6 @@ namespace NTCStudyBuddy.DataAccess.Data
 
         }
 
-
-        public DbSet<User> Users { get; set; }
-        public DbSet<StudySession> StudySessions { get; set; }
-        public DbSet<Deck> Decks { get; set; }
-        public DbSet<DeckGroup> DeckGroups { get; set; }
-        public DbSet<FlashCard> FlashCards { get; set; }
-
-        // Transitional Tables 
-        public DbSet<UserDeck> UserDecks { get; set; }
-        public DbSet<UserDeckGroup> UserDeckGroups { get; set; }
-        public DbSet<DeckGroupDeck> DeckGroupDecks { get; set; }
-        public DbSet<DeckFlashCard> DeckFlashCards { get; set; }
-        public DbSet<StudySessionFlashCard> StudySessionsFlashCards { get; set; }
         
     }
 }
