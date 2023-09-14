@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NTCStudyBuddy.DataAccess.Models
+namespace NTCStudyBuddy.Data.Models
 {
     public class User
     {
@@ -32,6 +32,6 @@ namespace NTCStudyBuddy.DataAccess.Models
 
         public List<UserDeckGroup>? UserDeckGroups { get; set; }
 
-        public List<StudySession>? StudySessions { get; set;}
+        public List<StudySession>? StudySessions { get; set; }
     }
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NTCStudyBuddy.DataAccess.Models
+namespace NTCStudyBuddy.Data.Models
 {
     public class UserDeckGroup
     {

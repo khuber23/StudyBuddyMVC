@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using NTCStudyBuddy.DataAccess.Data;
+using NTCStudyBuddy.Data.Data;
 using NTCStudyBuddyMVC.Models;
 using System.Diagnostics;
 

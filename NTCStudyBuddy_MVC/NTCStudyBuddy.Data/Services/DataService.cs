@@ -1,7 +1,12 @@
-﻿using NTCStudyBuddy.DataAccess.Data;
-using NTCStudyBuddy.DataAccess.Models;
+﻿using NTCStudyBuddy.Data.Data;
+using NTCStudyBuddy.Data.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace NTCStudyBuddy.DataAccess.Services
+namespace NTCStudyBuddy.Data.Services
 {
     public class DataService
     {
@@ -9,7 +14,7 @@ namespace NTCStudyBuddy.DataAccess.Services
 
         public DataService(DataContext dataContext)
         {
-            _dataContext = dataContext;
+            _dataContext= dataContext;
         }
 
         public List<User> GetUsers()

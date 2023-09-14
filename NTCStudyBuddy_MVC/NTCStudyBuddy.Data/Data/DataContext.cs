@@ -1,12 +1,17 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using NTCStudyBuddy.DataAccess.Models;
+using NTCStudyBuddy.Data.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace NTCStudyBuddy.DataAccess.Data
+namespace NTCStudyBuddy.Data.Data
 {
     public class DataContext : DbContext
     {
         public DataContext(DbContextOptions<DataContext> options)
-        : base(options)
+            :base(options)
         { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -113,21 +118,24 @@ namespace NTCStudyBuddy.DataAccess.Data
                 );
 
             modelBuilder.Entity<StudySession>().HasData(
-                new StudySession { StudySessionId = 1, 
-                                    StartTime = DateTime.Parse("09/11/2023 03:05:15 PM"),
-                                    EndTime = DateTime.Parse("09/11/2023 03:35:15 PM"),  
-                                    DeckId = 1, 
-                                    UserId = 1  }
+                new StudySession
+                {
+                    StudySessionId = 1,
+                    StartTime = DateTime.Parse("09/11/2023 03:05:15 PM"),
+                    EndTime = DateTime.Parse("09/11/2023 03:35:15 PM"),
+                    DeckId = 1,
+                    UserId = 1
+                }
                 );
 
             modelBuilder.Entity<Deck>().HasData(
-                new Deck { DeckId= 1, DeckName = "Creational Design Patterns", DeckDescription = "Design patterns all about class instantiation" },
+                new Deck { DeckId = 1, DeckName = "Creational Design Patterns", DeckDescription = "Design patterns all about class instantiation" },
                 new Deck { DeckId = 2, DeckName = "Structural Design Patterns", DeckDescription = "Design patterns all about class and Object composition" },
                 new Deck { DeckId = 3, DeckName = "Behavorial Design Patterns", DeckDescription = "Design patterns all about Class's objects communication" }
                 );
 
             modelBuilder.Entity<DeckGroup>().HasData(
-                new DeckGroup { DeckGroupId = 1, DeckGroupName = "Design Patterns", DeckGroupDescription = ""}
+                new DeckGroup { DeckGroupId = 1, DeckGroupName = "Design Patterns", DeckGroupDescription = "" }
                 );
 
             modelBuilder.Entity<FlashCard>().HasData(
@@ -139,7 +147,7 @@ namespace NTCStudyBuddy.DataAccess.Data
                 );
 
             modelBuilder.Entity<UserDeck>().HasData(
-                new UserDeck { UserDeckId = 1, UserId = 1, DeckId = 1}
+                new UserDeck { UserDeckId = 1, UserId = 1, DeckId = 1 }
                 );
 
             modelBuilder.Entity<UserDeckGroup>().HasData(
@@ -157,8 +165,8 @@ namespace NTCStudyBuddy.DataAccess.Data
             modelBuilder.Entity<StudySessionFlashCard>().HasData(
                 new StudySessionFlashCard { StudySessionFlashCardId = 1, StudySessionId = 1, FlashCardId = 1 }
                 );
-
         }
+
         public DbSet<User> Users { get; set; }
         public DbSet<StudySession> StudySessions { get; set; }
         public DbSet<Deck> Decks { get; set; }
@@ -171,6 +179,5 @@ namespace NTCStudyBuddy.DataAccess.Data
         public DbSet<DeckGroupDeck> DeckGroupDecks { get; set; }
         public DbSet<DeckFlashCard> DeckFlashCards { get; set; }
         public DbSet<StudySessionFlashCard> StudySessionsFlashCards { get; set; }
-
     }
 }
