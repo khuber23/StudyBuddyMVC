@@ -4,14 +4,14 @@
     "C:\\Users\\180011854\\OneDrive - Northcentral Technical College\\Courses\\CAPSTONE\\NTCStudyBuddy_FullProject\\NTCStudyBuddy\\NTCStudyBuddy_MVC\\NTCStudyBuddyMVC\\NTCStudyBuddyMVC.csproj": {}
   },
   "projects": {
-    "C:\\Users\\180011854\\OneDrive - Northcentral Technical College\\Courses\\CAPSTONE\\NTCStudyBuddy_FullProject\\NTCStudyBuddy\\NTCStudyBuddy_MVC\\NTCStudyBuddy.DataAccess\\NTCStudyBuddy.DataAccess.csproj": {
+    "C:\\Users\\180011854\\OneDrive - Northcentral Technical College\\Courses\\CAPSTONE\\NTCStudyBuddy_FullProject\\NTCStudyBuddy\\NTCStudyBuddy_MVC\\NTCStudyBuddy.Data\\NTCStudyBuddy.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\180011854\\OneDrive - Northcentral Technical College\\Courses\\CAPSTONE\\NTCStudyBuddy_FullProject\\NTCStudyBuddy\\NTCStudyBuddy_MVC\\NTCStudyBuddy.DataAccess\\NTCStudyBuddy.DataAccess.csproj",
-        "projectName": "NTCStudyBuddy.DataAccess",
-        "projectPath": "C:\\Users\\180011854\\OneDrive - Northcentral Technical College\\Courses\\CAPSTONE\\NTCStudyBuddy_FullProject\\NTCStudyBuddy\\NTCStudyBuddy_MVC\\NTCStudyBuddy.DataAccess\\NTCStudyBuddy.DataAccess.csproj",
+        "projectUniqueName": "C:\\Users\\180011854\\OneDrive - Northcentral Technical College\\Courses\\CAPSTONE\\NTCStudyBuddy_FullProject\\NTCStudyBuddy\\NTCStudyBuddy_MVC\\NTCStudyBuddy.Data\\NTCStudyBuddy.Data.csproj",
+        "projectName": "NTCStudyBuddy.Data",
+        "projectPath": "C:\\Users\\180011854\\OneDrive - Northcentral Technical College\\Courses\\CAPSTONE\\NTCStudyBuddy_FullProject\\NTCStudyBuddy\\NTCStudyBuddy_MVC\\NTCStudyBuddy.Data\\NTCStudyBuddy.Data.csproj",
         "packagesPath": "C:\\Users\\180011854\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\180011854\\OneDrive - Northcentral Technical College\\Courses\\CAPSTONE\\NTCStudyBuddy_FullProject\\NTCStudyBuddy\\NTCStudyBuddy_MVC\\NTCStudyBuddy.DataAccess\\obj\\",
+        "outputPath": "C:\\Users\\180011854\\OneDrive - Northcentral Technical College\\Courses\\CAPSTONE\\NTCStudyBuddy_FullProject\\NTCStudyBuddy\\NTCStudyBuddy_MVC\\NTCStudyBuddy.Data\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -45,13 +45,13 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
-            "Microsoft.EntityFrameworkCore.Design": {
-              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-              "suppressParent": "All",
+            "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[6.0.13, )"
             },
-            "Microsoft.EntityFrameworkCore.SqlServer": {
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
               "version": "[6.0.13, )"
             }
@@ -105,8 +105,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\180011854\\OneDrive - Northcentral Technical College\\Courses\\CAPSTONE\\NTCStudyBuddy_FullProject\\NTCStudyBuddy\\NTCStudyBuddy_MVC\\NTCStudyBuddy.DataAccess\\NTCStudyBuddy.DataAccess.csproj": {
-                "projectPath": "C:\\Users\\180011854\\OneDrive - Northcentral Technical College\\Courses\\CAPSTONE\\NTCStudyBuddy_FullProject\\NTCStudyBuddy\\NTCStudyBuddy_MVC\\NTCStudyBuddy.DataAccess\\NTCStudyBuddy.DataAccess.csproj"
+              "C:\\Users\\180011854\\OneDrive - Northcentral Technical College\\Courses\\CAPSTONE\\NTCStudyBuddy_FullProject\\NTCStudyBuddy\\NTCStudyBuddy_MVC\\NTCStudyBuddy.Data\\NTCStudyBuddy.Data.csproj": {
+                "projectPath": "C:\\Users\\180011854\\OneDrive - Northcentral Technical College\\Courses\\CAPSTONE\\NTCStudyBuddy_FullProject\\NTCStudyBuddy\\NTCStudyBuddy_MVC\\NTCStudyBuddy.Data\\NTCStudyBuddy.Data.csproj"
               }
             }
           }
@@ -128,6 +128,12 @@
               "version": "[6.0.13, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[6.0.13, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
               "version": "[6.0.13, )"
             }

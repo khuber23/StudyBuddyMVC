@@ -10,7 +10,7 @@
         "dependencies": {
           "Microsoft.EntityFrameworkCore.Design": "6.0.13",
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.13",
-          "NTCStudyBuddy.DataAccess": "1.0.0"
+          "NTCStudyBuddy.Data": "1.0.0"
         },
         "runtime": {
           "NTCStudyBuddyMVC.dll": {}
@@ -434,12 +434,12 @@
           }
         }
       },
-      "NTCStudyBuddy.DataAccess/1.0.0": {
+      "NTCStudyBuddy.Data/1.0.0": {
         "dependencies": {
-          "Microsoft.EntityFrameworkCore.SqlServer": "6.0.13"
+          "Microsoft.EntityFrameworkCore": "6.0.13"
         },
         "runtime": {
-          "NTCStudyBuddy.DataAccess.dll": {}
+          "NTCStudyBuddy.Data.dll": {}
         }
       }
     }
@@ -744,7 +744,7 @@
       "path": "system.windows.extensions/4.7.0",
       "hashPath": "system.windows.extensions.4.7.0.nupkg.sha512"
     },
-    "NTCStudyBuddy.DataAccess/1.0.0": {
+    "NTCStudyBuddy.Data/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

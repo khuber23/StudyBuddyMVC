@@ -4,18 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NTCStudyBuddy.DataAccess.Models
+namespace NTCStudyBuddy.Data.Models
 {
-    public class DeckGroupDeck
+    public class DeckFlashCard
     {
-        public int  DeckGroupDeckId { get; set; }
-
-        public int DeckGroupId { get; set; }
+        public int DeckFlashCardId { get; set; }
 
         public int DeckId { get; set; }
 
-        public DeckGroup? DeckGroup { get; set; }
+        public int FlashCardId { get; set; }
 
         public Deck? Deck { get; set; }
+
+        public FlashCard? FlashCard { get; set; }
     }
 }
