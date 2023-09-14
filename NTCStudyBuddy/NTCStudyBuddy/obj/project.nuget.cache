@@ -1,5 +1,18 @@
 {
   "version": 2,
+<<<<<<< HEAD
+  "dgSpecHash": "0yfBFXojZcXARJGB7X69zSLj+Y8JmC/OMIGMrIqM7XgogtOMKDP2aRhOGSgcGq4Q0dpQvuafiLA2PQHGYcmlEA==",
+  "success": false,
+  "projectFilePath": "C:\\Users\\200112158\\OneDrive - Northcentral Technical College\\Capstone\\NTCStudyBuddyProject\\NTCStudyBuddy\\NTCStudyBuddy\\NTCStudyBuddy\\NTCStudyBuddy.csproj",
+  "expectedPackageFiles": [],
+  "logs": [
+    {
+      "code": "NU1012",
+      "level": "Error",
+      "message": "Platform version is not present for one or more target frameworks, even though they have specified a platform: net7.0-android, net7.0-ios, net7.0-maccatalyst"
+    }
+  ]
+=======
   "dgSpecHash": "9Qg4JlxX0ET/qhK789kDDmWPjas3ZD3CHRpFGbPv0OiFodU24ioXbr8FBDeNTC+8TQ3QdJuCzD1BJ+H2ohxyFw==",
   "success": true,
   "projectFilePath": "C:\\Users\\200142806\\OneDrive - Northcentral Technical College\\programming concepts\\Capstone\\test\\NTCStudyBuddy\\NTCStudyBuddy\\NTCStudyBuddy\\NTCStudyBuddy.csproj",
@@ -106,4 +119,5 @@
     "C:\\Users\\200142806\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x64\\7.0.10\\microsoft.netcore.app.runtime.win-x64.7.0.10.nupkg.sha512"
   ],
   "logs": []
+>>>>>>> e03ff395e27b0b72d809c30d2bd676a9f3e30a65
 }
