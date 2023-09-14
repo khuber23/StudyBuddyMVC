@@ -12,6 +12,11 @@ namespace NTCStudyBuddy.DataAccess.Services
             _dataContext = dataContext;
         }
 
+        public List<User> GetUsers()
+        {
+            return _dataContext.Users.ToList();
+        }
+
         public User AddUser(User user)
         {
             _dataContext.Users.Add(user);
