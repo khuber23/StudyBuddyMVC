@@ -21,7 +21,16 @@
     <MauiXaml Update="Resources\Styles\Styles.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
-    <MauiXaml Update="Views\SignIn.xaml">
+    <MauiXaml Update="Views\SignAndCreate\CreateAccount.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
+    <MauiXaml Update="Views\SignAndCreate\HomePage.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
+    <MauiXaml Update="Views\SignAndCreate\SignIn.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
+    <MauiXaml Update="Views\SignAndCreate\Success.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
   </ItemGroup>
