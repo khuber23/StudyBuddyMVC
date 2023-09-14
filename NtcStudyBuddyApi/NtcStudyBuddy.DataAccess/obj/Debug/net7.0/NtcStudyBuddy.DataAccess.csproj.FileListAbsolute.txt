@@ -1,0 +1,12 @@
+C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NtcStudyBuddyApi\NtcStudyBuddy.DataAccess\bin\Debug\net7.0\NtcStudyBuddy.DataAccess.deps.json
+C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NtcStudyBuddyApi\NtcStudyBuddy.DataAccess\bin\Debug\net7.0\NtcStudyBuddy.DataAccess.dll
+C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NtcStudyBuddyApi\NtcStudyBuddy.DataAccess\bin\Debug\net7.0\NtcStudyBuddy.DataAccess.pdb
+C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NtcStudyBuddyApi\NtcStudyBuddy.DataAccess\obj\Debug\net7.0\NtcStudyBuddy.DataAccess.csproj.AssemblyReference.cache
+C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NtcStudyBuddyApi\NtcStudyBuddy.DataAccess\obj\Debug\net7.0\NtcStudyBuddy.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NtcStudyBuddyApi\NtcStudyBuddy.DataAccess\obj\Debug\net7.0\NtcStudyBuddy.DataAccess.AssemblyInfoInputs.cache
+C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NtcStudyBuddyApi\NtcStudyBuddy.DataAccess\obj\Debug\net7.0\NtcStudyBuddy.DataAccess.AssemblyInfo.cs
+C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NtcStudyBuddyApi\NtcStudyBuddy.DataAccess\obj\Debug\net7.0\NtcStudyBuddy.DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NtcStudyBuddyApi\NtcStudyBuddy.DataAccess\obj\Debug\net7.0\NtcStudyBuddy.DataAccess.dll
+C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NtcStudyBuddyApi\NtcStudyBuddy.DataAccess\obj\Debug\net7.0\refint\NtcStudyBuddy.DataAccess.dll
+C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NtcStudyBuddyApi\NtcStudyBuddy.DataAccess\obj\Debug\net7.0\NtcStudyBuddy.DataAccess.pdb
+C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NtcStudyBuddyApi\NtcStudyBuddy.DataAccess\obj\Debug\net7.0\ref\NtcStudyBuddy.DataAccess.dll
