@@ -1,0 +1,12 @@
+C:\Users\180011854\OneDrive - Northcentral Technical College\Courses\CAPSTONE\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy.DataAccess\bin\Debug\net6.0\NTCStudyBuddy.DataAccess.deps.json
+C:\Users\180011854\OneDrive - Northcentral Technical College\Courses\CAPSTONE\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy.DataAccess\bin\Debug\net6.0\NTCStudyBuddy.DataAccess.dll
+C:\Users\180011854\OneDrive - Northcentral Technical College\Courses\CAPSTONE\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy.DataAccess\bin\Debug\net6.0\NTCStudyBuddy.DataAccess.pdb
+C:\Users\180011854\OneDrive - Northcentral Technical College\Courses\CAPSTONE\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy.DataAccess\obj\Debug\net6.0\NTCStudyBuddy.DataAccess.csproj.AssemblyReference.cache
+C:\Users\180011854\OneDrive - Northcentral Technical College\Courses\CAPSTONE\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy.DataAccess\obj\Debug\net6.0\NTCStudyBuddy.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\180011854\OneDrive - Northcentral Technical College\Courses\CAPSTONE\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy.DataAccess\obj\Debug\net6.0\NTCStudyBuddy.DataAccess.AssemblyInfoInputs.cache
+C:\Users\180011854\OneDrive - Northcentral Technical College\Courses\CAPSTONE\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy.DataAccess\obj\Debug\net6.0\NTCStudyBuddy.DataAccess.AssemblyInfo.cs
+C:\Users\180011854\OneDrive - Northcentral Technical College\Courses\CAPSTONE\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy.DataAccess\obj\Debug\net6.0\NTCStudyBuddy.DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\180011854\OneDrive - Northcentral Technical College\Courses\CAPSTONE\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy.DataAccess\obj\Debug\net6.0\NTCStudyBuddy.DataAccess.dll
+C:\Users\180011854\OneDrive - Northcentral Technical College\Courses\CAPSTONE\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy.DataAccess\obj\Debug\net6.0\refint\NTCStudyBuddy.DataAccess.dll
+C:\Users\180011854\OneDrive - Northcentral Technical College\Courses\CAPSTONE\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy.DataAccess\obj\Debug\net6.0\NTCStudyBuddy.DataAccess.pdb
+C:\Users\180011854\OneDrive - Northcentral Technical College\Courses\CAPSTONE\NTCStudyBuddy\NTCStudyBuddy\NTCStudyBuddy.DataAccess\obj\Debug\net6.0\ref\NTCStudyBuddy.DataAccess.dll
