@@ -67,3 +67,14 @@ C:\Users\180011854\OneDrive - Northcentral Technical College\Courses\CAPSTONE\NT
 C:\Users\180011854\OneDrive - Northcentral Technical College\Courses\CAPSTONE\NTCStudyBuddy_FullProject\NTCStudyBuddy\NTCStudyBuddy_MVC\NTCStudyBuddyMVC\obj\Debug\net6.0\ref\NTCStudyBuddyMVC.dll
 C:\Users\180011854\OneDrive - Northcentral Technical College\Courses\CAPSTONE\NTCStudyBuddy_FullProject\NTCStudyBuddy\NTCStudyBuddy_MVC\NTCStudyBuddyMVC\bin\Debug\net6.0\NTCStudyBuddy.Data.dll
 C:\Users\180011854\OneDrive - Northcentral Technical College\Courses\CAPSTONE\NTCStudyBuddy_FullProject\NTCStudyBuddy\NTCStudyBuddy_MVC\NTCStudyBuddyMVC\bin\Debug\net6.0\NTCStudyBuddy.Data.pdb
+C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy_MVC\NTCStudyBuddyMVC\obj\Debug\net6.0\NTCStudyBuddyMVC.csproj.AssemblyReference.cache
+C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy_MVC\NTCStudyBuddyMVC\obj\Debug\net6.0\NTCStudyBuddyMVC.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy_MVC\NTCStudyBuddyMVC\obj\Debug\net6.0\NTCStudyBuddyMVC.AssemblyInfoInputs.cache
+C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy_MVC\NTCStudyBuddyMVC\obj\Debug\net6.0\NTCStudyBuddyMVC.AssemblyInfo.cs
+C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy_MVC\NTCStudyBuddyMVC\obj\Debug\net6.0\NTCStudyBuddyMVC.csproj.CoreCompileInputs.cache
+C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy_MVC\NTCStudyBuddyMVC\obj\Debug\net6.0\NTCStudyBuddyMVC.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy_MVC\NTCStudyBuddyMVC\obj\Debug\net6.0\NTCStudyBuddyMVC.RazorAssemblyInfo.cache
+C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy_MVC\NTCStudyBuddyMVC\obj\Debug\net6.0\NTCStudyBuddyMVC.RazorAssemblyInfo.cs
+C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy_MVC\NTCStudyBuddyMVC\obj\Debug\net6.0\NTCStudyBuddyMVC.dll
+C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy_MVC\NTCStudyBuddyMVC\obj\Debug\net6.0\refint\NTCStudyBuddyMVC.dll
+C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NTCStudyBuddy_MVC\NTCStudyBuddyMVC\obj\Debug\net6.0\NTCStudyBuddyMVC.pdb

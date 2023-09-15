@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "XYhprf+aUUdob25ByM/VSrO1MVda/HwrW/9MrUtoNWonMzLIzjxLX7SX9z0fmumBFjm+CbIusZ74clLuV9GBtg==",
+  "dgSpecHash": "/bIwBM04GoUOsk113DWjewPYlJmw+fHPt3n6aTS+hqbXBcTU7Aj5hpd7I8oMykwLh/nmWrLzw/QZbHZzESLe0A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\200142806\\OneDrive - Northcentral Technical College\\programming concepts\\Capstone\\test\\NtcStudyBuddyApi\\NtcStudyBuddyApi\\NtcStudyBuddyApi.csproj",
+  "projectFilePath": "C:\\Users\\200142806\\OneDrive - Northcentral Technical College\\programming concepts\\Capstone\\test\\NTCStudyBuddy\\NtcStudyBuddyApi\\NtcStudyBuddyApi\\NtcStudyBuddyApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\200142806\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\200142806\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",

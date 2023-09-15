@@ -53,6 +53,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Reference Include="NtcStudyBuddy.DataAccess">
+	    <HintPath>..\..\NtcStudyBuddyApi\NtcStudyBuddy.DataAccess\bin\Debug\net7.0\NtcStudyBuddy.DataAccess.dll</HintPath>
+	  </Reference>
+	</ItemGroup>
+
+	<ItemGroup>
 	  <MauiXaml Update="Views\SignAndCreate\CreateAccount.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

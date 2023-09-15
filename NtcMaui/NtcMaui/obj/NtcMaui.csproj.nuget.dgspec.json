@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\200142806\\OneDrive - Northcentral Technical College\\programming concepts\\Capstone\\test\\NtcMaui\\NtcMaui\\NtcMaui.csproj": {}
+    "C:\\Users\\200142806\\OneDrive - Northcentral Technical College\\programming concepts\\Capstone\\test\\NTCStudyBuddy\\NtcMaui\\NtcMaui\\NtcMaui.csproj": {}
   },
   "projects": {
-    "C:\\Users\\200142806\\OneDrive - Northcentral Technical College\\programming concepts\\Capstone\\test\\NtcMaui\\NtcMaui\\NtcMaui.csproj": {
+    "C:\\Users\\200142806\\OneDrive - Northcentral Technical College\\programming concepts\\Capstone\\test\\NTCStudyBuddy\\NtcMaui\\NtcMaui\\NtcMaui.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\200142806\\OneDrive - Northcentral Technical College\\programming concepts\\Capstone\\test\\NtcMaui\\NtcMaui\\NtcMaui.csproj",
+        "projectUniqueName": "C:\\Users\\200142806\\OneDrive - Northcentral Technical College\\programming concepts\\Capstone\\test\\NTCStudyBuddy\\NtcMaui\\NtcMaui\\NtcMaui.csproj",
         "projectName": "NtcMaui",
-        "projectPath": "C:\\Users\\200142806\\OneDrive - Northcentral Technical College\\programming concepts\\Capstone\\test\\NtcMaui\\NtcMaui\\NtcMaui.csproj",
+        "projectPath": "C:\\Users\\200142806\\OneDrive - Northcentral Technical College\\programming concepts\\Capstone\\test\\NTCStudyBuddy\\NtcMaui\\NtcMaui\\NtcMaui.csproj",
         "packagesPath": "C:\\Users\\200142806\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\200142806\\OneDrive - Northcentral Technical College\\programming concepts\\Capstone\\test\\NtcMaui\\NtcMaui\\obj\\",
+        "outputPath": "C:\\Users\\200142806\\OneDrive - Northcentral Technical College\\programming concepts\\Capstone\\test\\NTCStudyBuddy\\NtcMaui\\NtcMaui\\obj\\",
         "projectStyle": "PackageReference",
         "crossTargeting": true,
         "fallbackFolders": [

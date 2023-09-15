@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "vWub2yVbXDyUIVrnMu9DYdpcqn3E7rGdM/jiEPS3gvQRrzaKM0kAETXViS0jPF0z5tHHkaMRinwno78RCrOLmA==",
+  "dgSpecHash": "vGKsXJrdQidMTBNpoggv11OyLDmb/vtSxQ2o1lWoEfLLL78iyK+ClbZCaaUQ1O7LVZrqgTkU6Fqy8AfdS3FWHg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\200142806\\OneDrive - Northcentral Technical College\\programming concepts\\Capstone\\test\\NtcMaui\\NtcMaui\\NtcMaui.csproj",
+  "projectFilePath": "C:\\Users\\200142806\\OneDrive - Northcentral Technical College\\programming concepts\\Capstone\\test\\NTCStudyBuddy\\NtcMaui\\NtcMaui\\NtcMaui.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\200142806\\.nuget\\packages\\googlegson\\2.9.1.1\\googlegson.2.9.1.1.nupkg.sha512",
     "C:\\Users\\200142806\\.nuget\\packages\\microsoft.extensions.configuration\\7.0.0\\microsoft.extensions.configuration.7.0.0.nupkg.sha512",

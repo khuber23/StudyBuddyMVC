@@ -3486,11 +3486,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\200142806\\OneDrive - Northcentral Technical College\\programming concepts\\Capstone\\test\\NtcStudyBuddyApi\\NtcStudyBuddyApi\\NtcStudyBuddyApi.csproj",
+      "projectUniqueName": "C:\\Users\\200142806\\OneDrive - Northcentral Technical College\\programming concepts\\Capstone\\test\\NTCStudyBuddy\\NtcStudyBuddyApi\\NtcStudyBuddyApi\\NtcStudyBuddyApi.csproj",
       "projectName": "NtcStudyBuddyApi",
-      "projectPath": "C:\\Users\\200142806\\OneDrive - Northcentral Technical College\\programming concepts\\Capstone\\test\\NtcStudyBuddyApi\\NtcStudyBuddyApi\\NtcStudyBuddyApi.csproj",
+      "projectPath": "C:\\Users\\200142806\\OneDrive - Northcentral Technical College\\programming concepts\\Capstone\\test\\NTCStudyBuddy\\NtcStudyBuddyApi\\NtcStudyBuddyApi\\NtcStudyBuddyApi.csproj",
       "packagesPath": "C:\\Users\\200142806\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\200142806\\OneDrive - Northcentral Technical College\\programming concepts\\Capstone\\test\\NtcStudyBuddyApi\\NtcStudyBuddyApi\\obj\\",
+      "outputPath": "C:\\Users\\200142806\\OneDrive - Northcentral Technical College\\programming concepts\\Capstone\\test\\NTCStudyBuddy\\NtcStudyBuddyApi\\NtcStudyBuddyApi\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -3512,8 +3512,8 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\Users\\200142806\\OneDrive - Northcentral Technical College\\programming concepts\\Capstone\\test\\NtcStudyBuddyApi\\NtcStudyBuddy.DataAccess\\NtcStudyBuddy.DataAccess.csproj": {
-              "projectPath": "C:\\Users\\200142806\\OneDrive - Northcentral Technical College\\programming concepts\\Capstone\\test\\NtcStudyBuddyApi\\NtcStudyBuddy.DataAccess\\NtcStudyBuddy.DataAccess.csproj"
+            "C:\\Users\\200142806\\OneDrive - Northcentral Technical College\\programming concepts\\Capstone\\test\\NTCStudyBuddy\\NtcStudyBuddyApi\\NtcStudyBuddy.DataAccess\\NtcStudyBuddy.DataAccess.csproj": {
+              "projectPath": "C:\\Users\\200142806\\OneDrive - Northcentral Technical College\\programming concepts\\Capstone\\test\\NTCStudyBuddy\\NtcStudyBuddyApi\\NtcStudyBuddy.DataAccess\\NtcStudyBuddy.DataAccess.csproj"
             }
           }
         }

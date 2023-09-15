@@ -2832,11 +2832,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\200142806\\OneDrive - Northcentral Technical College\\programming concepts\\Capstone\\test\\NtcStudyBuddyApi\\NtcStudyBuddy.DataAccess\\NtcStudyBuddy.DataAccess.csproj",
+      "projectUniqueName": "C:\\Users\\200142806\\OneDrive - Northcentral Technical College\\programming concepts\\Capstone\\test\\NTCStudyBuddy\\NtcStudyBuddyApi\\NtcStudyBuddy.DataAccess\\NtcStudyBuddy.DataAccess.csproj",
       "projectName": "NtcStudyBuddy.DataAccess",
-      "projectPath": "C:\\Users\\200142806\\OneDrive - Northcentral Technical College\\programming concepts\\Capstone\\test\\NtcStudyBuddyApi\\NtcStudyBuddy.DataAccess\\NtcStudyBuddy.DataAccess.csproj",
+      "projectPath": "C:\\Users\\200142806\\OneDrive - Northcentral Technical College\\programming concepts\\Capstone\\test\\NTCStudyBuddy\\NtcStudyBuddyApi\\NtcStudyBuddy.DataAccess\\NtcStudyBuddy.DataAccess.csproj",
       "packagesPath": "C:\\Users\\200142806\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\200142806\\OneDrive - Northcentral Technical College\\programming concepts\\Capstone\\test\\NtcStudyBuddyApi\\NtcStudyBuddy.DataAccess\\obj\\",
+      "outputPath": "C:\\Users\\200142806\\OneDrive - Northcentral Technical College\\programming concepts\\Capstone\\test\\NTCStudyBuddy\\NtcStudyBuddyApi\\NtcStudyBuddy.DataAccess\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

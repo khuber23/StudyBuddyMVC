@@ -3,12 +3,19 @@ using NtcStudyBuddy.DataAccess.Services;
 using NtcStudyBuddy.DataAccess.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
+using System.Text.Json.Serialization;
+
 namespace NtcStudyBuddyApi.Controllers
 {
     [Route("api/[controller]")]
     public class ApiController : ControllerBase
     {
         private readonly DataService _dataService;
+      private JsonSerializerOptions options = new()
+        {
+            ReferenceHandler = ReferenceHandler.IgnoreCycles,
+            WriteIndented = true
+        };
 
         public ApiController(DataContext dataContext)
         {
@@ -29,8 +36,9 @@ namespace NtcStudyBuddyApi.Controllers
             apiResponse.Status = 0;
             apiResponse.Payload = users;
 
-            string jsonData = JsonSerializer.Serialize(apiResponse);
-            return Content(jsonData);
+           
+            string jsonData = JsonSerializer.Serialize(apiResponse, options);
+            return Content(jsonData,"application/json");
         }
     }
 }

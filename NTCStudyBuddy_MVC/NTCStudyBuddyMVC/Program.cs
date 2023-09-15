@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using NTCStudyBuddy.Data.Data;
+using NtcStudyBuddy.DataAccess.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 

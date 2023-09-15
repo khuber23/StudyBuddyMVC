@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using NTCStudyBuddy.Data.Data;
 using NTCStudyBuddyMVC.Models;
 using System.Diagnostics;
+using NtcStudyBuddy.DataAccess.Data;
 
 namespace NTCStudyBuddyMVC.Controllers
 {

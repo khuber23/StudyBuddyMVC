@@ -16,9 +16,6 @@ namespace NtcStudyBuddy.DataAccess.Services
         public List<User> GetUsers()
         {
             return _dataContext.Users
-                .Include(u => u.UserDecks)
-                .Include(u=> u.UserDeckGroups)
-                .Include(u => u.StudySessions)
                 .ToList();
         }
 
