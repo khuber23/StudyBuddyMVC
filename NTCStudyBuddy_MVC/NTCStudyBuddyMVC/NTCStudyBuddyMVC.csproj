@@ -9,7 +9,6 @@
   <ItemGroup>
     <Folder Include="Views\Deck\" />
     <Folder Include="Views\DeckGroup\" />
-    <Folder Include="Views\User\" />
     <Folder Include="Views\StudySession\" />
     <Folder Include="Views\Studies\" />
   </ItemGroup>
@@ -24,10 +23,6 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\NTCStudyBuddy.Data\NTCStudyBuddy.Data.csproj" />
   </ItemGroup>
 
   <ItemGroup>

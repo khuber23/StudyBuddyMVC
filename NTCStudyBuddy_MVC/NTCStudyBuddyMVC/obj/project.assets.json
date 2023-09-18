@@ -1053,19 +1053,6 @@
             "rid": "win"
           }
         }
-      },
-      "NTCStudyBuddy.Data/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
-        "dependencies": {
-          "Microsoft.EntityFrameworkCore": "6.0.13"
-        },
-        "compile": {
-          "bin/placeholder/NTCStudyBuddy.Data.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/NTCStudyBuddy.Data.dll": {}
-        }
       }
     }
   },
@@ -2888,39 +2875,33 @@
         "system.windows.extensions.nuspec",
         "useSharedDesignerContext.txt"
       ]
-    },
-    "NTCStudyBuddy.Data/1.0.0": {
-      "type": "project",
-      "path": "../NTCStudyBuddy.Data/NTCStudyBuddy.Data.csproj",
-      "msbuildProject": "../NTCStudyBuddy.Data/NTCStudyBuddy.Data.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net7.0": [
       "Microsoft.EntityFrameworkCore.Design >= 7.0.11",
       "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.11",
-      "Microsoft.EntityFrameworkCore.Tools >= 7.0.11",
-      "NTCStudyBuddy.Data >= 1.0.0"
+      "Microsoft.EntityFrameworkCore.Tools >= 7.0.11"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\200142806\\.nuget\\packages\\": {},
+    "C:\\Users\\180011854\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\200142806\\OneDrive - Northcentral Technical College\\programming concepts\\Capstone\\test\\NTCStudyBuddy\\NTCStudyBuddy_MVC\\NTCStudyBuddyMVC\\NTCStudyBuddyMVC.csproj",
+      "projectUniqueName": "C:\\Users\\180011854\\OneDrive - Northcentral Technical College\\Courses\\CAPSTONE\\StudyBuddyProject\\NTCStudyBuddy\\NTCStudyBuddy_MVC\\NTCStudyBuddyMVC\\NTCStudyBuddyMVC.csproj",
       "projectName": "NTCStudyBuddyMVC",
-      "projectPath": "C:\\Users\\200142806\\OneDrive - Northcentral Technical College\\programming concepts\\Capstone\\test\\NTCStudyBuddy\\NTCStudyBuddy_MVC\\NTCStudyBuddyMVC\\NTCStudyBuddyMVC.csproj",
-      "packagesPath": "C:\\Users\\200142806\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\200142806\\OneDrive - Northcentral Technical College\\programming concepts\\Capstone\\test\\NTCStudyBuddy\\NTCStudyBuddy_MVC\\NTCStudyBuddyMVC\\obj\\",
+      "projectPath": "C:\\Users\\180011854\\OneDrive - Northcentral Technical College\\Courses\\CAPSTONE\\StudyBuddyProject\\NTCStudyBuddy\\NTCStudyBuddy_MVC\\NTCStudyBuddyMVC\\NTCStudyBuddyMVC.csproj",
+      "packagesPath": "C:\\Users\\180011854\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\180011854\\OneDrive - Northcentral Technical College\\Courses\\CAPSTONE\\StudyBuddyProject\\NTCStudyBuddy\\NTCStudyBuddy_MVC\\NTCStudyBuddyMVC\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\200142806\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\180011854\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -2935,11 +2916,7 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
-          "projectReferences": {
-            "C:\\Users\\200142806\\OneDrive - Northcentral Technical College\\programming concepts\\Capstone\\test\\NTCStudyBuddy\\NTCStudyBuddy_MVC\\NTCStudyBuddy.Data\\NTCStudyBuddy.Data.csproj": {
-              "projectPath": "C:\\Users\\200142806\\OneDrive - Northcentral Technical College\\programming concepts\\Capstone\\test\\NTCStudyBuddy\\NTCStudyBuddy_MVC\\NTCStudyBuddy.Data\\NTCStudyBuddy.Data.csproj"
-            }
-          }
+          "projectReferences": {}
         }
       },
       "warningProperties": {
@@ -2988,7 +2965,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
       }
     }
   }

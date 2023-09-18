@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "type": "mssql",
+      "connectionId": "ConnectionStrings:\"Server=waucitdb2;Database=StudyBuddy_Test;Trusted_Connection=TRUE;TrustServerCertificate=True;UserId=TestStudyBuddy;Password=quizlet;\"",
+      "dynamicId": null
+    }
+  }
+}
