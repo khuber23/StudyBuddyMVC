@@ -7,16 +7,18 @@ namespace ApiStudyBuddy;
 
 public static class UserEndpoints
 {
+   
     public static void MapUserEndpoints (this IEndpointRouteBuilder routes)
     {
+        
         var group = routes.MapGroup("/api/User").WithTags(nameof(User));
-
-        group.MapGet("/", async (ApiStudyBuddyContext db) =>
-        {
-            return await db.Users.ToListAsync();
-        })
+            group.MapGet("/", async (ApiStudyBuddyContext db) =>
+            {
+                return await db.Users.ToListAsync();
+            })
         .WithName("GetAllUsers")
         .WithOpenApi();
+
 
         group.MapGet("/{id}", async Task<Results<Ok<User>, NotFound>> (int userid, ApiStudyBuddyContext db) =>
         {

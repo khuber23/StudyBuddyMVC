@@ -3,7 +3,7 @@
     "mssql1": {
       "secretStore": null,
       "type": "mssql.onprem",
-      "connectionId": "ConnectionStrings:\"Server=waucitdb2;Database=StudyBuddy_Test;Trusted_Connection=TRUE;TrustServerCertificate=True;UserId=TestStudyBuddy;Password=quizlet;\"",
+      "connectionId": "ConnectionStrings:\"Server=waucitdb2;Database=StudyBuddy_Test;Trusted_Connection=TRUE;UserId=TestStudyBuddy;Password=quizlet;MultipleActiveResultSets=TRUE;\"",
       "dynamicId": null
     },
     "mssql2": {
