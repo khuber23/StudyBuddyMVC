@@ -14,7 +14,7 @@
                 </StackLayout>
 
                 <StackLayout>
-                    <Label Text="Username" FontSize="16"></Label>
+                    <Label Text="User Name" FontSize="16"></Label>
                     <Grid Margin="0,5">
                         <Frame BackgroundColor="White"/>
                         <Entry x:Name="UserNameEntry" TextColor="Black" Placeholder="UserName"></Entry>

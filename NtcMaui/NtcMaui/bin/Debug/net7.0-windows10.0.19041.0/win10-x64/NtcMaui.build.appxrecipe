@@ -691,8 +691,41 @@
     <AppxPackagedFile Include="C:\Users\200142806\.nuget\packages\microsoft.windowsappsdk\1.2.221209.1\runtimes\win10-x64\native\Microsoft.WindowsAppRuntime.Bootstrap.dll">
       <PackagePath>Microsoft.WindowsAppRuntime.Bootstrap.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NtcStudyBuddyApi\NtcStudyBuddy.DataAccess\bin\Debug\net7.0\NtcStudyBuddy.DataAccess.dll">
-      <PackagePath>NtcStudyBuddy.DataAccess.dll</PackagePath>
+    <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\ApiStudyBuddy\ApiStudyBuddy\bin\Debug\net7.0\ApiStudyBuddy.dll">
+      <PackagePath>ApiStudyBuddy.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\ApiStudyBuddy\ApiStudyBuddy\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.dll">
+      <PackagePath>Microsoft.EntityFrameworkCore.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\ApiStudyBuddy\ApiStudyBuddy\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Relational.dll">
+      <PackagePath>Microsoft.EntityFrameworkCore.Relational.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\ApiStudyBuddy\ApiStudyBuddy\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerGen.dll">
+      <PackagePath>Swashbuckle.AspNetCore.SwaggerGen.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\ApiStudyBuddy\ApiStudyBuddy\bin\Debug\net7.0\Swashbuckle.AspNetCore.Swagger.dll">
+      <PackagePath>Swashbuckle.AspNetCore.Swagger.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\ApiStudyBuddy\ApiStudyBuddy\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerUI.dll">
+      <PackagePath>Swashbuckle.AspNetCore.SwaggerUI.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\ApiStudyBuddy\ApiStudyBuddy\bin\Debug\net7.0\Microsoft.AspNetCore.OpenApi.dll">
+      <PackagePath>Microsoft.AspNetCore.OpenApi.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\ApiStudyBuddy\ApiStudyBuddy\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.SqlServer.dll">
+      <PackagePath>Microsoft.EntityFrameworkCore.SqlServer.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\ApiStudyBuddy\ApiStudyBuddy\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Abstractions.dll">
+      <PackagePath>Microsoft.EntityFrameworkCore.Abstractions.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\ApiStudyBuddy\ApiStudyBuddy\bin\Debug\net7.0\Microsoft.OpenApi.dll">
+      <PackagePath>Microsoft.OpenApi.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\ApiStudyBuddy\ApiStudyBuddy\bin\Debug\net7.0\Microsoft.Data.SqlClient.dll">
+      <PackagePath>Microsoft.Data.SqlClient.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\ApiStudyBuddy\ApiStudyBuddy\bin\Debug\net7.0\Microsoft.Identity.Client.dll">
+      <PackagePath>Microsoft.Identity.Client.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files\dotnet\packs\Microsoft.Maui.Controls.Ref.win\7.0.92\ref\net7.0-windows10.0.19041\Microsoft.Maui.Controls.Compatibility.pri">
       <PackagePath>Microsoft.Maui.Controls.Compatibility.pri</PackagePath>

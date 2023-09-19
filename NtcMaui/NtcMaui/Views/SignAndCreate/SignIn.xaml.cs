@@ -1,21 +1,12 @@
 using System.Diagnostics;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using NtcStudyBuddy.DataAccess;
-using NtcStudyBuddy.DataAccess.Models;
-using NtcStudyBuddy.DataAccess.Services;
+using ApiStudyBuddy.Models;
 
 namespace NtcMaui.Views.SignAndCreate;
 
 public partial class SignIn : ContentPage
 {
-    private HttpClient _client = new HttpClient();
-    private JsonSerializerOptions _serializerOptions = new JsonSerializerOptions
-        {
-            ReferenceHandler = ReferenceHandler.IgnoreCycles,
-            PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-            WriteIndented = true
-        };
 public SignIn()
 	{
 		InitializeComponent();
@@ -37,14 +28,14 @@ public SignIn()
        List<User> users= new List<User>();
         
 
-        Uri uri = new Uri(string.Format($"{Constants.LocalUrl}/api/users", string.Empty));
+        Uri uri = new Uri(string.Format($"{Constants.TestUrl}/api/User", string.Empty));
         try
         {
-            HttpResponseMessage response = await _client.GetAsync(uri);
+            HttpResponseMessage response = await Constants._client.GetAsync(uri);
             if (response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
-                users = JsonSerializer.Deserialize<List<User>>(content, _serializerOptions);
+                users = JsonSerializer.Deserialize<List<User>>(content, Constants._serializerOptions);
             }
         }
         catch (Exception ex)

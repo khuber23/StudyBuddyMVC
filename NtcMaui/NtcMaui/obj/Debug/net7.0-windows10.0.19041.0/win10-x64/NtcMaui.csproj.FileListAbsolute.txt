@@ -551,8 +551,6 @@ C:\Users\200142806\OneDrive - Northcentral Technical College\programming concept
 C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NtcMaui\NtcMaui\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\msquic.dll
 C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NtcMaui\NtcMaui\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\Microsoft.Windows.SDK.NET.dll
 C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NtcMaui\NtcMaui\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\WinRT.Runtime.dll
-C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NtcMaui\NtcMaui\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\NtcStudyBuddy.DataAccess.dll
-C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NtcMaui\NtcMaui\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\NtcStudyBuddy.DataAccess.pdb
 C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NtcMaui\NtcMaui\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\NtcMaui.csproj.AssemblyReference.cache
 C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NtcMaui\NtcMaui\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\mauiimage.inputs
 C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NtcMaui\NtcMaui\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\mauifont.inputs
@@ -656,3 +654,16 @@ C:\Users\200142806\OneDrive - Northcentral Technical College\programming concept
 C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NtcMaui\NtcMaui\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\qualifiers.txt.intermediate
 C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NtcMaui\NtcMaui\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\MultipleQualifiersPerDimensionFound.txt
 C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NtcMaui\NtcMaui\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\ProjectArchitectures.txt
+C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NtcMaui\NtcMaui\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\ApiStudyBuddy.dll
+C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NtcMaui\NtcMaui\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\Microsoft.EntityFrameworkCore.dll
+C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NtcMaui\NtcMaui\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NtcMaui\NtcMaui\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NtcMaui\NtcMaui\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NtcMaui\NtcMaui\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NtcMaui\NtcMaui\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\Microsoft.AspNetCore.OpenApi.dll
+C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NtcMaui\NtcMaui\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NtcMaui\NtcMaui\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NtcMaui\NtcMaui\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\Microsoft.OpenApi.dll
+C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NtcMaui\NtcMaui\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\Microsoft.Data.SqlClient.dll
+C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NtcMaui\NtcMaui\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\Microsoft.Identity.Client.dll
+C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NtcMaui\NtcMaui\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\ApiStudyBuddy.pdb

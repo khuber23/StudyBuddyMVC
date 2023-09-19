@@ -53,6 +53,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Reference Include="ApiStudyBuddy">
+	    <HintPath>..\..\ApiStudyBuddy\ApiStudyBuddy\bin\Debug\net7.0\ApiStudyBuddy.dll</HintPath>
+	  </Reference>
 	  <Reference Include="NtcStudyBuddy.DataAccess">
 	    <HintPath>..\..\NtcStudyBuddyApi\NtcStudyBuddy.DataAccess\bin\Debug\net7.0\NtcStudyBuddy.DataAccess.dll</HintPath>
 	  </Reference>

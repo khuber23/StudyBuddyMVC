@@ -12,10 +12,25 @@
                 </StackLayout>
 
                 <StackLayout>
+                    <Label Text="First Name*" FontSize="16"></Label>
+                    <Grid Margin="0,5">
+                        <Frame BackgroundColor="White"/>
+                        <Entry x:Name="FirstNameEntry" TextColor="Black" Placeholder="First Name"></Entry>
+                    </Grid>
+                    <Label Text="Last Name*" FontSize="16"></Label>
+                    <Grid Margin="0,5">
+                        <Frame BackgroundColor="White"/>
+                        <Entry x:Name="LastNameEntry" TextColor="Black" Placeholder="Last Name"></Entry>
+                    </Grid>
+                    <Label Text="Email*" FontSize="16"></Label>
+                    <Grid Margin="0,5">
+                        <Frame BackgroundColor="White"/>
+                        <Entry x:Name="EmailEntry" TextColor="Black" Placeholder="Email"></Entry>
+                    </Grid>
                     <Label Text="Username*" FontSize="16"></Label>
                     <Grid Margin="0,5">
                         <Frame BackgroundColor="White"/>
-                        <Entry x:Name="UserNameEntry" TextColor="Black" Placeholder="UserName"></Entry>
+                        <Entry x:Name="UserNameEntry" TextColor="Black" Placeholder="User Name"></Entry>
                     </Grid>
                     <Label Text="Password*" FontSize="16"></Label>
                     <Grid Margin="0,5">
