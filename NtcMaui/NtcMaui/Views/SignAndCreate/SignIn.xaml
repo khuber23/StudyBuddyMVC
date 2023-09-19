@@ -24,6 +24,7 @@
                         <Frame BackgroundColor="White"/>
                         <Entry x:Name="PasswordEntry" TextColor="Black" Placeholder="Password"></Entry>
                     </Grid>
+                    <Label x:Name="Error"></Label>
                 </StackLayout>
                 <StackLayout>
                     <Label Margin="0, 40" Text="Forgot Password?" TextDecorations="Underline" HorizontalOptions="Center" VerticalOptions="Center"></Label>
