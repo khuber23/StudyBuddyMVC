@@ -1,9 +1,8 @@
 {
   "dependencies": {
-    "mssql1": {
+    "mssql3": {
       "type": "mssql",
-      "connectionId": "ConnectionStrings:\"Server=waucitdb2;Database=StudyBuddy_Test;Trusted_Connection=True;UserId=TestStudyBuddy;Password=quizlet; MultipleActiveResultSets=True\"",
-      "dynamicId": null
+      "connectionId": "ConnectionStrings:Server=waucitdb1;Database=NTCStudyBuddy_Prod;TrustServerCertificate=TRUE;UserId=StudyBuddy;Password=quizletNtc;MultipleActiveResultSets=TRUE"
     }
   }
 }

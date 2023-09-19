@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\200142806\\OneDrive - Northcentral Technical College\\programming concepts\\Capstone\\test\\NTCStudyBuddy\\ApiStudyBuddy\\ApiStudyBuddy\\ApiStudyBuddy.csproj": {}
+    "C:\\Users\\180011854\\OneDrive - Northcentral Technical College\\Courses\\Capstone1\\NTCStudyBuddy\\ApiStudyBuddy\\ApiStudyBuddy\\ApiStudyBuddy.csproj": {}
   },
   "projects": {
-    "C:\\Users\\200142806\\OneDrive - Northcentral Technical College\\programming concepts\\Capstone\\test\\NTCStudyBuddy\\ApiStudyBuddy\\ApiStudyBuddy\\ApiStudyBuddy.csproj": {
+    "C:\\Users\\180011854\\OneDrive - Northcentral Technical College\\Courses\\Capstone1\\NTCStudyBuddy\\ApiStudyBuddy\\ApiStudyBuddy\\ApiStudyBuddy.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\200142806\\OneDrive - Northcentral Technical College\\programming concepts\\Capstone\\test\\NTCStudyBuddy\\ApiStudyBuddy\\ApiStudyBuddy\\ApiStudyBuddy.csproj",
+        "projectUniqueName": "C:\\Users\\180011854\\OneDrive - Northcentral Technical College\\Courses\\Capstone1\\NTCStudyBuddy\\ApiStudyBuddy\\ApiStudyBuddy\\ApiStudyBuddy.csproj",
         "projectName": "ApiStudyBuddy",
-        "projectPath": "C:\\Users\\200142806\\OneDrive - Northcentral Technical College\\programming concepts\\Capstone\\test\\NTCStudyBuddy\\ApiStudyBuddy\\ApiStudyBuddy\\ApiStudyBuddy.csproj",
-        "packagesPath": "C:\\Users\\200142806\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\200142806\\OneDrive - Northcentral Technical College\\programming concepts\\Capstone\\test\\NTCStudyBuddy\\ApiStudyBuddy\\ApiStudyBuddy\\obj\\",
+        "projectPath": "C:\\Users\\180011854\\OneDrive - Northcentral Technical College\\Courses\\Capstone1\\NTCStudyBuddy\\ApiStudyBuddy\\ApiStudyBuddy\\ApiStudyBuddy.csproj",
+        "packagesPath": "C:\\Users\\180011854\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\180011854\\OneDrive - Northcentral Technical College\\Courses\\Capstone1\\NTCStudyBuddy\\ApiStudyBuddy\\ApiStudyBuddy\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\200142806\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\180011854\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -48,6 +48,12 @@
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[7.0.11, )"
+            },
+            "Microsoft.CodeAnalysis.Analyzers": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.3.4, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
@@ -87,7 +93,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     }

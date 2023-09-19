@@ -7,10 +7,22 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Views\Deck\" />
-    <Folder Include="Views\DeckGroup\" />
-    <Folder Include="Views\StudySession\" />
-    <Folder Include="Views\Studies\" />
+    <Compile Remove="Views\DeckGroup\**" />
+    <Compile Remove="Views\Deck\**" />
+    <Compile Remove="Views\Studies\**" />
+    <Compile Remove="Views\StudySession\**" />
+    <Content Remove="Views\DeckGroup\**" />
+    <Content Remove="Views\Deck\**" />
+    <Content Remove="Views\Studies\**" />
+    <Content Remove="Views\StudySession\**" />
+    <EmbeddedResource Remove="Views\DeckGroup\**" />
+    <EmbeddedResource Remove="Views\Deck\**" />
+    <EmbeddedResource Remove="Views\Studies\**" />
+    <EmbeddedResource Remove="Views\StudySession\**" />
+    <None Remove="Views\DeckGroup\**" />
+    <None Remove="Views\Deck\**" />
+    <None Remove="Views\Studies\**" />
+    <None Remove="Views\StudySession\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,9 +38,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="NtcStudyBuddy.DataAccess">
-      <HintPath>..\..\NtcStudyBuddyApi\NtcStudyBuddy.DataAccess\bin\Debug\net7.0\NtcStudyBuddy.DataAccess.dll</HintPath>
+    <Reference Include="ApiStudyBuddy">
+      <HintPath>..\..\ApiStudyBuddy\ApiStudyBuddy\bin\Debug\net7.0\ApiStudyBuddy.dll</HintPath>
     </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\Admin\" />
   </ItemGroup>
 
 </Project>

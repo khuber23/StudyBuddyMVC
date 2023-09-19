@@ -1,12 +1,29 @@
 using Microsoft.EntityFrameworkCore;
-using NtcStudyBuddy.DataAccess.Data;
+using ApiStudyBuddy.Data;
+using Microsoft.Identity.Client;
+using NTCStudyBuddyMVC;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddDbContext<DataContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+// Deserializes the AppConfig section and injects the resulting object - making it available to the rest of our application.
+builder.Services.Configure<AppConfig>(builder.Configuration.GetSection("AppConfig"));
+
+builder.Services.AddDbContext<ApiStudyBuddyContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+	.AddCookie(options =>
+	{
+		options.LoginPath = "/sign-in";
+		options.LogoutPath = "/sign-out";
+		options.AccessDeniedPath = "/access-denied";
+		options.Cookie.Name = "UserAuth";
+		options.ExpireTimeSpan = TimeSpan.FromDays(2);
+		options.SlidingExpiration = true;
+	});
 
 var app = builder.Build();
 
@@ -23,6 +40,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 
