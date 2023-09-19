@@ -14,7 +14,7 @@
                     <Label HorizontalOptions="Center" x:Name="UserNameText"></Label>
                 </StackLayout>
                 <StackLayout VerticalOptions="End" Orientation="Horizontal">
-                    <Button Margin="30, 30" x:Name="MyStudiesBtn" Text="My Studies" HorizontalOptions="StartAndExpand"></Button>
+                    <Button Margin="30, 30" x:Name="MyStudiesBtn" Clicked="GoToMyStudies" Text="My Studies" HorizontalOptions="StartAndExpand"></Button>
                     <Button Margin="30, 30" x:Name="StudySessionBtn" Text="Study Session" HorizontalOptions="EndAndExpand"></Button>
                 </StackLayout>
             </StackLayout>

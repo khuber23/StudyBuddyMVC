@@ -30,13 +30,13 @@
     <AppXManifest Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NtcMaui\NtcMaui\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-09-19T16:54:16.228</Modified>
+      <Modified>2023-09-19T20:11:03.393</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NtcMaui\NtcMaui\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2023-09-19T16:54:15.847</Modified>
+      <Modified>2023-09-19T19:49:14.281</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NtcMaui\NtcMaui\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\NtcMaui.runtimeconfig.json">
       <PackagePath>NtcMaui.runtimeconfig.json</PackagePath>
@@ -44,15 +44,15 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NtcMaui\NtcMaui\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\NtcMaui.dll">
       <PackagePath>NtcMaui.dll</PackagePath>
-      <Modified>2023-09-19T16:54:14.106</Modified>
+      <Modified>2023-09-19T20:11:01.570</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NtcMaui\NtcMaui\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\apphost.exe">
       <PackagePath>NtcMaui.exe</PackagePath>
-      <Modified>2023-09-19T16:54:14.134</Modified>
+      <Modified>2023-09-19T20:11:01.618</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\200142806\OneDrive - Northcentral Technical College\programming concepts\Capstone\test\NTCStudyBuddy\NtcMaui\NtcMaui\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\NtcMaui.deps.json">
       <PackagePath>NtcMaui.deps.json</PackagePath>
-      <Modified>2023-09-19T14:48:12.222</Modified>
+      <Modified>2023-09-19T19:49:13.613</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\200142806\.nuget\packages\microsoft.netcore.app.runtime.win-x64\7.0.10\runtimes\win-x64\lib\net7.0\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>

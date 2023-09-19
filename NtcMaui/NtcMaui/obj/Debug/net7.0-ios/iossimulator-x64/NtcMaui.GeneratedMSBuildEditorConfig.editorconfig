@@ -34,6 +34,12 @@ build_metadata.AdditionalFiles.ManifestResourceName = NtcMaui.Resources.Styles.S
 build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Styles.xaml
 build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Styles.xaml
 
+[C:/Users/200142806/OneDrive - Northcentral Technical College/programming concepts/Capstone/test/NTCStudyBuddy/NtcMaui/NtcMaui/Views/MyStudies/DeckGroupPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = NtcMaui.Views.MyStudies.DeckGroupPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\MyStudies\DeckGroupPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\MyStudies\DeckGroupPage.xaml
+
 [C:/Users/200142806/OneDrive - Northcentral Technical College/programming concepts/Capstone/test/NTCStudyBuddy/NtcMaui/NtcMaui/Views/SignAndCreate/CreateAccount.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = NtcMaui.Views.SignAndCreate.CreateAccount.xaml
