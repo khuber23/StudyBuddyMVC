@@ -11,10 +11,10 @@
                 </StackLayout>
                 <StackLayout Margin="0, 30">
                     <Image x:Name="UserImage" WidthRequest="150" HeightRequest="150" Source="stockprofileimage.png"></Image>
-                    <Label HorizontalOptions="Center" x:Name="UserName">maybe add username here?</Label>
+                    <Label HorizontalOptions="Center" x:Name="UserNameText"></Label>
                 </StackLayout>
                 <StackLayout VerticalOptions="End" Orientation="Horizontal">
-                    <Button Margin="30, 30" x:Name="MyStudiesBtn" Text="My Studies" HorizontalOptions="StartAndExpand"></Button>
+                    <Button Margin="30, 30" x:Name="MyStudiesBtn" Clicked="GoToMyStudies" Text="My Studies" HorizontalOptions="StartAndExpand"></Button>
                     <Button Margin="30, 30" x:Name="StudySessionBtn" Text="Study Session" HorizontalOptions="EndAndExpand"></Button>
                 </StackLayout>
             </StackLayout>

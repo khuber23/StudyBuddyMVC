@@ -2,6 +2,8 @@ using System.Diagnostics;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using ApiStudyBuddy.Models;
+using Microsoft.Maui.ApplicationModel;
+using System.Windows;
 
 namespace NtcMaui.Views.SignAndCreate;
 
@@ -51,19 +53,19 @@ public SignIn()
         List<User> users = await GetAllUsers();
         foreach (User user in users)
         {
-             if (user.Username != UserNameEntry.Text)
+             if (user.Username == UserNameEntry.Text && user.Password == PasswordEntry.Text)
             {
-                UserNameEntry.Text = string.Empty;
-                UserNameEntry.Placeholder = "Invalid Username";
+                Error.Text = string.Empty;
+                var navigationParameter = new Dictionary<string, object>
+                {
+                    { "Current User", user }
+                };
+                await Shell.Current.GoToAsync(nameof(Success), navigationParameter);
             }
-            if (user.Password != PasswordEntry.Text)
+            else
             {
-                PasswordEntry.Text = string.Empty;
-                PasswordEntry.Placeholder = "Invalid Password";
-            }
-            else if (user.Username == UserNameEntry.Text && user.Password == PasswordEntry.Text)
-            {
-                await Shell.Current.GoToAsync(nameof(Success));
+                Error.TextColor = Colors.Red;
+                Error.Text = "Invalid User name or password";
             }
 
         }
