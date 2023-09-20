@@ -1,8 +1,0 @@
-{
-  "dependencies": {
-    "mssql3": {
-      "type": "mssql",
-      "connectionId": "ConnectionStrings:Server=waucitdb1;Database=NTCStudyBuddy_Prod;TrustServerCertificate=TRUE;UserId=StudyBuddy;Password=quizletNtc;MultipleActiveResultSets=TRUE"
-    }
-  }
-}
