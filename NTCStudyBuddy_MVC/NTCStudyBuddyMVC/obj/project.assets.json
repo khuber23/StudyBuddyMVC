@@ -2885,24 +2885,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\180011854\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\200112158\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\180011854\\OneDrive - Northcentral Technical College\\Courses\\Capstone1\\NTCStudyBuddy\\NTCStudyBuddy_MVC\\NTCStudyBuddyMVC\\NTCStudyBuddyMVC.csproj",
+      "projectUniqueName": "C:\\Users\\200112158\\OneDrive - Northcentral Technical College\\Capstone\\NTCStudyBuddyProject\\NTCStudyBuddyMVC\\NTCStudyBuddy\\NTCStudyBuddy_MVC\\NTCStudyBuddyMVC\\NTCStudyBuddyMVC.csproj",
       "projectName": "NTCStudyBuddyMVC",
-      "projectPath": "C:\\Users\\180011854\\OneDrive - Northcentral Technical College\\Courses\\Capstone1\\NTCStudyBuddy\\NTCStudyBuddy_MVC\\NTCStudyBuddyMVC\\NTCStudyBuddyMVC.csproj",
-      "packagesPath": "C:\\Users\\180011854\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\180011854\\OneDrive - Northcentral Technical College\\Courses\\Capstone1\\NTCStudyBuddy\\NTCStudyBuddy_MVC\\NTCStudyBuddyMVC\\obj\\",
+      "projectPath": "C:\\Users\\200112158\\OneDrive - Northcentral Technical College\\Capstone\\NTCStudyBuddyProject\\NTCStudyBuddyMVC\\NTCStudyBuddy\\NTCStudyBuddy_MVC\\NTCStudyBuddyMVC\\NTCStudyBuddyMVC.csproj",
+      "packagesPath": "C:\\Users\\200112158\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\200112158\\OneDrive - Northcentral Technical College\\Capstone\\NTCStudyBuddyProject\\NTCStudyBuddyMVC\\NTCStudyBuddy\\NTCStudyBuddy_MVC\\NTCStudyBuddyMVC\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\180011854\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\200112158\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -2910,7 +2905,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
