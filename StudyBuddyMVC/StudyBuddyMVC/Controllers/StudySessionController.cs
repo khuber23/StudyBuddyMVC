@@ -1,4 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using ApiStudyBuddy.Models;
+using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using StudyBuddyMVC.Models;
+using System.Net.Http.Headers;
+using System.Text;
 
 namespace StudyBuddyMVC.Controllers
 {
@@ -11,7 +16,7 @@ namespace StudyBuddyMVC.Controllers
 			return View();
 		}
 
-		[HttpGet("StudyPriority")]
+        [HttpGet("StudyPriority")]
 		[Route("StudyPriority")]
 		public IActionResult StudyPriority()
 		{
