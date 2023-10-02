@@ -1,0 +1,56 @@
+﻿@{
+	Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row justify-content-center">
+	<div class="col-5 mt-5"
+		 style="
+		 width: 90%;
+		 height: 90%;
+		 padding: 20px;
+		 background: white;
+		 border-radius: 4px;
+		 box-shadow: 0 8px 16px rgba(0,0,0,.3);
+		">
+		<div class="card login-logout-card">
+			<div class="card-header">
+				<ul class="nav nav-tabs card-header-tabs">
+					<li class="nav-item">
+						<a class="nav-link" href="/MySession">
+							My Session
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/StudyPriority">
+							Study Priority
+						</a>
+					</li>
+				</ul>
+			</div>
+			<div class="card-body">
+				<div class="row justify-content-center">
+					<div class="col-6 my-4">
+						@RenderBody()
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+@section Scripts{
+	@await RenderSectionAsync("Scripts", required: false)
+
+	<script>
+		// Function for tabs for either login or register to show which one is active
+		$(function () {
+			const currentPage = location.pathname;
+			$('.nav-tabs li a').each(function () {
+				const $this = $(this);
+				if (currentPage.toLowerCase().indexOf($this.attr('href').toLowerCase()) !== -1) {
+					$this.addClass('active');
+				}
+			})
+		})
+	</script>
+}
