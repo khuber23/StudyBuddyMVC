@@ -1,6 +1,38 @@
-﻿@{
+﻿@model IEnumerable<ApiStudyBuddy.Models.DeckGroup>
+
+@{
     ViewData["Title"] = "DeckGroups";
     Layout = "~/Views/MyStudies/_myStudiesLayout.cshtml";
 }
 
 <h1>DeckGroups</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DeckGroupId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeckGroupName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeckGroupDescription)
+            </th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model)
+        {
+              <tr>
+                   <td>
+                        @Html.DisplayFor(modelItem => item.DeckGroupId)
+                   </td>
+                   <td>
+                        @Html.DisplayFor(modelItem => item.DeckGroupName)
+                   </td>
+                   <td>
+                        @Html.DisplayFor(modelItem => item.DeckGroupDescription)
+                   </td>
+             </tr>
+        }
+    </thead>
+</table>
