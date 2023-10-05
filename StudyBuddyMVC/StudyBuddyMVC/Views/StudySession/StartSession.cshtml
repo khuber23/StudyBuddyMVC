@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ApiStudyBuddy.Models.FlashCard>
+﻿@model PaginatedList<ApiStudyBuddy.Models.FlashCard>
 
 @{
     Layout = "/Views/Shared/_Layout.cshtml";
@@ -28,19 +28,19 @@
                         </div>
                    </div>
                 }<br/>
-            <nav aria-label="Page navigation example">
-                <ul class="pagination justify-content-center">
-                    <li class="page-item disabled">
-                        <a class="page-link">Previous</a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">Next</a>
-                    </li>
-                </ul>
-            </nav>
+            
+            @{
+                var prevDisabled = !Model.HasPreviouspage ? "disabled" : "";
+                var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+            }
+
+            <a asp-action="StartSession" asp-route-pageNumber="@(Model.PageIndex - 1)" class="btn btn-default @prevDisabled" >
+                Previous
+            </a>
+            <a asp-action="StartSession" asp-route-pageNumber="@(Model.PageIndex + 1)" class="btn btn-default @nextDisabled">
+                Next
+            </a>
+
         </div>
     </div>
 </div>

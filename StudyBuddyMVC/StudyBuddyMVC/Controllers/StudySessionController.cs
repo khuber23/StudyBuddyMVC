@@ -34,8 +34,10 @@ namespace StudyBuddyMVC.Controllers
 
         [HttpGet("StartSession")]
         [Route("StartSession")]
-        public IActionResult StartSession()
+        public IActionResult StartSession(int? pageNumber)
 		{
+			int pageSize = 1;
+
 			List<FlashCard> flashcards = new List<FlashCard>();
 			HttpResponseMessage response = _client.GetAsync("https://localhost:7025/api/FlashCard").Result;
 
@@ -44,7 +46,7 @@ namespace StudyBuddyMVC.Controllers
 				string data = response.Content.ReadAsStringAsync().Result;
 				flashcards = JsonConvert.DeserializeObject<List<FlashCard>>(data);
 			}
-			return View(flashcards);
+			return View(PaginatedList<FlashCard>.Create(flashcards.ToList(), pageNumber ?? 1, pageSize));
 		}
 	}
 }
