@@ -22,7 +22,8 @@ namespace StudyBuddyMVC.Controllers
             return View();
         }
 
-        [HttpGet("Flashcards")]
+
+		[HttpGet("Flashcards")]
         [Route("Flashcards")]
         public IActionResult Flashcards()
         {

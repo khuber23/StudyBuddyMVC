@@ -33,6 +33,11 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.FlashCardAnswer)
                 </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new {id=item.FlashCardId}) |
+                    @Html.ActionLink("Details", "Details", new {id=item.FlashCardId} ) |
+                    @Html.ActionLink("Delete", "Delete", new {id=item.FlashCardId})
+                </td>
             </tr>
         }
     </thead>

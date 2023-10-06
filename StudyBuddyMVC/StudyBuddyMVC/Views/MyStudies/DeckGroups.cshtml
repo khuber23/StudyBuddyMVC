@@ -32,6 +32,11 @@
                    <td>
                         @Html.DisplayFor(modelItem => item.DeckGroupDescription)
                    </td>
+                   <td>
+                        @Html.ActionLink("Edit", "Edit", new {id=item.DeckGroupId}) |
+                        @Html.ActionLink("Details", "Details", new {id=item.DeckGroupId} ) |
+                        @Html.ActionLink("Delete", "Delete", new {id=item.DeckGroupId})
+                   </td>
              </tr>
         }
     </thead>

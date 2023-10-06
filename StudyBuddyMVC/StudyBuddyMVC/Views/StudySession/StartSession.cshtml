@@ -34,13 +34,20 @@
                 var nextDisabled = !Model.HasNextPage ? "disabled" : "";
             }
 
-            <a asp-action="StartSession" asp-route-pageNumber="@(Model.PageIndex - 1)" class="btn btn-default @prevDisabled" >
-                Previous
-            </a>
-            <a asp-action="StartSession" asp-route-pageNumber="@(Model.PageIndex + 1)" class="btn btn-default @nextDisabled">
-                Next
-            </a>
-
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item">
+                        <a asp-action="StartSession" asp-route-pageNumber="@(Model.PageIndex - 1)" class="page-link btn btn-default @prevDisabled">
+                            Previous
+                        </a>
+                    </li>
+                    <li class="page-item">
+                        <a asp-action="StartSession" asp-route-pageNumber="@(Model.PageIndex + 1)" class="page-link btn btn-default @nextDisabled">
+                            Next
+                        </a>
+                    </li>
+                </ul>
+            </nav>
         </div>
     </div>
 </div>
