@@ -33,16 +33,16 @@ namespace StudyBuddyMVC.Controllers
 		[Route("MySession")]
 		public IActionResult MySession()
 		{
-			List<UserDeckGroup> model = new List<UserDeckGroup>();
-			HttpResponseMessage response = _client.GetAsync("https://localhost:7025/api/UserDeckGroup/user/1").Result;
-
-			if (response.IsSuccessStatusCode)
-			{
-				string data = response.Content.ReadAsStringAsync().Result;
-				model = System.Text.Json.JsonSerializer.Deserialize<List<UserDeckGroup>>(data, _serializerOptions);
-                ViewBag.DeckGroups = model;
-			}
-			return View(model);
+            List<DeckGroup> deckgroups = new List<DeckGroup>();
+            HttpResponseMessage response = _client.GetAsync("https://localhost:7025/api/DeckGroup").Result;
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                deckgroups = JsonConvert.DeserializeObject<List<DeckGroup>>(data);
+                deckgroups.Insert(0, new DeckGroup { DeckGroupId = 0, DeckGroupName = "---Select---" });
+                ViewBag.DeckGroups = deckgroups;
+            }
+            return View();
 		}
 
         [HttpGet("StudyPriority")]
