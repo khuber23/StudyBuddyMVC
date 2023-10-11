@@ -6,6 +6,9 @@ using Newtonsoft.Json;
 using StudyBuddyMVC.Models;
 using System.Net.Http.Headers;
 using System.Text;
+using System.Text.Json.Serialization;
+using System.Text.Json;
+using Microsoft.VisualBasic;
 
 namespace StudyBuddyMVC.Controllers
 {
@@ -13,6 +16,12 @@ namespace StudyBuddyMVC.Controllers
 	{
 		Uri baseAddress = new Uri("https://localhost:7025/api/");
 		private readonly HttpClient _client;
+        public JsonSerializerOptions _serializerOptions = new JsonSerializerOptions
+        {
+            ReferenceHandler = ReferenceHandler.IgnoreCycles,
+            PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+            WriteIndented = true
+        };
 
         public StudySessionController()
 		{
@@ -24,17 +33,16 @@ namespace StudyBuddyMVC.Controllers
 		[Route("MySession")]
 		public IActionResult MySession()
 		{
-			List<DeckGroup> deckgroups = new List<DeckGroup>();
-			HttpResponseMessage response = _client.GetAsync("https://localhost:7025/api/DeckGroup").Result;
+			List<UserDeckGroup> model = new List<UserDeckGroup>();
+			HttpResponseMessage response = _client.GetAsync("https://localhost:7025/api/UserDeckGroup/user/1").Result;
 
 			if (response.IsSuccessStatusCode)
 			{
 				string data = response.Content.ReadAsStringAsync().Result;
-				deckgroups = JsonConvert.DeserializeObject<List<DeckGroup>>(data);
-				deckgroups.Insert(0, new DeckGroup { DeckGroupId = 0, DeckGroupName = "---Select---" });
-				ViewBag.DeckGroups = deckgroups;
+				model = System.Text.Json.JsonSerializer.Deserialize<List<UserDeckGroup>>(data, _serializerOptions);
+                ViewBag.DeckGroups = model;
 			}
-			return View();
+			return View(model);
 		}
 
         [HttpGet("StudyPriority")]
@@ -60,5 +68,7 @@ namespace StudyBuddyMVC.Controllers
 			}
 			return View(PaginatedList<FlashCard>.Create(flashcards.ToList(), pageNumber ?? 1, pageSize));
 		}
+
+		public List<UserDeckGroup> UserDeckGroups { get; set; }
 	}
 }

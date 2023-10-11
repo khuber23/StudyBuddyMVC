@@ -1,4 +1,4 @@
-﻿@model ApiStudyBuddy.Models.DeckGroup
+﻿@model IEnumerable<ApiStudyBuddy.Models.UserDeckGroup>
 @{
     ViewData["Title"] = "MySession";
     Layout = "~/Views/StudySession/_studySessionLayout.cshtml";
@@ -11,14 +11,30 @@
     <div class="row gx-4" style="text-align:center;">
         <div class="col">
             <div class="p-2"><h2>DeckGroups</h2>
-                <div class="mb-3">
-                <select asp-for="DeckGroupId" class="form-select" size="3" aria-label="Size 3 select example"
+            <div class="mb-3">
+                @foreach (ApiStudyBuddy.Models.UserDeckGroup userDeckGroup in Model)
+                {
+                   @*  <select asp-for="@userDeckGroup.DeckGroupId" class="form-select" size="3" aria-label="Size 3 select example"
+                            asp-items="@(new SelectList(ViewBag.DeckGroups, @userDeckGroup.DeckGroupId.ToString(), @userDeckGroup.DeckGroup.DeckGroupName))">
+                    </select> *@
+                    <p>
+                        @userDeckGroup.UserId
+                        @userDeckGroup.DeckGroup.DeckGroupName
+                        @userDeckGroup.DeckGroupId
+                        @userDeckGroup.DeckGroup.DeckGroupDeck.Deck.DeckName
+                    </p>
+                        @foreach (ApiStudyBuddy.Models.DeckFlashCard deckFlashCard in userDeckGroup.DeckGroup.DeckGroupDeck.Deck.DeckFlashCards)
+                        {
+                        <p>@deckFlashCard.FlashCard.FlashCardQuestion</p>
+                        }
+                }
+              @*   <select asp-for="DeckGroupId" class="form-select" size="3" aria-label="Size 3 select example"
                             asp-items="@(new SelectList(ViewBag.DeckGroups, "DeckGroupId", "DeckGroupName"))">
-                    </select>
+                    </select> *@
                 </div>
             </div>
         </div>
-        <div class="col">
+        @* <div class="col">
             <div class="p-2"><h2>Decks</h2>
                 <div class="mb-3">
                     <select id="Deck" class="form-select" size="3" aria-label="Size 3 select example">
@@ -33,8 +49,8 @@
                     </select>
                 </div>
             </div>
-        </div>
-    </div>
+        </div>*@
+    </div> 
 
     <script>
 
