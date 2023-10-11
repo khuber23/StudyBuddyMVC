@@ -1,5 +1,7 @@
-﻿using ApiStudyBuddy.Models;
+﻿using ApiStudyBuddy.Data;
+using ApiStudyBuddy.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
 using StudyBuddyMVC.Models;
 using System.Net.Http.Headers;
@@ -12,7 +14,7 @@ namespace StudyBuddyMVC.Controllers
 		Uri baseAddress = new Uri("https://localhost:7025/api/");
 		private readonly HttpClient _client;
 
-		public StudySessionController()
+        public StudySessionController()
 		{
 			_client = new HttpClient();
 			_client.BaseAddress = baseAddress;
@@ -22,6 +24,16 @@ namespace StudyBuddyMVC.Controllers
 		[Route("MySession")]
 		public IActionResult MySession()
 		{
+			List<DeckGroup> deckgroups = new List<DeckGroup>();
+			HttpResponseMessage response = _client.GetAsync("https://localhost:7025/api/DeckGroup").Result;
+
+			if (response.IsSuccessStatusCode)
+			{
+				string data = response.Content.ReadAsStringAsync().Result;
+				deckgroups = JsonConvert.DeserializeObject<List<DeckGroup>>(data);
+				deckgroups.Insert(0, new DeckGroup { DeckGroupId = 0, DeckGroupName = "---Select---" });
+				ViewBag.DeckGroups = deckgroups;
+			}
 			return View();
 		}
 

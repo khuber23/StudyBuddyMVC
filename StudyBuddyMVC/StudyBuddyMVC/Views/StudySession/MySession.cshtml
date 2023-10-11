@@ -1,8 +1,9 @@
-﻿@{
+﻿@model ApiStudyBuddy.Models.DeckGroup
+@{
     ViewData["Title"] = "MySession";
     Layout = "~/Views/StudySession/_studySessionLayout.cshtml";
+    var baseurl = ViewBag.BaseUrl;
 }
-
 <h1>My Session</h1>
 <hr class="border border-primary border-3 opacity-75">
 <p>Select any "My Session" units to start a study session with them.</p>
@@ -10,66 +11,32 @@
     <div class="row gx-4" style="text-align:center;">
         <div class="col">
             <div class="p-2"><h2>DeckGroups</h2>
-                <ul class="list-group">
-                  <li class="list-group-item">
-                    <input class="form-check-input me-1" type="checkbox" value="" id="firstCheckbox">
-                    <label class="form-check-label" for="firstCheckbox"><h5 class="mb-1">List group item heading</h5></label>
-                    <p class="mb-1">Some placeholder content in a paragraph.</p>
-                  </li>
-                  <li class="list-group-item">
-                    <input class="form-check-input me-1" type="checkbox" value="" id="secondCheckbox">
-                    <label class="form-check-label" for="secondCheckbox"><h5 class="mb-1">List group item heading</h5></label>
-                    <p class="mb-1">Some placeholder content in a paragraph.</p>
-                  </li>
-                  <li class="list-group-item">
-                    <input class="form-check-input me-1" type="checkbox" value="" id="thirdCheckbox">
-                    <label class="form-check-label" for="thirdCheckbox"><h5 class="mb-1">List group item heading</h5></label>
-                    <p class="mb-1">Some placeholder content in a paragraph.</p>
-                  </li>
-                </ul>
+                <div class="mb-3">
+                <select asp-for="DeckGroupId" class="form-select" size="3" aria-label="Size 3 select example"
+                            asp-items="@(new SelectList(ViewBag.DeckGroups, "DeckGroupId", "DeckGroupName"))">
+                    </select>
+                </div>
             </div>
         </div>
         <div class="col">
             <div class="p-2"><h2>Decks</h2>
-                <ul class="list-group">
-                  <li class="list-group-item">
-                    <input class="form-check-input me-1" type="checkbox" value="" id="firstCheckbox">
-                    <label class="form-check-label" for="firstCheckbox"><h5 class="mb-1">List group item heading</h5></label>
-                    <p class="mb-1">Some placeholder content in a paragraph.</p>
-                  </li>
-                  <li class="list-group-item">
-                    <input class="form-check-input me-1" type="checkbox" value="" id="secondCheckbox">
-                    <label class="form-check-label" for="secondCheckbox"><h5 class="mb-1">List group item heading</h5></label>
-                    <p class="mb-1">Some placeholder content in a paragraph.</p>
-                  </li>
-                  <li class="list-group-item">
-                    <input class="form-check-input me-1" type="checkbox" value="" id="thirdCheckbox">
-                    <label class="form-check-label" for="thirdCheckbox"><h5 class="mb-1">List group item heading</h5></label>
-                    <p class="mb-1">Some placeholder content in a paragraph.</p>
-                  </li>
-                </ul>
+                <div class="mb-3">
+                    <select id="Deck" class="form-select" size="3" aria-label="Size 3 select example">
+                    </select>
+                </div>
             </div>
-        </div>
+        </div> 
         <div class="col">
             <div class="p-2"><h2>Flashcards</h2>
-                <ul class="list-group">
-                  <li class="list-group-item">
-                    <input class="form-check-input me-1" type="checkbox" value="" id="firstCheckbox">
-                    <label class="form-check-label" for="firstCheckbox"><h5 class="mb-1">List group item heading</h5></label>
-                    <p class="mb-1">Some placeholder content in a paragraph.</p>
-                  </li>
-                  <li class="list-group-item">
-                    <input class="form-check-input me-1" type="checkbox" value="" id="secondCheckbox">
-                    <label class="form-check-label" for="secondCheckbox"><h5 class="mb-1">List group item heading</h5></label>
-                    <p class="mb-1">Some placeholder content in a paragraph.</p>
-                  </li>
-                  <li class="list-group-item">
-                    <input class="form-check-input me-1" type="checkbox" value="" id="thirdCheckbox">
-                    <label class="form-check-label" for="thirdCheckbox"><h5 class="mb-1">List group item heading</h5></label>
-                    <p class="mb-1">Some placeholder content in a paragraph.</p>
-                  </li>
-                </ul>
+                <div class="mb-3">
+                    <select id="FlashCard" class="form-select" size="3" aria-label="Size 3 select example">
+                    </select>
+                </div>
             </div>
         </div>
     </div>
+
+    <script>
+
+    </script>
 
