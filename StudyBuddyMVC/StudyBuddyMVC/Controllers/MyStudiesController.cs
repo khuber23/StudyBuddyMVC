@@ -6,13 +6,11 @@ namespace StudyBuddyMVC.Controllers
 {
     public class MyStudiesController : Controller
     {
-        Uri baseAddress = new Uri("https://localhost:7025/api/");
         private readonly HttpClient _client;
 
         public MyStudiesController()
         {
             _client = new HttpClient();
-            _client.BaseAddress = baseAddress;
         }
 
         [HttpGet("MyDashboard")]
@@ -28,8 +26,8 @@ namespace StudyBuddyMVC.Controllers
         public IActionResult Flashcards()
         {
             List<FlashCard> flashcards = new List<FlashCard>();
-            HttpResponseMessage response = _client.GetAsync("https://localhost:7025/api/FlashCard").Result;
-
+            HttpResponseMessage response = _client.GetAsync("https://instruct.ntc.edu/studybuddyapi/api/flashcard").Result;
+            // https://localhost:7025/api/Flashcard
             if (response.IsSuccessStatusCode)
             {
                 string data = response.Content.ReadAsStringAsync().Result;
@@ -43,8 +41,8 @@ namespace StudyBuddyMVC.Controllers
         public IActionResult Decks()
         {
             List<Deck> decks = new List<Deck>();
-            HttpResponseMessage response = _client.GetAsync("https://localhost:7025/api/Deck").Result;
-
+            HttpResponseMessage response = _client.GetAsync("https://instruct.ntc.edu/studybuddyapi/api/deck").Result;
+            // https://localhost:7025/api/Deck
             if (response.IsSuccessStatusCode)
             {
                 string data = response.Content.ReadAsStringAsync().Result;
@@ -58,8 +56,8 @@ namespace StudyBuddyMVC.Controllers
         public IActionResult DeckGroups()
         {
             List<DeckGroup> deckgroups = new List<DeckGroup>();
-            HttpResponseMessage response = _client.GetAsync("https://localhost:7025/api/DeckGroup").Result;
-
+            HttpResponseMessage response = _client.GetAsync("https://instruct.ntc.edu/studybuddyapi/api/deckgroup").Result;
+            // https://localhost:7025/api/DeckGroup
             if (response.IsSuccessStatusCode)
             {
                 string data = response.Content.ReadAsStringAsync().Result;

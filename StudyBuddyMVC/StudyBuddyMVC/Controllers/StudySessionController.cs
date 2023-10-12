@@ -14,13 +14,11 @@ namespace StudyBuddyMVC.Controllers
 {
 	public class StudySessionController : Controller
 	{
-		Uri baseAddress = new Uri("https://localhost:7025/api/");
 		private readonly HttpClient _client;
 
         public StudySessionController()
 		{
 			_client = new HttpClient();
-			_client.BaseAddress = baseAddress;
 		}
 
 		[HttpGet("MySession")]
@@ -28,7 +26,8 @@ namespace StudyBuddyMVC.Controllers
 		public IActionResult MySession()
 		{
             List<UserDeckGroup> deckgroups = new List<UserDeckGroup>();
-            HttpResponseMessage response = _client.GetAsync("https://localhost:7025/api/UserDeckGroup/user/1").Result;
+            HttpResponseMessage response = _client.GetAsync("https://instruct.ntc.edu/studybuddyapi/api/userdeckgroup/user/1").Result;
+			// https://localhost:7025/api/UserDeckGroup/user/1
             if (response.IsSuccessStatusCode)
             {
                 string data = response.Content.ReadAsStringAsync().Result;
@@ -51,9 +50,9 @@ namespace StudyBuddyMVC.Controllers
 			int pageSize = 1;
 
 			List<FlashCard> flashcards = new List<FlashCard>();
-			HttpResponseMessage response = _client.GetAsync("https://localhost:7025/api/FlashCard").Result;
-
-			if(response.IsSuccessStatusCode)
+			HttpResponseMessage response = _client.GetAsync("https://instruct.ntc.edu/studybuddyapi/api/flashcard").Result;
+            // https://localhost:7025/api/FlashCard
+            if (response.IsSuccessStatusCode)
 			{
 				string data = response.Content.ReadAsStringAsync().Result;
 				flashcards = JsonConvert.DeserializeObject<List<FlashCard>>(data);

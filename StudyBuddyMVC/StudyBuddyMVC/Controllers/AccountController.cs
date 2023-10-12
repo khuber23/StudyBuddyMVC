@@ -46,7 +46,8 @@ namespace StudyBuddyMVC.Controllers
             using (var httpClient = new HttpClient())
             {
                 StringContent content = new StringContent(JsonConvert.SerializeObject(user), Encoding.UTF8, "application/json");
-                using (var response = await httpClient.PostAsync("https://localhost:7025/api/User", content))
+                using (var response = await httpClient.PostAsync("https://instruct.ntc.edu/studybuddyapi/api/user", content))
+                    // https://localhost:7025/api/User
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
                     receivedUser = JsonConvert.DeserializeObject<User>(apiResponse);
@@ -70,7 +71,8 @@ namespace StudyBuddyMVC.Controllers
             using (var httpClient = new HttpClient())
             {
                 StringContent content = new StringContent(JsonConvert.SerializeObject(user), Encoding.UTF8, "application/json");
-                using (var response = await httpClient.PostAsync("https://localhost:7025/api/Token", content))
+                using (var response = await httpClient.PostAsync("https://instruct.ntc.edu/studybuddyapi/api/token", content))
+                // https://localhost:7025/api/Token
                 {
                     string token = await response.Content.ReadAsStringAsync();
                     if (token == "Invalid credentials")
