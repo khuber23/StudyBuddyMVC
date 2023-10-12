@@ -1,4 +1,4 @@
-﻿@model ApiStudyBuddy.Models.DeckGroup
+﻿
 @{
     ViewData["Title"] = "MySession";
     Layout = "~/Views/StudySession/_studySessionLayout.cshtml";
@@ -8,36 +8,51 @@
 <hr class="border border-primary border-3 opacity-75">
 <p>Select any "My Session" units to start a study session with them.</p>
 <br/>
-    <div class="row gx-4" style="text-align:center;">
-        <div class="col">
-            <div class="p-2"><h2>DeckGroups</h2>
-            <div class="mb-3">
-                <div class="mb-3">
-                    <select asp-for="DeckGroupId" class="form-select" size="3" aria-label="Size 3 select example"
-                            asp-items="@(new SelectList(ViewBag.DeckGroups, "DeckGroupId", "DeckGroupName"))">
-                    </select>
-                </div>
-            </div>
+<div class="row gx-4" style="text-align:center;">
+    <div class="col">
+        <div class="p-2">
+            <h2>DeckGroups</h2>
+            <ul class="list-group">
+                @foreach (ApiStudyBuddy.Models.UserDeckGroup userDeckGroup in Model)
+                {
+                    <li class="list-group-item">
+                        <input class="form-check-input me-1" type="checkbox" value="" id="firstCheckbox">
+                        <label class="form-check-label" for="firstCheckbox"><h5 class="mb-1">@userDeckGroup.DeckGroup.DeckGroupName</h5></label>
+                        <p class="mb-1">@userDeckGroup.DeckGroup.DeckGroupDescription</p>
+                    </li>
+                }              
+            </ul>
         </div>
-         <div class="col">
-            <div class="p-2"><h2>Decks</h2>
-                <div class="mb-3">
-                    <select id="Deck" class="form-select" size="3" aria-label="Size 3 select example">
-                    </select>
-                </div>
-            </div>
-        </div> 
-        <div class="col">
-            <div class="p-2"><h2>Flashcards</h2>
-                <div class="mb-3">
-                    <select id="FlashCard" class="form-select" size="3" aria-label="Size 3 select example">
-                    </select>
-                </div>
-            </div>
+    </div>
+    <div class="col">
+        <div class="p-2">
+            <h2>Decks</h2>
+            <ul class="list-group">
+                @foreach (ApiStudyBuddy.Models.UserDeckGroup userDeckGroup in Model)
+                {
+                    <li class="list-group-item">
+                        <input class="form-check-input me-1" type="checkbox" value="" id="firstCheckbox">
+                        <label class="form-check-label" for="firstCheckbox"><h5 class="mb-1">@userDeckGroup.DeckGroup.DeckGroupDeck.Deck.DeckName</h5></label>
+                        <p class="mb-1">@userDeckGroup.DeckGroup.DeckGroupDeck.Deck.DeckDescription</p>
+                    </li>
+                }      
+            </ul>
         </div>
-    </div> 
-
-    <script>
-
-    </script>
-
+    </div>
+    <div class="col">
+        <div class="p-2">
+            <h2>Flashcards</h2>
+            <ul class="list-group">
+                @foreach (ApiStudyBuddy.Models.UserDeckGroup userDeckGroup in Model)
+                @foreach (ApiStudyBuddy.Models.DeckFlashCard deckFlashCard in userDeckGroup.DeckGroup.DeckGroupDeck.Deck.DeckFlashCards)
+                {
+                    <li class="list-group-item">
+                            <input class="form-check-input me-1" type="checkbox" value="" id="firstCheckbox" checked>
+                        <label class="form-check-label" for="firstCheckbox"><h5 class="mb-1">@deckFlashCard.FlashCard.FlashCardQuestion</h5></label>
+                        <p class="mb-1">@deckFlashCard.FlashCard.FlashCardAnswer</p>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>
