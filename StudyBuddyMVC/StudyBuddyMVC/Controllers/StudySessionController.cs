@@ -22,7 +22,7 @@ namespace StudyBuddyMVC.Controllers
 		}
 
 		[HttpGet("MySession")]
-		[Route("MySession")]
+		[Route("/MySession")]
 		public IActionResult MySession()
 		{
             List<UserDeckGroup> deckgroups = new List<UserDeckGroup>();

@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121.
+-->
+<Project>
+  <PropertyGroup>
+    <_PublishTargetUrl>C:\Users\180011854\OneDrive - Northcentral Technical College\Courses\CAPSTONE\StudyBuddyMVC\StudyBuddyMVC\bin\Release\net7.0\publish\</_PublishTargetUrl>
+    <History>True|2023-10-12T20:17:05.3598602Z;True|2023-10-12T15:14:04.7959695-05:00;True|2023-10-12T15:06:43.2364828-05:00;True|2023-10-12T15:00:50.0803981-05:00;True|2023-10-12T14:56:29.6636311-05:00;True|2023-10-12T14:45:30.6022356-05:00;True|2023-10-12T14:41:12.8425840-05:00;True|2023-10-12T14:29:12.5074353-05:00;True|2023-10-12T14:23:05.4194892-05:00;True|2023-10-12T14:06:33.0051896-05:00;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+</Project>
