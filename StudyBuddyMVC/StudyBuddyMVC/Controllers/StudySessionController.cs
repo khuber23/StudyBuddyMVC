@@ -9,9 +9,11 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Text.Json;
 using Microsoft.VisualBasic;
+using Microsoft.AspNetCore.Authorization;
 
 namespace StudyBuddyMVC.Controllers
 {
+	[Authorize]
 	public class StudySessionController : Controller
 	{
 		Uri baseAddress = new Uri("https://localhost:7025/api/");
@@ -23,6 +25,7 @@ namespace StudyBuddyMVC.Controllers
 			_client.BaseAddress = baseAddress;
 		}
 
+		[Authorize]
 		[HttpGet("MySession")]
 		[Route("MySession")]
 		public IActionResult MySession()
@@ -37,14 +40,16 @@ namespace StudyBuddyMVC.Controllers
             return View(deckgroups);
 		}
 
-        [HttpGet("StudyPriority")]
+		[Authorize]
+		[HttpGet("StudyPriority")]
 		[Route("StudyPriority")]
 		public IActionResult StudyPriority()
 		{
 			return View();
 		}
 
-        [HttpGet("StartSession")]
+		[Authorize]
+		[HttpGet("StartSession")]
         [Route("StartSession")]
         public IActionResult StartSession(int? pageNumber)
 		{

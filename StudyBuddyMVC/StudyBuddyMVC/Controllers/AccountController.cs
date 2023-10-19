@@ -20,17 +20,19 @@ using System.Net.Mail;
 
 namespace StudyBuddyMVC.Controllers
 {
+    [Authorize]
     public class AccountController : Controller
     {
         private readonly ILogger<AccountController> logger;
+		private readonly HttpClient _client;
+		public AccountController(ILogger<AccountController> logger)
+		{
+			this.logger = logger;
+			_client = new HttpClient();
+		}
 
-        public AccountController(ILogger<AccountController> logger)
-        {
-            this.logger = logger;
-        }
-
-        // GET: Register
-        [AllowAnonymous]
+		// GET: Register
+		[AllowAnonymous]
         [HttpGet("register")]
         [Route("register")]
         public IActionResult Register()
@@ -38,14 +40,25 @@ namespace StudyBuddyMVC.Controllers
             return View();
         }
 
-        // POST: Account/AddUser
-        [HttpPost]
-        public async Task<IActionResult> AddUser(User user)
+		// POST: Account/AddUser
+		[AllowAnonymous]
+		[HttpPost]
+        public async Task<IActionResult> AddUser(RegisterViewModel registerViewModel)
         {
-            User receivedUser = new User();
+            // Need to check existing user yet
+
+            PasswordHasher<string> passwordHasher = new PasswordHasher<string>();
+            User receivedUser = new User()
+            {
+                FirstName = registerViewModel.FirstName,
+                LastName = registerViewModel.LastName,
+                Email = registerViewModel.Email,
+                Username = registerViewModel.Username,
+                PasswordHash = passwordHasher.HashPassword(null, registerViewModel.Password)
+            };
             using (var httpClient = new HttpClient())
             {
-                StringContent content = new StringContent(JsonConvert.SerializeObject(user), Encoding.UTF8, "application/json");
+                StringContent content = new StringContent(JsonConvert.SerializeObject(receivedUser), Encoding.UTF8, "application/json");
                 using (var response = await httpClient.PostAsync("https://localhost:7025/api/User", content))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
@@ -64,30 +77,76 @@ namespace StudyBuddyMVC.Controllers
             return View();
         }
 
-
-        public async Task<IActionResult> LoginUser(User user)
+		[AllowAnonymous]
+		[HttpPost]
+		public async Task<IActionResult> LoginUser(LoginViewModel loginViewModel, string username)
         {
+
+            if (!ModelState.IsValid)
+            {
+				return Redirect("~/login");
+			}
+
+			User user = new User()
+            {
+				Username = loginViewModel.Username
+			};
+
             using (var httpClient = new HttpClient())
             {
-                StringContent content = new StringContent(JsonConvert.SerializeObject(user), Encoding.UTF8, "application/json");
-                using (var response = await httpClient.PostAsync("https://localhost:7025/api/Token", content))
+                httpClient.BaseAddress = new Uri("https://localhost:7025/api/User/MVC/");
+                var response = httpClient.GetAsync("User?username=" + username);
+                response.Wait();
+                var result = response.Result;
+				if (result.IsSuccessStatusCode)
+				{
+                    string data = result.Content.ReadAsStringAsync().Result;
+					user = JsonConvert.DeserializeObject<User>(data);
+				}
+                else
                 {
-                    string token = await response.Content.ReadAsStringAsync();
-                    if (token == "Invalid credentials")
-                    {
-                        ViewBag.Message = "Incorrect Username or Password.";
-                        return Redirect("~/login");
-                    }
-                    HttpContext.Session.SetString("JwToken", token);
-                }
+					return Redirect("~/login");
+				}
+			}
 
-                return Redirect("~/Dashboard/Index");
+            if (user == null)
+            {
+                ModelState.AddModelError("Error", "Username or password is invalid.");
+                return Redirect("~/login");
             }
-        }
+            else
+            {
+                PasswordHasher<string> passwordHasher = new PasswordHasher<string>();
+                PasswordVerificationResult passwordVerificationResult = passwordHasher.VerifyHashedPassword(null, user.PasswordHash, loginViewModel.Password);
+                if (passwordVerificationResult == PasswordVerificationResult.Failed)
+                {
+                    ModelState.AddModelError("Error", "Invalid password.");
+                    return Redirect("~/login");
+                }
+            }
 
-        public IActionResult Logoff()
+            var claims = new List<Claim>()
+            {
+                new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()),
+                new Claim(ClaimTypes.Name, user.FirstName),
+                new Claim(ClaimTypes.Role, user.IsAdmin ? "Admin" : "User")
+            };
+
+            var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+            var authProperties = new AuthenticationProperties {};
+            await HttpContext.SignInAsync(
+                CookieAuthenticationDefaults.AuthenticationScheme,
+                new ClaimsPrincipal(claimsIdentity),
+                authProperties);
+
+			return Redirect("~/Dashboard/Index");
+		}
+
+        [Authorize]
+        [Route("logout")]
+        public async Task<IActionResult> Logoff()
         {
-            HttpContext.Session.Clear();
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return Redirect("~/login");
         }
 

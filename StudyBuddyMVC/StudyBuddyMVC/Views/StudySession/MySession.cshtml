@@ -13,14 +13,14 @@
         <div class="p-2">
             <h2>DeckGroups</h2>
             <ul class="list-group">
-                @foreach (ApiStudyBuddy.Models.UserDeckGroup userDeckGroup in Model)
+                @*@foreach (ApiStudyBuddy.Models.UserDeckGroup userDeckGroup in Model)
                 {
                     <li class="list-group-item">
                         <input class="form-check-input me-1" type="checkbox" value="" id="firstCheckbox">
                         <label class="form-check-label" for="firstCheckbox"><h5 class="mb-1">@userDeckGroup.DeckGroup.DeckGroupName</h5></label>
                         <p class="mb-1">@userDeckGroup.DeckGroup.DeckGroupDescription</p>
                     </li>
-                }              
+                }*@              
             </ul>
         </div>
     </div>
@@ -28,14 +28,14 @@
         <div class="p-2">
             <h2>Decks</h2>
             <ul class="list-group">
-                @foreach (ApiStudyBuddy.Models.UserDeckGroup userDeckGroup in Model)
+                @*@foreach (ApiStudyBuddy.Models.UserDeckGroup userDeckGroup in Model)
                 {
                     <li class="list-group-item">
                         <input class="form-check-input me-1" type="checkbox" value="" id="firstCheckbox">
                         <label class="form-check-label" for="firstCheckbox"><h5 class="mb-1">@userDeckGroup.DeckGroup.DeckGroupDeck.Deck.DeckName</h5></label>
                         <p class="mb-1">@userDeckGroup.DeckGroup.DeckGroupDeck.Deck.DeckDescription</p>
                     </li>
-                }      
+                }*@      
             </ul>
         </div>
     </div>
@@ -43,7 +43,7 @@
         <div class="p-2">
             <h2>Flashcards</h2>
             <ul class="list-group">
-                @foreach (ApiStudyBuddy.Models.UserDeckGroup userDeckGroup in Model)
+                @*@foreach (ApiStudyBuddy.Models.UserDeckGroup userDeckGroup in Model)
                 @foreach (ApiStudyBuddy.Models.DeckFlashCard deckFlashCard in userDeckGroup.DeckGroup.DeckGroupDeck.Deck.DeckFlashCards)
                 {
                     <li class="list-group-item">
@@ -51,7 +51,7 @@
                         <label class="form-check-label" for="firstCheckbox"><h5 class="mb-1">@deckFlashCard.FlashCard.FlashCardQuestion</h5></label>
                         <p class="mb-1">@deckFlashCard.FlashCard.FlashCardAnswer</p>
                     </li>
-                }
+                }*@
             </ul>
         </div>
     </div>

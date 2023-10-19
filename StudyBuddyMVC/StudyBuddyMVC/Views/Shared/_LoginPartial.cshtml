@@ -1,2 +1,24 @@
-﻿<a class="btn btn-secondary" asp-area="" asp-controller="Account" asp-action="Logoff" style="float: right;">Logoff</a>
+﻿@using Microsoft.AspNetCore.Identity
+
+@if (User.Identity.IsAuthenticated)
+{
+	<ul class="navbar-nav ms-auto">
+		<span class="navbar-text" style="padding-right: 10px; color:white;">
+			Hello, @User.Identity.Name
+		</span>
+		<li>
+			<a class="btn btn-secondary" asp-area="" asp-controller="Account" asp-action="Logoff" style="float: right;">Logoff</a>
+		</li>
+	</ul>
+}
+else
+{
+	<ul class="navbar-nav ms-auto">
+		<span class="navbar-text" style="color:white;">
+			Welcome
+		</span>
+	</ul>
+}
+
+
 

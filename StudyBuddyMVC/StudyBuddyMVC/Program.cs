@@ -6,10 +6,16 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddSession(options =>
-{
-    options.IdleTimeout= TimeSpan.FromMinutes(20);
-});
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.LoginPath = "/login";
+        options.LogoutPath = "/logout";
+        //options.AccessDeniedPath = " ";
+        options.Cookie.Name = "UserAuth";
+        options.ExpireTimeSpan = TimeSpan.FromDays(2);
+        options.SlidingExpiration = true;
+    });
 
 var app = builder.Build();
 
@@ -26,7 +32,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-app.UseSession();
+//app.UseSession();
 
 app.UseAuthentication();
 app.UseAuthorization();

@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace StudyBuddyMVC.Controllers
 {
     public class MyDashboardController : Controller
     {
+        [Authorize]
         [HttpGet("MyStats")]
         [Route("MyStats")]
         public IActionResult MyStats()
@@ -11,14 +13,16 @@ namespace StudyBuddyMVC.Controllers
             return View();
         }
 
-        [HttpGet("MyHistory")]
+		[Authorize]
+		[HttpGet("MyHistory")]
         [Route("MyHistory")]
         public IActionResult MyHistory()
         {
             return View();
         }
 
-        [HttpGet("MyStudyPriority")]
+		[Authorize]
+		[HttpGet("MyStudyPriority")]
         [Route("MyStudyPriority")]
         public IActionResult MyStudyPriority()
         {
