@@ -1,4 +1,5 @@
-﻿
+﻿@using ApiStudyBuddy.Models;
+@model ApiStudyBuddy.Models.User
 @{
     ViewData["Title"] = "MySession";
     Layout = "~/Views/StudySession/_studySessionLayout.cshtml";
@@ -11,16 +12,14 @@
 <div class="row gx-4" style="text-align:center;">
     <div class="col">
         <div class="p-2">
-            <h2>DeckGroups</h2>
+            <h2>Deck Groups</h2>
             <ul class="list-group">
-                @*@foreach (ApiStudyBuddy.Models.UserDeckGroup userDeckGroup in Model)
-                {
-                    <li class="list-group-item">
-                        <input class="form-check-input me-1" type="checkbox" value="" id="firstCheckbox">
-                        <label class="form-check-label" for="firstCheckbox"><h5 class="mb-1">@userDeckGroup.DeckGroup.DeckGroupName</h5></label>
-                        <p class="mb-1">@userDeckGroup.DeckGroup.DeckGroupDescription</p>
-                    </li>
-                }*@              
+                <select id="deckGroupList" asp-for="UserDeckGroups">
+                @foreach(UserDeckGroup userDeckGroup in Model.UserDeckGroups)
+                {     
+                     <option onclick="">@userDeckGroup.DeckGroup.DeckGroupName </option>  
+                }  
+                </select>
             </ul>
         </div>
     </div>
@@ -28,14 +27,12 @@
         <div class="p-2">
             <h2>Decks</h2>
             <ul class="list-group">
-                @*@foreach (ApiStudyBuddy.Models.UserDeckGroup userDeckGroup in Model)
-                {
-                    <li class="list-group-item">
-                        <input class="form-check-input me-1" type="checkbox" value="" id="firstCheckbox">
-                        <label class="form-check-label" for="firstCheckbox"><h5 class="mb-1">@userDeckGroup.DeckGroup.DeckGroupDeck.Deck.DeckName</h5></label>
-                        <p class="mb-1">@userDeckGroup.DeckGroup.DeckGroupDeck.Deck.DeckDescription</p>
-                    </li>
-                }*@      
+                <select id="deckList" asp-for="UserDecks">
+                @foreach (UserDeck userDeck in Model.UserDecks)
+                {                   
+                     <option onclick="">@userDeck.Deck.DeckName </option>
+                }
+                </select>
             </ul>
         </div>
     </div>
@@ -43,16 +40,17 @@
         <div class="p-2">
             <h2>Flashcards</h2>
             <ul class="list-group">
-                @*@foreach (ApiStudyBuddy.Models.UserDeckGroup userDeckGroup in Model)
-                @foreach (ApiStudyBuddy.Models.DeckFlashCard deckFlashCard in userDeckGroup.DeckGroup.DeckGroupDeck.Deck.DeckFlashCards)
-                {
-                    <li class="list-group-item">
-                            <input class="form-check-input me-1" type="checkbox" value="" id="firstCheckbox" checked>
-                        <label class="form-check-label" for="firstCheckbox"><h5 class="mb-1">@deckFlashCard.FlashCard.FlashCardQuestion</h5></label>
-                        <p class="mb-1">@deckFlashCard.FlashCard.FlashCardAnswer</p>
-                    </li>
-                }*@
+                <select id="deckFlashCardList" disabled asp-for="UserDecks">
+                    @foreach(UserDeck userdeck in Model.UserDecks)
+                    {
+                        @foreach (DeckFlashCard deckFlashCard in @userdeck.Deck.DeckFlashCards)
+                        {
+                            <option>@deckFlashCard.FlashCard.FlashCardQuestion</option>
+                        }
+                    }
+                </select>
             </ul>
         </div>
     </div>
 </div>
+

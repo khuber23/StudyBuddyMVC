@@ -10,6 +10,9 @@ using System.Text.Json.Serialization;
 using System.Text.Json;
 using Microsoft.VisualBasic;
 using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
+using Microsoft.Extensions.Options;
+using StudyBuddyMVC.Service;
 
 namespace StudyBuddyMVC.Controllers
 {
@@ -18,11 +21,13 @@ namespace StudyBuddyMVC.Controllers
 	{
 		Uri baseAddress = new Uri("https://localhost:7025/api/");
 		private readonly HttpClient _client;
+		private readonly IUserService _userService;
 
-        public StudySessionController()
+        public StudySessionController(IUserService userService)
 		{
-			_client = new HttpClient();
-			_client.BaseAddress = baseAddress;
+            _client = new HttpClient();
+            _client.BaseAddress = baseAddress;
+            _userService = userService;
 		}
 
 		[Authorize]
@@ -30,15 +35,31 @@ namespace StudyBuddyMVC.Controllers
 		[Route("MySession")]
 		public IActionResult MySession()
 		{
-            List<UserDeckGroup> deckgroups = new List<UserDeckGroup>();
-            HttpResponseMessage response = _client.GetAsync("https://localhost:7025/api/UserDeckGroup/user/1").Result;
-            if (response.IsSuccessStatusCode)
+			User user = new User();
+			var userid = _userService.GetUserId();
+
+            using (var httpClient = new HttpClient())
             {
-                string data = response.Content.ReadAsStringAsync().Result;
-                deckgroups = JsonConvert.DeserializeObject<List<UserDeckGroup>>(data);
+                httpClient.BaseAddress = new Uri("https://localhost:7025/api/User/");
+                var response = httpClient.GetAsync("{id}?userid=" + userid);
+                response.Wait();
+                var result = response.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    string data = result.Content.ReadAsStringAsync().Result;
+					user = JsonConvert.DeserializeObject<User>(data);
+				}
             }
-            return View(deckgroups);
+            return View(user);
 		}
+
+		public IActionResult GetDeckFlashCards()
+		{
+			List<SelectListItem> selectListItems = new List<SelectListItem>();
+
+			return RedirectToAction("MySession");
+		} 
+
 
 		[Authorize]
 		[HttpGet("StudyPriority")]
