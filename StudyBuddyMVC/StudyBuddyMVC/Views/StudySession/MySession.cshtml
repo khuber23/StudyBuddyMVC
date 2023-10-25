@@ -1,4 +1,10 @@
-﻿@using ApiStudyBuddy.Models;
+﻿@{
+    ViewData["Title"] = "MySession";
+    Layout = "~/Views/StudySession/_myStudySessionLayout.cshtml";
+}
+
+
+@*@using ApiStudyBuddy.Models;
 @model ApiStudyBuddy.Models.User
 @{
     ViewData["Title"] = "MySession";
@@ -17,7 +23,7 @@
                 <select id="deckGroupList" asp-for="UserDeckGroups">
                 @foreach(UserDeckGroup userDeckGroup in Model.UserDeckGroups)
                 {     
-                     <option onclick="">@userDeckGroup.DeckGroup.DeckGroupName </option>  
+                     <option>@userDeckGroup.DeckGroup.DeckGroupName </option>  
                 }  
                 </select>
             </ul>
@@ -54,3 +60,4 @@
     </div>
 </div>
 
+*@
