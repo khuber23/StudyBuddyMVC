@@ -3,14 +3,17 @@
     ViewData["Title"] = "MyDecks";
     Layout = "~/Views/StudySession/_myStudySessionLayout.cshtml";
 }
-<h1>User Decks</h1>
 
 @using (Html.BeginForm("UserDecks", "MyStudySession", FormMethod.Post))
 {
-    <div class="text-center">
+    <div class="text-center" size="3">
         @Html.DropDownListFor(m=>m.DeckId,new SelectList(Model.Decks,"Value","Text"),new{@class="form-control"})
         <br />
         <br />
         <input type="submit" value="Submit" />
+        <br />
+        <b>Value:</b>@ViewBag.Value
+        <br />
+        <b>Text:</b>@ViewBag.Text
     </div>
 }

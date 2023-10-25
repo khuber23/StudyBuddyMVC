@@ -3,7 +3,6 @@
     ViewData["Title"] = "MyDeckGroups";
     Layout = "~/Views/StudySession/_myStudySessionLayout.cshtml";
 }
-<h1>User Deck Groups</h1>
 
 @using (Html.BeginForm("UserDeckGroups", "MyStudySession", FormMethod.Post))
 {
@@ -12,6 +11,10 @@
         <br />
         <br />
         <input type="submit" value="Submit" />
+        <br/>
+        <b>Value:</b>@ViewBag.Value
+        <br/>
+        <b>Text:</b>@ViewBag.Text
     </div>
 }
 

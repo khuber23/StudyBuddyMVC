@@ -38,37 +38,6 @@ namespace StudyBuddyMVC.Controllers
 			return View();
 		}
 
-		[Authorize]
-		[HttpGet("MySession")]
-		[Route("MySession")]
-		public IActionResult MySession()
-		{
-			User user = new User();
-			var userid = _userService.GetUserId();
-
-			using (var httpClient = new HttpClient())
-			{
-				httpClient.BaseAddress = new Uri("https://localhost:7025/api/User/");
-				var response = httpClient.GetAsync("{id}?userid=" + userid);
-				response.Wait();
-				var result = response.Result;
-				if (result.IsSuccessStatusCode)
-				{
-					string data = result.Content.ReadAsStringAsync().Result;
-					user = JsonConvert.DeserializeObject<User>(data);
-				}
-			}
-			return View(user);
-		}
-
-
-		[Authorize]
-		[HttpGet("StudyPriority")]
-		[Route("StudyPriority")]
-		public IActionResult StudyPriority()
-		{
-			return View();
-		}
 
 		[Authorize]
 		[HttpGet("StartSession")]

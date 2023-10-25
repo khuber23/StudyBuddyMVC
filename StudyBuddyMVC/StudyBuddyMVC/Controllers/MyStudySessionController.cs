@@ -58,11 +58,10 @@ namespace StudyBuddyMVC.Controllers
 
         [Authorize]
         [HttpPost]
-        //[Route("UserDecks")]
+        [Route("UserDecks")]
         public IActionResult UserDecks(DecksViewModel vm)
         {
             vm.Decks = new List<SelectListItem>();
-
             User user = new User();
             var userid = _userService.GetUserId();
 
@@ -138,7 +137,7 @@ namespace StudyBuddyMVC.Controllers
 
         [Authorize]
         [HttpPost]
-        //[Route("UserDeckGroups")]
+        [Route("UserDeckGroups")]
         public IActionResult UserDeckGroups(DeckGroupsViewModel vm)
         {
             vm.DeckGroups = new List<SelectListItem>();
