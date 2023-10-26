@@ -4,7 +4,7 @@ namespace StudyBuddyMVC.Models
 {
     public class DecksViewModel
     {
-        public IEnumerable<SelectListItem>? Decks { get; set; }
-        public IEnumerable<string>? SelectedDecks { get; set; }
+        public int DeckId { get; set; }
+        public List<SelectListItem>? Decks { get; set; }
     }
 }

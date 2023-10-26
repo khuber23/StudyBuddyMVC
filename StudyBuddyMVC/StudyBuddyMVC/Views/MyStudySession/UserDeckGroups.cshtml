@@ -1,0 +1,21 @@
+﻿@model DeckGroupsViewModel
+@{
+    ViewData["Title"] = "MyDeckGroups";
+    Layout = "~/Views/StudySession/_myStudySessionLayout.cshtml";
+}
+
+@using (Html.BeginForm("UserDeckGroups", "MyStudySession", FormMethod.Post))
+{
+    <div class="text-center">
+        @Html.DropDownListFor(m=>m.DeckGroupId, new SelectList(Model.DeckGroups, "Value", "Text"), new {@class="form-control"})
+        <br />
+        <br />
+        <input type="submit" value="Submit" />
+        <br/>
+        <b>Value:</b>@ViewBag.Value
+        <br/>
+        <b>Text:</b>@ViewBag.Text
+    </div>
+}
+
+
