@@ -1,38 +1,76 @@
-﻿using ApiStudyBuddy.Models;
+﻿using ApiStudyBuddy.Data;
+using ApiStudyBuddy.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
 using StudyBuddyMVC.Models;
 using System.Net.Http.Headers;
 using System.Text;
+using System.Text.Json.Serialization;
+using System.Text.Json;
+using Microsoft.VisualBasic;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
+using Microsoft.Extensions.Options;
+using StudyBuddyMVC.Service;
 
 namespace StudyBuddyMVC.Controllers
 {
+	[Authorize]
 	public class StudySessionController : Controller
 	{
 		Uri baseAddress = new Uri("https://localhost:7025/api/");
 		private readonly HttpClient _client;
+		private readonly IUserService _userService;
 
-		public StudySessionController()
+        public StudySessionController(IUserService userService)
 		{
-			_client = new HttpClient();
-			_client.BaseAddress = baseAddress;
+            _client = new HttpClient();
+            _client.BaseAddress = baseAddress;
+            _userService = userService;
 		}
 
+		[Authorize]
 		[HttpGet("MySession")]
 		[Route("MySession")]
 		public IActionResult MySession()
 		{
-			return View();
+			User user = new User();
+			var userid = _userService.GetUserId();
+
+            using (var httpClient = new HttpClient())
+            {
+                httpClient.BaseAddress = new Uri("https://localhost:7025/api/User/");
+                var response = httpClient.GetAsync("{id}?userid=" + userid);
+                response.Wait();
+                var result = response.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    string data = result.Content.ReadAsStringAsync().Result;
+					user = JsonConvert.DeserializeObject<User>(data);
+				}
+            }
+            return View(user);
 		}
 
-        [HttpGet("StudyPriority")]
+		public IActionResult GetDeckFlashCards()
+		{
+			List<SelectListItem> selectListItems = new List<SelectListItem>();
+
+			return RedirectToAction("MySession");
+		} 
+
+
+		[Authorize]
+		[HttpGet("StudyPriority")]
 		[Route("StudyPriority")]
 		public IActionResult StudyPriority()
 		{
 			return View();
 		}
 
-        [HttpGet("StartSession")]
+		[Authorize]
+		[HttpGet("StartSession")]
         [Route("StartSession")]
         public IActionResult StartSession(int? pageNumber)
 		{

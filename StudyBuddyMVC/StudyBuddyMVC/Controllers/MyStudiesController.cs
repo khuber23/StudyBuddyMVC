@@ -1,10 +1,12 @@
 ﻿using ApiStudyBuddy.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
 namespace StudyBuddyMVC.Controllers
 {
-    public class MyStudiesController : Controller
+	[Authorize]
+	public class MyStudiesController : Controller
     {
         Uri baseAddress = new Uri("https://localhost:7025/api/");
         private readonly HttpClient _client;
@@ -15,14 +17,15 @@ namespace StudyBuddyMVC.Controllers
             _client.BaseAddress = baseAddress;
         }
 
-        [HttpGet("MyDashboard")]
+		[Authorize]
+		[HttpGet("MyDashboard")]
         [Route("MyDashboard")]
         public IActionResult MyDashboard()
         {
             return View();
         }
 
-
+		[Authorize]
 		[HttpGet("Flashcards")]
         [Route("Flashcards")]
         public IActionResult Flashcards()
@@ -38,7 +41,8 @@ namespace StudyBuddyMVC.Controllers
             return View(flashcards);
         }
 
-        [HttpGet("Decks")]
+		[Authorize]
+		[HttpGet("Decks")]
         [Route("Decks")]
         public IActionResult Decks()
         {
@@ -53,7 +57,8 @@ namespace StudyBuddyMVC.Controllers
             return View(decks);
         }
 
-        [HttpGet("DeckGroups")]
+		[Authorize]
+		[HttpGet("DeckGroups")]
         [Route("DeckGroups")]
         public IActionResult DeckGroups()
         {
