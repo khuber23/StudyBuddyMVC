@@ -182,5 +182,13 @@ namespace StudyBuddyMVC.Controllers
 		{
 			return View();
 		}
-	}
+
+        [Authorize]
+        [HttpPost]
+        [Route("MyStudySessionPriority")]
+        public IActionResult MyStudySessionPriority(StudyPriorityViewModel studyPriorityView)
+        {
+            return View(studyPriorityView);
+        }
+    }
 }

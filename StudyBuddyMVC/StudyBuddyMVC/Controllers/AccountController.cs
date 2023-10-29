@@ -149,7 +149,5 @@ namespace StudyBuddyMVC.Controllers
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return Redirect("~/login");
         }
-
-
     }   
 }

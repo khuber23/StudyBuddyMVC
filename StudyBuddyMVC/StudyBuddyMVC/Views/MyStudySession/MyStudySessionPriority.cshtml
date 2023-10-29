@@ -1,5 +1,23 @@
-﻿@{
+﻿@model StudyPriorityViewModel
+@{
     ViewData["Title"] = "MyStudySessionPriority";
     Layout = "~/Views/StudySession/_myStudySessionLayout.cshtml";
 }
 
+@using (Html.BeginForm("StudyPriority", "MyStudySession", FormMethod.Post))
+{
+    <div class="text-center">
+        @Html.DropDownListFor(m=>m.FlashCardID, new SelectList(Model.FlashCards, "Value", "Text"), new {@class="form-control"})
+        <br />
+        @Html.DropDownListFor(m=>m.DecksID, new SelectList(Model.Decks, "Value", "Text"), new {@class="form-control"})
+        <br />
+        @Html.DropDownListFor(m=>m.DeckGroupsID, new SelectList(Model.DecksGroups, "Value", "Text"), new {@class="form-control"})
+        <br />
+        <br />
+        <input type="submit" value="Submit" />
+        <br />
+        <b>Value:</b>@ViewBag.Value
+        <br />
+        <b>Text:</b>@ViewBag.Text
+    </div>
+}
