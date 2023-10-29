@@ -19,7 +19,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.FlashCardAnswer)
             </th>
-            <th></th>
+            <th style="font-weight:bold">
+                @Html.ActionLink("Create a FlashCard","CreateFlashCard")
+            </th>
         </tr>
         @foreach (var item in Model) 
         {
