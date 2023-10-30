@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using StudyBuddyMVC.Models;
+using System.Text;
 
 namespace StudyBuddyMVC.Controllers
 {
@@ -71,6 +73,69 @@ namespace StudyBuddyMVC.Controllers
                 deckgroups = JsonConvert.DeserializeObject<List<DeckGroup>>(data);
             }
             return View(deckgroups);
+        }
+
+        [Authorize]
+        [HttpGet("CreateFlashCard")]
+        [Route("CreateFlashCard")]
+        public IActionResult CreateFlashCard()
+        {
+            return PartialView();
+        }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> AddNewFlashCard(FlashCardViewModel flashcardViewModel)
+        {
+
+            FlashCard newFlashCard = new FlashCard()
+            {
+              FlashCardQuestion = flashcardViewModel.FlashCardQuestion,
+                    FlashCardAnswer = flashcardViewModel.FlashCardAnswer
+             };
+
+            using (var httpClient = new HttpClient())
+            {
+                StringContent content = new StringContent(JsonConvert.SerializeObject(newFlashCard), Encoding.UTF8, "application/json");
+                using (var response = await httpClient.PostAsync("https://localhost:7025/api/FlashCard", content))
+                {
+                    string apiResponse = await response.Content.ReadAsStringAsync();
+                    newFlashCard = JsonConvert.DeserializeObject<FlashCard>(apiResponse);
+                    }
+                }
+                return View(newFlashCard);            
+        }
+
+        [Authorize]
+        [HttpGet("EditFlashCard")]
+        [Route("EditFlashCard")]
+        public IActionResult EditFlashCard()
+        {
+            return View();
+        }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> EditFlashCard(FlashCard flashCard)
+        {
+
+            return Redirect("~/Dashboard/Index");
+        }
+
+        [Authorize]
+        [HttpGet("DeleteFlashCard")]
+        [Route("DeleteFlashCard")]
+        public IActionResult DeleteFlashCard()
+        {
+            return View();
+        }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> DeleteFlashCard(FlashCard flashCard)
+        {
+
+            return Redirect("~/Dashboard/Index");
         }
     }
 }
