@@ -8,19 +8,19 @@
 <div class="row justify-content-center">
     <div class="col-8">
         <section>
-            <form asp-action="AddFlashCard" asp-controller="MyStudies" method="post">
+            <form method="post">
                 <h2>Fill to add a new Flash Card.</h2>
                 <hr />
                 <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
                 <div class="form-floating mb-3">
                     <input asp-for="FlashCardQuestion" class="form-control" aria-required="true" placeholder="" />
                     <label asp-for="FlashCardQuestion" class="form-label">Flashcard Question: </label>
-                    @* <span asp-validation-for="FlashCardQuestion" class="text-danger"></span> *@
+                    <span asp-validation-for="FlashCardQuestion" class="text-danger"></span> 
                 </div>
                 <div class="form-floating mb-3">
                     <input asp-for="FlashCardAnswer" class="form-control" aria-required="true" placeholder="" />
                     <label asp-for="FlashCardAnswer" class="form-label">Answer: </label>
-                    @* <span asp-validation-for="FlashCardAnswer" class="text-danger"></span> *@
+                    <span asp-validation-for="FlashCardAnswer" class="text-danger"></span>
                 </div>
                 <div>
                     <button id="create-newFlashCard" type="submit" class="w-100 btn btn-lg btn-primary">Create FlashCard</button>

@@ -76,41 +76,60 @@ namespace StudyBuddyMVC.Controllers
         }
 
         [Authorize]
+        [HttpGet("CreateDeckGroup")]
+        public IActionResult CreateDeckGroup()
+        {
+            return View();
+        }
+
+
+        [Authorize]
+        [HttpPost("CreateDeckGroup")]
+        public IActionResult CreateDeckGroup(DeckGroup deckGroup)
+        {
+
+            return View();
+        }
+
+        [Authorize]
         [HttpGet("CreateFlashCard")]
         [Route("CreateFlashCard")]
         public IActionResult CreateFlashCard()
         {
-            return PartialView();
+            return View();
         }
 
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> AddNewFlashCard(FlashCardViewModel flashcardViewModel)
+        public async Task<IActionResult> CreateFlashCard(FlashCardViewModel flashcardViewModel)
         {
-
-            FlashCard newFlashCard = new FlashCard()
+            if (!ModelState.IsValid)
             {
-              FlashCardQuestion = flashcardViewModel.FlashCardQuestion,
-                    FlashCardAnswer = flashcardViewModel.FlashCardAnswer
-             };
+                return View();
+            }
 
-            using (var httpClient = new HttpClient())
+            FlashCard flashcard = new FlashCard();
+            flashcard.FlashCardQuestion = flashcardViewModel.FlashCardQuestion;
+            flashcard.FlashCardAnswer = flashcardViewModel.FlashCardAnswer;
+
+            var json = JsonConvert.SerializeObject(flashcard);
+            StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            using (var response = await _client.PostAsync("https://localhost:7025/api/FlashCard", content))
             {
-                StringContent content = new StringContent(JsonConvert.SerializeObject(newFlashCard), Encoding.UTF8, "application/json");
-                using (var response = await httpClient.PostAsync("https://localhost:7025/api/FlashCard", content))
-                {
-                    string apiResponse = await response.Content.ReadAsStringAsync();
-                    newFlashCard = JsonConvert.DeserializeObject<FlashCard>(apiResponse);
-                    }
-                }
-                return View(newFlashCard);            
+                var responseContent = await response.Content.ReadAsStringAsync();
+                responseContent = JsonConvert.DeserializeObject<string>(responseContent);
+            }
+            return RedirectToAction("MyDashboard", "MyStudies");
+
         }
 
         [Authorize]
         [HttpGet("EditFlashCard")]
         [Route("EditFlashCard")]
-        public IActionResult EditFlashCard()
+        public IActionResult EditFlashCard(int id)
         {
+            //FlashCard flashCard = 
             return View();
         }
 
