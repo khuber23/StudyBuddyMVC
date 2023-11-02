@@ -1,6 +1,7 @@
 ﻿using ApiStudyBuddy.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
 using StudyBuddyMVC.Models;
 using System.Text;
@@ -64,13 +65,14 @@ namespace StudyBuddyMVC.Controllers
         [Route("DeckGroups")]
         public IActionResult DeckGroups()
         {
-            List<DeckGroup> deckgroups = new List<DeckGroup>();
-            HttpResponseMessage response = _client.GetAsync("https://localhost:7025/api/DeckGroup").Result;
+
+            List<DeckGroupViewModel> deckgroups = new List<DeckGroupViewModel>();
+            HttpResponseMessage response = _client.GetAsync(_client.BaseAddress + "DeckGroup").Result;
 
             if (response.IsSuccessStatusCode)
             {
                 string data = response.Content.ReadAsStringAsync().Result;
-                deckgroups = JsonConvert.DeserializeObject<List<DeckGroup>>(data);
+                deckgroups = JsonConvert.DeserializeObject<List<DeckGroupViewModel>>(data);
             }
             return View(deckgroups);
         }
@@ -82,13 +84,27 @@ namespace StudyBuddyMVC.Controllers
             return View();
         }
 
-
         [Authorize]
         [HttpPost("CreateDeckGroup")]
-        public IActionResult CreateDeckGroup(DeckGroup deckGroup)
+        public IActionResult CreateDeckGroup(DeckGroupViewModel deckGroupViewModel)
+        {
+            return View();
+        }
+
+        [Authorize]
+        [HttpGet("EditDeckGroup")]
+        public IActionResult EditDeckGroup()
+        {
+            //FlashCard flashCard = 
+            return View();
+        }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> EditDeckGroup(DeckGroupViewModel deckGroupViewModel)
         {
 
-            return View();
+            return Redirect("~/Dashboard/Index");
         }
 
         [Authorize]

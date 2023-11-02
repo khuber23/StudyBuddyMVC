@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using ApiStudyBuddy.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace StudyBuddyMVC.Models
 {
@@ -8,8 +9,5 @@ namespace StudyBuddyMVC.Models
 
         public List<SelectListItem>? DeckGroups { get; set; }
 
-        public string? DeckGroupName { get; set; }
-
-        public string? DeckGroupDescription { get; set; }
     }
 }
