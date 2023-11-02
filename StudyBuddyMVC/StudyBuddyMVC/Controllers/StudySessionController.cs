@@ -9,41 +9,37 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Text.Json;
 using Microsoft.VisualBasic;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
+using Microsoft.Extensions.Options;
+using StudyBuddyMVC.Service;
 
 namespace StudyBuddyMVC.Controllers
 {
+	[Authorize]
 	public class StudySessionController : Controller
 	{
 		private readonly HttpClient _client;
+		private readonly IUserService _userService;
 
-        public StudySessionController()
+        public StudySessionController(IUserService userService)
 		{
-			_client = new HttpClient();
+            _client = new HttpClient();
+            _client.BaseAddress = baseAddress;
+            _userService = userService;
 		}
 
-		[HttpGet("MySession")]
-		[Route("/MySession")]
-		public IActionResult MySession()
-		{
-            List<UserDeckGroup> deckgroups = new List<UserDeckGroup>();
-            HttpResponseMessage response = _client.GetAsync("https://instruct.ntc.edu/studybuddyapi/api/userdeckgroup/user/1").Result;
-			// https://localhost:7025/api/UserDeckGroup/user/1
-            if (response.IsSuccessStatusCode)
-            {
-                string data = response.Content.ReadAsStringAsync().Result;
-                deckgroups = JsonConvert.DeserializeObject<List<UserDeckGroup>>(data);
-            }
-            return View(deckgroups);
-		}
-
-        [HttpGet("StudyPriority")]
-		[Route("StudyPriority")]
-		public IActionResult StudyPriority()
+		[Authorize]
+		[HttpGet("MyStudySession")]
+		[Route("MyStudySession")]
+		public IActionResult MyStudySession()
 		{
 			return View();
 		}
 
-        [HttpGet("StartSession")]
+
+		[Authorize]
+		[HttpGet("StartSession")]
         [Route("StartSession")]
         public IActionResult StartSession(int? pageNumber)
 		{

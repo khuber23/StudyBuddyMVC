@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ApiStudyBuddy.Models.DeckGroup>
+﻿@model IEnumerable<StudyBuddyMVC.Models.DeckGroupViewModel>
 
 @{
     ViewData["Title"] = "DeckGroups";
@@ -18,7 +18,37 @@
             <th>
                 @Html.DisplayNameFor(model => model.DeckGroupDescription)
             </th>
-            <th></th>
+            <th style="font-weight:bold">
+                @* @Html.ActionLink("Create a Deck Group","CreateDeckGroup") *@
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createModal">
+                    Create a DeckGroup
+                </button>
+                <!-- Create new Deck Group -->
+                <div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <form asp-action="CreateDeckGroup" id="AddDeckGroup" method="post">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Add a Deck Group.</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div>
+                                    <label>Deckgroup Name</label>
+                                    <input class="control-label" type="text" id="deckgroupName" placeholder="Deckgroup Name" /> 
+                                </div>
+                                <div>
+                                    <label>Deck Group Description</label>
+                                    <input height="50" type="text" id="deckgroupDescription" /> 
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Create</button>
+                                </div>
+                            </form>            
+                        </div>
+                    </div>
+                </div>
+            </th>
         </tr>
         @foreach (var item in Model)
         {
@@ -33,9 +63,86 @@
                         @Html.DisplayFor(modelItem => item.DeckGroupDescription)
                    </td>
                    <td>
-                        @Html.ActionLink("Edit", "Edit", new {id=item.DeckGroupId}) |
-                        @Html.ActionLink("Details", "Details", new {id=item.DeckGroupId} ) |
-                        @Html.ActionLink("Delete", "Delete", new {id=item.DeckGroupId})
+                        @* @Html.ActionLink("Edit", "Edit", new {id=item.DeckGroupId}) *@
+                    <button type="button" class="btn btn-primary" onclick="@item.DeckGroupId" data-bs-toggle="modal" data-bs-target="#EditBackdrop">
+                        Edit
+                    </button>
+
+                    <!-- Edit -->
+                    <div class="modal fade" id="EditBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <form asp-action="EditDeckGroup" id="EditDeckGroup" method="post">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Edit</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        ...
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary">Save Changes</button>
+                                    </div>
+                                </form>>                 
+                            </div>
+                        </div>
+                    </div>  |
+                        @* @Html.ActionLink("Details", "Details", new {id=item.DeckGroupId} ) *@ 
+                        @* @Html.ActionLink("Delete", "Delete", new {id=item.DeckGroupId}) *@
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#detailBackdrop">
+                        Details
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="detailBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Information about Deck group</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div>
+                                        <p>
+                                            @Html.DisplayFor(modelItem => item.DeckGroupName)
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <p>
+                                            @Html.DisplayFor(modelItem => item.DeckGroupDescription)
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">More</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div> |
+
+                    <button type="button" class="btn btn-danger" onclick="@item.DeckGroupId" data-bs-toggle="modal" data-bs-target="#DeleteBackdrop">
+                        Delete
+                    </button>
+
+                    <!-- Delete -->
+                    <div class="modal fade" id="DeleteBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Deleting Deck Group</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                   <h2>Are you sure you want to delete Deck Group @item.DeckGroupId</h2>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancel</button>
+                                    <button type="button" class="btn btn-danger">Delete</button>
+                                </div>
+                            </div>
+                        </div>
                    </td>
              </tr>
         }

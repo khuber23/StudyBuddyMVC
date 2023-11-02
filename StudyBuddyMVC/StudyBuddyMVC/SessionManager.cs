@@ -41,7 +41,7 @@ namespace StudyBuddyMVC
 
         public void InCorrectFlashCard()
         {
-            if (studySessionFlashCard.WasCorrect == false)
+            if (studySessionFlashCard.IsCorrect == false)
             {
 				incorrectFlashCard.Add(studySessionFlashCard);
 			}
@@ -50,7 +50,7 @@ namespace StudyBuddyMVC
 
 		public void CorrectFlashCard()
 		{
-			if (studySessionFlashCard.WasCorrect == true)
+			if (studySessionFlashCard.IsCorrect == true)
 			{
 				correctFlashCard.Add(studySessionFlashCard);
 			}

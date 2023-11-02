@@ -1,0 +1,83 @@
+﻿@model FlashCardViewModel
+
+@{
+    ViewData["Title"] = "CreateFlashCard";
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row justify-content-center">
+    <div class="col-8">
+        <section>
+            <form method="post">
+                <h2>Fill to add a new Flash Card.</h2>
+                <hr />
+                <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+                <div class="form-floating mb-3">
+                    <input asp-for="FlashCardQuestion" class="form-control" aria-required="true" placeholder="" />
+                    <label asp-for="FlashCardQuestion" class="form-label">Flashcard Question: </label>
+                    <span asp-validation-for="FlashCardQuestion" class="text-danger"></span> 
+                </div>
+                <div class="form-floating mb-3">
+                    <input asp-for="FlashCardAnswer" class="form-control" aria-required="true" placeholder="" />
+                    <label asp-for="FlashCardAnswer" class="form-label">Answer: </label>
+                    <span asp-validation-for="FlashCardAnswer" class="text-danger"></span>
+                </div>
+                <div>
+                    <button id="create-newFlashCard" type="submit" class="w-100 btn btn-lg btn-primary">Create FlashCard</button>
+                </div>
+                <label>@Html.Raw(@ViewBag.Message)</label>
+            </form>
+        </section>
+    </div>
+</div>
+<div id='myModal' class='modal'>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id='myModalContent'></div>
+        </div>
+    </div>
+
+</div>  
+
+@section scripts
+    {
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script>
+        var TeamDetailPostBackURL = '/Home/Details';
+        $(function () {
+            $(".anchorDetail").click(function () {
+                debugger;
+                var $buttonClicked = $(this);
+                var id = $buttonClicked.attr('data-id');
+                var options = { "backdrop": "static", keyboard: true };
+                $.ajax({
+                    type: "GET",
+                    url: TeamDetailPostBackURL,
+                    contentType: "application/json; charset=utf-8",
+                    data: { "Id": id },
+                    datatype: "json",
+                    success: function (data) {
+                        debugger;
+                        $('#myModalContent').html(data);
+                        $('#myModal').modal(options);
+                        $('#myModal').modal('show');
+
+                    },
+                    error: function () {
+                        alert("Dynamic content load failed.");
+                    }
+                });
+            });
+            //$("#closebtn").on('click',function(){
+            //    $('#myModal').modal('hide');
+
+            $("#closbtn").click(function () {
+                $('#myModal').modal('hide');
+            });
+        });
+
+    </script>
+
+}  
