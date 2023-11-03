@@ -58,7 +58,7 @@ namespace StudyBuddyMVC.Controllers
             };
             using (var httpClient = new HttpClient())
             {
-                StringContent content = new StringContent(JsonConvert.SerializeObject(user), Encoding.UTF8, "application/json");
+                StringContent content = new StringContent(JsonConvert.SerializeObject(receivedUser), Encoding.UTF8, "application/json");
                 using (var response = await httpClient.PostAsync("https://instruct.ntc.edu/studybuddyapi/api/user", content))
                     // https://localhost:7025/api/User
                 {
@@ -78,35 +78,53 @@ namespace StudyBuddyMVC.Controllers
             return View();
         }
 
-		[AllowAnonymous]
-		[HttpPost]
-		public async Task<IActionResult> LoginUser(LoginViewModel loginViewModel, string username)
+        [AllowAnonymous]
+        [HttpPost]
+        public async Task<IActionResult> LoginUser(LoginViewModel loginViewModel, string username)
         {
 
             if (!ModelState.IsValid)
             {
-				return Redirect("~/login");
-			}
+                return Redirect("~/login");
+            }
 
-			User user = new User()
+            User user = new User()
             {
-				Username = loginViewModel.Username
-			};
+                Username = loginViewModel.Username
+            };
 
             using (var httpClient = new HttpClient())
             {
-                StringContent content = new StringContent(JsonConvert.SerializeObject(user), Encoding.UTF8, "application/json");
-                using (var response = await httpClient.PostAsync("https://instruct.ntc.edu/studybuddyapi/api/token", content))
-                // https://localhost:7025/api/Token
+                httpClient.BaseAddress = new Uri("https://instruct.ntc.edu/studybuddyapi/api/user/MVC/");
+                var response = httpClient.GetAsync("User?username=" + username);
+                response.Wait();
+                var result = response.Result;
+                if (result.IsSuccessStatusCode)
                 {
-                    string token = await response.Content.ReadAsStringAsync();
-                    if (token == "Invalid credentials")
-                    {
-                        ViewBag.Message = "Incorrect Username or Password.";
-                        return Redirect("~/login");
-                    }
-                    HttpContext.Session.SetString("JwToken", token);
+                    string data = result.Content.ReadAsStringAsync().Result;
+                    user = JsonConvert.DeserializeObject<User>(data);
                 }
+                else
+                {
+                    return Redirect("~/login");
+                }
+            }
+
+            if (user == null)
+            {
+                ModelState.AddModelError("Error", "Username or password is invalid.");
+                return Redirect("~/login");
+            }
+            else
+            {
+                PasswordHasher<string> passwordHasher = new PasswordHasher<string>();
+                PasswordVerificationResult passwordVerificationResult = passwordHasher.VerifyHashedPassword(null, user.PasswordHash, loginViewModel.Password);
+                if (passwordVerificationResult == PasswordVerificationResult.Failed)
+                {
+                    ModelState.AddModelError("Error", "Invalid password.");
+                    return Redirect("~/login");
+                }
+            }
 
             var claims = new List<Claim>()
             {
@@ -116,14 +134,14 @@ namespace StudyBuddyMVC.Controllers
             };
 
             var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-            var authProperties = new AuthenticationProperties {};
+            var authProperties = new AuthenticationProperties { };
             await HttpContext.SignInAsync(
                 CookieAuthenticationDefaults.AuthenticationScheme,
                 new ClaimsPrincipal(claimsIdentity),
                 authProperties);
 
-			return Redirect("~/Dashboard/Index");
-		}
+            return Redirect("~/Dashboard/Index");
+        }
 
         [Authorize]
         [Route("logout")]
@@ -132,5 +150,5 @@ namespace StudyBuddyMVC.Controllers
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return Redirect("~/login");
         }
-    }   
+    }
 }

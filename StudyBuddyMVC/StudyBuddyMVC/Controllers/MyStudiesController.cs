@@ -63,7 +63,7 @@ namespace StudyBuddyMVC.Controllers
         [Route("DeckGroups")]
         public IActionResult DeckGroups()
         {
-            List<DeckGroup> deckgroups = new List<DeckGroup>();
+            List<DeckGroupViewModel> deckgroups = new List<DeckGroupViewModel>();
             HttpResponseMessage response = _client.GetAsync("https://instruct.ntc.edu/studybuddyapi/api/deckgroup").Result;
             // https://localhost:7025/api/DeckGroup
             if (response.IsSuccessStatusCode)
@@ -128,7 +128,7 @@ namespace StudyBuddyMVC.Controllers
             var json = JsonConvert.SerializeObject(flashcard);
             StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
 
-            using (var response = await _client.PostAsync("https://localhost:7025/api/FlashCard", content))
+            using (var response = await _client.PostAsync("https://instruct.ntc.edu/studybuddyapi/api/FlashCard", content))
             {
                 var responseContent = await response.Content.ReadAsStringAsync();
                 responseContent = JsonConvert.DeserializeObject<string>(responseContent);

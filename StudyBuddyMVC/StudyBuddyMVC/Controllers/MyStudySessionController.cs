@@ -30,7 +30,7 @@ namespace StudyBuddyMVC.Controllers
 
             using (var httpClient = new HttpClient())
             {
-                httpClient.BaseAddress = new Uri("https://localhost:7025/api/User/");
+                httpClient.BaseAddress = new Uri("https://instruct.ntc.edu/studybuddyapi/api/User/");
                 var response = httpClient.GetAsync("{id}?userid=" + userid);
                 response.Wait();
                 var result = response.Result;
@@ -67,7 +67,7 @@ namespace StudyBuddyMVC.Controllers
 
             using (var httpClient = new HttpClient())
             {
-                httpClient.BaseAddress = new Uri("https://localhost:7025/api/User/");
+                httpClient.BaseAddress = new Uri("https://instruct.ntc.edu/studybuddyapi/api/User/");
                 var response = httpClient.GetAsync("{id}?userid=" + userid);
                 response.Wait();
                 var result = response.Result;
@@ -109,7 +109,7 @@ namespace StudyBuddyMVC.Controllers
 
             using (var httpClient = new HttpClient())
             {
-                httpClient.BaseAddress = new Uri("https://localhost:7025/api/User/");
+                httpClient.BaseAddress = new Uri("https://instruct.ntc.edu/studybuddyapi/api/User/");
                 var response = httpClient.GetAsync("{id}?userid=" + userid);
                 response.Wait();
                 var result = response.Result;
@@ -147,7 +147,7 @@ namespace StudyBuddyMVC.Controllers
 
             using (var httpClient = new HttpClient())
             {
-                httpClient.BaseAddress = new Uri("https://localhost:7025/api/User/");
+                httpClient.BaseAddress = new Uri("https://instruct.ntc.edu/studybuddyapi/api/User/");
                 var response = httpClient.GetAsync("{id}?userid=" + userid);
                 response.Wait();
                 var result = response.Result;

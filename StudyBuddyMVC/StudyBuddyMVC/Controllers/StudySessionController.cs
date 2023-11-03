@@ -25,7 +25,6 @@ namespace StudyBuddyMVC.Controllers
         public StudySessionController(IUserService userService)
 		{
             _client = new HttpClient();
-            _client.BaseAddress = baseAddress;
             _userService = userService;
 		}
 
