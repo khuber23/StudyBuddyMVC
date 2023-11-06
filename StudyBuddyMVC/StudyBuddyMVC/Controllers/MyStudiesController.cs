@@ -79,16 +79,18 @@ namespace StudyBuddyMVC.Controllers
 
         [Authorize]
         [HttpGet("CreateDeckGroup")]
+        [Route("CreateDeckGroup")]
         public IActionResult CreateDeckGroup()
         {
             return View();
         }
 
         [Authorize]
-        [HttpPost("CreateDeckGroup")]
+        [HttpPost]
         public IActionResult CreateDeckGroup(DeckGroupViewModel deckGroupViewModel)
         {
-            return View();
+            deckGroupViewModel = new DeckGroupViewModel();
+            return PartialView("CreateDeckGroup", deckGroupViewModel);
         }
 
         [Authorize]

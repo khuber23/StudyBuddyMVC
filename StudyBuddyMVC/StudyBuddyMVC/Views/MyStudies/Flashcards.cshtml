@@ -20,9 +20,6 @@
                 @Html.DisplayNameFor(model => model.FlashCardAnswer)
             </th>
             <th>
-                <a style="font-weight:bold" href="/CreateFlashCard">
-                    Create Flash Card
-                </a>
             </th>
         </tr>
         @foreach (var item in Model) 
@@ -38,9 +35,12 @@
                     @Html.DisplayFor(modelItem => item.FlashCardAnswer)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "EditFlashCard", new {id=item.FlashCardId}) |
+                    <a style="font-weight:bold" href="/CreateFlashCard">
+                        Add to Studies
+                    </a>
+                    @* @Html.ActionLink("Edit", "EditFlashCard", new {id=item.FlashCardId}) |
                     @Html.ActionLink("Details", "Details", new {id=item.FlashCardId} ) |
-                    @Html.ActionLink("Delete", "DeleteFlashCard", new {id=item.FlashCardId})
+                    @Html.ActionLink("Delete", "DeleteFlashCard", new {id=item.FlashCardId}) *@
                 </td>
             </tr>
         }
