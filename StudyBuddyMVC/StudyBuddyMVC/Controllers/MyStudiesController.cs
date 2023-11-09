@@ -82,23 +82,72 @@ namespace StudyBuddyMVC.Controllers
         [Route("CreateDeckGroup")]
         public IActionResult CreateDeckGroup()
         {
+            DeckGroupsViewModel deckgroups = new DeckGroupsViewModel();
+            return PartialView("_CreateDeckGroup", deckgroups);
+        }
+
+        [Authorize]
+        [HttpPost("CreateDeckGroup")]
+        public async Task<IActionResult> CreateDeckGroup(DeckGroupViewModel deckGroupViewModel)
+        {
+            //DeckGroup deckGroup = new DeckGroup()
+            //{
+            //    DeckGroupName = deckGroupViewModel.DeckGroupName,
+            //    DeckGroupDescription = deckGroupViewModel.DeckGroupDescription
+            //};
+
+            //using (var httpClient = new HttpClient())
+            //{
+            //    var json = JsonConvert.SerializeObject(deckGroup);
+            //    StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+            //    using (var response = await _client.PostAsync("https://localhost:7025/api/DeckGroup", content))
+
+            //    {
+            //        string responseContent = await response.Content.ReadAsStringAsync();
+            //        deckGroup = JsonConvert.DeserializeObject<DeckGroup>(responseContent);
+            //    }
+            //}
+            return RedirectToAction("DeckGroups", "MyStudies");
+        }
+
+        [Authorize]
+        [HttpGet("CreateDeck")]
+        [Route("CreateDeck")]
+        public IActionResult CreateDeck()
+        {
             return View();
         }
 
         [Authorize]
-        [HttpPost]
-        public IActionResult CreateDeckGroup(DeckGroupViewModel deckGroupViewModel)
+        [HttpPost("CreateDeck")]
+        public async Task<IActionResult> CreateDeck(DeckGroupViewModel deckGroupViewModel)
         {
-            deckGroupViewModel = new DeckGroupViewModel();
-            return PartialView("CreateDeckGroup", deckGroupViewModel);
+            Deck deck = new Deck()
+            {
+                DeckName = deckGroupViewModel.DeckGroupName,
+                DeckDescription = deckGroupViewModel.DeckGroupDescription
+            };
+
+            using (var httpClient = new HttpClient())
+            {
+                var json = JsonConvert.SerializeObject(deck);
+                StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+                using (var response = await _client.PostAsync("https://localhost:7025/api/DeckGroup", content))
+
+                {
+                    string responseContent = await response.Content.ReadAsStringAsync();
+                    deck = JsonConvert.DeserializeObject<Deck>(responseContent);
+                }
+            }
+            return RedirectToAction("MyDashboard", "MyStudies");
         }
 
         [Authorize]
         [HttpGet("EditDeckGroup")]
-        public IActionResult EditDeckGroup()
+        public IActionResult EditDeckGroup(int id)
         {
-            //FlashCard flashCard = 
-            return View();
+            DeckGroup deckgroup;
+            return PartialView();
         }
 
         [Authorize]
@@ -136,7 +185,7 @@ namespace StudyBuddyMVC.Controllers
             using (var response = await _client.PostAsync("https://localhost:7025/api/FlashCard", content))
             {
                 var responseContent = await response.Content.ReadAsStringAsync();
-                responseContent = JsonConvert.DeserializeObject<string>(responseContent);
+                flashcard = JsonConvert.DeserializeObject<FlashCard>(responseContent);
             }
             return RedirectToAction("MyDashboard", "MyStudies");
 
