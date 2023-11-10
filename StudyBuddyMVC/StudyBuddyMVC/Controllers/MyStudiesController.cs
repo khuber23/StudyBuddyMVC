@@ -79,34 +79,34 @@ namespace StudyBuddyMVC.Controllers
 
         [Authorize]
         [HttpGet("CreateDeckGroup")]
-        [Route("CreateDeckGroup")]
         public IActionResult CreateDeckGroup()
         {
-            DeckGroupsViewModel deckgroups = new DeckGroupsViewModel();
-            return PartialView("_CreateDeckGroup", deckgroups);
+            return PartialView("_CreateDeckGroup", new DeckGroupViewModel());
         }
 
         [Authorize]
         [HttpPost("CreateDeckGroup")]
         public async Task<IActionResult> CreateDeckGroup(DeckGroupViewModel deckGroupViewModel)
         {
-            //DeckGroup deckGroup = new DeckGroup()
-            //{
-            //    DeckGroupName = deckGroupViewModel.DeckGroupName,
-            //    DeckGroupDescription = deckGroupViewModel.DeckGroupDescription
-            //};
+            DeckGroup deckGroup = new DeckGroup()
+            {
+                DeckGroupName = deckGroupViewModel.DeckGroupName,
+                DeckGroupDescription = deckGroupViewModel.DeckGroupDescription,
+                IsPublic = deckGroupViewModel.IsPublic,
+                ReadOnly = deckGroupViewModel.IsPublic
+            };
 
-            //using (var httpClient = new HttpClient())
-            //{
-            //    var json = JsonConvert.SerializeObject(deckGroup);
-            //    StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
-            //    using (var response = await _client.PostAsync("https://localhost:7025/api/DeckGroup", content))
+            using (var httpClient = new HttpClient())
+            {
+                var json = JsonConvert.SerializeObject(deckGroup);
+                StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+                using (var response = await _client.PostAsync("https://localhost:7025/api/DeckGroup", content))
 
-            //    {
-            //        string responseContent = await response.Content.ReadAsStringAsync();
-            //        deckGroup = JsonConvert.DeserializeObject<DeckGroup>(responseContent);
-            //    }
-            //}
+                {
+                    string responseContent = await response.Content.ReadAsStringAsync();
+                    deckGroup = JsonConvert.DeserializeObject<DeckGroup>(responseContent);
+                }
+            }
             return RedirectToAction("DeckGroups", "MyStudies");
         }
 

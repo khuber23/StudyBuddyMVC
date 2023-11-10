@@ -11,5 +11,9 @@ namespace StudyBuddyMVC.Models
 
         public string? DeckGroupDescription { get; set; }
 
+        public bool IsPublic { get; set; }
+
+        public bool ReadOnly { get; set; }
+
     }
 }
