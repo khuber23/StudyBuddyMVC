@@ -115,24 +115,24 @@ namespace StudyBuddyMVC.Controllers
         [Route("CreateDeck")]
         public IActionResult CreateDeck()
         {
-            return View();
+            return PartialView("_CreateDeck", new DeckViewModel());
         }
 
         [Authorize]
         [HttpPost("CreateDeck")]
-        public async Task<IActionResult> CreateDeck(DeckGroupViewModel deckGroupViewModel)
+        public async Task<IActionResult> CreateDeck(DeckViewModel deckViewModel)
         {
             Deck deck = new Deck()
             {
-                DeckName = deckGroupViewModel.DeckGroupName,
-                DeckDescription = deckGroupViewModel.DeckGroupDescription
+                DeckName = deckViewModel.DeckName,
+                DeckDescription = deckViewModel.DeckDescription
             };
 
             using (var httpClient = new HttpClient())
             {
                 var json = JsonConvert.SerializeObject(deck);
                 StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
-                using (var response = await _client.PostAsync("https://localhost:7025/api/DeckGroup", content))
+                using (var response = await _client.PostAsync("https://localhost:7025/api/Deck", content))
 
                 {
                     string responseContent = await response.Content.ReadAsStringAsync();

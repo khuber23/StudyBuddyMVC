@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewData["Title"] = "StudyPriority";
+    Layout = "~/Views/StudySession/_studySessionLayout.cshtml";
+}
+
+<h1>Study Priority</h1>
+<hr class="border border-primary border-3 opacity-75">
+<p>Select any "My Session" units to start a study session with them.</p>
+<br/>
+    <div class="row gx-4" style="text-align:center;">
+        <div class="col">
+            <div class="p-2"><h2>DeckGroups</h2>
+                <ul class="list-group">
+                  @*<select class="form-select" size="3" aria-label="Size 3 select example" id="deckGroupList" asp-for="Id" asp-items="@(new SelectList(Model.DeckGroups, "DeckGroupId", "DeckGroupName"))">
+                     <option>-- Select One --</option>
+                 </select>*@
+                </ul>
+            </div>
+        </div>
+        <div class="col">
+            <div class="p-2"><h2>Decks</h2>
+                <ul class="list-group">
+                  @*<select class="form-select" multiple aria-label="Multiple select example" id="deckList" asp-for="Id" asp-items="@(new SelectList(Model.Decks, "DeckId", "DeckName"))">
+                    <option> -- Select Any --</option>
+                </select>*@ 
+                </ul>
+            </div>
+        </div>
+        <div class="col">
+            <div class="p-2"><h2>Flashcards</h2>
+                <ul class="list-group">
+                @*<select class="form-select" multiple aria-label="Multiple select example" id="flashCardList" asp-for="Id" asp-items="@(new SelectList(Model.FlashCards, "FlashCardId", "FlashCardQuestion"))">
+                    <option>-- Select Any --</option>
+                </select>*@
+                </ul>
+            </div>
+        </div>
+    </div>
+
