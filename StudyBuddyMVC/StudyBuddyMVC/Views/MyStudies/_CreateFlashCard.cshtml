@@ -1,83 +1,38 @@
-﻿@model FlashCardViewModel
+﻿@model ApiStudyBuddy.Models.FlashCard
 
-@{
-    ViewData["Title"] = "CreateFlashCard";
-    Layout = "/Views/Shared/_Layout.cshtml";
-}
-
-<div class="row justify-content-center">
-    <div class="col-8">
-        <section>
-            <form method="post">
-                <h2>Fill to add a new Flash Card.</h2>
-                <hr />
-                <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
-                <div class="form-floating mb-3">
-                    <input asp-for="FlashCardQuestion" class="form-control" aria-required="true" placeholder="" />
-                    <label asp-for="FlashCardQuestion" class="form-label">Flashcard Question: </label>
-                    <span asp-validation-for="FlashCardQuestion" class="text-danger"></span> 
-                </div>
-                <div class="form-floating mb-3">
-                    <input asp-for="FlashCardAnswer" class="form-control" aria-required="true" placeholder="" />
-                    <label asp-for="FlashCardAnswer" class="form-label">Answer: </label>
-                    <span asp-validation-for="FlashCardAnswer" class="text-danger"></span>
-                </div>
-                <div>
-                    <button id="create-newFlashCard" type="submit" class="w-100 btn btn-lg btn-primary">Create FlashCard</button>
-                </div>
-                <label>@Html.Raw(@ViewBag.Message)</label>
-            </form>
-        </section>
-    </div>
-</div>
-<div id='myModal' class='modal'>
+<div class="modal fade" id="createFlashCard-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div id='myModalContent'></div>
+            <form asp-action="CreateFlashCard" asp-controller="MyStudies" id="AddFlashCard" method="post">
+                <div class="modal-header bg-info">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Add a Flashcard</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <label asp-for="FlashCardQuestion" class="forrm-label">Flashcard Question:</label>
+                        <input asp-for="FlashCardQuestion" class="form-control" type="text" id="flashCardName" aria-required="true" />
+                        <span asp-validation-for="FlashCardQuestion" class="text-danger"></span>
+                    </div>
+                    <div>
+                        <label asp-for="FlashCardAnswer">Answer:</label>
+                        <textarea asp-for="FlashCardAnswer" class="form-control" rows="4" cols="50" id="flashcardAnswer" aria-required="true"></textarea>
+                        <span asp-validation-for="FlashCardAnswer" class="text-danger"></span><br><br />
+                    </div>
+                    <div>
+                        <input type="checkbox" id="makepublic">
+                        <label asp-for="IsPublic">Make it public</label><br>
+                    </div>
+                    <div>
+                        <input type="radio" id="readOnly" />
+                        <label asp-for="ReadOnly">Read Only</label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary" data-bs-toggle="modal">Save</button>
+                </div>
+            </form>
         </div>
     </div>
-
-</div>  
-
-@section scripts
-    {
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-    <script src="~/Scripts/bootstrap.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
-    <script>
-        var TeamDetailPostBackURL = '/Home/Details';
-        $(function () {
-            $(".anchorDetail").click(function () {
-                debugger;
-                var $buttonClicked = $(this);
-                var id = $buttonClicked.attr('data-id');
-                var options = { "backdrop": "static", keyboard: true };
-                $.ajax({
-                    type: "GET",
-                    url: TeamDetailPostBackURL,
-                    contentType: "application/json; charset=utf-8",
-                    data: { "Id": id },
-                    datatype: "json",
-                    success: function (data) {
-                        debugger;
-                        $('#myModalContent').html(data);
-                        $('#myModal').modal(options);
-                        $('#myModal').modal('show');
-
-                    },
-                    error: function () {
-                        alert("Dynamic content load failed.");
-                    }
-                });
-            });
-            //$("#closebtn").on('click',function(){
-            //    $('#myModal').modal('hide');
-
-            $("#closbtn").click(function () {
-                $('#myModal').modal('hide');
-            });
-        });
-
-    </script>
-
-}  
+</div>

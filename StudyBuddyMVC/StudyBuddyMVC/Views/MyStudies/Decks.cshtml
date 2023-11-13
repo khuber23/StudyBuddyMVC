@@ -1,4 +1,5 @@
-﻿@model IEnumerable<ApiStudyBuddy.Models.Deck>
+﻿@using ApiStudyBuddy.Models;
+@model IEnumerable<ApiStudyBuddy.Models.Deck>
 @{
     ViewData["Title"] = "Decks";
     Layout = "~/Views/MyStudies/_myStudiesLayout.cshtml";
@@ -7,7 +8,8 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 @{
-    await Html.RenderPartialAsync("_CreateDeck", new DeckViewModel());
+    await Html.RenderPartialAsync("_CreateDeck", new Deck());
+    await Html.RenderPartialAsync("_CreateFlashCard", new FlashCard());
 }
 
 <h1>Decks</h1>
@@ -26,7 +28,7 @@
             <th style="font-weight:bold">
                 <button id="create-deck-btn" type="button" class="btn btn-primary" data-toggle="modal">
                     Create a Deck
-                </button>
+                </button><br />
             </th>
         </tr>
         @foreach (var item in Model)
@@ -42,10 +44,98 @@
                     @Html.DisplayFor(modelItem => item.DeckDescription)
                   </td>
                   <td>
-                    @Html.ActionLink("Edit", "Edit", new {id=item.DeckId}) |
-                    @Html.ActionLink("Details", "Details", new {id=item.DeckId} ) |
-                    @Html.ActionLink("Delete", "Delete", new {id=item.DeckId})
-                  </td>
+                    @* @Html.ActionLink("Edit", "Edit", new {id=item.DeckId}) *@
+                    <button type="button" class="btn btn-primary" onclick="@item.DeckId" data-bs-toggle="modal" data-bs-target="@("#EditDeck-" + @item.DeckId)">
+                        Edit
+                    </button>
+
+                    <!-- Edit -->
+                    <div class="modal fade" id="EditDeck-@item.DeckId" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <form asp-action="EditDeck" asp-controller="MyStudies" method="post">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Edit Deck</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <input type="hidden" asp-for="@item.DeckId" />
+                                            <label asp-for="@item.DeckName" class="control-label"></label>
+                                            <input class="form-control" asp-for="@item.DeckName"><br>
+                                            <span asp-validation-for="@item.DeckName" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="@item.DeckDescription" class="control-label"></label>
+                                            <textarea class="form-control" asp-for="@item.DeckDescription"><br>></textarea>
+                                            <span asp-validation-for="@item.DeckDescription" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                                    </div>
+                                </form>>
+                            </div>
+                        </div>
+                    </div>  |
+                   @*  @Html.ActionLink("Details", "Details", new {id=item.DeckId} ) *@
+                    <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#deckDetail">
+                        Details
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="deckDetail" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Information about Deck</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div>
+                                        <p>
+                                            @Html.DisplayFor(modelItem => item.DeckName)
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <p>
+                                            @Html.DisplayFor(modelItem => item.DeckDescription)
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">I'm Done</button>
+                                    <button id="create-flashcard-btn"type="button" class="btn btn-primary">Add Flashcard</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div> |
+                    @* @Html.ActionLink("Delete", "Delete", new {id=item.DeckId}) *@
+                    <button type="button" class="btn btn-danger" onclick="@item.DeckId" data-bs-toggle="modal" data-bs-target="#deleteDeck">
+                        Delete
+                    </button>
+
+                    <!-- Delete -->
+                    <div class="modal fade" id="deleteDeck" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <form asp-action="DeleteDeck" asp-controller="MyStudies" method="post">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Deleting Deck</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <h2>Are you sure you want to delete this Deckgroup?</h2>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancel</button>
+                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                </td>
             </tr>
         }
     </thead>
@@ -55,6 +145,9 @@
     <script>
         $("#create-deck-btn").click(function () {
             $("#createDeck-modal").modal('show');
+        });
+        $("#create-flashcard-btn").click(function () {
+            $("#createFlashCard-modal").modal('show');
         });
     </script>
 }

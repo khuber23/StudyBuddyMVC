@@ -115,19 +115,13 @@ namespace StudyBuddyMVC.Controllers
         [Route("CreateDeck")]
         public IActionResult CreateDeck()
         {
-            return PartialView("_CreateDeck", new DeckViewModel());
+            return PartialView("_CreateDeck", new Deck());
         }
 
         [Authorize]
         [HttpPost("CreateDeck")]
-        public async Task<IActionResult> CreateDeck(DeckViewModel deckViewModel)
+        public async Task<IActionResult> CreateDeck(Deck deck)
         {
-            Deck deck = new Deck()
-            {
-                DeckName = deckViewModel.DeckName,
-                DeckDescription = deckViewModel.DeckDescription
-            };
-
             using (var httpClient = new HttpClient())
             {
                 var json = JsonConvert.SerializeObject(deck);
@@ -139,56 +133,52 @@ namespace StudyBuddyMVC.Controllers
                     deck = JsonConvert.DeserializeObject<Deck>(responseContent);
                 }
             }
-            return RedirectToAction("MyDashboard", "MyStudies");
+            return RedirectToAction("Decks", "MyStudies");
         }
 
-        [Authorize]
-        [HttpGet("EditDeckGroup")]
-        public IActionResult EditDeckGroup(int id)
-        {
-            DeckGroup deckgroup;
-            return PartialView();
-        }
-
-        [Authorize]
-        [HttpPost]
-        public async Task<IActionResult> EditDeckGroup(DeckGroupViewModel deckGroupViewModel)
-        {
-
-            return Redirect("~/Dashboard/Index");
-        }
 
         [Authorize]
         [HttpGet("CreateFlashCard")]
         [Route("CreateFlashCard")]
         public IActionResult CreateFlashCard()
         {
-            return View();
+            return PartialView("_CreateFlashCard", new FlashCard());
         }
 
         [Authorize]
-        [HttpPost]
-        public async Task<IActionResult> CreateFlashCard(FlashCardViewModel flashcardViewModel)
+        [HttpPost("CreateFlashCard")]
+        public async Task<IActionResult> CreateFlashCard(FlashCard flashCard)
         {
             if (!ModelState.IsValid)
             {
                 return View();
             }
 
-            FlashCard flashcard = new FlashCard();
-            flashcard.FlashCardQuestion = flashcardViewModel.FlashCardQuestion;
-            flashcard.FlashCardAnswer = flashcardViewModel.FlashCardAnswer;
-
-            var json = JsonConvert.SerializeObject(flashcard);
+            var json = JsonConvert.SerializeObject(flashCard);
             StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
 
             using (var response = await _client.PostAsync("https://localhost:7025/api/FlashCard", content))
             {
                 var responseContent = await response.Content.ReadAsStringAsync();
-                flashcard = JsonConvert.DeserializeObject<FlashCard>(responseContent);
+                flashCard = JsonConvert.DeserializeObject<FlashCard>(responseContent);
             }
-            return RedirectToAction("MyDashboard", "MyStudies");
+            return RedirectToAction("Flashcards", "MyStudies");
 
+        }
+
+        [Authorize]
+        [HttpPost("EditDeckGroup")]
+        public IActionResult EditDeckGroup(int id)
+        {
+            DeckGroup deckgroup;
+            return RedirectToAction("DeckGroups", "MyStudies");
+        }
+
+        [Authorize]
+        [HttpPost("EditDeck")]
+        public IActionResult EditDeck(int id)
+        {
+            return RedirectToAction("DeckGroups", "MyStudies");
         }
 
         [Authorize]
@@ -206,6 +196,21 @@ namespace StudyBuddyMVC.Controllers
         {
 
             return Redirect("~/Dashboard/Index");
+        }
+
+        [Authorize]
+        [HttpPost("DeleteDeckGroup")]
+        public IActionResult DeleteDeckGroup(int id)
+        {
+            return RedirectToAction("DeckGroups", "MyStudies");
+        }
+
+
+        [Authorize]
+        [HttpPost("DeleteDeck")]
+        public IActionResult DeleteDeck(int id)
+        {
+            return RedirectToAction("Decks", "MyStudies");
         }
 
         [Authorize]
