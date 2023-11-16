@@ -1,0 +1,47 @@
+﻿@using ApiStudyBuddy.Models;
+@model DeckGroupDeck
+
+<div class="modal fade" id="createDeckGroupDeck-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form asp-action="DeckGroupDeck" asp-controller="MyStudies" id="AddDeckGroupDeck" method="post">
+                <div class="modal-header bg-info">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Add a Deck.</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <label asp-for="Deck.DeckName" class="forrm-label">Deck Name:</label>
+                        <input asp-for="Deck.DeckName" class="form-control" type="text" id="deckName" aria-required="true" />
+                        <span asp-validation-for="Deck.DeckName" class="text-danger"></span>
+                    </div>
+                    <div>
+                        <label asp-for="Deck.DeckDescription">Description:</label>
+                        <textarea asp-for="Deck.DeckDescription" class="form-control" rows="4" cols="50" id="deckDescription" aria-required="true"></textarea>
+                        <span asp-validation-for="Deck.DeckDescription" class="text-danger"></span><br><br />
+                    </div>
+                    <div>
+                        <input asp-for="Deck.IsPublic" data-val="true" type="checkbox" id="makepublic" value="True">
+                        <input asp-for="Deck.IsPublic" type="hidden" id="makepublic" value="False">
+                        <label asp-for="Deck.IsPublic">Make it public</label><br>
+                    </div>
+                    <div>
+                        <div class="col-md-10">
+                            <label>Read Only</label>
+                            <label asp-for="Deck.ReadOnly">Yes</label>
+                            <input asp-for="Deck.ReadOnly" type="radio" id="yes" value="True" />
+                            <span asp-validation-for="Deck.ReadOnly" class="text-danger"></span>
+                            <label asp-for="Deck.ReadOnly">No</label>
+                            <input asp-for="Deck.ReadOnly" type="radio" id="no" value="False" />
+                            <span asp-validation-for="Deck.ReadOnly" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" id="create-flashcard-btn" class="btn btn-primary" data-toggle="modal">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

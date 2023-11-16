@@ -130,26 +130,29 @@
                     <div class="modal fade" id="detailBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Information about Deck group</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <div>
-                                        <p>
-                                            @Html.DisplayFor(modelItem => item.DeckGroupName)
-                                        </p>
+                                <form asp-action="DeckGroupDeck" asp-controller="MyStudies" method="post">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Information about Deck group</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
-                                    <div>
-                                        <p>
-                                            @Html.DisplayFor(modelItem => item.DeckGroupDescription)
-                                        </p>
+                                    <div class="modal-body">
+                                        <div>
+                                            <p>
+                                                @Html.DisplayFor(modelItem => item.DeckGroupName)
+                                            </p>
+                                        </div>
+                                        <div>
+                                            <p>
+                                                @Html.DisplayFor(modelItem => item.DeckGroupDescription)
+                                            </p>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="button" id="addDeck-btn" class="btn btn-primary">Add Deck</button>
-                                </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        @* <button type="button" id="createDeck-btn" class="btn btn-primary">Create a Deck</button> *@
+                                        <button type="submit" class="btn btn-primary" >Create a Deck</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div> |
@@ -163,7 +166,7 @@
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <form asp-action="DeleteDeckGroup" asp-controller="MyStudies" method="post">
-                                    <div class="modal-header">
+                                    <div class="modal-header bg-warning">
                                         <h1 class="modal-title fs-5" id="staticBackdropLabel">Deleting Deck Group</h1>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
@@ -189,9 +192,9 @@
         $("#create-deck-group-btn").click(function () {
             $("#createDeckGroup-modal").modal('show');
         });
-        $("#addDeck-btn").click(function () {
+        $("#createDeck-btn").click(function () {
             $("#createDeck-modal").modal('show');
-            $("#createDeckGroup-modal").hide();
+            
         });
     </script>
 }

@@ -27,12 +27,20 @@
                         <span asp-validation-for="DeckGroupDescription" class="text-danger"></span><br><br />
                     </div>
                     <div>
-                        <input type="checkbox" id="makepublic">
+                        <input asp-for="IsPublic" data-val="true" type="checkbox" id="makepublic" value="True">
+                        <input asp-for="IsPublic" type="hidden" id="makepublic" value="False">
                         <label asp-for="IsPublic">Make it public</label><br>
                     </div>
                     <div>
-                        <input type="radio" id="readOnly" />
-                        <label asp-for="ReadOnly">Read Only</label>
+                        <div class="col-md-10">
+                            <label>Read Only</label>
+                            <label asp-for="ReadOnly">Yes</label>
+                            <input asp-for="ReadOnly" type="radio" id="yes" value="True" />
+                            <span asp-validation-for="ReadOnly" class="text-danger"></span>
+                            <label asp-for="ReadOnly">No</label>
+                            <input asp-for="ReadOnly" type="radio" id="no" value="False" />
+                            <span asp-validation-for="ReadOnly" class="text-danger"></span>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -47,6 +55,7 @@
 @section scripts {
     <script>
         $("#create-deck-btn").click(function () {
+            $("#createDeckGroup-modal").modal('dismiss');
             $("#createDeck-modal").modal('show');
         });
     </script>

@@ -110,6 +110,52 @@ namespace StudyBuddyMVC.Controllers
             return RedirectToAction("DeckGroups", "MyStudies");
         }
 
+
+        [Authorize]
+        [HttpGet("DeckGroupDeck")]
+        public IActionResult DeckGroupDeck()
+        {
+            return PartialView("DeckGroupDeck", new DeckGroupDeck());
+        }
+
+        [Authorize]
+        [HttpPost("DeckGroupDeck")]
+        public async Task<IActionResult> DeckGroupDeck(DeckGroupDeck deckgroupDeck)
+        {
+            if (deckgroupDeck.Deck == null)
+            {
+                return RedirectToAction("DeckGroupDeck", "MyStudies");
+            }
+            else
+            {
+                using (var httpClient = new HttpClient())
+                {
+                    var json = JsonConvert.SerializeObject(deckgroupDeck.Deck);
+                    StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+                    using (var response = await _client.PostAsync("https://localhost:7025/api/Deck", content))
+
+                    {
+                        string responseContent = await response.Content.ReadAsStringAsync();
+                        deckgroupDeck.Deck = JsonConvert.DeserializeObject<Deck>(responseContent);
+                    }
+                }
+            }
+
+            using (var httpClient = new HttpClient())
+            {
+                var json = JsonConvert.SerializeObject(deckgroupDeck);
+                StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+                using (var response = await _client.PostAsync("https://localhost:7025/api/DeckGroupDeck", content))
+
+                {
+                    string responseContent = await response.Content.ReadAsStringAsync();
+                    deckgroupDeck = JsonConvert.DeserializeObject<DeckGroupDeck>(responseContent);
+                }
+            }
+
+            return RedirectToAction("DeckGroups", "MyStudies");
+        }
+
         [Authorize]
         [HttpGet("CreateDeck")]
         [Route("CreateDeck")]
@@ -133,7 +179,7 @@ namespace StudyBuddyMVC.Controllers
                     deck = JsonConvert.DeserializeObject<Deck>(responseContent);
                 }
             }
-            return RedirectToAction("Decks", "MyStudies");
+            return RedirectToAction("CreateFlashCard", "MyStudies");
         }
 
 
@@ -163,7 +209,6 @@ namespace StudyBuddyMVC.Controllers
                 flashCard = JsonConvert.DeserializeObject<FlashCard>(responseContent);
             }
             return RedirectToAction("Flashcards", "MyStudies");
-
         }
 
         [Authorize]
@@ -179,6 +224,13 @@ namespace StudyBuddyMVC.Controllers
         public IActionResult EditDeck(int id)
         {
             return RedirectToAction("DeckGroups", "MyStudies");
+        }
+
+        [Authorize]
+        [HttpPost("AddToDeck")]
+        public IActionResult AddToDeck(int id)
+        {
+            return RedirectToAction("FlashCards", "MyStudies");
         }
 
         [Authorize]
