@@ -1,11 +1,6 @@
 ﻿@using ApiStudyBuddy.Models;
-@model DeckGroupViewModel
+@model DeckGroup
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
-@{
-    await Html.RenderPartialAsync("_CreateDeck", new Deck());
-}
 
 <div class="modal fade" id="createDeckGroup-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -17,7 +12,7 @@
                 </div>
                 <div class="modal-body">
                     <div>
-                        <label asp-for="DeckGroupName" class="forrm-label">Deckgroup Name:</label>
+                        <label asp-for="DeckGroupName" class="form-label">Deckgroup Name:</label>
                         <input asp-for="DeckGroupName" class="form-control" type="text" id="deckgroupName" aria-required="true" />
                         <span asp-validation-for="DeckGroupName" class="text-danger"></span>
                     </div>
@@ -45,18 +40,15 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button id ="create-deck-btn" type="submit" class="btn btn-primary" data-toggle="modal">Save</button>
+                    <div>
+                        <label>Create a Deck?</label>
+                        @* <button type="submit" class="btn btn-primary">Just Deckgroup</button> *@
+                        <button id="create-deck-inner-btn" type="button" class="btn btn-primary">Save</button>
+                    </div>   
                 </div>
             </form>
         </div>
     </div>
 </div>
 
-@section scripts {
-    <script>
-        $("#create-deck-btn").click(function () {
-            $("#createDeckGroup-modal").modal('dismiss');
-            $("#createDeck-modal").modal('show');
-        });
-    </script>
-}
+                    

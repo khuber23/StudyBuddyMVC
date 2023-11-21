@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
 using StudyBuddyMVC.Models;
+using System.Data.Common;
 using System.Text;
 
 namespace StudyBuddyMVC.Controllers
@@ -11,8 +12,11 @@ namespace StudyBuddyMVC.Controllers
 	[Authorize]
 	public class MyStudiesController : Controller
     {
-        Uri baseAddress = new Uri("https://localhost:7025/api/");
+         Uri baseAddress = new Uri("https://localhost:7025/api/");
         private readonly HttpClient _client;
+
+        public DeckGroup deckGroup { get; set; }
+        public List<DeckGroupViewModel> deckGroupVM { get; set; }
 
         public MyStudiesController()
         {
@@ -74,6 +78,9 @@ namespace StudyBuddyMVC.Controllers
                 string data = response.Content.ReadAsStringAsync().Result;
                 deckgroups = JsonConvert.DeserializeObject<List<DeckGroupViewModel>>(data);
             }
+
+            deckGroupVM = deckgroups;
+
             return View(deckgroups);
         }
 
@@ -86,14 +93,14 @@ namespace StudyBuddyMVC.Controllers
 
         [Authorize]
         [HttpPost("CreateDeckGroup")]
-        public async Task<IActionResult> CreateDeckGroup(DeckGroupViewModel deckGroupViewModel)
+        public async Task<IActionResult> CreateDeckGroup(DeckGroup DeckGroup)
         {
             DeckGroup deckGroup = new DeckGroup()
             {
-                DeckGroupName = deckGroupViewModel.DeckGroupName,
-                DeckGroupDescription = deckGroupViewModel.DeckGroupDescription,
-                IsPublic = deckGroupViewModel.IsPublic,
-                ReadOnly = deckGroupViewModel.IsPublic
+                DeckGroupName = DeckGroup.DeckGroupName,
+                DeckGroupDescription = DeckGroup.DeckGroupDescription,
+                IsPublic = DeckGroup.IsPublic,
+                ReadOnly = DeckGroup.ReadOnly
             };
 
             using (var httpClient = new HttpClient())
@@ -107,9 +114,19 @@ namespace StudyBuddyMVC.Controllers
                     deckGroup = JsonConvert.DeserializeObject<DeckGroup>(responseContent);
                 }
             }
+
+            // call to get the deckgroups
+            foreach (DeckGroupViewModel dg in deckGroupVM)
+            {
+                if (deckGroup.DeckGroupName == DeckGroup.DeckGroupName && deckGroup.DeckGroupDescription == DeckGroup.DeckGroupDescription)
+                {
+                    DeckGroup = deckGroup;
+                    break;
+                }
+            }
+
             return RedirectToAction("DeckGroups", "MyStudies");
         }
-
 
         [Authorize]
         [HttpGet("DeckGroupDeck")]
@@ -120,38 +137,53 @@ namespace StudyBuddyMVC.Controllers
 
         [Authorize]
         [HttpPost("DeckGroupDeck")]
-        public async Task<IActionResult> DeckGroupDeck(DeckGroupDeck deckgroupDeck)
+        public async Task<IActionResult> DeckGroupDeck(DeckGroupDeck dgb)
         {
-            if (deckgroupDeck.Deck == null)
-            {
-                return RedirectToAction("DeckGroupDeck", "MyStudies");
-            }
-            else
-            {
-                using (var httpClient = new HttpClient())
-                {
-                    var json = JsonConvert.SerializeObject(deckgroupDeck.Deck);
-                    StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
-                    using (var response = await _client.PostAsync("https://localhost:7025/api/Deck", content))
+            //DeckGroupDeck deckGroupDeckTest = new DeckGroupDeck();
 
-                    {
-                        string responseContent = await response.Content.ReadAsStringAsync();
-                        deckgroupDeck.Deck = JsonConvert.DeserializeObject<Deck>(responseContent);
-                    }
-                }
-            }
+            DeckGroup deckGroup = new DeckGroup();
+            deckGroup.DeckGroupName = dgb.DeckGroup.DeckGroupName; ;
+            deckGroup.DeckGroupDescription = dgb.DeckGroup.DeckGroupDescription;
+            deckGroup.IsPublic = dgb.DeckGroup.IsPublic;
+            deckGroup.ReadOnly = dgb.DeckGroup.ReadOnly;
 
-            using (var httpClient = new HttpClient())
-            {
-                var json = JsonConvert.SerializeObject(deckgroupDeck);
-                StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
-                using (var response = await _client.PostAsync("https://localhost:7025/api/DeckGroupDeck", content))
+            Deck deck = new Deck();
+            deck.DeckName = "Deck Example";
+            deck.DeckDescription = "Example of deck description";
 
-                {
-                    string responseContent = await response.Content.ReadAsStringAsync();
-                    deckgroupDeck = JsonConvert.DeserializeObject<DeckGroupDeck>(responseContent);
-                }
-            }
+            //deckGroupDeckTest.DeckGroup = deckGroup;
+            //deckGroupDeckTest.Deck = deck;
+            //if (dgb.Deck == null)
+            //{
+            //    deckGroup.IsPublic = false;
+            //    return RedirectToAction("DeckGroupDeck", "MyStudies");
+            //}
+            //else
+            //{
+            //    using (var httpClient = new HttpClient())
+            //    {
+            //        var json = JsonConvert.SerializeObject(deckgroupDeck.Deck);
+            //        StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+            //        using (var response = await _client.PostAsync("https://localhost:7025/api/Deck", content))
+
+            //        {
+            //            string responseContent = await response.Content.ReadAsStringAsync();
+            //            deckgroupDeck.Deck = JsonConvert.DeserializeObject<Deck>(responseContent);
+            //        }
+            //    }
+            //}
+
+            //using (var httpClient = new HttpClient())
+            //{
+            //    var json = JsonConvert.SerializeObject(deckgroupDeck);
+            //    StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+            //    using (var response = await _client.PostAsync("https://localhost:7025/api/DeckGroupDeck", content))
+
+            //    {
+            //        string responseContent = await response.Content.ReadAsStringAsync();
+            //        deckgroupDeck = JsonConvert.DeserializeObject<DeckGroupDeck>(responseContent);
+            //    }
+            //}
 
             return RedirectToAction("DeckGroups", "MyStudies");
         }
@@ -179,6 +211,31 @@ namespace StudyBuddyMVC.Controllers
                     deck = JsonConvert.DeserializeObject<Deck>(responseContent);
                 }
             }
+
+            // Assigning the deckgroupdeck to both deckgroup and decks. 
+            DeckGroupDeck deckgroupDeck = new DeckGroupDeck();
+            deckgroupDeck.Deck.DeckName = deck.DeckName;
+            deckgroupDeck.Deck.DeckDescription = deck.DeckDescription;
+            deckgroupDeck.Deck.IsPublic = deck.IsPublic;
+            deckgroupDeck.Deck.ReadOnly = deck.ReadOnly;
+
+            deckgroupDeck.DeckGroup.DeckGroupName = deckGroup.DeckGroupName;
+            deckgroupDeck.DeckGroup.DeckGroupDescription = deckGroup.DeckGroupDescription;
+            deckgroupDeck.DeckGroup.IsPublic = deckGroup.IsPublic;
+            deckgroupDeck.DeckGroup.ReadOnly = deckGroup.ReadOnly;
+
+            using (var httpClient = new HttpClient())
+            {
+                var json = JsonConvert.SerializeObject(deckgroupDeck);
+                StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+                using (var response = await _client.PostAsync("https://localhost:7025/api/DeckGroupDeck", content))
+
+                {
+                    string responseContent = await response.Content.ReadAsStringAsync();
+                    deckgroupDeck = JsonConvert.DeserializeObject<DeckGroupDeck>(responseContent);
+                }
+            }
+
             return RedirectToAction("CreateFlashCard", "MyStudies");
         }
 
