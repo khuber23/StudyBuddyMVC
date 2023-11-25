@@ -1,5 +1,5 @@
 ﻿@using ApiStudyBuddy.Models;
-@model IEnumerable<StudyBuddyMVC.Models.DeckGroupViewModel>
+@model IEnumerable<ApiStudyBuddy.Models.DeckGroup>
 
 @{
     ViewData["Title"] = "DeckGroups";
@@ -9,7 +9,8 @@
 
 @{
     await Html.RenderPartialAsync("_CreateDeckGroup", new DeckGroup());
-    await Html.RenderPartialAsync("_CreateDeck", new Deck());
+    await Html.RenderPartialAsync("_CreateDeck", new Deck()); 
+    await Html.RenderPartialAsync("DeckGroupDeck", new DeckGroupDeck());
 }
 
 <h1>DeckGroups</h1>
@@ -190,13 +191,13 @@
         $("#create-deck-group-btn").click(function () {
             $("#createDeckGroup-modal").modal('show');
         });
-        $("#createDeck-btn").click(function () {
-            $("#createDeck-modal").modal('show');          
-        });
+        // $("#create-deck-inner-btn").click(function () {
+        //     $("#createDeckGroupDeck-modal").modal('show');
+        // });
 
         $("#create-deck-inner-btn").click(function () {
             $("#createDeckGroup-modal").modal('hide');
-            $("#createDeck-modal").modal('show');
+            $("#createDeckGroupDeck-modal").modal('show');
         });
     </script>
 }

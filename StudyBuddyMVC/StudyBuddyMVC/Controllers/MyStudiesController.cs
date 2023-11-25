@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
 using StudyBuddyMVC.Models;
+using StudyBuddyMVC.Service;
 using System.Data.Common;
 using System.Text;
 
@@ -12,16 +13,22 @@ namespace StudyBuddyMVC.Controllers
 	[Authorize]
 	public class MyStudiesController : Controller
     {
-         Uri baseAddress = new Uri("https://localhost:7025/api/");
+        // Service fields
+        private readonly IUserService _userService;
+        private readonly IDeckGroupService _deckGroupService;
+        private readonly IDeckService _deckService;
+
+        // Client and base address set up.
+        Uri baseAddress = new Uri("https://localhost:7025/api/");
         private readonly HttpClient _client;
 
-        public DeckGroup deckGroup { get; set; }
-        public List<DeckGroupViewModel> deckGroupVM { get; set; }
-
-        public MyStudiesController()
+        public MyStudiesController(IDeckGroupService deckGroupService, IUserService userService, IDeckService deckService)
         {
             _client = new HttpClient();
             _client.BaseAddress = baseAddress;
+            _deckGroupService = deckGroupService;
+            _userService = userService;
+            _deckService = deckService;
         }
 
 		[Authorize]
@@ -53,14 +60,8 @@ namespace StudyBuddyMVC.Controllers
         [Route("Decks")]
         public IActionResult Decks()
         {
-            List<Deck> decks = new List<Deck>();
-            HttpResponseMessage response = _client.GetAsync("https://localhost:7025/api/Deck").Result;
+            List<Deck> decks = _deckService.GetDecks();
 
-            if (response.IsSuccessStatusCode)
-            {
-                string data = response.Content.ReadAsStringAsync().Result;
-                decks = JsonConvert.DeserializeObject<List<Deck>>(data);
-            }
             return View(decks);
         }
 
@@ -69,17 +70,7 @@ namespace StudyBuddyMVC.Controllers
         [Route("DeckGroups")]
         public IActionResult DeckGroups()
         {
-
-            List<DeckGroupViewModel> deckgroups = new List<DeckGroupViewModel>();
-            HttpResponseMessage response = _client.GetAsync(_client.BaseAddress + "DeckGroup").Result;
-
-            if (response.IsSuccessStatusCode)
-            {
-                string data = response.Content.ReadAsStringAsync().Result;
-                deckgroups = JsonConvert.DeserializeObject<List<DeckGroupViewModel>>(data);
-            }
-
-            deckGroupVM = deckgroups;
+            List<DeckGroup> deckgroups = _deckGroupService.GetDeckGroups();
 
             return View(deckgroups);
         }
@@ -93,37 +84,19 @@ namespace StudyBuddyMVC.Controllers
 
         [Authorize]
         [HttpPost("CreateDeckGroup")]
-        public async Task<IActionResult> CreateDeckGroup(DeckGroup DeckGroup)
+        public async Task<IActionResult> CreateDeckGroup(DeckGroup deckGroup)
         {
-            DeckGroup deckGroup = new DeckGroup()
-            {
-                DeckGroupName = DeckGroup.DeckGroupName,
-                DeckGroupDescription = DeckGroup.DeckGroupDescription,
-                IsPublic = DeckGroup.IsPublic,
-                ReadOnly = DeckGroup.ReadOnly
-            };
+            var userId = _userService.GetUserId();
 
-            using (var httpClient = new HttpClient())
+            if (!ModelState.IsValid)
             {
-                var json = JsonConvert.SerializeObject(deckGroup);
-                StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
-                using (var response = await _client.PostAsync("https://localhost:7025/api/DeckGroup", content))
-
-                {
-                    string responseContent = await response.Content.ReadAsStringAsync();
-                    deckGroup = JsonConvert.DeserializeObject<DeckGroup>(responseContent);
-                }
+                return View("DeckGroups", "MyStudies");
             }
-
-            // call to get the deckgroups
-            foreach (DeckGroupViewModel dg in deckGroupVM)
-            {
-                if (deckGroup.DeckGroupName == DeckGroup.DeckGroupName && deckGroup.DeckGroupDescription == DeckGroup.DeckGroupDescription)
-                {
-                    DeckGroup = deckGroup;
-                    break;
-                }
-            }
+   
+            UserDeckGroup userDeckGroup = new UserDeckGroup();
+            userDeckGroup.UserId = Int32.Parse(userId);
+            userDeckGroup.DeckGroup = deckGroup;
+            await _userService.AddUserDeckGroup(userDeckGroup);
 
             return RedirectToAction("DeckGroups", "MyStudies");
         }
@@ -139,51 +112,17 @@ namespace StudyBuddyMVC.Controllers
         [HttpPost("DeckGroupDeck")]
         public async Task<IActionResult> DeckGroupDeck(DeckGroupDeck dgb)
         {
-            //DeckGroupDeck deckGroupDeckTest = new DeckGroupDeck();
+            // This set up is not official yet, gonna try to figure this one yet to make sure we capture the right deck group first.
+            //DeckGroupDeck deckGroupDeck = new DeckGroupDeck();
 
-            DeckGroup deckGroup = new DeckGroup();
-            deckGroup.DeckGroupName = dgb.DeckGroup.DeckGroupName; ;
-            deckGroup.DeckGroupDescription = dgb.DeckGroup.DeckGroupDescription;
-            deckGroup.IsPublic = dgb.DeckGroup.IsPublic;
-            deckGroup.ReadOnly = dgb.DeckGroup.ReadOnly;
-
-            Deck deck = new Deck();
-            deck.DeckName = "Deck Example";
-            deck.DeckDescription = "Example of deck description";
-
-            //deckGroupDeckTest.DeckGroup = deckGroup;
-            //deckGroupDeckTest.Deck = deck;
-            //if (dgb.Deck == null)
+            //DeckGroup tempDeckGroup = _deckGroupService.RetrieveLastDeckGroup();
+            //if (tempDeckGroup != null)
             //{
-            //    deckGroup.IsPublic = false;
-            //    return RedirectToAction("DeckGroupDeck", "MyStudies");
-            //}
-            //else
-            //{
-            //    using (var httpClient = new HttpClient())
-            //    {
-            //        var json = JsonConvert.SerializeObject(deckgroupDeck.Deck);
-            //        StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
-            //        using (var response = await _client.PostAsync("https://localhost:7025/api/Deck", content))
-
-            //        {
-            //            string responseContent = await response.Content.ReadAsStringAsync();
-            //            deckgroupDeck.Deck = JsonConvert.DeserializeObject<Deck>(responseContent);
-            //        }
-            //    }
+            //    deckGroupDeck.DeckGroup = tempDeckGroup;
+            //    deckGroupDeck.Deck = deck;
             //}
 
-            //using (var httpClient = new HttpClient())
-            //{
-            //    var json = JsonConvert.SerializeObject(deckgroupDeck);
-            //    StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
-            //    using (var response = await _client.PostAsync("https://localhost:7025/api/DeckGroupDeck", content))
-
-            //    {
-            //        string responseContent = await response.Content.ReadAsStringAsync();
-            //        deckgroupDeck = JsonConvert.DeserializeObject<DeckGroupDeck>(responseContent);
-            //    }
-            //}
+            //await _deckService.CreateDeck(deck);
 
             return RedirectToAction("DeckGroups", "MyStudies");
         }
@@ -200,41 +139,17 @@ namespace StudyBuddyMVC.Controllers
         [HttpPost("CreateDeck")]
         public async Task<IActionResult> CreateDeck(Deck deck)
         {
-            using (var httpClient = new HttpClient())
-            {
-                var json = JsonConvert.SerializeObject(deck);
-                StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
-                using (var response = await _client.PostAsync("https://localhost:7025/api/Deck", content))
+            var userId = _userService.GetUserId();
 
-                {
-                    string responseContent = await response.Content.ReadAsStringAsync();
-                    deck = JsonConvert.DeserializeObject<Deck>(responseContent);
-                }
+            if (!ModelState.IsValid)
+            {
+                return View("Deck", "MyStudies");
             }
 
-            // Assigning the deckgroupdeck to both deckgroup and decks. 
-            DeckGroupDeck deckgroupDeck = new DeckGroupDeck();
-            deckgroupDeck.Deck.DeckName = deck.DeckName;
-            deckgroupDeck.Deck.DeckDescription = deck.DeckDescription;
-            deckgroupDeck.Deck.IsPublic = deck.IsPublic;
-            deckgroupDeck.Deck.ReadOnly = deck.ReadOnly;
-
-            deckgroupDeck.DeckGroup.DeckGroupName = deckGroup.DeckGroupName;
-            deckgroupDeck.DeckGroup.DeckGroupDescription = deckGroup.DeckGroupDescription;
-            deckgroupDeck.DeckGroup.IsPublic = deckGroup.IsPublic;
-            deckgroupDeck.DeckGroup.ReadOnly = deckGroup.ReadOnly;
-
-            using (var httpClient = new HttpClient())
-            {
-                var json = JsonConvert.SerializeObject(deckgroupDeck);
-                StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
-                using (var response = await _client.PostAsync("https://localhost:7025/api/DeckGroupDeck", content))
-
-                {
-                    string responseContent = await response.Content.ReadAsStringAsync();
-                    deckgroupDeck = JsonConvert.DeserializeObject<DeckGroupDeck>(responseContent);
-                }
-            }
+            UserDeck userDeck = new UserDeck();
+            userDeck.UserId = Int32.Parse(userId);
+            userDeck.Deck = deck;
+            await _userService.AddUserDeck(userDeck);
 
             return RedirectToAction("CreateFlashCard", "MyStudies");
         }
