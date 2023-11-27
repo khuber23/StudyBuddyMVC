@@ -23,7 +23,7 @@ namespace StudyBuddyMVC.Service
             {
                 var json = JsonConvert.SerializeObject(userdeckGroup);
                 StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
-                using (var response = await _client.PostAsync("https://localhost:7025/api/UserDeckGroup", content))
+                using (var response = await _client.PostAsync(_client.BaseAddress + "UserDeckGroup", content))
 
                 {
                     string responseContent = await response.Content.ReadAsStringAsync();
@@ -38,7 +38,7 @@ namespace StudyBuddyMVC.Service
             {
                 var json = JsonConvert.SerializeObject(userDeck);
                 StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
-                using (var response = await _client.PostAsync("https://localhost:7025/api/UserDeck", content))
+                using (var response = await _client.PostAsync(_client.BaseAddress + "UserDeck", content))
 
                 {
                     string responseContent = await response.Content.ReadAsStringAsync();

@@ -7,5 +7,9 @@ namespace StudyBuddyMVC.Service
         public List<Deck> GetDecks();
 
         public Task CreateDeck(Deck deck);
+
+        public Task CreateDeckFlashCard(DeckFlashCard deckFlashCard);
+
+        Deck RetrieveLastDeck();
     }
 }

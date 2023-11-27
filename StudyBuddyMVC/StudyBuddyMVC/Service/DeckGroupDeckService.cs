@@ -19,7 +19,7 @@ namespace StudyBuddyMVC.Service
             {
                 var json = JsonConvert.SerializeObject(deckGroupDeck);
                 StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
-                using (var response = await _client.PostAsync("https://localhost:7025/api/DeckGroupDeck", content))
+                using (var response = await _client.PostAsync(_client.BaseAddress + "DeckGroupDeck", content))
 
                 {
                     string responseContent = await response.Content.ReadAsStringAsync();
