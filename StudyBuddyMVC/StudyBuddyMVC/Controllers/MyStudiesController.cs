@@ -16,17 +16,19 @@ namespace StudyBuddyMVC.Controllers
         // Service fields
         private readonly IUserService _userService;
         private readonly IDeckGroupService _deckGroupService;
+        private readonly IDeckGroupDeckService _deckGroupDeckService;
         private readonly IDeckService _deckService;
 
         // Client and base address set up.
         Uri baseAddress = new Uri("https://localhost:7025/api/");
         private readonly HttpClient _client;
 
-        public MyStudiesController(IDeckGroupService deckGroupService, IUserService userService, IDeckService deckService)
+        public MyStudiesController(IDeckGroupService deckGroupService, IDeckGroupDeckService deckGroupDeckService, IUserService userService, IDeckService deckService)
         {
             _client = new HttpClient();
             _client.BaseAddress = baseAddress;
             _deckGroupService = deckGroupService;
+            _deckGroupDeckService = deckGroupDeckService;
             _userService = userService;
             _deckService = deckService;
         }
@@ -86,19 +88,31 @@ namespace StudyBuddyMVC.Controllers
         [HttpPost("CreateDeckGroup")]
         public async Task<IActionResult> CreateDeckGroup(DeckGroup deckGroup)
         {
+            DeckGroup deckGroup1 = new DeckGroup();
             var userId = _userService.GetUserId();
 
             if (!ModelState.IsValid)
             {
                 return View("DeckGroups", "MyStudies");
             }
-   
+
+            await _deckGroupService.CreateDeckGroup(deckGroup);
+
+            List<DeckGroup> deckgroupList = _deckGroupService.GetDeckGroups();
+            foreach (DeckGroup dg in deckgroupList)
+            {
+                if (dg.DeckGroupName == deckGroup.DeckGroupName && dg.DeckGroupDescription == deckGroup.DeckGroupDescription)
+                {
+                    deckGroup1 = dg;
+                }
+            }
+
             UserDeckGroup userDeckGroup = new UserDeckGroup();
             userDeckGroup.UserId = Int32.Parse(userId);
-            userDeckGroup.DeckGroup = deckGroup;
+            userDeckGroup.DeckGroupId = deckGroup1.DeckGroupId;
             await _userService.AddUserDeckGroup(userDeckGroup);
 
-            return RedirectToAction("DeckGroups", "MyStudies");
+            return RedirectToAction("DeckGroupDeck", "MyStudies");
         }
 
         [Authorize]
@@ -112,17 +126,42 @@ namespace StudyBuddyMVC.Controllers
         [HttpPost("DeckGroupDeck")]
         public async Task<IActionResult> DeckGroupDeck(DeckGroupDeck dgb)
         {
-            // This set up is not official yet, gonna try to figure this one yet to make sure we capture the right deck group first.
-            //DeckGroupDeck deckGroupDeck = new DeckGroupDeck();
+            Deck newDeck = new Deck();
+            DeckGroup tempDeckGroup = new DeckGroup();
+            DeckGroupDeck newDeckGroupDeck = new DeckGroupDeck();
+            var userId = _userService.GetUserId();
 
-            //DeckGroup tempDeckGroup = _deckGroupService.RetrieveLastDeckGroup();
-            //if (tempDeckGroup != null)
-            //{
-            //    deckGroupDeck.DeckGroup = tempDeckGroup;
-            //    deckGroupDeck.Deck = deck;
-            //}
+            await _deckService.CreateDeck(dgb.Deck);
 
-            //await _deckService.CreateDeck(deck);
+            // using this logic to add deck to user deck and to deckgroupdeck.
+            List<Deck> decks = _deckService.GetDecks();
+            foreach (Deck d in decks)
+            {
+                if (d.DeckName == dgb.Deck.DeckName && d.DeckDescription == dgb.Deck.DeckDescription)
+                {
+                    newDeck = d;
+
+                    // clear deck from deckgroupdeck so we do not instantiate deck again again again.
+                    dgb.Deck = null;
+
+                    //Capture the user deck
+                    UserDeck userDeck = new UserDeck();
+                    userDeck.UserId = Int32.Parse(userId);
+                    userDeck.DeckId = newDeck.DeckId;
+                    await _userService.AddUserDeck(userDeck);
+
+                    // Get the newly created deckgroup.
+                    tempDeckGroup = _deckGroupService.RetrieveLastDeckGroup();
+                    if (tempDeckGroup != null)
+                    {
+                        dgb.DeckId = newDeck.DeckId;
+                        dgb.DeckGroupId = tempDeckGroup.DeckGroupId;
+
+                        // add both deck and deckgroup id to DGD.
+                        await _deckGroupDeckService.CreateDeckGroupDeck(dgb);
+                    }
+                }
+            }
 
             return RedirectToAction("DeckGroups", "MyStudies");
         }
