@@ -13,8 +13,9 @@
 
 @using (Html.BeginForm("AddToDeck", "MyStudies", FormMethod.Post))
 {
-    <div class="text-center" size="3">
+    <div class="form-horizontal" size="3">
     <input type="hidden" asp-for="FlashCard.FlashCardId" />
+    <h4>Decks</h4>
         @Html.DropDownListFor(m=>m.DeckId,new SelectList(Model.Decks,"Value","Text"),new{@class="form-control"})
         <br />
         <br />

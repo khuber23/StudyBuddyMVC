@@ -25,6 +25,20 @@ namespace StudyBuddyMVC.Service
             }
             return decks;
         }
+
+        public List<DeckFlashCard> GetDeckFlashCards()
+        {
+            List<DeckFlashCard> deckFlashCard = new List<DeckFlashCard>();
+            HttpResponseMessage response = _client.GetAsync(_client.BaseAddress + "DeckFlashCard").Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                deckFlashCard = JsonConvert.DeserializeObject<List<DeckFlashCard>>(data);
+            }
+            return deckFlashCard;
+        }
+
         public async Task CreateDeck(Deck deck)
         {
             using (var httpClient = new HttpClient())

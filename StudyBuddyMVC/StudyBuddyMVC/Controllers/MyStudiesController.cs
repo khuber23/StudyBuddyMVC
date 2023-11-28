@@ -289,9 +289,33 @@ namespace StudyBuddyMVC.Controllers
 
         [Authorize]
         [HttpPost("AddToDeck")]
-        public IActionResult AddToDeck(DecksViewModel decksViewModel)
+        public async Task<IActionResult> AddToDeck(DecksViewModel decksViewModel)
         {
-            DeckGroup deckgroup;
+            DeckFlashCard deckFlashCard = new DeckFlashCard();
+            List<DeckFlashCard> deckFlashCards = _deckService.GetDeckFlashCards();
+
+            var userid = _userService.GetUserId();
+            int ID = System.Convert.ToInt32(userid);
+            User user = _userService.GetUser(ID);
+
+            foreach (UserDeck userDeck in user.UserDecks)
+            {
+                if (userDeck.DeckId == decksViewModel.DeckId)
+                {
+                    foreach (DeckFlashCard df in deckFlashCards)
+                    {
+                        if (df.DeckId == userDeck.DeckId && df.FlashCardId == decksViewModel.FlashCard.FlashCardId)
+                        {
+                            return new ContentResult { Content = "This flashcard has already been assigned to this Deck." };
+                        }
+                    }
+                }
+            }
+
+            deckFlashCard.DeckId = decksViewModel.DeckId;
+            deckFlashCard.FlashCardId = decksViewModel.FlashCard.FlashCardId;
+            await _deckService.CreateDeckFlashCard(deckFlashCard); 
+
             return RedirectToAction("DeckGroups", "MyStudies");
         }
 
