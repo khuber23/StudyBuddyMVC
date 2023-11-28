@@ -9,7 +9,7 @@
 
 @{
     await Html.RenderPartialAsync("_CreateDeck", new Deck());
-    await Html.RenderPartialAsync("_CreateFlashCard", new FlashCard());
+    // await Html.RenderPartialAsync("_CreateFlashCard", new FlashCard());
 }
 
 <h1>Decks</h1>
@@ -147,8 +147,8 @@
         $("#create-deck-btn").click(function () {
             $("#createDeck-modal").modal('show');
         });
-        $("#add-flashcard-btn").click(function () {
-            $("#createFlashCard-modal").modal('show');
-        });
+        // $("#add-flashcard-btn").click(function () {
+        //     $("#createFlashCard-modal").modal('show');
+        // });
     </script>
 }

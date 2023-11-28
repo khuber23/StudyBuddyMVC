@@ -25,26 +25,17 @@ namespace StudyBuddyMVC.Controllers
             DecksViewModel vm = new DecksViewModel();
             vm.Decks = new List<SelectListItem>();
 
-            User user = new User();
+            // Get user 
             var userid = _userService.GetUserId();
+            int id = System.Convert.ToInt32(userid);
+            User user = _userService.GetUser(id);
 
-            using (var httpClient = new HttpClient())
-            {
-                httpClient.BaseAddress = new Uri("https://localhost:7025/api/User/");
-                var response = httpClient.GetAsync("{id}?userid=" + userid);
-                response.Wait();
-                var result = response.Result;
-                if (result.IsSuccessStatusCode)
-                {
-                    string data = result.Content.ReadAsStringAsync().Result;
-                    user = JsonConvert.DeserializeObject<User>(data);
-                }
-            }
             vm.Decks.Add(new SelectListItem
             {
                 Text = "Select a Deck",
                 Value = ""
             });
+
             foreach (var item in user.UserDecks)
             {
                 vm.Decks.Add(new SelectListItem
@@ -62,21 +53,12 @@ namespace StudyBuddyMVC.Controllers
         public IActionResult UserDecks(DecksViewModel vm)
         {
             vm.Decks = new List<SelectListItem>();
-            User user = new User();
-            var userid = _userService.GetUserId();
 
-            using (var httpClient = new HttpClient())
-            {
-                httpClient.BaseAddress = new Uri("https://localhost:7025/api/User/");
-                var response = httpClient.GetAsync("{id}?userid=" + userid);
-                response.Wait();
-                var result = response.Result;
-                if (result.IsSuccessStatusCode)
-                {
-                    string data = result.Content.ReadAsStringAsync().Result;
-                    user = JsonConvert.DeserializeObject<User>(data);
-                }
-            }
+            // Get user.
+            var userid = _userService.GetUserId();
+            int id = System.Convert.ToInt32(userid);
+            User user = _userService.GetUser(id);
+
             vm.Decks.Add(new SelectListItem
             {
                 Text = "Select a Deck",

@@ -6,6 +6,8 @@ namespace StudyBuddyMVC.Service
     {
         public List<FlashCard> GetFlashCards();
 
+        public FlashCard GetFlashCardById(int id);
+
         public Task CreateFlashCard(FlashCard flashCard);
     }
 }

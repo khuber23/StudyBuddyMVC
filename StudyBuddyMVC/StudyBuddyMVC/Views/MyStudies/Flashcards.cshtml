@@ -37,42 +37,35 @@
                     @Html.DisplayFor(modelItem => item.FlashCardAnswer)
                 </td>
                 <td>
-                    <button type="button" class="btn btn-primary" id="add-to-Studies-btn" data-bs-toggle="modal" data-bs-target="#addtoDeck">
-                        Add to Deck
+                    <a asp-controller="MyStudies" asp-action="AddToDeck" class="btn btn-primary" asp-route-id="@item.FlashCardId">Add To a Deck</a>
+                   @*  <button type="button" class="btn btn-primary" onclick="@item.FlashCardId" data-bs-toggle="modal" data-bs-target="@("#addtoDeck-"+ @item.FlashCardId)">
+                        Add to a Deck
                     </button>
 
-                    <div class="modal fade" id="addtoDeck" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal fade" id="addtoDeck-@item.FlashCardId" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <form asp-action="AddToDeck" asp-controller="MyStudies" id="AddtoDeck" method="post">
                                     <div class="modal-header bg-info">
-                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Add your flashcard to a deck.</h1>
+                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Add Flashcard to a Deck.</h1>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
                                         <div>
                                             <h2>Select a deck</h2>
                                         </div>
-                                        <div>
-                                            <p>Deck List........</p>
-                                            <p>Deck List........</p>
-                                            <p>Deck List........</p>
-                                            <p>Deck List........</p>
-                                        </div>
+                                        
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                        <button type="submit" id="create-flashcard-btn" class="btn btn-primary" data-toggle="modal">Save</button>
+                                        <button type="submit" id="create-flashcard-btn" class="btn btn-primary" data-toggle="modal">Add</button>
                                     </div>
                                 </form>
                             </div>
                         </div>
-                    </div>
+                    </div>  *@
                 </td>
-                    
-                    @* @Html.ActionLink("Edit", "EditFlashCard", new {id=item.FlashCardId}) |
-                    @Html.ActionLink("Details", "Details", new {id=item.FlashCardId} ) |
-                    @Html.ActionLink("Delete", "DeleteFlashCard", new {id=item.FlashCardId}) *@
+                   
             </tr>
         }
     </thead>
@@ -83,5 +76,5 @@
         $("#add-to-Studies-btn").click(function () {
             $("#addtoDeck-modal").modal('show');
         });
-    </script>
-} *@
+    </script>*@
+}

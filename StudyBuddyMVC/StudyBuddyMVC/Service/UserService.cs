@@ -17,6 +17,25 @@ namespace StudyBuddyMVC.Service
             _client.BaseAddress = baseAddress;
         }
 
+        public User GetUser(int userid)
+        {
+            User user = new User();
+            using (var httpClient = new HttpClient())
+            {
+                httpClient.BaseAddress = new Uri("https://localhost:7025/api/User/");
+                var response = httpClient.GetAsync("{id}?userid=" + userid);
+                response.Wait();
+                var result = response.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    string data = result.Content.ReadAsStringAsync().Result;
+                    user = JsonConvert.DeserializeObject<User>(data);
+                }
+            }
+
+            return user;
+        }
+
         public async Task AddUserDeckGroup(UserDeckGroup userdeckGroup)
         {
             using (var httpClient = new HttpClient())

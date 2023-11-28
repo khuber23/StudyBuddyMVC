@@ -9,8 +9,6 @@
 
 @{
     await Html.RenderPartialAsync("_CreateDeckGroup", new DeckGroup());
-    await Html.RenderPartialAsync("_CreateDeck", new Deck()); 
-    await Html.RenderPartialAsync("DeckGroupDeck", new DeckGroupDeck());
 }
 
 <h1>DeckGroups</h1>
@@ -195,9 +193,9 @@
         //     $("#createDeckGroupDeck-modal").modal('show');
         // });
 
-        $("#create-deck-inner-btn").click(function () {
-            $("#createDeckGroup-modal").modal('hide');
-            $("#createDeckGroupDeck-modal").modal('show');
-        });
+        // $("#create-deck-inner-btn").click(function () {
+        //     $("#createDeckGroup-modal").modal('hide');
+        //     $("#createDeckGroupDeck-modal").modal('show');
+        // });
     </script>
 }

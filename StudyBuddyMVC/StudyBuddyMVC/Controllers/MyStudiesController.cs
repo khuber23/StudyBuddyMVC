@@ -128,7 +128,7 @@ namespace StudyBuddyMVC.Controllers
             DeckGroup tempDeckGroup = new DeckGroup();
             var userId = _userService.GetUserId();
 
-            // Create the deck.
+            //Create the deck.
             await _deckService.CreateDeck(dgb.Deck);
 
             // using this logic to add deck to user deck and to deckgroupdeck.
@@ -238,7 +238,7 @@ namespace StudyBuddyMVC.Controllers
 
             // Now get the list of flashcards, which should now include the newly created flashcard.
             List<FlashCard> flashCards = _flashCardService.GetFlashCards();
-            foreach (FlashCard fc in flashCards) 
+            foreach (FlashCard fc in flashCards)
             {
                 if (fc.FlashCardQuestion == flashCard.FlashCardQuestion && fc.FlashCardAnswer == flashCard.FlashCardAnswer)
                 {
@@ -254,6 +254,48 @@ namespace StudyBuddyMVC.Controllers
         }
 
         [Authorize]
+        [HttpGet("AddToDeck")]
+        public IActionResult AddToDeck(int id)
+        {
+            //DeckFlashCard deckFlashCard = new DeckFlashCard();
+            FlashCard flashCard = _flashCardService.GetFlashCardById(id);
+
+            DecksViewModel vm = new DecksViewModel();
+            vm.FlashCard = flashCard;
+            vm.Decks = new List<SelectListItem>();
+
+            // Get user 
+            var userid = _userService.GetUserId();
+            int ID = System.Convert.ToInt32(userid);
+            User user = _userService.GetUser(ID);
+
+            // Add an empty default list item.
+            vm.Decks.Add(new SelectListItem
+            {
+                Text = "Select a Deck",
+                Value = ""
+            });
+            foreach (var item in user.UserDecks)
+            {
+                vm.Decks.Add(new SelectListItem
+                {
+                    Text = item.Deck.DeckName,
+                    Value = Convert.ToString(item.DeckId)
+                });
+            }
+
+            return View(vm);
+        }
+
+        [Authorize]
+        [HttpPost("AddToDeck")]
+        public IActionResult AddToDeck(DecksViewModel decksViewModel)
+        {
+            DeckGroup deckgroup;
+            return RedirectToAction("DeckGroups", "MyStudies");
+        }
+
+        [Authorize]
         [HttpPost("EditDeckGroup")]
         public IActionResult EditDeckGroup(int id)
         {
@@ -266,13 +308,6 @@ namespace StudyBuddyMVC.Controllers
         public IActionResult EditDeck(int id)
         {
             return RedirectToAction("DeckGroups", "MyStudies");
-        }
-
-        [Authorize]
-        [HttpPost("AddToDeck")]
-        public IActionResult AddToDeck(int id)
-        {
-            return RedirectToAction("FlashCards", "MyStudies");
         }
 
         [Authorize]

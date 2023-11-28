@@ -1,0 +1,24 @@
+﻿@model DecksViewModel
+
+@{
+    ViewData["Title"] = "AddToDeck";
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Select a Deck</h2>
+<br />
+<h4>Adding Flashcard ID @Model.FlashCard.FlashCardId to deck.</h4>
+<br />
+<br />
+
+@using (Html.BeginForm("AddToDeck", "MyStudies", FormMethod.Post))
+{
+    <div class="text-center" size="3">
+    <input type="hidden" asp-for="FlashCard.FlashCardId" />
+        @Html.DropDownListFor(m=>m.DeckId,new SelectList(Model.Decks,"Value","Text"),new{@class="form-control"})
+        <br />
+        <br />
+        @* <input type="submit" value="Submit" /> *@
+        <button type="submit" class="btn btn-primary" role="button">Add</button>
+    </div>
+} 
