@@ -76,5 +76,34 @@ namespace StudyBuddyMVC.Service
                 }
             }
         }
+
+        public Deck GetDeckByID(int id)
+        {
+            Deck deck = new Deck();
+            HttpResponseMessage response = _client.GetAsync(_client.BaseAddress + "Deck/{id}?deckid=" + id).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                deck = JsonConvert.DeserializeObject<Deck>(data);
+            }
+
+            return deck;
+        }
+
+        public async Task UpdateDeck(Deck deck)
+        {
+            using (var httpClient = new HttpClient())
+            {
+                var json = JsonConvert.SerializeObject(deck);
+                StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+                using (var response = await _client.PutAsync(_client.BaseAddress + "Deck/{id}?deckid=" + deck.DeckId, content))
+
+                {
+                    string responseContent = await response.Content.ReadAsStringAsync();
+                    deck = JsonConvert.DeserializeObject<Deck>(responseContent);
+                }
+            }
+        }
     }
 }

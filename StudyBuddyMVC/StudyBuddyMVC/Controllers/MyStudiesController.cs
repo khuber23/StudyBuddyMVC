@@ -339,10 +339,19 @@ namespace StudyBuddyMVC.Controllers
         }
 
         [Authorize]
-        [HttpPost("EditDeck")]
+        [HttpGet("EditDeck")]
         public IActionResult EditDeck(int id)
         {
-            return RedirectToAction("DeckGroups", "MyStudies");
+            Deck deck = _deckService.GetDeckByID(id);
+            return View(deck);
+        }
+
+        [Authorize]
+        [HttpPost("EditDeck")]
+        public async Task<IActionResult> EditDeck(Deck deck)
+        {
+            await _deckService.UpdateDeck(deck);
+            return RedirectToAction("Decks", "MyStudies");
         }
 
         [Authorize]
