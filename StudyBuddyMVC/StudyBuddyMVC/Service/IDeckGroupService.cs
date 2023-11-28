@@ -6,8 +6,12 @@ namespace StudyBuddyMVC.Service
     {
         public List<DeckGroup> GetDeckGroups();
 
+        public DeckGroup GetDeckGroupByID(int id);
+
         Task CreateDeckGroup(DeckGroup deckgroup);
 
         DeckGroup RetrieveLastDeckGroup();
+
+        Task UpdateDeckGroup(DeckGroup deckgroup);
     }
 }

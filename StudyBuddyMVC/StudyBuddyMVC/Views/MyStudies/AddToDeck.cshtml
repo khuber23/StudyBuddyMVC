@@ -5,9 +5,9 @@
     Layout = "/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Select a Deck</h2>
+<h2>Add To a Deck</h2>
 <br />
-<h4>Adding Flashcard ID @Model.FlashCard.FlashCardId to deck.</h4>
+<h4>Choose a Deck for public Flashcard ID: @Model.FlashCard.FlashCardId</h4>
 <br />
 <br />
 
@@ -15,11 +15,12 @@
 {
     <div class="form-horizontal" size="3">
     <input type="hidden" asp-for="FlashCard.FlashCardId" />
-    <h4>Decks</h4>
+    <h4>Your Decks</h4>
         @Html.DropDownListFor(m=>m.DeckId,new SelectList(Model.Decks,"Value","Text"),new{@class="form-control"})
         <br />
         <br />
         @* <input type="submit" value="Submit" /> *@
         <button type="submit" class="btn btn-primary" role="button">Add</button>
+        <input type="button" value="Cancel" class="btn btn-secondary" onclick="location.href='@Url.Action("FlashCards","MyStudies")';" />
     </div>
 } 

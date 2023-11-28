@@ -29,48 +29,7 @@
                 <button id="create-deck-group-btn" type="button" class="btn btn-primary" data-toggle="modal">
                     Create a DeckGroup
                 </button>
-                <!-- Second Modal for creating Decks -->
-               
-                <!-- Second Modal for creating FlashCards -->
-                <div class="modal" id="createFlashcard" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <form asp-action="CreateFlashCard" id="AddDeck" method="post">
-                                <div class="modal-header bg-info">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Add a Deck.</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <div>
-                                        <p>Add some flash cards to your deck.</p>
-                                    </div>
-                                    <div>
-                                        <label for="flashcardQuestion">Flashcard Question:</label><br>
-                                        <input class="form-control" type="text" id="flashcardQuestion" />
-                                    </div>
-                                    <div>
-                                        <label for="flashcardAnswer">Answer:</label><br>
-                                        <textarea class="form-control" rows="4" cols="50" id="flashcardAnswer"></textarea><br><br />
-                                    </div>
-                                    <div>
-                                        <input type="checkbox" id="makepublic" value="Bike">
-                                        <label for="makepublic">Make it public</label><br>
-                                    </div>
-                                    <div>
-                                        <input type="radio" id="readOnly" />
-                                        <label for="ReadOnly">Read Only</label>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Back</button>
-                                    <button type="button" class="btn btn-primary">Finished</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </th>
-        </tr>
+
         @foreach (var item in Model)
         {
               <tr>
@@ -93,29 +52,17 @@
                     <div class="modal fade" id="EditDeckGroup-@item.DeckGroupId" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
-                                <form asp-action="EditDeckGroup" asp-controller="MyStudies" method="post">
                                     <div class="modal-header">
                                         <h1 class="modal-title fs-5" id="staticBackdropLabel">Edit Deckgroup</h1>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <div class="form-group">
-                                            <input type="hidden" asp-for="@item.DeckGroupId"/>
-                                            <label asp-for="@item.DeckGroupName" class="control-label"></label>
-                                            <input class="form-control" asp-for="@item.DeckGroupName"><br>
-                                            <span asp-validation-for="@item.DeckGroupName" class="text-danger"></span>
-                                        </div>
-                                        <div class="form-group">
-                                            <label asp-for="@item.DeckGroupDescription" class="control-label"></label>
-                                            <textarea class ="form-control" asp-for="@item.DeckGroupDescription"><br>></textarea>
-                                            <span asp-validation-for="@item.DeckGroupDescription" class="text-danger"></span>
-                                        </div>
+                                        <h3>Make changes to @item.DeckGroupName?</h3>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-primary">Save Changes</button>
-                                    </div>
-                                </form>>                 
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                    <a asp-controller="MyStudies" asp-action="EditDeckGroup" asp-route-id="@item.DeckGroupId" class="btn btn-primary" role="button">Yes</a>
+                                    </div>           
                             </div>
                         </div>
                     </div>  |

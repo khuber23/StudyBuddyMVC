@@ -298,6 +298,7 @@ namespace StudyBuddyMVC.Controllers
             int ID = System.Convert.ToInt32(userid);
             User user = _userService.GetUser(ID);
 
+            // Using nested loop to check and see if flashcard has already been assigned to the user's own deck. 
             foreach (UserDeck userDeck in user.UserDecks)
             {
                 if (userDeck.DeckId == decksViewModel.DeckId)
@@ -306,12 +307,13 @@ namespace StudyBuddyMVC.Controllers
                     {
                         if (df.DeckId == userDeck.DeckId && df.FlashCardId == decksViewModel.FlashCard.FlashCardId)
                         {
-                            return new ContentResult { Content = "This flashcard has already been assigned to this Deck." };
+                            return new ContentResult { Content = "Yikes! Looks like this flashcard has already been assigned to this Deck." };
                         }
                     }
                 }
             }
 
+            // Proceed to create a new deck flashcard. 
             deckFlashCard.DeckId = decksViewModel.DeckId;
             deckFlashCard.FlashCardId = decksViewModel.FlashCard.FlashCardId;
             await _deckService.CreateDeckFlashCard(deckFlashCard); 
@@ -320,10 +322,19 @@ namespace StudyBuddyMVC.Controllers
         }
 
         [Authorize]
-        [HttpPost("EditDeckGroup")]
+        [HttpGet("EditDeckGroup")]
         public IActionResult EditDeckGroup(int id)
         {
-            DeckGroup deckgroup;
+            DeckGroup deckgroup = _deckGroupService.GetDeckGroupByID(id);
+            return View(deckgroup);
+        }
+
+        [Authorize]
+        [HttpPost("EditDeckGroup")]
+        public async Task<IActionResult> EditDeckGroup(DeckGroup deckGroup)
+        {
+            await _deckGroupService.UpdateDeckGroup(deckGroup);
+
             return RedirectToAction("DeckGroups", "MyStudies");
         }
 
