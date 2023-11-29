@@ -168,6 +168,19 @@ namespace StudyBuddyMVC.Controllers
         }
 
         [Authorize]
+        [HttpGet("CreateDeckFromDeckGroup")]
+        public IActionResult CreateDeckFromDeckGroup(int id)
+        {
+            DeckGroup deckGroup = _deckGroupService.GetDeckGroupByID(id);
+
+            DeckGroupDeck deckGroupDeck = new DeckGroupDeck();
+            deckGroupDeck.DeckGroup = deckGroup;
+
+            return View(deckGroupDeck);
+        }
+
+
+        [Authorize]
         [HttpGet("CreateDeck")]
         [Route("CreateDeck")]
         public IActionResult CreateDeck()
@@ -322,6 +335,20 @@ namespace StudyBuddyMVC.Controllers
         }
 
         [Authorize]
+        [HttpGet("AddToDeckGroup")]
+        public IActionResult AddToDeckGroup(int id)
+        {
+            return View();
+        }
+
+        [Authorize]
+        [HttpPost("AddToDeckGroup")]
+        public IActionResult AddToDeckGroup(DeckGroupsViewModel deckgroupViewModel)
+        {
+            return RedirectToAction("DeckGroups", "MyStudies");
+        }
+
+        [Authorize]
         [HttpGet("EditDeckGroup")]
         public IActionResult EditDeckGroup(int id)
         {
@@ -400,6 +427,61 @@ namespace StudyBuddyMVC.Controllers
         {
 
             return Redirect("~/Dashboard/Index");
+        }
+
+        [Authorize]
+        [HttpGet("DeckGroupDetails")]
+        public IActionResult DeckGroupDetails(int id)
+        {
+            if (id == 0)
+            {
+                return new ContentResult { Content = "Bummers! That Deckgroup ID does not exist. Go back and try again." };
+            }
+            DeckgroupDeckFlashcardViewModel model = new DeckgroupDeckFlashcardViewModel();
+
+            // Find the deckgroup.
+            DeckGroup deckGroup = _deckGroupService.GetDeckGroupByID(id);
+
+            // Get the user/owner
+            var userid = _userService.GetUserId();
+            int ID = System.Convert.ToInt32(userid);
+            User user = _userService.GetUser(ID);
+
+            // Create lists to collect the values.
+            List<Deck> newDeckList = new List<Deck>();
+            List<FlashCard> newFlashcardList = new List<FlashCard>();
+            
+            // Loop through to find decks that were assigned to the Deckgroup.
+            List<DeckGroupDeck> deckGroupDecks = _deckGroupDeckService.GetDeckGroupDecks();
+            foreach (DeckGroupDeck dgd in deckGroupDecks)
+            {
+                if (dgd.DeckGroupId == id)
+                {
+                    newDeckList.Add(dgd.Deck);
+                }
+            }
+
+            // Nest loop to get the assigned flashcard from the deck(s).
+            List<DeckFlashCard> deckflashCards = _deckService.GetDeckFlashCards();
+            foreach (DeckFlashCard df in deckflashCards)
+            {
+                foreach (Deck d in newDeckList) 
+                {
+                    if (d.DeckId == df.DeckId)
+                    {
+                        newFlashcardList.Add(df.FlashCard);
+                    }
+                }
+            }
+
+            // Assigning all values to the models properties.
+            model.User = user;
+            model.DeckGroup = deckGroup;
+            model.Decks = newDeckList;
+            model.FlashCards = newFlashcardList;
+            model.DeckFlashCards = deckflashCards;
+
+            return View(model);
         }
     }
 }

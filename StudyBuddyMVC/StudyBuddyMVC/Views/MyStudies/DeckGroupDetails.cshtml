@@ -1,0 +1,50 @@
+﻿@model DeckgroupDeckFlashcardViewModel
+
+@{
+    ViewData["Title"] = "DeckGroupDetails";
+    Layout = "~/Views/MyStudies/_studiesLayout.cshtml";
+}
+
+<h1 style="color: #005baa;">Deckgroup Details</h1>
+<br />
+<div>
+    <h3 style="border: 2px #005baa;">@Model.DeckGroup.DeckGroupName</h3>
+    <p>  @Model.DeckGroup.DeckGroupDescription</p>
+</div>
+
+<p>  Creator: @Model.User.Username</p>
+
+<body>
+    <h3 style="color: #005baa;">Decks</h3>
+    <div class="form-horizontal">
+        <ol>
+            @foreach (var item in Model.Decks)
+            {
+                <li>
+                    <h4>
+                        @item.DeckName
+                    </h4>         
+                    <ul>
+                        <h4 style="color: #005baa;">FlashCards</h4>
+                        @foreach (var fc in Model.DeckFlashCards)
+                        {
+                            if (fc.DeckId == item.DeckId)
+                            {
+                                <li>     
+                                    <b>@fc.FlashCard.FlashCardQuestion</b>
+                                      <ul>
+                                          <li>
+                                            @fc.FlashCard.FlashCardAnswer
+                                          </li>
+                                      </ul>  
+                                </li>
+                            }
+                        }
+                    </ul>         
+                </li>
+            }
+        </ol>
+    </div>
+</body>
+
+

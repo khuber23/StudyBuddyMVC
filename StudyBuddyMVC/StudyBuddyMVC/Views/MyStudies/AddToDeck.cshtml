@@ -2,25 +2,27 @@
 
 @{
     ViewData["Title"] = "AddToDeck";
-    Layout = "/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/MyStudies/_studiesLayout.cshtml";
 }
 
-<h2>Add To a Deck</h2>
+<h2>Flashcard Details</h2>
 <br />
-<h4>Choose a Deck for public Flashcard ID: @Model.FlashCard.FlashCardId</h4>
-<br />
+<body>
+    <h4><b>@Model.FlashCard.FlashCardQuestion</b></h4>
+    <p>@Model.FlashCard.FlashCardAnswer</p>
+</body>
 <br />
 
 @using (Html.BeginForm("AddToDeck", "MyStudies", FormMethod.Post))
 {
     <div class="form-horizontal" size="3">
     <input type="hidden" asp-for="FlashCard.FlashCardId" />
-    <h4>Your Decks</h4>
+    <h4>Choose a Deck</h4>
         @Html.DropDownListFor(m=>m.DeckId,new SelectList(Model.Decks,"Value","Text"),new{@class="form-control"})
         <br />
         <br />
         @* <input type="submit" value="Submit" /> *@
-        <button type="submit" class="btn btn-primary" role="button">Add</button>
+        <button type="submit" class="btn btn-primary" role="button">Add to Deck</button>
         <input type="button" value="Cancel" class="btn btn-secondary" onclick="location.href='@Url.Action("FlashCards","MyStudies")';" />
     </div>
 } 

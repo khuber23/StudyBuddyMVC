@@ -27,5 +27,19 @@ namespace StudyBuddyMVC.Service
                 }
             }
         }
+
+        public List<DeckGroupDeck> GetDeckGroupDecks()
+        {
+            List<DeckGroupDeck> deckgroupDeck = new List<DeckGroupDeck>();
+            HttpResponseMessage response = _client.GetAsync(_client.BaseAddress + "DeckGroupDeck").Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                deckgroupDeck = JsonConvert.DeserializeObject<List<DeckGroupDeck>>(data);
+            }
+
+            return deckgroupDeck;
+        }
     }
 }
