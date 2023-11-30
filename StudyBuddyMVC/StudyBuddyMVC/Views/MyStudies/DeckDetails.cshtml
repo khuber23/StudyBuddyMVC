@@ -1,0 +1,44 @@
+﻿@model DeckgroupDeckFlashcardViewModel
+
+@{
+    ViewData["Title"] = "DeckDetails";
+    Layout = "~/Views/MyStudies/_studiesLayout.cshtml";
+}
+
+<h1 style="color: #005baa;">Deck Details</h1>
+<br />
+<div>
+    <h3 style="border: 2px #005baa;">@Model.Deck.DeckName</h3>
+    <p>  @Model.Deck.DeckDescription</p>
+</div>
+
+<p>  Creator: @Model.User.Username</p>
+<body>
+    <div class="form-control">
+        <h3 style="color: #005baa;">Flashcards</h3>
+        <ol>
+            @foreach (var item in Model.FlashCards)
+            {
+                <li>
+                    <h4>
+                        @item.FlashCardQuestion
+                    </h4>
+                    <ul>
+                        <li>
+                            <p style="color: #005baa;">@item.FlashCardAnswer</p>     
+                        </li>           
+                    </ul>
+                    <a asp-controller="MyStudies" asp-action="EditFlashCard" asp-route-id="@item.FlashCardId" role="button" class="btn btn-outline-primary" style="float:initial">Edit Flashcard</a>
+                </li>
+            }
+        </ol>
+    </div>
+</body>
+<br />
+<footer>
+    <div class="form-horizontal">
+        <a asp-controller="MyStudies" asp-action="CreateFlashCard" asp-route-id="@Model.Deck.DeckId" role="button" class="btn btn-primary">Create a Flashcard</a>     
+        <a asp-controller="MyStudies" asp-action="AddToDeckGroup" asp-route-id="@Model.Deck.DeckId" role="button" class="btn btn-outline-primary">Add To a DeckGroup</a>
+        <a asp-controller="MyStudies" asp-action="Decks" role="button" class="btn btn-secondary" style="float:initial">I'm Done</a>
+    </div>
+</footer>

@@ -1,0 +1,44 @@
+﻿@model FlashCardViewModel
+
+@{
+    ViewData["Title"] = "AddToDeck";
+    Layout = "~/Views/MyStudies/_studiesLayout.cshtml";
+}
+
+<h2>Create a Flashcard</h2>
+<div class="form-horizontal">
+    <form method="post">
+        <div asp-validation-summary="All"></div>
+        <input asp-for="DeckID" type="hidden" value="@Model.DeckID" />
+        <div class="form-group">
+            <label asp-for="FlashCardQuestion"></label>
+            <input asp-for="FlashCardQuestion" class="form-control" />
+            <span asp-validation-for="FlashCardQuestion"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="FlashCardAnswer"></label>
+            <input asp-for="FlashCardAnswer" class="form-control" />
+            <span asp-validation-for="FlashCardAnswer"></span>
+        </div>
+        <div>
+            <input asp-for="IsPublic" data-val="true" type="checkbox" id="makepublic" value="True" checked="true">
+            <input asp-for="IsPublic" type="hidden" id="makepublic" value="False">
+            <label asp-for="IsPublic">Make it public</label><br>
+        </div>
+        <div>
+            <div class="col-md-10">
+                <label>Read Only</label>
+                <label asp-for="ReadOnly">Yes</label>
+                <input asp-for="ReadOnly" type="radio" id="yes" value="True" />
+                <span asp-validation-for="ReadOnly" class="text-danger"></span>
+                <label asp-for="ReadOnly">No</label>
+                <input asp-for="ReadOnly" type="radio" id="no" value="False" />
+                <span asp-validation-for="ReadOnly" class="text-danger"></span>
+            </div>
+            <div asp-validation-summary="All"></div>
+            <p>
+                <button type="submit" class="btn btn-primary" role="button">Save</button>
+                <input type="button" value="Cancel" class="btn btn-secondary" onclick="location.href='@Url.Action("Decks","MyStudies")';" />
+            </p>
+    </form>
+</div>

@@ -1,0 +1,29 @@
+﻿@model ApiStudyBuddy.Models.Deck
+
+@{
+    ViewData["Title"] = "AddToDeck";
+    Layout = "~/Views/MyStudies/_studiesLayout.cshtml";
+}
+
+<h2>Update Deckgroup</h2>
+<div class="form-horizontal">
+    <form method="post">
+        <input type="hidden" asp-for="DeckId" />
+        <div asp-validation-summary="All"></div>
+        <div class="form-group mb-3">
+            <label>Deck Name</label>
+            <input asp-for="DeckName" class="form-control" />
+            <span asp-validation-for="DeckName"></span>
+        </div>
+        <br />
+        <div class="form-group mb-3">
+            <label>Deck Description</label>
+            <textarea class="form-control" asp-for="DeckDescription"><br>></textarea>
+            <span asp-validation-for="DeckDescription"></span>
+        </div>
+        <p>
+            <button type="submit" class="btn btn-primary" role="button">Save Changes</button>
+            <input type="button" value="Cancel" class="btn btn-secondary" onclick="location.href='@Url.Action("Decks","MyStudies")';" />
+        </p>
+    </form>
+</div>

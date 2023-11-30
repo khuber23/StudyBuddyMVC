@@ -1,0 +1,59 @@
+﻿@model DeckgroupDeckFlashcardViewModel
+
+@{
+    ViewData["Title"] = "DeckGroupDetails";
+    Layout = "~/Views/MyStudies/_studiesLayout.cshtml";
+}
+
+<h1 style="color: #005baa;">Deckgroup Details</h1>
+<br />
+<div>
+    <h3 style="border: 2px #005baa;">@Model.DeckGroup.DeckGroupName</h3>
+    <p>  @Model.DeckGroup.DeckGroupDescription</p>
+</div>
+
+<p>  Creator: @Model.User.Username</p>
+
+<body>  
+    <div class="form-control">
+        <h3 style="color: #005baa;">Decks</h3>
+        <ol>
+            @foreach (var item in Model.Decks)
+            {
+                <li>
+                    <h4>
+                        @item.DeckName
+                    </h4>
+@*                     <a asp-controller="MyStudies" asp-action="EditDeck" asp-route-id="@item.DeckId" role="button" class="btn btn-outline-primary" style="float:initial">Edit Deck</a>
+ *@
+                    <ul>
+                        <h4 style="color: #005baa;">FlashCards</h4>
+                        @foreach (var fc in Model.DeckFlashCards)
+                        {
+                            if (fc.DeckId == item.DeckId)
+                            {
+                                <li>     
+                                    <b>@fc.FlashCard.FlashCardQuestion</b>
+                                      <ul>
+                                          <li>
+                                            <p style="color: #005baa;">@fc.FlashCard.FlashCardAnswer</p>
+                                          </li>
+                                      </ul>
+@*                                     <a asp-controller="MyStudies" asp-action="EditFlashCard" asp-route-id="@fc.FlashCardId" role="button" class="btn btn-outline-primary" style="float:initial">Edit Flashcard</a>
+ *@                                </li>
+                            }
+                        }
+                    </ul>
+                </li>
+            }
+        </ol>
+    </div>
+</body><br />
+<footer>
+    <div class="form-horizontal">
+        <a asp-controller="MyStudies" asp-action="DeckGroupDeck" asp-route-id="@Model.DeckGroup.DeckGroupId" role="button" class="btn btn-primary">Create a Deck</a>
+        <a asp-controller="MyStudies" asp-action="DeckGroups" role="button" class="btn btn-secondary">I'm Done</a>
+    </div>
+</footer>
+
+

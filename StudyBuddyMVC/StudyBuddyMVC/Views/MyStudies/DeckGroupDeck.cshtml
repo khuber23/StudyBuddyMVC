@@ -1,0 +1,46 @@
+﻿@using ApiStudyBuddy.Models;
+@model DeckGroupDeck
+
+@{
+    ViewData["Title"] = "AddToDeck";
+    Layout = "~/Views/MyStudies/_studiesLayout.cshtml";
+}
+
+<h2>Create a Deck</h2>
+<div class="form-horizontal">
+    <form method="post">
+        <div asp-validation-summary="All"></div>
+        <div class="form-group">
+            <input asp-for="DeckGroupId" type="hidden" value="@Model.DeckGroupId"/>
+
+            <label asp-for="Deck.DeckName"></label>
+            <input asp-for="Deck.DeckName" class="form-control" />
+            <span asp-validation-for="Deck.DeckName"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Deck.DeckDescription"></label>
+            <input asp-for="Deck.DeckDescription" class="form-control" />
+            <span asp-validation-for="Deck.DeckDescription"></span>
+        </div>
+        <div>
+            <input asp-for="Deck.IsPublic" data-val="true" type="checkbox" id="makepublic" value="True" checked="true" />
+            <input asp-for="Deck.IsPublic" type="hidden" id="makepublic" value="False">
+            <label asp-for="Deck.IsPublic">Make it public</label><br>
+        </div>
+        <div>
+            <div class="col-md-10">
+                <label>Read Only</label>
+                <label asp-for="Deck.ReadOnly">Yes</label>
+                <input asp-for="Deck.ReadOnly" type="radio" id="yes" value="True" />
+                <span asp-validation-for="Deck.ReadOnly" class="text-danger"></span>
+                <label asp-for="Deck.ReadOnly">No</label>
+                <input asp-for="Deck.ReadOnly" type="radio" id="no" value="False" />
+                <span asp-validation-for="Deck.ReadOnly" class="text-danger"></span>
+            </div>
+        <div asp-validation-summary="All"></div>
+        <p>
+            <button type="submit" class="btn btn-primary" role="button">Save</button>
+                <input type="button" value="Cancel" class="btn btn-secondary" onclick="location.href='@Url.Action("DeckGroups","MyStudies")';" />
+        </p>
+    </form>
+</div>
