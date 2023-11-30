@@ -67,37 +67,9 @@
                             </div>
                         </div>
                     </div>  |
-                   @*  @Html.ActionLink("Details", "Details", new {id=item.DeckId} ) *@
-                    <button type="button" class="btn btn-info" onclick="@item.DeckId" data-bs-toggle="modal" data-bs-target="@("#deckDetail-" + @item.DeckId)">
-                        Details
-                    </button>
 
-                    <!-- Modal -->
-                    <div class="modal fade" id="deckDetail-@item.DeckId" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Information about Deck</h1>
-                                    <a asp-controller="MyStudies" asp-action="AddToDeckGroup" asp-route-id="@item.DeckId" role="button" class="btn btn-primary">Add to a DeckGroup</a>
-                                </div>
-                                <div class="modal-body">
-                                    <div>
-                                        <h4>Deck Name</h4>
-                                        <p>@item.DeckName</p>
-                                    </div>
-                                    <div>
-                                        <h4>Deck Description</h4>
-                                        <p>@item.DeckDescription</p>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <a asp-controller="MyStudies" asp-action="DeckDetail" asp-route-id ="@item.DeckId" class="btn btn-info" role="button">More Information</a>
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">I'm Done</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div> |
-                    @* @Html.ActionLink("Delete", "Delete", new {id=item.DeckId}) *@
+                    <a asp-controller="MyStudies" asp-action="DeckDetails" asp-route-id="@item.DeckId" class="btn btn-info" role="button">Details</a> |
+                    
                     <button type="button" class="btn btn-danger" onclick="@item.DeckId" data-bs-toggle="modal" data-bs-target="#deleteDeck">
                         Delete
                     </button>

@@ -9,5 +9,7 @@ namespace StudyBuddyMVC.Service
         public FlashCard GetFlashCardById(int id);
 
         public Task CreateFlashCard(FlashCard flashCard);
+
+        public Task UpdateFlashCard(FlashCard flashCard);
     }
 }

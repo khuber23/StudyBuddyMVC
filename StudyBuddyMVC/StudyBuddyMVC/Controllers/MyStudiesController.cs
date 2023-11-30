@@ -48,7 +48,16 @@ namespace StudyBuddyMVC.Controllers
         [Route("Flashcards")]
         public IActionResult Flashcards()
         {
-            List<FlashCard> publicFlashcards = _flashCardService.GetFlashCards();
+            List<FlashCard> publicFlashcards = new List<FlashCard>();
+
+            List<FlashCard> retrievedFlashcards = _flashCardService.GetFlashCards();
+            foreach (FlashCard fc in retrievedFlashcards)
+            {
+                if (fc.IsPublic == true)
+                {
+                    publicFlashcards.Add(fc);
+                }
+            }
             
             return View(publicFlashcards);
         }
@@ -58,7 +67,15 @@ namespace StudyBuddyMVC.Controllers
         [Route("Decks")]
         public IActionResult Decks()
         {
-            List<Deck> decks = _deckService.GetDecks();
+            var userid = _userService.GetUserId();
+            int id = System.Convert.ToInt32(userid);
+            User user = _userService.GetUser(id);
+
+            List<Deck> decks = new List<Deck>();
+            foreach (UserDeck deck in user.UserDecks)
+            {
+                decks.Add(deck.Deck);
+            }
 
             return View(decks);
         }
@@ -68,7 +85,15 @@ namespace StudyBuddyMVC.Controllers
         [Route("DeckGroups")]
         public IActionResult DeckGroups()
         {
-            List<DeckGroup> deckgroups = _deckGroupService.GetDeckGroups();
+            var userid = _userService.GetUserId();
+            int id = System.Convert.ToInt32(userid);
+            User user = _userService.GetUser(id);
+
+            List<DeckGroup> deckgroups = new List<DeckGroup>();
+            foreach (UserDeckGroup dg in user.UserDeckGroups)
+            {
+                deckgroups.Add(dg.DeckGroup);
+            }
 
             return View(deckgroups);
         }
@@ -106,7 +131,7 @@ namespace StudyBuddyMVC.Controllers
                     userDeckGroup.DeckGroupId = deckGroup1.DeckGroupId;
                     await _userService.AddUserDeckGroup(userDeckGroup);
 
-                    return RedirectToAction("DeckGroupDeck", "MyStudies");
+                    return RedirectToAction("DeckGroupDeck", "MyStudies", new { id = deckGroup1.DeckGroupId });
                 }
             }
 
@@ -115,9 +140,11 @@ namespace StudyBuddyMVC.Controllers
 
         [Authorize]
         [HttpGet("DeckGroupDeck")]
-        public IActionResult DeckGroupDeck()
+        public IActionResult DeckGroupDeck(int id)
         {
-            return PartialView("DeckGroupDeck", new DeckGroupDeck());
+            DeckGroupDeck deckgroupDeck = new DeckGroupDeck();
+            deckgroupDeck.DeckGroupId = id;
+            return View("DeckGroupDeck", deckgroupDeck);
         }
 
         [Authorize]
@@ -125,7 +152,6 @@ namespace StudyBuddyMVC.Controllers
         public async Task<IActionResult> DeckGroupDeck(DeckGroupDeck dgb)
         {
             Deck newDeck = new Deck();
-            DeckGroup tempDeckGroup = new DeckGroup();
             var userId = _userService.GetUserId();
 
             //Create the deck.
@@ -148,45 +174,19 @@ namespace StudyBuddyMVC.Controllers
                     userDeck.DeckId = newDeck.DeckId;
                     await _userService.AddUserDeck(userDeck);
 
-                    // Get the newly created deckgroup.
-                    tempDeckGroup = _deckGroupService.RetrieveLastDeckGroup();
-                    if (tempDeckGroup != null)
-                    {
-                        dgb.DeckId = newDeck.DeckId;
-                        dgb.DeckGroupId = tempDeckGroup.DeckGroupId;
+                    dgb.DeckId = newDeck.DeckId;
 
-                        // add both deck and deckgroup id to DGD.
-                        await _deckGroupDeckService.CreateDeckGroupDeck(dgb);
+                    // add both deck and deckgroup id to DGD.
+                    await _deckGroupDeckService.CreateDeckGroupDeck(dgb);
 
-                        // Now navigate to create flash card.
-                        return RedirectToAction("CreateFlashCard", "MyStudies");
-                    }
+                    // Now navigate to create flash card.
+                    return RedirectToAction("CreateFlashCard", "MyStudies", new { id = dgb.DeckId });
                 }
             }
 
             return RedirectToAction("CreateDeckGroup", "MyStudies");
         }
 
-        [Authorize]
-        [HttpGet("CreateDeckFromDeckGroup")]
-        public IActionResult CreateDeckFromDeckGroup(int id)
-        {
-            DeckGroup deckGroup = _deckGroupService.GetDeckGroupByID(id);
-
-            DeckGroupDeck deckGroupDeck = new DeckGroupDeck();
-            deckGroupDeck.DeckGroup = deckGroup;
-
-            return View(deckGroupDeck);
-        }
-
-
-        [Authorize]
-        [HttpGet("CreateDeck")]
-        [Route("CreateDeck")]
-        public IActionResult CreateDeck()
-        {
-            return PartialView("_CreateDeck", new Deck());
-        }
 
         [Authorize]
         [HttpPost("CreateDeck")]
@@ -217,7 +217,7 @@ namespace StudyBuddyMVC.Controllers
                     userDeck.DeckId = newDeck.DeckId;
                     await _userService.AddUserDeck(userDeck);
 
-                    return RedirectToAction("CreateFlashCard", "MyStudies");
+                    return RedirectToAction("CreateFlashCard", "MyStudies", new { id = newDeck.DeckId});
                 }
             }
 
@@ -227,43 +227,53 @@ namespace StudyBuddyMVC.Controllers
 
         [Authorize]
         [HttpGet("CreateFlashCard")]
-        public IActionResult CreateFlashCard()
+        public IActionResult CreateFlashCard(int id)
         {
-            return PartialView("_CreateFlashCard", new FlashCard());
+            FlashCardViewModel flashCardViewModel = new FlashCardViewModel();
+            flashCardViewModel.DeckID = id;
+            return View("_CreateFlashCard", flashCardViewModel);
         }
 
         [Authorize]
         [HttpPost("CreateFlashCard")]
-        public async Task<IActionResult> CreateFlashCard(FlashCard flashCard)
+        public async Task<IActionResult> CreateFlashCard(FlashCardViewModel flashCardViewModel)
         {
             DeckFlashCard deckFlashCard = new DeckFlashCard();
+
+            // Set the fields.
             FlashCard newFlashCard = new FlashCard();
+            newFlashCard.FlashCardQuestion = flashCardViewModel.FlashCardQuestion;
+            newFlashCard.FlashCardAnswer = flashCardViewModel.FlashCardAnswer;
+            newFlashCard.IsPublic = flashCardViewModel.IsPublic;
+            newFlashCard.ReadOnly = flashCardViewModel.ReadOnly;
+
+
             if (!ModelState.IsValid)
             {
                 return View();
             }
 
-            // Get the deck that was just created.
-            Deck retrivedDeck = _deckService.RetrieveLastDeck();
-
             // Create the flash card in order to generate an ID for the new flashcard.  
-            await _flashCardService.CreateFlashCard(flashCard);
+            await _flashCardService.CreateFlashCard(newFlashCard);
 
             // Now get the list of flashcards, which should now include the newly created flashcard.
             List<FlashCard> flashCards = _flashCardService.GetFlashCards();
             foreach (FlashCard fc in flashCards)
             {
-                if (fc.FlashCardQuestion == flashCard.FlashCardQuestion && fc.FlashCardAnswer == flashCard.FlashCardAnswer)
+                if (fc.FlashCardQuestion == flashCardViewModel.FlashCardQuestion && fc.FlashCardAnswer == flashCardViewModel.FlashCardAnswer)
                 {
+                    // Set the new flashcard again to also capture its new ID.
                     newFlashCard = fc;
 
                     deckFlashCard.FlashCardId = newFlashCard.FlashCardId;
-                    deckFlashCard.DeckId = retrivedDeck.DeckId;
+                    deckFlashCard.DeckId = flashCardViewModel.DeckID;
                     await _deckService.CreateDeckFlashCard(deckFlashCard);
+
+                    return RedirectToAction("Flashcards", "MyStudies");
                 }
             }
 
-            return RedirectToAction("Flashcards", "MyStudies");
+            return new ContentResult { Content = "Whoops! Flashcard created unsuccessfully, try again." };
         }
 
         [Authorize]
@@ -338,13 +348,69 @@ namespace StudyBuddyMVC.Controllers
         [HttpGet("AddToDeckGroup")]
         public IActionResult AddToDeckGroup(int id)
         {
-            return View();
+            if (id == 0)
+            {
+                return new ContentResult { Content = "Bummers! Looks like that Deck ID does not exist." };
+            }
+            Deck deck = _deckService.GetDeckByID(id);
+
+            DeckGroupsViewModel model = new DeckGroupsViewModel();
+            model.Deck = deck;
+            model.DeckGroups = new List<SelectListItem>();
+
+            var userid = _userService.GetUserId();
+            int ID = System.Convert.ToInt32(userid);
+            User user = _userService.GetUser(ID);
+
+            // Add an empty default list item.
+            model.DeckGroups.Add(new SelectListItem
+            {
+                Text = "Select a Deck",
+                Value = ""
+            });
+
+            foreach (var item in user.UserDeckGroups)
+            {
+                model.DeckGroups.Add(new SelectListItem
+                {
+                    Text = item.DeckGroup.DeckGroupName,
+                    Value = Convert.ToString(item.DeckGroupId)
+                });
+            }
+
+            return View(model);
         }
 
         [Authorize]
         [HttpPost("AddToDeckGroup")]
-        public IActionResult AddToDeckGroup(DeckGroupsViewModel deckgroupViewModel)
+        public async Task<IActionResult> AddToDeckGroup(DeckGroupsViewModel deckgroupViewModel)
         {
+            DeckGroupDeck deckgroupDeck = new DeckGroupDeck();
+            List<DeckGroupDeck> deckgroupDecks = _deckGroupDeckService.GetDeckGroupDecks();
+
+            var userid = _userService.GetUserId();
+            int ID = System.Convert.ToInt32(userid);
+            User user = _userService.GetUser(ID);
+
+            // Using nested loop to check and see if deck has already been assigned to deckgroup.
+            foreach (UserDeckGroup userdeckGroup in user.UserDeckGroups)
+            {
+                if (userdeckGroup.DeckGroupId == deckgroupViewModel.DeckGroupId)
+                {
+                    foreach (DeckGroupDeck dgd in deckgroupDecks)
+                    {
+                        if (dgd.DeckGroupId == userdeckGroup.DeckGroupId && dgd.DeckId == deckgroupViewModel.Deck.DeckId)
+                        {
+                            return new ContentResult { Content = "Yikes! Looks like this Deck has already been assigned to this Deckgroup." };
+                        }
+                    }
+                }
+            }
+
+            deckgroupDeck.DeckId = deckgroupViewModel.Deck.DeckId;
+            deckgroupDeck.DeckGroupId = deckgroupViewModel.DeckGroupId;
+            await _deckGroupDeckService.CreateDeckGroupDeck(deckgroupDeck);
+
             return RedirectToAction("DeckGroups", "MyStudies");
         }
 
@@ -383,19 +449,18 @@ namespace StudyBuddyMVC.Controllers
 
         [Authorize]
         [HttpGet("EditFlashCard")]
-        [Route("EditFlashCard")]
         public IActionResult EditFlashCard(int id)
         {
-            //FlashCard flashCard = 
-            return View();
+            FlashCard flashcard = _flashCardService.GetFlashCardById(id); 
+            return View(flashcard);
         }
 
         [Authorize]
-        [HttpPost]
+        [HttpPost("EditFlashCard")]
         public async Task<IActionResult> EditFlashCard(FlashCard flashCard)
         {
-
-            return Redirect("~/Dashboard/Index");
+            await _flashCardService.UpdateFlashCard(flashCard);
+            return RedirectToAction("FlashCards", "MyStudies");
         }
 
         [Authorize]
@@ -437,6 +502,7 @@ namespace StudyBuddyMVC.Controllers
             {
                 return new ContentResult { Content = "Bummers! That Deckgroup ID does not exist. Go back and try again." };
             }
+
             DeckgroupDeckFlashcardViewModel model = new DeckgroupDeckFlashcardViewModel();
 
             // Find the deckgroup.
@@ -480,6 +546,44 @@ namespace StudyBuddyMVC.Controllers
             model.Decks = newDeckList;
             model.FlashCards = newFlashcardList;
             model.DeckFlashCards = deckflashCards;
+
+            // Pass it into the view. May not need a post method for this.
+            return View(model);
+        }
+
+        [Authorize]
+        [HttpGet("DeckDetails")]
+        public IActionResult DeckDetails(int id)
+        {
+            if (id == 0)
+            {
+                return new ContentResult { Content = "Bummers! That Deck ID does not exist. Go back and try again." };
+            }
+
+            DeckgroupDeckFlashcardViewModel model = new DeckgroupDeckFlashcardViewModel();
+
+            Deck deck = _deckService.GetDeckByID(id);
+
+            // Get the user/owner
+            var userid = _userService.GetUserId();
+            int ID = System.Convert.ToInt32(userid);
+            User user = _userService.GetUser(ID);
+
+            List<FlashCard> newFlashcardList = new List<FlashCard>();
+
+            List<DeckFlashCard> deckFlashCards = _deckService.GetDeckFlashCards();
+            foreach (DeckFlashCard df in deckFlashCards)
+            {
+                if (df.DeckId == id)
+                {
+                    newFlashcardList.Add(df.FlashCard);
+                }
+            }
+
+            model.User = user;
+            model.Deck = deck;
+            model.FlashCards = newFlashcardList;
+            model.DeckFlashCards = deckFlashCards;
 
             return View(model);
         }

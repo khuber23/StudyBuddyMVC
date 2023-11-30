@@ -11,6 +11,8 @@
     <form method="post">
         <div asp-validation-summary="All"></div>
         <div class="form-group">
+            <input asp-for="DeckGroupId" type="hidden" value="@Model.DeckGroupId"/>
+
             <label asp-for="Deck.DeckName"></label>
             <input asp-for="Deck.DeckName" class="form-control" />
             <span asp-validation-for="Deck.DeckName"></span>
@@ -21,7 +23,7 @@
             <span asp-validation-for="Deck.DeckDescription"></span>
         </div>
         <div>
-            <input asp-for="Deck.IsPublic" data-val="true" type="checkbox" id="makepublic" value="True">
+            <input asp-for="Deck.IsPublic" data-val="true" type="checkbox" id="makepublic" value="True"/>
             <input asp-for="Deck.IsPublic" type="hidden" id="makepublic" value="False">
             <label asp-for="Deck.IsPublic">Make it public</label><br>
         </div>

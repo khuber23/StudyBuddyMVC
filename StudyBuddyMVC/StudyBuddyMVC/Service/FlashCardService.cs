@@ -52,5 +52,20 @@ namespace StudyBuddyMVC.Service
 
             return flashcard;
         }
+
+        public async Task UpdateFlashCard(FlashCard flashCard)
+        {
+            using (var httpClient = new HttpClient())
+            {
+                var json = JsonConvert.SerializeObject(flashCard);
+                StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+                using (var response = await _client.PutAsync(_client.BaseAddress + "FlashCard/{id}?flashcardid=" + flashCard.FlashCardId, content))
+
+                {
+                    string responseContent = await response.Content.ReadAsStringAsync();
+                    flashCard = JsonConvert.DeserializeObject<FlashCard>(responseContent);
+                }
+            }
+        }
     }
 }

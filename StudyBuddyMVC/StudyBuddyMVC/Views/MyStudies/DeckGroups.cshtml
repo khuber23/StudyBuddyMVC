@@ -66,38 +66,8 @@
                             </div>
                         </div>
                     </div>  |
-                        @* @Html.ActionLink("Details", "Details", new {id=item.DeckGroupId} ) *@ 
-                        @* @Html.ActionLink("Delete", "Delete", new {id=item.DeckGroupId}) *@
-                    @* <button type="button" class="btn btn-info" onclick="@item.DeckGroupId" data-bs-toggle="modal" data-bs-target="@("#detailBackdrop-" + @item.DeckGroupId)">
-                        Details
-                    </button> *@
-                    <a asp-controller="MyStudies" asp-action="DeckGroupDetails" asp-route-id="@item.DeckGroupId" class="btn btn-info" role="button">Details</a>
-                    <!-- Modal -->
-                    <div class="modal fade" id="detailBackdrop-@item.DeckGroupId" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Information about Deckgroup</h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                    <div>
-                                        <h4>Deckgoup Name</h4>
-                                        <p>@item.DeckGroupName</p>
-                                    </div>
-                                    <div>
-                                        <h4>Deckgroup Description</h4>
-                                        <p>@item.DeckGroupDescription</p>
-                                    </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                    <a asp-controller="MyStudies" asp-action="CreateDeckFromDeckGroup" asp-route-id="@item.DeckGroupId" class="btn btn-primary" role="button">Create a Deck</a>
-                                    <button type="button" id="moreinfo-btn" class="btn btn-info">More Information</button>
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">I'm Done</button>
-                                    </div>
-                            </div>
-                        </div>
-                    </div> |
+
+                    <a asp-controller="MyStudies" asp-action="DeckGroupDetails" asp-route-id="@item.DeckGroupId" class="btn btn-info" role="button">Details</a> |
 
                     <button type="button" class="btn btn-danger" onclick="@item.DeckGroupId" data-bs-toggle="modal" data-bs-target="#DeleteBackdrop">
                         Delete

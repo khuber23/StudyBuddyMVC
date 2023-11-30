@@ -1,4 +1,4 @@
-﻿@model ApiStudyBuddy.Models.FlashCard
+﻿@model FlashCardViewModel
 
 @{
     ViewData["Title"] = "AddToDeck";
@@ -9,6 +9,7 @@
 <div class="form-horizontal">
     <form method="post">
         <div asp-validation-summary="All"></div>
+        <input asp-for="DeckID" type="hidden" value="@Model.DeckID" />
         <div class="form-group">
             <label asp-for="FlashCardQuestion"></label>
             <input asp-for="FlashCardQuestion" class="form-control" />

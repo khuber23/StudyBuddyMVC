@@ -8,6 +8,8 @@ namespace StudyBuddyMVC.Models
         public User? User { get; set; }
         public DeckGroup DeckGroup { get; set; }
 
+        public Deck? Deck { get; set; }
+
         public List<Deck>? Decks { get; set; }
 
         public List<FlashCard>? FlashCards { get; set; }
