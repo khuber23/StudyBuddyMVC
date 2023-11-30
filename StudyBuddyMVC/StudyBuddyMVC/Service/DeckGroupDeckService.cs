@@ -41,5 +41,19 @@ namespace StudyBuddyMVC.Service
 
             return deckgroupDeck;
         }
+
+        public async Task DeleteDeckGroupDeck(DeckGroupDeck deckGroupDeck)
+        {
+            using (var httpClient = new HttpClient())
+            {
+                var json = JsonConvert.SerializeObject(deckGroupDeck);
+                StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+                using (var response = await _client.DeleteAsync(_client.BaseAddress + "DeckGroupDeck/" + deckGroupDeck.DeckGroupId + "/" + deckGroupDeck.DeckId))
+
+                {
+                    string responseContent = await response.Content.ReadAsStringAsync();
+                }
+            }
+        }
     }
 }

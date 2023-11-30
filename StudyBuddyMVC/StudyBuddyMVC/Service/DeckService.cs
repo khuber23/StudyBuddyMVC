@@ -105,5 +105,29 @@ namespace StudyBuddyMVC.Service
                 }
             }
         }
+
+        public async Task DeleteUserDeck(UserDeck userDeck)
+        {
+            using (var httpClient = new HttpClient())
+            {
+                var json = JsonConvert.SerializeObject(userDeck);
+                StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+                using (var response = await _client.DeleteAsync(_client.BaseAddress + "UserDeck/" + userDeck.UserId + "/" + userDeck.DeckId))
+
+                {
+                    string responseContent = await response.Content.ReadAsStringAsync();
+                }
+            }
+        }
+
+        public async Task DeleteDeckID(int id)
+        {
+            HttpResponseMessage response = _client.DeleteAsync(_client.BaseAddress + "Deck/{id}?deckid=" + id).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+            }
+        }
     }
 }

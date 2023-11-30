@@ -13,5 +13,9 @@ namespace StudyBuddyMVC.Service
         DeckGroup RetrieveLastDeckGroup();
 
         Task UpdateDeckGroup(DeckGroup deckgroup);
+
+        Task DeleteUserDeckGroup(UserDeckGroup id);
+
+        Task DeleteDeckGroupByID(int id);
     }
 }

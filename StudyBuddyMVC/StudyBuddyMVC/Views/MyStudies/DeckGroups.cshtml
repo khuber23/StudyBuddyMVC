@@ -29,7 +29,7 @@
                 <button id="create-deck-group-btn" type="button" class="btn btn-primary" data-toggle="modal">
                     Create a DeckGroup
                 </button>
-
+                <button type="button" class="btn btn-outline-success">Share a Deckgroup</button>
         @foreach (var item in Model)
         {
               <tr>
@@ -69,21 +69,23 @@
 
                     <a asp-controller="MyStudies" asp-action="DeckGroupDetails" asp-route-id="@item.DeckGroupId" class="btn btn-info" role="button">Details</a> |
 
-                    <button type="button" class="btn btn-danger" onclick="@item.DeckGroupId" data-bs-toggle="modal" data-bs-target="#DeleteBackdrop">
+                    <button type="button" class="btn btn-danger" onclick="@item.DeckGroupId" data-bs-toggle="modal" data-bs-target="@("#DeleteBackdrop-"+ @item.DeckGroupId)">
                         Delete
                     </button>
 
                     <!-- Delete -->
-                    <div class="modal fade" id="DeleteBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal fade" id="DeleteBackdrop-@item.DeckGroupId" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
-                                <form asp-action="DeleteDeckGroup" asp-controller="MyStudies" method="post">
+                                <form asp-action="DeleteDeckGroup" asp-controller="MyStudies" asp-route-id="@item.DeckGroupId" method="post">
                                     <div class="modal-header bg-warning">
                                         <h1 class="modal-title fs-5" id="staticBackdropLabel">Deleting Deck Group</h1>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <h2>Are you sure you want to delete this Deckgroup?</h2>
+                                        <h2>
+                                            Are you sure you want to delete Deckgroup <b style="color: #005baa;">@item.DeckGroupName?</b>
+                                        </h2>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancel</button>

@@ -7,5 +7,7 @@ namespace StudyBuddyMVC.Service
         Task CreateDeckGroupDeck(DeckGroupDeck deckGroupDeck);
 
         List<DeckGroupDeck> GetDeckGroupDecks();
+
+        Task DeleteDeckGroupDeck(DeckGroupDeck deckGroupDeck);
     }
 }

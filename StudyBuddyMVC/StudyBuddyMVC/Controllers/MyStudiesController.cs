@@ -465,25 +465,47 @@ namespace StudyBuddyMVC.Controllers
 
         [Authorize]
         [HttpPost("DeleteDeckGroup")]
-        public IActionResult DeleteDeckGroup(int id)
+        public async Task<IActionResult> DeleteDeckGroupAsync(int id)
         {
+            DeckGroup deckGroup = _deckGroupService.GetDeckGroupByID(id);
+
+            var userid = _userService.GetUserId();
+            int ID = System.Convert.ToInt32(userid);
+
+            UserDeckGroup userDeckGroup = new UserDeckGroup();
+            userDeckGroup.UserId = ID;
+            userDeckGroup.DeckGroupId = deckGroup.DeckGroupId;
+            // Delete from userdeckgroup
+            await _deckGroupService.DeleteUserDeckGroup(userDeckGroup);
+
+            // Now delete the Deckgroup itself.
+            await _deckGroupService.DeleteDeckGroupByID(id);
+
+            // Problem! when trying to delete a Deckgroup, deleting userdeckgroup does not completely delete the deck itself. 
+            // So had to delete the actual Deckgroup itself. But when deleting the deckgroup, it will also delete the deckgroupdeck, which is good. 
+
             return RedirectToAction("DeckGroups", "MyStudies");
         }
 
-
         [Authorize]
         [HttpPost("DeleteDeck")]
-        public IActionResult DeleteDeck(int id)
+        public async Task<IActionResult> DeleteDeck(int id)
         {
-            return RedirectToAction("Decks", "MyStudies");
-        }
+            Deck deck = _deckService.GetDeckByID(id);
 
-        [Authorize]
-        [HttpGet("DeleteFlashCard")]
-        [Route("DeleteFlashCard")]
-        public IActionResult DeleteFlashCard()
-        {
-            return View();
+            var userid = _userService.GetUserId();
+            int ID = System.Convert.ToInt32(userid);
+
+            UserDeck userDeck = new UserDeck();
+            userDeck.UserId = ID;
+            userDeck.DeckId = deck.DeckId;
+
+            await _deckService.DeleteUserDeck(userDeck);
+            await _deckService.DeleteDeckID(id);
+
+            // Same issue as deleting Deck. Deleting user deck does not delete the deck so had to delete the actual deck after. But will delete the Deckflash card. 
+
+            return RedirectToAction("Decks", "MyStudies");
         }
 
         [Authorize]

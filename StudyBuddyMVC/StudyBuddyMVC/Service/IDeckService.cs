@@ -17,5 +17,9 @@ namespace StudyBuddyMVC.Service
         public Task UpdateDeck(Deck deck);
 
         Deck RetrieveLastDeck();
+
+        Task DeleteUserDeck(UserDeck id);
+
+        Task DeleteDeckID(int id);
     }
 }

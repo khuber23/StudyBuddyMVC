@@ -9,6 +9,8 @@
 <div class="form-horizontal">
     <form method="post">
         <input type="hidden" asp-for="FlashCardId" />
+        <input type="hidden" asp-for="IsPublic" value="@Model.IsPublic"/>
+        <input type="hidden" asp-for="ReadOnly" value="@Model.ReadOnly" />
         <div asp-validation-summary="All"></div>
         <div class="form-group mb-3">
             <label>Flashcard Question</label>
