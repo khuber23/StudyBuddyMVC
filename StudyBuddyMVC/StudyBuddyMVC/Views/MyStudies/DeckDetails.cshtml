@@ -15,23 +15,28 @@
 <p>  Creator: @Model.User.Username</p>
 <body>
     <div class="form-control">
-        <h3 style="color: #005baa;">Flashcards</h3>
-        <ol>
-            @foreach (var item in Model.FlashCards)
-            {
+        @{
+            foreach (var item in Model.FlashCards)
+            { 
+                if (item.FlashCardQuestion == null && item.FlashCardAnswer == null)
+                {
+                    <h4 style="color:darkred">This Deck does not have any flashcards yet.</h4>
+                }
+            <h3 style="color: #005baa;">Flashcards</h3>
+            <ol>         
                 <li>
                     <h4>
                         @item.FlashCardQuestion
                     </h4>
                     <ul>
                         <li>
-                            <p style="color: #005baa;">@item.FlashCardAnswer</p>     
-                        </li>           
+                            <p style="color: #005baa;">@item.FlashCardAnswer</p>
+                            <a asp-controller="MyStudies" asp-action="EditFlashCard" asp-route-id="@item.FlashCardId" role="button" class="btn btn-outline-primary" style="float:initial">Edit Flashcard</a>
+                        </li>
                     </ul>
-                    <a asp-controller="MyStudies" asp-action="EditFlashCard" asp-route-id="@item.FlashCardId" role="button" class="btn btn-outline-primary" style="float:initial">Edit Flashcard</a>
                 </li>
-            }
-        </ol>
+            </ol>
+            }}        
     </div>
 </body>
 <br />

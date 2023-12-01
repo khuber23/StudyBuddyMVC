@@ -27,7 +27,7 @@
                         <textarea asp-for="DeckDescription" class="form-control" rows="4" cols="50" id="deckDescription" aria-required="true"></textarea>
                         <span asp-validation-for="DeckDescription" class="text-danger"></span><br><br />
                     </div>
-                    <div>
+@*                     <div>
                         <input asp-for="IsPublic" data-val="true" type="checkbox" id="makepublic" value="True" checked="true">
                         <input asp-for="IsPublic" type="hidden" id="makepublic" value="False">
                         <label asp-for="IsPublic">Make it public</label><br>
@@ -42,7 +42,7 @@
                             <input asp-for="ReadOnly" type="radio" id="no" value="False" />
                             <span asp-validation-for="ReadOnly" class="text-danger"></span>
                         </div>                        
-                    </div>
+                    </div> *@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>

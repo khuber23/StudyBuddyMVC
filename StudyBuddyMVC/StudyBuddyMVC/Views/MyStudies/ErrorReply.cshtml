@@ -1,0 +1,38 @@
+﻿@model ErrorReplyViewModel
+
+@{
+    ViewData["Title"] = "AddToDeck";
+    Layout = "~/Views/MyStudies/_ErrorLayout.cshtml";
+}
+
+@{
+    int errorNumber = Model.ErrorNumber;
+
+    switch (errorNumber)
+    {
+        case 1:
+            <h2 class="align-middle" style="color:red">Looks like this Deck has already assigned to that Deckgroup.</h2><br />
+            <a asp-controller="MyStudies" asp-action="Decks" role="button" class="btn btn-secondary" style="float:right">Go Back to Decks</a>
+            break;
+        case 2:
+            <h2 class="align-middle" style="color:red">Looks like this Flashcard has already been assigned to that Deck.</h2>
+            <br />
+            <a asp-controller="MyStudies" asp-action="Flashcards" role="button" class="btn btn-secondary" style="float:right">Go Back to Flashcards</a>
+            break;
+        case 3:
+            <h2 class="align-middle" style="color:red">Sorry, looks like that Deck does not exist.</h2>
+            <br />
+            <a asp-controller="MyStudies" asp-action="Decks" role="button" class="btn btn-secondary" style="float:right">Go Back to Decks</a>
+            break;
+        case 4:
+            <h2 class="align-middle" style="color:red">Sorry, looks like that Flashcard does not exist.</h2>
+            <br />
+            <a asp-controller="MyStudies" asp-action="Flashcards" role="button" class="btn btn-secondary" style="float:right">Go Back to Flashcards</a>
+            break;
+        case 5:
+            <h2 class="align-middle" style="color:red">Your Flashcard was created but it is not assigned to a Deck.</h2>
+            <br />
+            <a asp-controller="MyStudies" asp-action="Flashcards" role="button" class="btn btn-secondary" style="float:right">Go Back to Flashcards</a>
+            break;
+    }
+}

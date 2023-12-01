@@ -109,6 +109,11 @@ namespace StudyBuddyMVC.Controllers
         [HttpPost("CreateDeckGroup")]
         public async Task<IActionResult> CreateDeckGroup(DeckGroup deckGroup)
         {
+            if (deckGroup.DeckGroupName == "test")
+            {
+                return RedirectToAction("DeckGroupDeck", "MyStudies");
+			}
+
             DeckGroup deckGroup1 = new DeckGroup();
             UserDeckGroup userDeckGroup = new UserDeckGroup();
             var userId = _userService.GetUserId();
@@ -151,7 +156,12 @@ namespace StudyBuddyMVC.Controllers
         [HttpPost("DeckGroupDeck")]
         public async Task<IActionResult> DeckGroupDeck(DeckGroupDeck dgb)
         {
-            Deck newDeck = new Deck();
+			if (dgb.Deck.DeckName == "test")
+			{
+				return RedirectToAction("CreateFlashCard", "MyStudies");
+			}
+
+			Deck newDeck = new Deck();
             var userId = _userService.GetUserId();
 
             //Create the deck.
@@ -244,8 +254,6 @@ namespace StudyBuddyMVC.Controllers
             FlashCard newFlashCard = new FlashCard();
             newFlashCard.FlashCardQuestion = flashCardViewModel.FlashCardQuestion;
             newFlashCard.FlashCardAnswer = flashCardViewModel.FlashCardAnswer;
-            newFlashCard.IsPublic = flashCardViewModel.IsPublic;
-            newFlashCard.ReadOnly = flashCardViewModel.ReadOnly;
 
 
             if (!ModelState.IsValid)
@@ -273,13 +281,25 @@ namespace StudyBuddyMVC.Controllers
                 }
             }
 
-            return new ContentResult { Content = "Whoops! Flashcard created unsuccessfully, try again." };
+            return RedirectToAction("ErrorReply", "MyStudies", new { id = 5 });
+        }
+
+        [Authorize]
+        [HttpPost("RemoveFlashCard")]
+        public IActionResult RemoveFlashCard(UserDeck userDeck)
+        {
+            return RedirectToAction("DeckGroups", "MyStudies");
         }
 
         [Authorize]
         [HttpGet("AddToDeck")]
         public IActionResult AddToDeck(int id)
         {
+            if (id == 0)
+            {
+                return RedirectToAction("ErrorReply", "MyStudies", new { id = 4 });
+            }
+
             //DeckFlashCard deckFlashCard = new DeckFlashCard();
             FlashCard flashCard = _flashCardService.GetFlashCardById(id);
 
@@ -330,7 +350,7 @@ namespace StudyBuddyMVC.Controllers
                     {
                         if (df.DeckId == userDeck.DeckId && df.FlashCardId == decksViewModel.FlashCard.FlashCardId)
                         {
-                            return new ContentResult { Content = "Yikes! Looks like this flashcard has already been assigned to this Deck." };
+                            return RedirectToAction("ErrorReply", "MyStudies", new { id = 2 });
                         }
                     }
                 }
@@ -350,7 +370,7 @@ namespace StudyBuddyMVC.Controllers
         {
             if (id == 0)
             {
-                return new ContentResult { Content = "Bummers! Looks like that Deck ID does not exist." };
+                return RedirectToAction("ErrorReply", "MyStudies", new { id = 3 });
             }
             Deck deck = _deckService.GetDeckByID(id);
 
@@ -401,7 +421,7 @@ namespace StudyBuddyMVC.Controllers
                     {
                         if (dgd.DeckGroupId == userdeckGroup.DeckGroupId && dgd.DeckId == deckgroupViewModel.Deck.DeckId)
                         {
-                            return new ContentResult { Content = "Yikes! Looks like this Deck has already been assigned to this Deckgroup." };
+                            return RedirectToAction("ErrorReply", "MyStudies", new { id = 1 });
                         }
                     }
                 }
@@ -608,6 +628,15 @@ namespace StudyBuddyMVC.Controllers
             model.DeckFlashCards = deckFlashCards;
 
             return View(model);
+        }
+
+        [Authorize]
+        [HttpGet("ErrorReply")]
+        public async Task<IActionResult> ErrorReply(int id)
+        {
+            ErrorReplyViewModel errorReply = new ErrorReplyViewModel();
+            errorReply.ErrorNumber = id;
+            return View(errorReply);
         }
     }
 }
