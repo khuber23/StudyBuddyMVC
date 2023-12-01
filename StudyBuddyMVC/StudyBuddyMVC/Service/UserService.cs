@@ -22,7 +22,7 @@ namespace StudyBuddyMVC.Service
             User user = new User();
             using (var httpClient = new HttpClient())
             {
-                httpClient.BaseAddress = new Uri("https://instruct.ntc.edu/studybuddyapi/api/");
+                httpClient.BaseAddress = new Uri("https://instruct.ntc.edu/studybuddyapi/api/User/");
                 var response = httpClient.GetAsync("{id}?userid=" + userid);
                 response.Wait();
                 var result = response.Result;
