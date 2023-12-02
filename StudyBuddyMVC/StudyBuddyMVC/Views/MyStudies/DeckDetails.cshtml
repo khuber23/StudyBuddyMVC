@@ -8,7 +8,9 @@
 <h1 style="color: #005baa;">Deck Details</h1>
 <br />
 <div>
-    <h3 style="border: 2px #005baa;">@Model.Deck.DeckName</h3>
+    <h3 style="border: 2px #005baa;">
+        @Model.Deck.DeckName &nbsp;&nbsp; <a asp-controller="MyStudies" asp-action="AddToDeckGroup" asp-route-id="@Model.Deck.DeckId" role="button" class="btn btn-outline-primary">Import To a DeckGroup</a>
+    </h3>
     <p>  @Model.Deck.DeckDescription</p>
 </div>
 
@@ -43,7 +45,6 @@
 <footer>
     <div class="form-horizontal">
         <a asp-controller="MyStudies" asp-action="CreateFlashCard" asp-route-id="@Model.Deck.DeckId" role="button" class="btn btn-primary">Create a Flashcard</a>     
-        <a asp-controller="MyStudies" asp-action="AddToDeckGroup" asp-route-id="@Model.Deck.DeckId" role="button" class="btn btn-outline-primary">Add To a DeckGroup</a>
         <a asp-controller="MyStudies" asp-action="Decks" role="button" class="btn btn-secondary" style="float:initial">I'm Done</a>
     </div>
 </footer>

@@ -12,7 +12,14 @@
     <p>  @Model.DeckGroup.DeckGroupDescription</p>
 </div>
 
-<p>  Creator: @Model.User.Username</p>
+<p>  Creator: @Model.User.Username 
+@{
+    if (Model.Decks.Count > 5)
+    {
+        <a asp-controller="MyStudies" asp-action="DeckGroups" role="button" class="btn btn-secondary" style="float:right">I'm Done</a>
+    }
+}
+</p>
 
 <body>  
     <div class="form-control">
@@ -52,7 +59,12 @@
 <footer>
     <div class="form-horizontal">
         <a asp-controller="MyStudies" asp-action="DeckGroupDeck" asp-route-id="@Model.DeckGroup.DeckGroupId" role="button" class="btn btn-primary">Create a Deck</a>
-        <a asp-controller="MyStudies" asp-action="DeckGroups" role="button" class="btn btn-secondary">I'm Done</a>
+        @{
+            if (Model.Decks.Count < 5)
+            {
+                <a asp-controller="MyStudies" asp-action="DeckGroups" role="button" class="btn btn-secondary">I'm Done</a>
+            }
+        }
     </div>
 </footer>
 

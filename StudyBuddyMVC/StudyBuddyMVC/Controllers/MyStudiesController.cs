@@ -11,6 +11,7 @@ using System.Text;
 namespace StudyBuddyMVC.Controllers
 {
 	[Authorize]
+    [Route("MyStudies")]
 	public class MyStudiesController : Controller
     {
         // Service fields
@@ -630,6 +631,35 @@ namespace StudyBuddyMVC.Controllers
             return View(model);
         }
 
+        // ------------------------------------------ -------------- Share 
+        [Authorize]
+        [HttpGet("ShareDeckGroupAccess")]
+        public IActionResult ShareDeckGroupAccess()
+        {
+            return View();
+        }
+
+        [Authorize]
+        [HttpGet("ShareDeckGroupClone")]
+        public IActionResult ShareDeckGroupClone()
+        {
+            return View();
+        }
+
+        [Authorize]
+        [HttpGet("ShareDeckAccess")]
+        public IActionResult ShareDeckAccess()
+        {
+            return View();
+        }
+
+        [Authorize]
+        [HttpGet("ShareDeckClone")]
+        public IActionResult ShareDeckClone()
+        {
+            return View();
+        }
+
         [Authorize]
         [HttpGet("ErrorReply")]
         public async Task<IActionResult> ErrorReply(int id)
@@ -638,5 +668,5 @@ namespace StudyBuddyMVC.Controllers
             errorReply.ErrorNumber = id;
             return View(errorReply);
         }
-    }
+	}
 }
