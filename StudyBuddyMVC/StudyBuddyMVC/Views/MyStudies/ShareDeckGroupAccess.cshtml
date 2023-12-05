@@ -1,1 +1,28 @@
-﻿<h1>Hello deckgroup direct access</h1>
+﻿@model DeckGroupsViewModel
+
+@{
+    ViewData["Title"] = "DeckGroupAccess";
+    Layout = "~/Views/MyStudies/_studiesLayout.cshtml";
+}
+
+<h2 style="color: #005baa;">Give access to a user</h2>
+<br />
+<body>
+    <h4>Select a Deckgroup</h4>
+</body>
+<br />
+<br />
+
+@using (Html.BeginForm("ShareDeckGroupAccess", "MyStudies", FormMethod.Post))
+{
+    <div class="form-horizontal" size="3">
+        @*         <input type="hidden" asp-for="FlashCard.FlashCardId" /> *@
+        <h4 style="color: #005baa;">Choose a Deckgroup</h4>
+        @Html.DropDownListFor(m=>m.DeckGroupId,new SelectList(Model.DeckGroups,"Value","Text"),new{@class="form-control"})
+        <br />
+        <br />
+        @* <input type="submit" value="Submit" /> *@
+        <button type="submit" class="btn btn-primary" role="button">Save</button>
+        <input type="button" value="Cancel" class="btn btn-secondary" onclick="location.href='@Url.Action("Decks","MyStudies")';" />
+    </div>
+}

@@ -660,7 +660,28 @@ namespace StudyBuddyMVC.Controllers
         [HttpGet("ShareDeckGroupAccess")]
         public IActionResult ShareDeckGroupAccess()
         {
-            return View();
+            DeckGroupsViewModel vm = new DeckGroupsViewModel();
+            vm.DeckGroups = new List<SelectListItem>();
+
+            var userid = _userService.GetUserId();
+            int id = System.Convert.ToInt32(userid);
+            User user = _userService.GetUser(id);
+
+            vm.DeckGroups.Add(new SelectListItem
+            {
+                Text = "Select a Deck Group",
+                Value = ""
+            });
+            foreach (var item in user.UserDeckGroups)
+            {
+                vm.DeckGroups.Add(new SelectListItem
+                {
+                    Text = item.DeckGroup.DeckGroupName,
+                    Value = Convert.ToString(item.DeckGroupId)
+                });
+            }
+            
+            return View(vm);
         }
 
         [Authorize]
@@ -674,7 +695,29 @@ namespace StudyBuddyMVC.Controllers
         [HttpGet("ShareDeckAccess")]
         public IActionResult ShareDeckAccess()
         {
-            return View();
+            DecksViewModel vm = new DecksViewModel();
+            vm.Decks = new List<SelectListItem>();
+
+            // Get user 
+            var userid = _userService.GetUserId();
+            int ID = System.Convert.ToInt32(userid);
+            User user = _userService.GetUser(ID);
+
+            // Add an empty default list item.
+            vm.Decks.Add(new SelectListItem
+            {
+                Text = "Select a Deck",
+                Value = ""
+            });
+            foreach (var item in user.UserDecks)
+            {
+                vm.Decks.Add(new SelectListItem
+                {
+                    Text = item.Deck.DeckName,
+                    Value = Convert.ToString(item.DeckId)
+                });
+            }
+            return View(vm);
         }
 
         [Authorize]
