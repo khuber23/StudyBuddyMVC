@@ -6,6 +6,11 @@ namespace StudyBuddyMVC.Models
     public class DeckgroupDeckFlashcardViewModel
     {
         public User? User { get; set; }
+
+        public int DeckGroupId { get; set; }
+
+        public int DeckId { get; set; }
+
         public DeckGroup DeckGroup { get; set; }
 
         public Deck? Deck { get; set; }

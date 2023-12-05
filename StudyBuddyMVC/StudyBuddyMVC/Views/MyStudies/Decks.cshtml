@@ -29,7 +29,7 @@
                 <button id="create-deck-btn" type="button" class="btn btn-primary" data-toggle="modal">
                     Create a Deck
                 </button>
-                <button id="shareDeck-btn" type="button" class="btn btn-success">Share</button>
+                <button id="shareDeck-btn" type="button" class="btn btn-outline-success">Share</button>
 
             </th>
         </tr>
@@ -81,7 +81,7 @@
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <form asp-action="DeleteDeck" asp-controller="MyStudies" asp-route-id="@item.DeckId" method="post">
-                                    <div class="modal-header">
+                                    <div class="modal-header bg-warning">
                                         <h1 class="modal-title fs-5" id="staticBackdropLabel">Deleting Deck</h1>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
@@ -95,6 +95,7 @@
                                 </form>
                             </div>
                         </div>
+                       
                 </td>
             </tr>
         }

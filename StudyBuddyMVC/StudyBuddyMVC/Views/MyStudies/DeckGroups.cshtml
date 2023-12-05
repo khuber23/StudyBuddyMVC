@@ -26,13 +26,11 @@
                 @Html.DisplayNameFor(model => model.DeckGroupDescription)
             </th>
             <th style="font-weight:bold">
+                    <button id="create-deck-group-btn" type="button" class="btn btn-primary" data-toggle="modal">Create DeckGroup</button> &nbsp;
+                    <button id="shareDeckgroup-btn" type="button" class="btn btn-outline-success">Share</button>
                
-                <button id="create-deck-group-btn" type="button" class="btn btn-primary" data-toggle="modal">
-                    Create a DeckGroup
-                </button> &nbsp;
-                <button id="shareDeckgroup-btn" type="button" class="btn btn-success">Share</button>
             </th>
-            
+        </tr>
 
         @foreach (var item in Model)
         {

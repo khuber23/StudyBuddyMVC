@@ -530,11 +530,35 @@ namespace StudyBuddyMVC.Controllers
         }
 
         [Authorize]
-        [HttpPost]
-        public async Task<IActionResult> DeleteFlashCard(FlashCard flashCard)
+        [HttpPost("DeleteFlashCard")]
+        public async Task<IActionResult> DeleteFlashCard(int id)
         {
+            if (id == 0)
+            {
+                return RedirectToAction("ErrorReply", "MyStudies", new { id = 0 });
+            }
 
-            return Redirect("~/Dashboard/Index");
+            await _flashCardService.DeleteFlashCardById(id);
+            return RedirectToAction("Flashcards", "MyStudies");
+        }
+
+        [Authorize]
+        [HttpPost("DeleteDeckGroupDeck")]
+        public async Task<IActionResult> DeleteDeckGroupDeck(DeckgroupDeckFlashcardViewModel viewModel)
+        {
+            if (viewModel.DeckGroupId == 0 && viewModel.DeckId == 0)
+            {
+                return RedirectToAction("ErrorReply", "MyStudies", new { id = 0 });
+            }
+
+            DeckGroupDeck deckGroupDeck = new DeckGroupDeck();
+            deckGroupDeck.DeckId = viewModel.DeckId;
+            deckGroupDeck.DeckGroupId = viewModel.DeckGroupId;
+
+            await _deckGroupDeckService.DeleteDeckGroupDeck(deckGroupDeck);
+
+
+            return RedirectToAction("DeckGroups", "MyStudies");
         }
 
         [Authorize]
@@ -543,7 +567,7 @@ namespace StudyBuddyMVC.Controllers
         {
             if (id == 0)
             {
-                return new ContentResult { Content = "Bummers! That Deckgroup ID does not exist. Go back and try again." };
+                return RedirectToAction("ErrorReply", "MyStudies", new { id = 0 });
             }
 
             DeckgroupDeckFlashcardViewModel model = new DeckgroupDeckFlashcardViewModel();
@@ -600,7 +624,7 @@ namespace StudyBuddyMVC.Controllers
         {
             if (id == 0)
             {
-                return new ContentResult { Content = "Bummers! That Deck ID does not exist. Go back and try again." };
+                return RedirectToAction("ErrorReply", "MyStudies", new { id = 0 });
             }
 
             DeckgroupDeckFlashcardViewModel model = new DeckgroupDeckFlashcardViewModel();

@@ -10,6 +10,11 @@
 
     switch (errorNumber)
     {
+        case 0:
+            <h2 class="align-middle" style="color:red">Sorry, that ID does not exist.</h2>
+            <br />
+            <a asp-controller="MyStudies" asp-action="Dashboard" role="button" class="btn btn-secondary" style="float:right">Back to Home</a>
+            break;
         case 1:
             <h2 class="align-middle" style="color:red">Looks like this Deck has already assigned to that Deckgroup.</h2><br />
             <a asp-controller="MyStudies" asp-action="Decks" role="button" class="btn btn-secondary" style="float:right">Go Back to Decks</a>
