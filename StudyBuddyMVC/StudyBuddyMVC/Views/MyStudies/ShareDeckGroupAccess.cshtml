@@ -5,14 +5,12 @@
     Layout = "~/Views/MyStudies/_studiesLayout.cshtml";
 }
 
-<h2 style="color: #005baa;">Give access to a user</h2>
+<h2 style="color: #005baa;">Give user a copy of a Deckgroup</h2>
 <br />
 <body>
-    <h4>Select a user to share your deckgroup with.</h4>
+    <h4>This will essentially allow the user to own it too.</h4>
 </body>
 <br />
-<br />
-
 @using (Html.BeginForm("ShareDeckGroupAccess", "MyStudies", FormMethod.Post))
 {
     <div class="form-horizontal" size="3">
@@ -26,6 +24,6 @@
         <br />
         @* <input type="submit" value="Submit" /> *@
         <button type="submit" class="btn btn-primary" role="button">Save</button>
-        <input type="button" value="Cancel" class="btn btn-secondary" onclick="location.href='@Url.Action("Decks","MyStudies")';" />
+        <input type="button" value="Cancel" class="btn btn-secondary" onclick="location.href='@Url.Action("DeckGroups","MyStudies")';" />
     </div>
 }

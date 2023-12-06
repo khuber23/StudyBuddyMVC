@@ -1,1 +1,29 @@
-﻿<h1>Hello Deck Clone!!!!</h1>
+﻿@model DecksViewModel
+
+@{
+    ViewData["Title"] = "ShareDeckAccess";
+    Layout = "~/Views/MyStudies/_studiesLayout.cshtml";
+}
+
+<h2 style="color: #005baa;">Clone a Deck for a user</h2>
+<br />
+<body>
+    <h4>User may own it, but cannot edit the Deck.</h4>
+</body>
+<br />
+@using (Html.BeginForm("ShareDeckClone", "MyStudies", FormMethod.Post))
+{
+    <div class="form-horizontal" size="3">
+        <h4 style="color: #005baa;">Select a user</h4>
+        @Html.DropDownListFor(m=>m.UserId,new SelectList(Model.Users,"Value","Text"),new{@class="form-control"})
+        <br />
+        <br />
+        <h4 style="color: #005baa;">Choose a Deck</h4>
+        @Html.DropDownListFor(m=>m.DeckId,new SelectList(Model.Decks,"Value","Text"),new{@class="form-control"})
+        <br />
+        <br />
+        @* <input type="submit" value="Submit" /> *@
+        <button type="submit" class="btn btn-primary" role="button">Save</button>
+        <input type="button" value="Cancel" class="btn btn-secondary" onclick="location.href='@Url.Action("Decks","MyStudies")';" />
+    </div>
+}

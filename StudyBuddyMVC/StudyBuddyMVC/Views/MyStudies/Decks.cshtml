@@ -46,29 +46,34 @@
                     @Html.DisplayFor(modelItem => item.DeckDescription)
                   </td>
                   <td>
-                    @* @Html.ActionLink("Edit", "Edit", new {id=item.DeckId}) *@
-                    <button type="button" class="btn btn-primary" onclick="@item.DeckId" data-bs-toggle="modal" data-bs-target="@("#EditDeck-" + @item.DeckId)">
-                        Edit
-                    </button>
-
-                    <!-- Edit -->
-                    <div class="modal fade" id="EditDeck-@item.DeckId" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Edit Deck</h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    
+                    @{
+                        if (item.ReadOnly == false)
+                        {
+                            <button type="button" class="btn btn-primary" onclick="@item.DeckId" data-bs-toggle="modal" data-bs-target="@("#EditDeck-" + @item.DeckId)">
+                                Edit
+                            </button>
+                            
+                            <!-- Edit -->
+                            <div class="modal fade" id="EditDeck-@item.DeckId" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Edit Deck</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <h3>Make changes to @item.DeckName?</h3>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                            <a asp-controller="MyStudies" asp-action="EditDeck" asp-route-id="@item.DeckId" class="btn btn-primary" role="button">Yes</a>
+                                        </div>
                                     </div>
-                                    <div class="modal-body">
-                                        <h3>Make changes to @item.DeckName?</h3>
-                                    </div>
-                                    <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                    <a asp-controller="MyStudies" asp-action="EditDeck" asp-route-id="@item.DeckId" class="btn btn-primary" role="button">Yes</a>
-                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>  |
+                        }
+                    }
 
                     <a asp-controller="MyStudies" asp-action="DeckDetails" asp-route-id="@item.DeckId" class="btn btn-info" role="button">Details</a> |
                     

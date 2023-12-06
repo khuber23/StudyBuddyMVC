@@ -49,5 +49,15 @@
             <br />
             <a asp-controller="MyStudies" asp-action="ShareDeckAccess" role="button" class="btn btn-secondary" style="float:right">Go Back</a>
             break;
+        case 8:
+            <h2 class="align-middle" style="color:red">The Deckgroup has created but not assigned to the user.</h2>
+            <br />
+            <a asp-controller="MyStudies" asp-action="ShareDeckGroupAccess" role="button" class="btn btn-secondary" style="float:right">Go Back</a>
+            break;
+        case 9:
+            <h2 class="align-middle" style="color:red">The Deck has created but not assigned to the user.</h2>
+            <br />
+            <a asp-controller="MyStudies" asp-action="ShareDeckGroupAccess" role="button" class="btn btn-secondary" style="float:right">Go Back</a>
+            break;
     }
 }

@@ -45,29 +45,34 @@
                         @Html.DisplayFor(modelItem => item.DeckGroupDescription)
                    </td>
                    <td>
-                        @* @Html.ActionLink("Edit", "Edit", new {id=item.DeckGroupId}) *@
-                    <button type="button" class="btn btn-primary" onclick="@item.DeckGroupId" data-bs-toggle="modal" data-bs-target="@("#EditDeckGroup-"+ @item.DeckGroupId)">
-                        Edit
-                    </button>
 
-                    <!-- Edit -->
-                    <div class="modal fade" id="EditDeckGroup-@item.DeckGroupId" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Edit Deckgroup</h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    @{
+                        if (item.ReadOnly == false)
+                        {
+                            <button type="button" class="btn btn-primary" onclick="@item.DeckGroupId" data-bs-toggle="modal" data-bs-target="@("#EditDeckGroup-" + @item.DeckGroupId)">
+                                Edit
+                            </button>
+                           
+                            <!-- Edit -->
+                            <div class="modal fade" id="EditDeckGroup-@item.DeckGroupId" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Edit Deckgroup</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <h3>Make changes to @item.DeckGroupName?</h3>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                            <a asp-controller="MyStudies" asp-action="EditDeckGroup" asp-route-id="@item.DeckGroupId" class="btn btn-primary" role="button">Yes</a>
+                                        </div>
                                     </div>
-                                    <div class="modal-body">
-                                        <h3>Make changes to @item.DeckGroupName?</h3>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                    <a asp-controller="MyStudies" asp-action="EditDeckGroup" asp-route-id="@item.DeckGroupId" class="btn btn-primary" role="button">Yes</a>
-                                    </div>           
-                            </div>
-                        </div>
-                    </div>  |
+                                </div>
+                            </div> 
+                        }
+                    }
 
                     <a asp-controller="MyStudies" asp-action="DeckGroupDetails" asp-route-id="@item.DeckGroupId" class="btn btn-info" role="button">Details</a> |
 

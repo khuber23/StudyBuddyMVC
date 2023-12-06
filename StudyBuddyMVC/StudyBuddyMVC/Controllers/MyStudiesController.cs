@@ -710,7 +710,7 @@ namespace StudyBuddyMVC.Controllers
 
         [Authorize]
         [HttpPost("ShareDeckGroupAccess")]
-        public IActionResult ShareDeckGroupAccess(DeckGroupsViewModel viewModel)
+        public async Task<IActionResult> ShareDeckGroupAccessAsync(DeckGroupsViewModel viewModel)
         {
             List<UserDeckGroup> userDeckGroups = _userService.GetUserDeckGroups();
 
@@ -735,16 +735,9 @@ namespace StudyBuddyMVC.Controllers
             newUserDeckGroup.DeckGroupId = deckGroup.DeckGroupId;
             newUserDeckGroup.UserId = viewModel.UserId;
 
-            _userService.AddUserDeckGroup(newUserDeckGroup);
+            await _userService.AddUserDeckGroup(newUserDeckGroup);
 
             return RedirectToAction("DeckGroups", "MyStudies");
-        }
-
-        [Authorize]
-        [HttpGet("ShareDeckGroupClone")]
-        public IActionResult ShareDeckGroupClone()
-        {
-            return View();
         }
 
         [Authorize]
@@ -803,7 +796,7 @@ namespace StudyBuddyMVC.Controllers
 
         [Authorize]
         [HttpPost("ShareDeckAccess")]
-        public IActionResult ShareDeckAccess(DecksViewModel viewModel)
+        public async Task<IActionResult> ShareDeckAccessAsync(DecksViewModel viewModel)
         {
             List<UserDeck> userDecks = _userService.GetUserDecks();
 
@@ -829,16 +822,211 @@ namespace StudyBuddyMVC.Controllers
             newUserDeck.DeckId = deck.DeckId;
             newUserDeck.UserId = viewModel.UserId;
 
-            _userService.AddUserDeck(newUserDeck);
+            await _userService.AddUserDeck(newUserDeck);
 
             return RedirectToAction("Decks", "MyStudies");
+        }
+
+        [Authorize]
+        [HttpGet("ShareDeckGroupClone")]
+        public IActionResult ShareDeckGroupClone()
+        {
+            DeckGroupsViewModel vm = new DeckGroupsViewModel();
+            vm.DeckGroups = new List<SelectListItem>();
+            vm.Users = new List<SelectListItem>();
+
+            var userid = _userService.GetUserId();
+            int id = System.Convert.ToInt32(userid);
+            User user = _userService.GetUser(id);
+
+            vm.DeckGroups.Add(new SelectListItem
+            {
+                Text = "Select a Deck Group",
+                Value = ""
+            });
+            foreach (var item in user.UserDeckGroups)
+            {
+                vm.DeckGroups.Add(new SelectListItem
+                {
+                    Text = item.DeckGroup.DeckGroupName,
+                    Value = Convert.ToString(item.DeckGroupId)
+                });
+            }
+
+            List<User> users = _userService.GetAllUsers();
+
+            vm.Users.Add(new SelectListItem
+            {
+                Text = "Select a user",
+                Value = "",
+                //Selected = false
+            });
+
+            foreach (var item in users)
+            {
+                // if not equal to myself
+                if (item.UserId != id)
+                {
+                    vm.Users.Add(new SelectListItem
+                    {
+                        Text = item.Username,
+                        Value = Convert.ToString(item.UserId)
+                    });
+                }
+            }
+
+            return View(vm);
+        }
+
+        [Authorize]
+        [HttpPost("ShareDeckGroupClone")]
+        public async Task<IActionResult> ShareDeckGroupCloneAsync(DeckGroupsViewModel viewModel)
+        {
+            List<UserDeckGroup> userDeckGroups = _userService.GetUserDeckGroups();
+
+            // Get the real deckgroup.
+            DeckGroup deckGroup = _deckGroupService.GetDeckGroupByID(viewModel.DeckGroupId);
+
+            var userid = _userService.GetUserId();
+            int id = System.Convert.ToInt32(userid);
+
+            // Check to make sure user isnt already assigned to that deckgroup.
+            foreach (UserDeckGroup userdg in userDeckGroups)
+            {
+                if (userdg.UserId != id)
+                {
+                    if (userdg.UserId == viewModel.UserId && userdg.DeckGroup.DeckGroupName == deckGroup.DeckGroupName)
+                    {
+                        return RedirectToAction("ErrorReply", "MyStudies", new { id = 6 });
+                    }
+                }
+            }  
+
+            // Set the new deck group's fields besides Id. 
+            DeckGroup newdeckGroup = new DeckGroup();
+            newdeckGroup.DeckGroupName = deckGroup.DeckGroupName;
+            newdeckGroup.DeckGroupDescription = deckGroup.DeckGroupDescription;
+            newdeckGroup.ReadOnly = true;
+
+            // Create the new cloned deckgroup
+            await _deckGroupService.CreateDeckGroup(newdeckGroup);
+
+            // Grab the last created deckgropu right away
+            newdeckGroup = _deckGroupService.RetrieveLastDeckGroup();
+            if (newdeckGroup.DeckGroupName != deckGroup.DeckGroupName && newdeckGroup.DeckGroupDescription != deckGroup.DeckGroupDescription)
+            {
+                return RedirectToAction("ErrorReply", "MyStudies", new { id = 8 });
+            }
+
+            UserDeckGroup newUserDeckGroup = new UserDeckGroup();
+            newUserDeckGroup.DeckGroupId = newdeckGroup.DeckGroupId;
+            newUserDeckGroup.UserId = viewModel.UserId;
+
+            await _userService.AddUserDeckGroup(newUserDeckGroup);
+
+            return RedirectToAction("DeckGroups", "MyStudies");
         }
 
         [Authorize]
         [HttpGet("ShareDeckClone")]
         public IActionResult ShareDeckClone()
         {
-            return View();
+            DecksViewModel vm = new DecksViewModel();
+            vm.Decks = new List<SelectListItem>();
+            vm.Users = new List<SelectListItem>();
+
+            // Get user 
+            var userid = _userService.GetUserId();
+            int Id = System.Convert.ToInt32(userid);
+            User user = _userService.GetUser(Id);
+
+            // Add an empty default list item.
+            vm.Decks.Add(new SelectListItem
+            {
+                Text = "Select a Deck",
+                Value = ""
+            });
+
+            foreach (var item in user.UserDecks)
+            {
+                vm.Decks.Add(new SelectListItem
+                {
+                    Text = item.Deck.DeckName,
+                    Value = Convert.ToString(item.DeckId)
+                });
+            }
+
+            List<User> users = _userService.GetAllUsers();
+
+            vm.Users.Add(new SelectListItem
+            {
+                Text = "Select a user",
+                Value = "",
+                //Selected = false
+            });
+
+            foreach (var item in users)
+            {
+                // if not equal to myself
+                if (item.UserId != Id)
+                {
+                    vm.Users.Add(new SelectListItem
+                    {
+                        Text = item.Username,
+                        Value = Convert.ToString(item.UserId)
+                    });
+                }
+            }
+            return View(vm);
+        }
+
+        [Authorize]
+        [HttpPost("ShareDeckClone")]
+        public async Task<IActionResult> ShareDeckClone(DecksViewModel viewModel)
+        {
+            List<UserDeck> userDecks = _userService.GetUserDecks();
+
+            // Get the real deckgroup.
+            Deck deck = _deckService.GetDeckByID(viewModel.DeckId);
+
+            var userid = _userService.GetUserId();
+            int id = System.Convert.ToInt32(userid);
+
+            // Check to make sure user isnt already assigned to that deck.
+            foreach (UserDeck ud in userDecks)
+            {
+                if (ud.UserId != id)
+                {
+                    if (ud.UserId == viewModel.UserId && ud.Deck.DeckName == deck.DeckName)
+                    {
+                        return RedirectToAction("ErrorReply", "MyStudies", new { id = 7 });
+                    }
+                }
+            }
+
+            // Set the new deck fields besides Id. 
+            Deck newDeck = new Deck();
+            newDeck.DeckName = deck.DeckName;
+            newDeck.DeckDescription = deck.DeckDescription;
+            newDeck.ReadOnly = true;
+
+            // Create the new cloned deck
+            await _deckService.CreateDeck(newDeck);
+
+            // Grab the last created decku right away
+            newDeck = _deckService.RetrieveLastDeck();
+            if (newDeck.DeckName != deck.DeckName && newDeck.DeckDescription != deck.DeckDescription)
+            {
+                return RedirectToAction("ErrorReply", "MyStudies", new { id = 9 });
+            }
+
+            UserDeck newUserDeck = new UserDeck();
+            newUserDeck.DeckId = newDeck.DeckId;
+            newUserDeck.UserId = viewModel.UserId;
+
+            await _userService.AddUserDeck(newUserDeck);
+
+            return RedirectToAction("Decks", "MyStudies");
         }
 
         [Authorize]
