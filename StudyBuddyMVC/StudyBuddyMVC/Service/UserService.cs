@@ -70,5 +70,44 @@ namespace StudyBuddyMVC.Service
         {
             return _contextAccessor.HttpContext.User?.FindFirstValue(ClaimTypes.NameIdentifier);
         }
+
+        public List<User> GetAllUsers()
+        {
+            List<User> users = new List<User>();
+            HttpResponseMessage response = _client.GetAsync(_client.BaseAddress + "User").Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                users = JsonConvert.DeserializeObject<List<User>>(data);
+            }
+            return users;
+        }
+
+        public List<UserDeckGroup> GetUserDeckGroups()
+        {
+            List<UserDeckGroup> userDeckGroup = new List<UserDeckGroup>();
+            HttpResponseMessage response = _client.GetAsync(_client.BaseAddress + "UserDeckGroup").Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                userDeckGroup = JsonConvert.DeserializeObject<List<UserDeckGroup>>(data);
+            }
+            return userDeckGroup;
+        }
+
+        public List<UserDeck> GetUserDecks()
+        {
+            List<UserDeck> userDeck = new List<UserDeck>();
+            HttpResponseMessage response = _client.GetAsync(_client.BaseAddress + "UserDeck").Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                userDeck = JsonConvert.DeserializeObject<List<UserDeck>>(data);
+            }
+            return userDeck;
+        }
     }
 }

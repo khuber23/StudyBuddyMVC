@@ -8,7 +8,7 @@
 <h2 style="color: #005baa;">Give access to a user</h2>
 <br />
 <body>
-    <h4>Select a Deckgroup</h4>
+    <h4>Select a user to share your deckgroup with.</h4>
 </body>
 <br />
 <br />
@@ -16,8 +16,11 @@
 @using (Html.BeginForm("ShareDeckGroupAccess", "MyStudies", FormMethod.Post))
 {
     <div class="form-horizontal" size="3">
-        @*         <input type="hidden" asp-for="FlashCard.FlashCardId" /> *@
-        <h4 style="color: #005baa;">Choose a Deckgroup</h4>
+        <h4 style="color: #005baa;">Select a user</h4>
+        @Html.DropDownListFor(m=>m.UserId,new SelectList(Model.Users,"Value","Text"),new{@class="form-control"})
+        <br />
+        <br />
+        <h4 style="color: #005baa;">Select a Deckgroup</h4>
         @Html.DropDownListFor(m=>m.DeckGroupId,new SelectList(Model.DeckGroups,"Value","Text"),new{@class="form-control"})
         <br />
         <br />

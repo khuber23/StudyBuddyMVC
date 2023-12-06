@@ -9,7 +9,10 @@ namespace StudyBuddyMVC.Models
 
         public List<SelectListItem>? DeckGroups { get; set; }
 
-        public Deck? Deck { get; set; }
+        public List<SelectListItem>? Users { get; set; }
 
+        public int UserId { get; set; }
+
+        public Deck? Deck { get; set; }
     }
 }

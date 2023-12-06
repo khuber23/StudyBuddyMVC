@@ -1,4 +1,5 @@
-﻿using ApiStudyBuddy.Models;
+﻿using ApiStudyBuddy.Endpoints;
+using ApiStudyBuddy.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -662,6 +663,7 @@ namespace StudyBuddyMVC.Controllers
         {
             DeckGroupsViewModel vm = new DeckGroupsViewModel();
             vm.DeckGroups = new List<SelectListItem>();
+            vm.Users = new List<SelectListItem>();
 
             var userid = _userService.GetUserId();
             int id = System.Convert.ToInt32(userid);
@@ -680,8 +682,62 @@ namespace StudyBuddyMVC.Controllers
                     Value = Convert.ToString(item.DeckGroupId)
                 });
             }
-            
+
+            List<User> users = _userService.GetAllUsers();
+
+            vm.Users.Add(new SelectListItem
+            {
+                Text = "Select a user",
+                Value = "",
+                //Selected = false
+            });
+
+            foreach (var item in users)
+            {
+                // if not equal to myself
+                if (item.UserId != id)
+                {
+                    vm.Users.Add(new SelectListItem
+                    {
+                        Text = item.Username,
+                        Value = Convert.ToString(item.UserId)
+                    });
+                }           
+            }
+
             return View(vm);
+        }
+
+        [Authorize]
+        [HttpPost("ShareDeckGroupAccess")]
+        public IActionResult ShareDeckGroupAccess(DeckGroupsViewModel viewModel)
+        {
+            List<UserDeckGroup> userDeckGroups = _userService.GetUserDeckGroups();
+
+            // Get the real deckgroup to ensure it exist.
+            DeckGroup deckGroup = _deckGroupService.GetDeckGroupByID(viewModel.DeckGroupId);
+
+            var userid = _userService.GetUserId();
+            int id = System.Convert.ToInt32(userid);
+
+            foreach (UserDeckGroup userdg in userDeckGroups)
+            {
+                if (userdg.UserId != id)
+                {
+                    if (userdg.DeckGroupId == viewModel.DeckGroupId && userdg.UserId == viewModel.UserId)
+                    {
+                        return RedirectToAction("ErrorReply", "MyStudies", new { id = 6 });
+                    }
+                }   
+            }
+
+            UserDeckGroup newUserDeckGroup = new UserDeckGroup();
+            newUserDeckGroup.DeckGroupId = deckGroup.DeckGroupId;
+            newUserDeckGroup.UserId = viewModel.UserId;
+
+            _userService.AddUserDeckGroup(newUserDeckGroup);
+
+            return RedirectToAction("DeckGroups", "MyStudies");
         }
 
         [Authorize]
@@ -697,11 +753,12 @@ namespace StudyBuddyMVC.Controllers
         {
             DecksViewModel vm = new DecksViewModel();
             vm.Decks = new List<SelectListItem>();
+            vm.Users = new List<SelectListItem>();
 
             // Get user 
             var userid = _userService.GetUserId();
-            int ID = System.Convert.ToInt32(userid);
-            User user = _userService.GetUser(ID);
+            int Id = System.Convert.ToInt32(userid);
+            User user = _userService.GetUser(Id);
 
             // Add an empty default list item.
             vm.Decks.Add(new SelectListItem
@@ -709,6 +766,7 @@ namespace StudyBuddyMVC.Controllers
                 Text = "Select a Deck",
                 Value = ""
             });
+
             foreach (var item in user.UserDecks)
             {
                 vm.Decks.Add(new SelectListItem
@@ -717,7 +775,63 @@ namespace StudyBuddyMVC.Controllers
                     Value = Convert.ToString(item.DeckId)
                 });
             }
+
+            List<User> users = _userService.GetAllUsers();
+
+            vm.Users.Add(new SelectListItem
+            {
+                Text = "Select a user",
+                Value = "",
+                //Selected = false
+            });
+
+            foreach (var item in users)
+            {
+                // if not equal to myself
+                if (item.UserId != Id)
+                {
+                    vm.Users.Add(new SelectListItem
+                    {
+                        Text = item.Username,
+                        Value = Convert.ToString(item.UserId)
+                    });
+                }
+            }
             return View(vm);
+        }
+
+
+        [Authorize]
+        [HttpPost("ShareDeckAccess")]
+        public IActionResult ShareDeckAccess(DecksViewModel viewModel)
+        {
+            List<UserDeck> userDecks = _userService.GetUserDecks();
+
+            // Get the real deckgroup to ensure it exist.
+            Deck deck = _deckService.GetDeckByID(viewModel.DeckId);
+
+            // Get the user's own deck
+            var userid = _userService.GetUserId();
+            int id = System.Convert.ToInt32(userid);
+
+            foreach (UserDeck userdg in userDecks)
+            {
+                if (userdg.UserId != id)
+                {
+                    if (userdg.DeckId == viewModel.DeckId && userdg.UserId == viewModel.UserId)
+                    {
+                        return RedirectToAction("ErrorReply", "MyStudies", new { id = 7 });
+                    }
+                }
+            }
+
+            UserDeck newUserDeck = new UserDeck();
+            newUserDeck.DeckId = deck.DeckId;
+            newUserDeck.UserId = viewModel.UserId;
+
+            _userService.AddUserDeck(newUserDeck);
+
+            return RedirectToAction("Decks", "MyStudies");
         }
 
         [Authorize]

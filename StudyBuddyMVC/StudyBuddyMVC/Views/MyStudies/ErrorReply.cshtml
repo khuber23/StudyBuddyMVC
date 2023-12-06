@@ -39,5 +39,15 @@
             <br />
             <a asp-controller="MyStudies" asp-action="Flashcards" role="button" class="btn btn-secondary" style="float:right">Go Back to Flashcards</a>
             break;
+        case 6:
+            <h2 class="align-middle" style="color:red">Looks like that Deckgroup has already been assigned to that user.</h2>
+            <br />
+            <a asp-controller="MyStudies" asp-action="ShareDeckGroupAccess" role="button" class="btn btn-secondary" style="float:right">Go Back</a>
+            break;
+        case 7:
+            <h2 class="align-middle" style="color:red">Looks like that Deck has already been assigned to that user.</h2>
+            <br />
+            <a asp-controller="MyStudies" asp-action="ShareDeckAccess" role="button" class="btn btn-secondary" style="float:right">Go Back</a>
+            break;
     }
 }
