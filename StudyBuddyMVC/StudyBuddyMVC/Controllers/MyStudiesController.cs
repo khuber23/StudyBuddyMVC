@@ -1030,6 +1030,14 @@ namespace StudyBuddyMVC.Controllers
         }
 
         [Authorize]
+        [HttpPost("MakePublicFlashCard")]
+        public async Task<IActionResult> MakePublicFlashCard(int id)
+        {
+
+            return RedirectToAction("FlashCards", "MyStudies");
+        }
+
+        [Authorize]
         [HttpGet("ErrorReply")]
         public async Task<IActionResult> ErrorReply(int id)
         {

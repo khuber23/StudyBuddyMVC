@@ -5,13 +5,17 @@
     Layout = "~/Views/MyStudies/_studiesLayout.cshtml";
 }
 
-<h2 style="color: #005baa;">Flashcard Details</h2>
-<br />
-<body>
-    <h4><b>@Model.FlashCard.FlashCardQuestion</b></h4>
-    <p>@Model.FlashCard.FlashCardAnswer</p>
-@*         <a asp-controller="MyStudies" asp-action="EditFlashCard" asp-route-id="@Model.FlashCard.FlashCardId" role="button" class="btn btn-outline-primary" style="float:initial">Edit Flashcard</a> 
- *@</body>
+<div class="form-control">
+    <h2 style="color: #005baa;">Flashcard Details</h2>
+    <br />
+    <body>
+        <h4><b>@Model.FlashCard.FlashCardQuestion</b></h4>
+        <p>@Model.FlashCard.FlashCardAnswer</p>
+        @*         <a asp-controller="MyStudies" asp-action="EditFlashCard" asp-route-id="@Model.FlashCard.FlashCardId" role="button" class="btn btn-outline-primary" style="float:initial">Edit Flashcard</a>
+        *@
+    </body>
+</div>
+
 <br />
 @using (Html.BeginForm("AddToDeck", "MyStudies", FormMethod.Post))
 {

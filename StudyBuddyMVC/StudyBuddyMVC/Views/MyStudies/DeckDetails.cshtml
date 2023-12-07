@@ -34,8 +34,11 @@
                         <li>
                             <p style="color: #005baa;">@item.FlashCardAnswer</p>
                             <div class="button-container">
-                                    <a asp-controller="MyStudies" asp-action="EditFlashCard" asp-route-id="@item.FlashCardId" role="button" class="btn btn-outline-primary" style="float:initial">Edit Flashcard</a>&nbsp;
-                                    <button type="button" class="btn btn-outline-danger" onclick="@item.FlashCardId" data-bs-toggle="modal" data-bs-target="@("#deleteFlashcard-" + @item.FlashCardId)">
+                                    <a asp-controller="MyStudies" asp-action="EditFlashCard" asp-route-id="@item.FlashCardId" role="button" class="btn btn-outline-primary" style="float:initial">Edit Flashcard</a>&nbsp;&nbsp;
+                                    <form asp-controller="MyStudies" asp-action="MakePublicFlashCard" asp-route-id="@item.FlashCardId" method="post">          
+                                        <button role="button" class="btn btn-outline-success" style="float:initial">Make it Public</button>
+                                    </form> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <button type="button" class="btn btn-outline-danger float-right" onclick="@item.FlashCardId" data-bs-toggle="modal" data-bs-target="@("#deleteFlashcard-" + @item.FlashCardId)">
                                         Delete Flashcard
                                     </button>
 
