@@ -563,7 +563,7 @@ namespace StudyBuddyMVC.Controllers
         }
 
         [Authorize]
-        [HttpGet("DeckGroupDetails")]
+        [HttpGet("DeckGroupDetails/{id:int}")]
         public IActionResult DeckGroupDetails(int id)
         {
             if (id == 0)
@@ -620,7 +620,7 @@ namespace StudyBuddyMVC.Controllers
         }
 
         [Authorize]
-        [HttpGet("DeckDetails")]
+        [HttpGet("DeckDetails/{id:int}")]
         public IActionResult DeckDetails(int id)
         {
             if (id == 0)
@@ -1033,8 +1033,16 @@ namespace StudyBuddyMVC.Controllers
         [HttpPost("MakePublicFlashCard")]
         public async Task<IActionResult> MakePublicFlashCard(int id)
         {
+            FlashCard flashCard = _flashCardService.GetFlashCardById(id);
+            if (flashCard.IsPublic == true)
+            {
+                return RedirectToAction("ErrorReply", "MyStudies", new { id = 10 });
+            }
 
-            return RedirectToAction("FlashCards", "MyStudies");
+            flashCard.IsPublic = true;
+            await _flashCardService.UpdateFlashCard(flashCard);
+
+            return RedirectToAction("Decks", "MyStudies");
         }
 
         [Authorize]

@@ -59,5 +59,10 @@
             <br />
             <a asp-controller="MyStudies" asp-action="ShareDeckGroupAccess" role="button" class="btn btn-secondary" style="float:right">Go Back</a>
             break;
+        case 10:
+            <h2 class="align-middle" style="color:red">This Flashcard has already been shared to the public.</h2>
+            <br />
+            <a asp-controller="MyStudies" asp-action="Decks" role="button" class="btn btn-secondary" style="float:right">Go Back</a>
+            break;
     }
 }
