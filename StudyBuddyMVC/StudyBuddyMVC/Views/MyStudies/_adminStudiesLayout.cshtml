@@ -1,0 +1,42 @@
+﻿@{
+	Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row justify-content-center">
+	<div class="col-10 mt-5"
+		 style="
+		 width: 100%;
+		 height: 100%;
+		 padding: 20px;
+		 background: #F5F5F5;
+		 border-radius: 4px;
+		 box-shadow: 0 12px 20px black;
+		">
+		<div class="card ">
+			<div class="card-body">
+				<div class="row justify-content-center">
+					<div class="col-20 my-4">
+						@RenderBody()
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+@section Scripts{
+	@await RenderSectionAsync("Scripts", required: false)
+
+	<script>
+		// Function for tabs to show which one is active
+		$(function () {
+			const currentPage = location.pathname;
+			$('.nav-tabs li a').each(function () {
+				const $this = $(this);
+				if (currentPage.toLowerCase().indexOf($this.attr('href').toLowerCase()) !== -1) {
+					$this.addClass('active');
+				}
+			})
+		})
+	</script>
+}

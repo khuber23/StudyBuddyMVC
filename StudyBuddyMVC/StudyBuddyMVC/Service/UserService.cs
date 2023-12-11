@@ -109,5 +109,15 @@ namespace StudyBuddyMVC.Service
             }
             return userDeck;
         }
+
+        public async Task DeleteUserByID(int userid)
+        {
+            HttpResponseMessage response = _client.DeleteAsync(_client.BaseAddress + "User/{id}?userid=" + userid).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+            }
+        }
     }
 }

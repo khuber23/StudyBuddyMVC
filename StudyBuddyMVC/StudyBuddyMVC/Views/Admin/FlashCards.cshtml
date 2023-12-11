@@ -1,0 +1,53 @@
+﻿@model IEnumerable<ApiStudyBuddy.Models.FlashCard>
+@{
+    ViewData["Title"] = "FlashCards";
+    Layout = "~/Views/MyStudies/_adminStudiesLayout.cshtml";
+}
+
+<h1>All Flashcards</h1>
+
+<table class="table">
+    <Thead>
+        <tr>
+            <th style="color: darkblue;">Flashcard ID</th>
+            <th style="color: darkblue;">Flashcard Question</th>
+            <th style="color: darkblue;">Flashcard Answer</th>
+            <th style="color: darkred;">Actions</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.FlashCardId)</td>
+                <td>@Html.DisplayFor(modelItem => item.FlashCardQuestion)</td>
+                <td>@Html.DisplayFor(modelItem => item.FlashCardAnswer)</td>
+                <td>
+                    <a asp-controller="MyStudies" asp-action="EditFlashCard" asp-route-id="@item.FlashCardId" class="btn btn-outline-primary" role="button">Edit</a> |
+                    <button type="button" class="btn btn-outline-danger float-right" onclick="@item.FlashCardId" data-bs-toggle="modal" data-bs-target="@("#deleteFlashcard-" + @item.FlashCardId)">
+                        Delete Flashcard
+                    </button>
+
+                    <!-- Delete -->
+                    <div class="modal fade" id="deleteFlashcard-@item.FlashCardId" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <form asp-action="DeleteFlashCard" asp-controller="MyStudies" asp-route-id="@item.FlashCardId" method="post">
+                                    <div class="modal-header bg-warning">
+                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Deleting Flashcard</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <h2>Are you sure you want to delete <b style="color: #005baa;">@item.FlashCardQuestion?</b></h2>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancel</button>
+                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        }
+    </Thead>
+</table>
