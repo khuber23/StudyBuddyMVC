@@ -1,5 +1,75 @@
-﻿@{
-    ViewData["Title"] = "MyStats";
+﻿@model IEnumerable<ApiStudyBuddy.Models.StudySessionFlashCard>
+
+@{
+    ViewData["Title"] = "MyHistory";
     Layout = "~/Views/MyStudies/_myDashboardLayout.cshtml";
 }
- <h1>My Stats</h1>
+
+<h1>My Stats</h1>
+
+@{
+    int isCorrect = 0;
+    int isIncorrect = 0;
+    int total = 0;
+    @foreach (var item in Model)
+    {
+        total++;
+        if (item.IsCorrect == true)
+        {
+            isCorrect++; 
+        }
+        else
+        {
+            isIncorrect++;
+        }
+    }
+
+    if (total == 0)
+    {
+        <h4 style="color:darkred">You do not have any Stats yet</h4>
+    }
+    else
+    {
+        if (isIncorrect > 0)
+        {
+            <p><b>@isCorrect</b> out of <b>@total correct</b></p>
+        }
+        else
+        {
+            <p style="color: green;">You are at 100% so far. Good job!</p>
+        }
+
+        <div style="float:right">
+            <label>Stats Progress:</label>
+            <progress id="statsProgressBar" max="@total" value="@isCorrect"></progress>
+        </div>
+    }
+}
+
+<br />
+<table class="table">
+    <Thead>
+        <tr>
+            <th style="color: #005baa;">Flashcard</th>
+            <th style="color: #005baa;">Deck Name</th>
+            <th style="color: #005baa;">Date and Time Ended</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                @{
+                    if (item.IsCorrect == true)
+                    {
+                        <td style="color: green">@Html.DisplayFor(modelItem => item.FlashCard.FlashCardQuestion)</td>
+                    }
+                    else
+                    {
+                        <td style="color: red">@Html.DisplayFor(modelItem => item.FlashCard.FlashCardQuestion)</td>
+                    }
+                }
+                <td>@Html.DisplayFor(modelItem => item.StudySession.Deck.DeckName)</td>
+                <td>@Html.DisplayFor(modelItem => item.StudySession.EndTime)</td>
+            </tr>
+        }
+    </Thead>
+</table>

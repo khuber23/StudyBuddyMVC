@@ -22,14 +22,8 @@ namespace StudyBuddyMVC.Controllers
         private readonly IDeckService _deckService;
         private readonly IFlashCardService _flashCardService;
 
-        // Client and base address set up.
-        Uri baseAddress = new Uri("https://localhost:7025/api/");
-        private readonly HttpClient _client;
-
         public MyStudiesController(IDeckGroupService deckGroupService, IDeckGroupDeckService deckGroupDeckService, IUserService userService, IDeckService deckService, IFlashCardService flashCardService)
         {
-            _client = new HttpClient();
-            _client.BaseAddress = baseAddress;
             _deckGroupService = deckGroupService;
             _deckGroupDeckService = deckGroupDeckService;
             _userService = userService;
@@ -45,7 +39,7 @@ namespace StudyBuddyMVC.Controllers
             return View();
         }
 
-		[Authorize]
+        [Authorize]
 		[HttpGet("Flashcards")]
         [Route("Flashcards")]
         public IActionResult Flashcards()
@@ -514,6 +508,15 @@ namespace StudyBuddyMVC.Controllers
         public async Task<IActionResult> DeleteDeck(int id)
         {
             Deck deck = _deckService.GetDeckByID(id);
+            List<FlashCard> flashCards = new List<FlashCard>();
+            List<DeckFlashCard> deckFlashCards = _deckService.GetDeckFlashCards();
+            foreach (DeckFlashCard df in deckFlashCards)
+            {
+                if (df.DeckId == id)
+                {
+                    await _flashCardService.DeleteFlashCardById(df.FlashCardId);
+                }
+            }
 
             var userid = _userService.GetUserId();
             int ID = System.Convert.ToInt32(userid);
@@ -540,7 +543,7 @@ namespace StudyBuddyMVC.Controllers
             }
 
             await _flashCardService.DeleteFlashCardById(id);
-            return RedirectToAction("Flashcards", "MyStudies");
+            return RedirectToAction("Decks", "MyStudies");
         }
 
         [Authorize]
@@ -1042,7 +1045,7 @@ namespace StudyBuddyMVC.Controllers
             flashCard.IsPublic = true;
             await _flashCardService.UpdateFlashCard(flashCard);
 
-            return RedirectToAction("Decks", "MyStudies");
+            return RedirectToAction("Flashcards", "MyStudies");
         }
 
         [Authorize]

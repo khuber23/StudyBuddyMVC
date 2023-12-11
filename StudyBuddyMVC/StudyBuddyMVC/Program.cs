@@ -11,6 +11,8 @@ builder.Services.AddScoped<IDeckGroupService, DeckGroupService>();
 builder.Services.AddScoped<IDeckGroupDeckService, DeckGroupDeckService>();
 builder.Services.AddScoped<IDeckService, DeckService>();
 builder.Services.AddScoped<IFlashCardService, FlashCardService>();
+builder.Services.AddScoped<IStudySessionService, StudySessionService>();
+builder.Services.AddScoped<IStudySessionFlashcardService, StudySessionFlashCardService>();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddControllersWithViews();
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
