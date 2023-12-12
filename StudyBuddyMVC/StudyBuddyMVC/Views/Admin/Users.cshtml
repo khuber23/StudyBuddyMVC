@@ -12,6 +12,7 @@
             <th style="color: darkblue;">User ID</th>
             <th style="color: darkblue;">Username</th>
             <th style="color: darkblue;">User Email</th>
+            <th style="color: darkblue;">Profile Picture</th>
             <th style="color: darkred;">Actions</th>
         </tr>
         @foreach (var item in Model)
@@ -20,6 +21,9 @@
                 <td>@Html.DisplayFor(modelItem => item.UserId)</td>
                 <td>@Html.DisplayFor(modelItem => item.Username)</td>
                 <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                <td>
+                    <img width="60" height="60" src="@item.ProfilePicture">
+                </td>
                 <td>
                     <button type="button" class="btn btn-outline-danger float-right" onclick="@item.UserId" data-bs-toggle="modal" data-bs-target="@("#deleteUser-" + @item.UserId)">
                         Delete User
@@ -45,7 +49,7 @@
                                 </form>
                             </div>
                         </div>
-                    </div>
+                    </div> 
                 </td>
             </tr>
         }

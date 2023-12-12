@@ -119,5 +119,20 @@ namespace StudyBuddyMVC.Service
                 string data = response.Content.ReadAsStringAsync().Result;
             }
         }
-    }
+
+		public async Task UpdateUser(User user)
+		{
+			using (var httpClient = new HttpClient())
+			{
+				var json = JsonConvert.SerializeObject(user);
+				StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+				using (var response = await _client.PutAsync(_client.BaseAddress + "User/" + user.UserId, content))
+
+				{
+					string responseContent = await response.Content.ReadAsStringAsync();
+					user = JsonConvert.DeserializeObject<User>(responseContent);
+				}
+			}
+		}
+	}
 }

@@ -17,6 +17,8 @@ namespace StudyBuddyMVC.Service
 
         Task AddUserDeck(UserDeck Userdeck);
 
+        Task UpdateUser(User user);
+
         Task DeleteUserByID(int userid);
     }
 }

@@ -357,7 +357,7 @@ namespace StudyBuddyMVC.Controllers
             deckFlashCard.FlashCardId = decksViewModel.FlashCard.FlashCardId;
             await _deckService.CreateDeckFlashCard(deckFlashCard); 
 
-            return RedirectToAction("DeckGroups", "MyStudies");
+            return RedirectToAction("Decks", "MyStudies");
         }
 
         [Authorize]
