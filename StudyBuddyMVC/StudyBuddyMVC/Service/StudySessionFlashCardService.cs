@@ -5,7 +5,7 @@ namespace StudyBuddyMVC.Service
 {
     public class StudySessionFlashCardService : IStudySessionFlashcardService
     {
-        Uri baseAddress = new Uri("https://localhost:7025/api/");
+        Uri baseAddress = new Uri("https://instruct.ntc.edu/studybuddyapi/api/");
         private readonly HttpClient _client = new HttpClient();
 
         public StudySessionFlashCardService()

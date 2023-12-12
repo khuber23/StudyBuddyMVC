@@ -21,6 +21,7 @@
                 <td>@Html.DisplayFor(modelItem => item.DeckGroupName)</td>
                 <td>@Html.DisplayFor(modelItem => item.DeckGroupDescription)</td>
                 <td>
+                    <a asp-controller="MyStudies" asp-action="DeckGroupDetails" asp-route-id="@item.DeckGroupId" class="btn btn-outline-primary" role="button">Details</a> |
                     <a asp-controller="MyStudies" asp-action="EditDeckGroup" asp-route-id="@item.DeckGroupId" class="btn btn-outline-primary" role="button">Edit</a> |
                     <button type="button" class="btn btn-outline-danger" onclick="@item.DeckGroupId" data-bs-toggle="modal" data-bs-target="@("#DeleteBackdrop-" + @item.DeckGroupId)">
                         Delete
