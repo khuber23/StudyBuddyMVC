@@ -9,6 +9,7 @@
 
 @{
     await Html.RenderPartialAsync("_CreateDeckGroup", new DeckGroup());
+    await Html.RenderPartialAsync("ShareDeckGroup");
 }
 
 <h1>DeckGroups</h1>
@@ -25,11 +26,11 @@
                 @Html.DisplayNameFor(model => model.DeckGroupDescription)
             </th>
             <th style="font-weight:bold">
-               
-                <button id="create-deck-group-btn" type="button" class="btn btn-primary" data-toggle="modal">
-                    Create a DeckGroup
-                </button>
-                <button type="button" class="btn btn-outline-success">Share a Deckgroup</button>
+                    <button id="create-deck-group-btn" type="button" class="btn btn-primary" data-toggle="modal">Create DeckGroup</button>&nbsp;
+                    <button id="shareDeckgroup-btn" type="button" class="btn btn-outline-success">Share</button>                   
+            </th>
+        </tr>
+
         @foreach (var item in Model)
         {
               <tr>
@@ -43,31 +44,42 @@
                         @Html.DisplayFor(modelItem => item.DeckGroupDescription)
                    </td>
                    <td>
-                        @* @Html.ActionLink("Edit", "Edit", new {id=item.DeckGroupId}) *@
-                    <button type="button" class="btn btn-primary" onclick="@item.DeckGroupId" data-bs-toggle="modal" data-bs-target="@("#EditDeckGroup-"+ @item.DeckGroupId)">
-                        Edit
-                    </button>
 
-                    <!-- Edit -->
-                    <div class="modal fade" id="EditDeckGroup-@item.DeckGroupId" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Edit Deckgroup</h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    @{
+                        if (item.ReadOnly == false)
+                        {
+                            <button type="button" class="btn btn-secondary" onclick="@item.DeckGroupId" data-bs-toggle="modal" data-bs-target="@("#EditDeckGroup-" + @item.DeckGroupId)">
+                                Edit
+                            </button>
+                           
+                            <!-- Edit -->
+                            <div class="modal fade" id="EditDeckGroup-@item.DeckGroupId" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Edit Deckgroup</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <h3>Make changes to @item.DeckGroupName?</h3>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                            <a asp-controller="MyStudies" asp-action="EditDeckGroup" asp-route-id="@item.DeckGroupId" class="btn btn-primary" role="button">Yes</a>
+                                        </div>
                                     </div>
-                                    <div class="modal-body">
-                                        <h3>Make changes to @item.DeckGroupName?</h3>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                    <a asp-controller="MyStudies" asp-action="EditDeckGroup" asp-route-id="@item.DeckGroupId" class="btn btn-primary" role="button">Yes</a>
-                                    </div>           
+                                </div>
                             </div>
-                        </div>
-                    </div>  |
+                        }
+                        else
+                        {
+                            <button type="button" class="btn btn-secondary" disabled>
+                                Edit
+                            </button>
+                        }
+                    }
 
-                    <a asp-controller="MyStudies" asp-action="DeckGroupDetails" asp-route-id="@item.DeckGroupId" class="btn btn-info" role="button">Details</a> |
+                    |  <a asp-controller="MyStudies" asp-action="DeckGroupDetails" asp-route-id="@item.DeckGroupId" class="btn btn-info" role="button">Details</a> |
 
                     <button type="button" class="btn btn-danger" onclick="@item.DeckGroupId" data-bs-toggle="modal" data-bs-target="@("#DeleteBackdrop-"+ @item.DeckGroupId)">
                         Delete
@@ -105,6 +117,9 @@
     <script>
         $("#create-deck-group-btn").click(function () {
             $("#createDeckGroup-modal").modal('show');
+        });
+        $("#shareDeckgroup-btn").click(function () {
+            $("#shareDeckGroup-Modal").modal('show');
         });
         // $("#create-deck-inner-btn").click(function () {
         //     $("#createDeckGroupDeck-modal").modal('show');

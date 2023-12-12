@@ -1,0 +1,23 @@
+﻿
+<div id="shareDeckGroup-Modal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-info">
+                <h1 class="modal-title fs-5">Share a Deckgroup</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h4>How do you want to share your Deckgroups</h4>
+            </div>
+            <div class="modal-footer">
+                <div class="btn-group" role="group" style="text-align:center">
+                    <a asp-controller="MyStudies" asp-action="ShareDeckGroupAccess" role="button" class="btn btn-outline-success">Direct Copy</a>
+                    <a asp-controller="MyStudies" asp-action="ShareDeckGroupClone" role="button" class="btn btn-outline-success">Clone</a>
+                </div>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>

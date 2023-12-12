@@ -8,37 +8,91 @@
 <h1 style="color: #005baa;">Deck Details</h1>
 <br />
 <div>
-    <h3 style="border: 2px #005baa;">@Model.Deck.DeckName</h3>
+    <h3 style="border: 2px #005baa;">
+        @Model.Deck.DeckName &nbsp;&nbsp; <a asp-controller="MyStudies" asp-action="AddToDeckGroup" asp-route-id="@Model.Deck.DeckId" role="button" class="btn btn-outline-primary">Import To a DeckGroup</a>
+    </h3>
     <p>  @Model.Deck.DeckDescription</p>
 </div>
 
 <p>  Creator: @Model.User.Username</p>
 <body>
     <div class="form-control">
-        <h3 style="color: #005baa;">Flashcards</h3>
-        <ol>
-            @foreach (var item in Model.FlashCards)
+        @{
+            if (Model.FlashCards.Count == 0)
             {
+                <p style="color:darkred">This Deck does not have any flashcards yet.</p>
+            }
+            foreach (var item in Model.FlashCards)
+            { 
+            <h3 style="color: #005baa;">Flashcards</h3>
+            <ol>         
                 <li>
                     <h4>
                         @item.FlashCardQuestion
                     </h4>
                     <ul>
                         <li>
-                            <p style="color: #005baa;">@item.FlashCardAnswer</p>     
-                        </li>           
+                            <p style="color: #005baa;">@item.FlashCardAnswer</p>
+                            <div class="button-container">
+                                    <a asp-controller="MyStudies" asp-action="EditFlashCard" asp-route-id="@item.FlashCardId" role="button" class="btn btn-outline-secondary" style="float:initial">Edit Flashcard</a>&nbsp;
+                                    <button role="button" class="btn btn-outline-success" onclick="@item.FlashCardId" data-bs-toggle="modal" data-bs-target="@("#makePublicFlashcard-" + @item.FlashCardId)">Make it Public</button>
+                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <div class="modal fade" id="makePublicFlashcard-@item.FlashCardId" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <form asp-controller="MyStudies" asp-action="MakePublicFlashCard" asp-route-id="@item.FlashCardId" method="post">
+                                                    <div class="modal-header bg-info">
+                                                        <h1 class="modal-title fs-5" id="staticBackdropLabel" style="text-align:center">Allow Flashcard to be public</h1>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p>Sharing Flashcard: <b style="color: #005baa;">@item.FlashCardQuestion</b> would allow other users to see it and use it.</p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                                        <button type="submit" class="btn btn-primary">Make it Public</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <button type="button" class="btn btn-outline-danger float-right" onclick="@item.FlashCardId" data-bs-toggle="modal" data-bs-target="@("#deleteFlashcard-" + @item.FlashCardId)">
+                                        Delete Flashcard
+                                    </button>
+
+                                    <!-- Delete -->
+                                    <div class="modal fade" id="deleteFlashcard-@item.FlashCardId" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <form asp-action="DeleteFlashCard" asp-controller="MyStudies" asp-route-id="@item.FlashCardId" method="post">
+                                                    <div class="modal-header bg-warning">
+                                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Deleting Flashcard</h1>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <h2>Are you sure you want to delete <b style="color: #005baa;">@item.FlashCardQuestion?</b></h2>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancel</button>
+                                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>                           
+                        </li>
                     </ul>
-                    <a asp-controller="MyStudies" asp-action="EditFlashCard" asp-route-id="@item.FlashCardId" role="button" class="btn btn-outline-primary" style="float:initial">Edit Flashcard</a>
                 </li>
-            }
-        </ol>
+            </ol>
+            }}        
     </div>
 </body>
 <br />
 <footer>
     <div class="form-horizontal">
         <a asp-controller="MyStudies" asp-action="CreateFlashCard" asp-route-id="@Model.Deck.DeckId" role="button" class="btn btn-primary">Create a Flashcard</a>     
-        <a asp-controller="MyStudies" asp-action="AddToDeckGroup" asp-route-id="@Model.Deck.DeckId" role="button" class="btn btn-outline-primary">Add To a DeckGroup</a>
         <a asp-controller="MyStudies" asp-action="Decks" role="button" class="btn btn-secondary" style="float:initial">I'm Done</a>
     </div>
 </footer>

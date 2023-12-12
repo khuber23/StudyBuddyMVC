@@ -1,0 +1,29 @@
+﻿@model DeckGroupsViewModel
+
+@{
+    ViewData["Title"] = "DeckGroupAccess";
+    Layout = "~/Views/MyStudies/_studiesLayout.cshtml";
+}
+
+<h2 style="color: #005baa;">Give user a copy of a Deckgroup</h2>
+<br />
+<body>
+    <h4>This will essentially allow the user to own it too.</h4>
+</body>
+<br />
+@using (Html.BeginForm("ShareDeckGroupAccess", "MyStudies", FormMethod.Post))
+{
+    <div class="form-horizontal" size="3">
+        <h4 style="color: #005baa;">Select a user</h4>
+        @Html.DropDownListFor(m=>m.UserId,new SelectList(Model.Users,"Value","Text"),new{@class="form-control"})
+        <br />
+        <br />
+        <h4 style="color: #005baa;">Select a Deckgroup</h4>
+        @Html.DropDownListFor(m=>m.DeckGroupId,new SelectList(Model.DeckGroups,"Value","Text"),new{@class="form-control"})
+        <br />
+        <br />
+        @* <input type="submit" value="Submit" /> *@
+        <button type="submit" class="btn btn-primary" role="button">Save</button>
+        <input type="button" value="Cancel" class="btn btn-secondary" onclick="location.href='@Url.Action("DeckGroups","MyStudies")';" />
+    </div>
+}

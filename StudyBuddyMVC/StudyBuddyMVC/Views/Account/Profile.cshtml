@@ -1,0 +1,27 @@
+﻿@using ApiStudyBuddy.Models;
+@model User
+
+@{
+    ViewData["Title"] = "AddToDeck";
+    Layout = "~/Views/MyStudies/_studiesLayout.cshtml";
+}
+
+<h1>My Profile</h1>
+<h2 style="color:#005daa;"> @Model.FirstName @Model.LastName</h2>
+<img width="120" height="120" src="@Model.ProfilePicture">
+<br />
+<br />
+<body>
+    <div class="form-control">
+        <h4>Username: @Model.Username</h4>
+        <p>Email: @Model.Email</p>
+        <p>Current Role: @(Model.IsAdmin ? "Admin" : "User")</p>
+    </div>
+</body>
+<footer>
+    <br />
+    <div>
+        <p><a class="btn btn-outline-primary" asp-action="EditProfile" role="button">Edit My Profile</a></p>
+    </div>
+</footer>
+

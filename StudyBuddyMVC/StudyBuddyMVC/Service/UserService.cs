@@ -70,5 +70,69 @@ namespace StudyBuddyMVC.Service
         {
             return _contextAccessor.HttpContext.User?.FindFirstValue(ClaimTypes.NameIdentifier);
         }
-    }
+
+        public List<User> GetAllUsers()
+        {
+            List<User> users = new List<User>();
+            HttpResponseMessage response = _client.GetAsync(_client.BaseAddress + "User").Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                users = JsonConvert.DeserializeObject<List<User>>(data);
+            }
+            return users;
+        }
+
+        public List<UserDeckGroup> GetUserDeckGroups()
+        {
+            List<UserDeckGroup> userDeckGroup = new List<UserDeckGroup>();
+            HttpResponseMessage response = _client.GetAsync(_client.BaseAddress + "UserDeckGroup").Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                userDeckGroup = JsonConvert.DeserializeObject<List<UserDeckGroup>>(data);
+            }
+            return userDeckGroup;
+        }
+
+        public List<UserDeck> GetUserDecks()
+        {
+            List<UserDeck> userDeck = new List<UserDeck>();
+            HttpResponseMessage response = _client.GetAsync(_client.BaseAddress + "UserDeck").Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                userDeck = JsonConvert.DeserializeObject<List<UserDeck>>(data);
+            }
+            return userDeck;
+        }
+
+        public async Task DeleteUserByID(int userid)
+        {
+            HttpResponseMessage response = _client.DeleteAsync(_client.BaseAddress + "User/{id}?userid=" + userid).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+            }
+        }
+
+		public async Task UpdateUser(User user)
+		{
+			using (var httpClient = new HttpClient())
+			{
+				var json = JsonConvert.SerializeObject(user);
+				StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+				using (var response = await _client.PutAsync(_client.BaseAddress + "User/" + user.UserId, content))
+
+				{
+					string responseContent = await response.Content.ReadAsStringAsync();
+					user = JsonConvert.DeserializeObject<User>(responseContent);
+				}
+			}
+		}
+	}
 }

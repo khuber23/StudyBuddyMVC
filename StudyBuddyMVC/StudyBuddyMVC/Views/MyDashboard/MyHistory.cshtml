@@ -1,5 +1,41 @@
-﻿@{
+﻿@model IEnumerable<ApiStudyBuddy.Models.StudySessionFlashCard>
+
+@{
     ViewData["Title"] = "MyHistory";
     Layout = "~/Views/MyStudies/_myDashboardLayout.cshtml";
 }
+
 <h1>My History</h1>
+
+@{
+    int total = 0;
+    @foreach (var item in Model)
+    {
+        total++;
+    }
+
+    if (total == 0)
+    {
+        <h4 style="color:darkred">No History to show.</h4>
+    }
+}
+
+<table class="table">
+    <Thead>
+        <tr>
+            <th style="color: #005baa;">Flashcard</th>
+            <th style="color: #005baa;">Deck Name</th>
+            <th style="color: #005baa;">Date and Time Started</th>
+            <th style="color: #005baa;">Date and Time Ended</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.FlashCard.FlashCardQuestion)</td>
+                <td>@Html.DisplayFor(modelItem => item.StudySession.Deck.DeckName)</td>
+                <td>@Html.DisplayFor(modelItem => item.StudySession.StartTime)</td>
+                <td>@Html.DisplayFor(modelItem => item.StudySession.EndTime)</td>
+            </tr>
+        }   
+    </Thead>
+</table>

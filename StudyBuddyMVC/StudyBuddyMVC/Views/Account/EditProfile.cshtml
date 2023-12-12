@@ -1,0 +1,53 @@
+﻿@model EditProfileViewModel
+
+@{
+	ViewData["Title"] = "AddToDeck";
+	Layout = "~/Views/MyStudies/_studiesLayout.cshtml";
+}
+
+<h1>Edit Profile</h1>
+
+<div class="form-control">
+	<form asp-action="EditProfile" method="POST" class="form">
+		<div class="mb-3">
+			<label asp-for="FirstName"></label>
+			<input asp-for="FirstName" class="form-control" />
+			<span asp-validation-for="FirstName"></span>
+		</div>
+		<div class="mb-3">
+			<label asp-for="LastName"></label>
+			<input asp-for="LastName" class="form-control" />
+			<span asp-validation-for="LastName"></span>
+		</div>
+		<div class="mb-3">
+			<label asp-for="EmailAddress"></label>
+			<input asp-for="EmailAddress" class="form-control" />
+			<span asp-validation-for="EmailAddress"></span>
+		</div>
+		<div class="mb-3">
+			<label asp-for="Username"></label>
+			<input asp-for="Username" class="form-control" />
+			<span asp-validation-for="Username"></span>
+		</div>
+		<div class="mb-3">
+			<label asp-for="NewPassword"></label>
+			<input type="password" name="NewPassword" class="form-control" />
+			<span asp-validation-for="NewPassword"></span>
+		</div>
+		<div class="mb-3">
+			<label asp-for="ConfirmPassword"></label>
+			<input type="password" name="ConfirmPassword" class="form-control" />
+			<span asp-validation-for="ConfirmPassword"></span>
+		</div>
+
+		<hr>
+
+		<div class="mb-3">
+			<label asp-for="OldPassword">Enter your password to confirm changes</label>
+			<input type="password" name="OldPassword" class="form-control" />
+			<span asp-validation-for="OldPassword"></span>
+		</div>
+		<input type="submit" class="btn btn-success" value="Save" />
+	</form>
+</div>
+

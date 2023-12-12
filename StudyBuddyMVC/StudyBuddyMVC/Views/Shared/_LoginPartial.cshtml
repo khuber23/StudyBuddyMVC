@@ -2,12 +2,25 @@
 
 @if (User.Identity.IsAuthenticated)
 {
-	<ul class="navbar-nav ms-auto">
+@* 	<ul class="navbar-nav ms-auto">
 		<span class="navbar-text" style="padding-right: 10px; color:white;">
 			Hello, @User.Identity.Name
 		</span>
 		<li>
 			<a class="btn btn-secondary" asp-area="" asp-controller="Account" asp-action="Logoff" style="float: right;">Logoff</a>
+		</li>
+	</ul> *@
+	<ul class="navbar-nav ms-auto">
+		<li class="nav-item dropdown">
+			<a class="nav-link dropdown-toggle" href="#" id="profileDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button" style="color:white;">Hello,  <b>@User.Identity.Name</b></a>
+			<ul class="dropdown-menu dropdown-menu-white" aria-labelledby="profileDropdown">
+				<li>
+					<a class="dropdown-item" asp-controller="Account" asp-action="Profile">Profile</a>
+				</li>
+				<li>
+					<a asp-controller="Account" asp-action="LogOff" role="button" class="dropdown-item">Logout</a>
+				</li>
+			</ul>
 		</li>
 	</ul>
 }

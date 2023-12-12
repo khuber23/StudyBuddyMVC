@@ -22,12 +22,11 @@
             <input asp-for="Deck.DeckDescription" class="form-control" />
             <span asp-validation-for="Deck.DeckDescription"></span>
         </div>
-        <div>
+        @* <div>
             <input asp-for="Deck.IsPublic" data-val="true" type="checkbox" id="makepublic" value="True" checked="true" />
             <input asp-for="Deck.IsPublic" type="hidden" id="makepublic" value="False">
             <label asp-for="Deck.IsPublic">Make it public</label><br>
         </div>
-        <div>
             <div class="col-md-10">
                 <label>Read Only</label>
                 <label asp-for="Deck.ReadOnly">Yes</label>
@@ -36,7 +35,7 @@
                 <label asp-for="Deck.ReadOnly">No</label>
                 <input asp-for="Deck.ReadOnly" type="radio" id="no" value="False" />
                 <span asp-validation-for="Deck.ReadOnly" class="text-danger"></span>
-            </div>
+            </div> *@
         <div asp-validation-summary="All"></div>
         <p>
             <button type="submit" class="btn btn-primary" role="button">Save</button>

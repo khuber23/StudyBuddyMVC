@@ -1,9 +1,6 @@
 ﻿@{
-    ViewData["Title"] = "MyDashboard";
-    Layout = "~/Views/MyStudies/_myStudiesLayout.cshtml";
+	Layout = "/Views/Shared/_Layout.cshtml";
 }
-
-<h1>My Dashboard</h1>
 
 <div class="row justify-content-center">
 	<div class="col-10 mt-5"
@@ -11,25 +8,11 @@
 		 width: 100%;
 		 height: 100%;
 		 padding: 20px;
-		 background: #005daa;
+		 background: #F5F5F5;
 		 border-radius: 4px;
-		 box-shadow: 0 8px 16px rgba(0,0,0,.3);
+		 box-shadow: 0 8px 16px red;
 		">
 		<div class="card ">
-			<div class="card-header">
-				<ul class="nav nav-tabs card-header-tabs">
-					<li class="nav-item">
-						<a class="nav-link" onload="ActiveXObject" href="/Stats">
-							Stats
-						</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="~/MyHistory">
-							History
-						</a>
-					</li>
-				</ul>
-			</div>
 			<div class="card-body">
 				<div class="row justify-content-center">
 					<div class="col-20 my-4">
@@ -57,4 +40,3 @@
 		})
 	</script>
 }
-

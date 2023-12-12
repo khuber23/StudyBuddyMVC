@@ -16,6 +16,11 @@ namespace StudyBuddyMVC.Controllers
 
         public IActionResult Index()
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Dashboard");
+            }
+
             return RedirectToAction("Login", "Account");
         }
 

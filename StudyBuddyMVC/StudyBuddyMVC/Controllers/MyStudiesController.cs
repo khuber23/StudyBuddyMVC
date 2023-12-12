@@ -1,4 +1,5 @@
-﻿using ApiStudyBuddy.Models;
+﻿using ApiStudyBuddy.Endpoints;
+using ApiStudyBuddy.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -11,6 +12,7 @@ using System.Text;
 namespace StudyBuddyMVC.Controllers
 {
 	[Authorize]
+    [Route("MyStudies")]
 	public class MyStudiesController : Controller
     {
         // Service fields
@@ -20,14 +22,8 @@ namespace StudyBuddyMVC.Controllers
         private readonly IDeckService _deckService;
         private readonly IFlashCardService _flashCardService;
 
-        // Client and base address set up.
-        Uri baseAddress = new Uri("https://instruct.ntc.edu/studybuddyapi/api/");
-        private readonly HttpClient _client;
-
         public MyStudiesController(IDeckGroupService deckGroupService, IDeckGroupDeckService deckGroupDeckService, IUserService userService, IDeckService deckService, IFlashCardService flashCardService)
         {
-            _client = new HttpClient();
-            _client.BaseAddress = baseAddress;
             _deckGroupService = deckGroupService;
             _deckGroupDeckService = deckGroupDeckService;
             _userService = userService;
@@ -43,7 +39,7 @@ namespace StudyBuddyMVC.Controllers
             return View();
         }
 
-		[Authorize]
+        [Authorize]
 		[HttpGet("Flashcards")]
         [Route("Flashcards")]
         public IActionResult Flashcards()
@@ -109,6 +105,11 @@ namespace StudyBuddyMVC.Controllers
         [HttpPost("CreateDeckGroup")]
         public async Task<IActionResult> CreateDeckGroup(DeckGroup deckGroup)
         {
+            if (deckGroup.DeckGroupName == "test")
+            {
+                return RedirectToAction("DeckGroupDeck", "MyStudies");
+			}
+
             DeckGroup deckGroup1 = new DeckGroup();
             UserDeckGroup userDeckGroup = new UserDeckGroup();
             var userId = _userService.GetUserId();
@@ -151,7 +152,12 @@ namespace StudyBuddyMVC.Controllers
         [HttpPost("DeckGroupDeck")]
         public async Task<IActionResult> DeckGroupDeck(DeckGroupDeck dgb)
         {
-            Deck newDeck = new Deck();
+			if (dgb.Deck.DeckName == "test")
+			{
+				return RedirectToAction("CreateFlashCard", "MyStudies");
+			}
+
+			Deck newDeck = new Deck();
             var userId = _userService.GetUserId();
 
             //Create the deck.
@@ -244,8 +250,6 @@ namespace StudyBuddyMVC.Controllers
             FlashCard newFlashCard = new FlashCard();
             newFlashCard.FlashCardQuestion = flashCardViewModel.FlashCardQuestion;
             newFlashCard.FlashCardAnswer = flashCardViewModel.FlashCardAnswer;
-            newFlashCard.IsPublic = flashCardViewModel.IsPublic;
-            newFlashCard.ReadOnly = flashCardViewModel.ReadOnly;
 
 
             if (!ModelState.IsValid)
@@ -273,13 +277,25 @@ namespace StudyBuddyMVC.Controllers
                 }
             }
 
-            return new ContentResult { Content = "Whoops! Flashcard created unsuccessfully, try again." };
+            return RedirectToAction("ErrorReply", "MyStudies", new { id = 5 });
+        }
+
+        [Authorize]
+        [HttpPost("RemoveFlashCard")]
+        public IActionResult RemoveFlashCard(UserDeck userDeck)
+        {
+            return RedirectToAction("DeckGroups", "MyStudies");
         }
 
         [Authorize]
         [HttpGet("AddToDeck")]
         public IActionResult AddToDeck(int id)
         {
+            if (id == 0)
+            {
+                return RedirectToAction("ErrorReply", "MyStudies", new { id = 4 });
+            }
+
             //DeckFlashCard deckFlashCard = new DeckFlashCard();
             FlashCard flashCard = _flashCardService.GetFlashCardById(id);
 
@@ -330,7 +346,7 @@ namespace StudyBuddyMVC.Controllers
                     {
                         if (df.DeckId == userDeck.DeckId && df.FlashCardId == decksViewModel.FlashCard.FlashCardId)
                         {
-                            return new ContentResult { Content = "Yikes! Looks like this flashcard has already been assigned to this Deck." };
+                            return RedirectToAction("ErrorReply", "MyStudies", new { id = 2 });
                         }
                     }
                 }
@@ -341,7 +357,7 @@ namespace StudyBuddyMVC.Controllers
             deckFlashCard.FlashCardId = decksViewModel.FlashCard.FlashCardId;
             await _deckService.CreateDeckFlashCard(deckFlashCard); 
 
-            return RedirectToAction("DeckGroups", "MyStudies");
+            return RedirectToAction("Decks", "MyStudies");
         }
 
         [Authorize]
@@ -350,7 +366,7 @@ namespace StudyBuddyMVC.Controllers
         {
             if (id == 0)
             {
-                return new ContentResult { Content = "Bummers! Looks like that Deck ID does not exist." };
+                return RedirectToAction("ErrorReply", "MyStudies", new { id = 3 });
             }
             Deck deck = _deckService.GetDeckByID(id);
 
@@ -401,7 +417,7 @@ namespace StudyBuddyMVC.Controllers
                     {
                         if (dgd.DeckGroupId == userdeckGroup.DeckGroupId && dgd.DeckId == deckgroupViewModel.Deck.DeckId)
                         {
-                            return new ContentResult { Content = "Yikes! Looks like this Deck has already been assigned to this Deckgroup." };
+                            return RedirectToAction("ErrorReply", "MyStudies", new { id = 1 });
                         }
                     }
                 }
@@ -492,6 +508,15 @@ namespace StudyBuddyMVC.Controllers
         public async Task<IActionResult> DeleteDeck(int id)
         {
             Deck deck = _deckService.GetDeckByID(id);
+            List<FlashCard> flashCards = new List<FlashCard>();
+            List<DeckFlashCard> deckFlashCards = _deckService.GetDeckFlashCards();
+            foreach (DeckFlashCard df in deckFlashCards)
+            {
+                if (df.DeckId == id)
+                {
+                    await _flashCardService.DeleteFlashCardById(df.FlashCardId);
+                }
+            }
 
             var userid = _userService.GetUserId();
             int ID = System.Convert.ToInt32(userid);
@@ -509,20 +534,44 @@ namespace StudyBuddyMVC.Controllers
         }
 
         [Authorize]
-        [HttpPost]
-        public async Task<IActionResult> DeleteFlashCard(FlashCard flashCard)
+        [HttpPost("DeleteFlashCard")]
+        public async Task<IActionResult> DeleteFlashCard(int id)
         {
+            if (id == 0)
+            {
+                return RedirectToAction("ErrorReply", "MyStudies", new { id = 0 });
+            }
 
-            return Redirect("~/Dashboard/Index");
+            await _flashCardService.DeleteFlashCardById(id);
+            return RedirectToAction("Decks", "MyStudies");
         }
 
         [Authorize]
-        [HttpGet("DeckGroupDetails")]
+        [HttpPost("DeleteDeckGroupDeck")]
+        public async Task<IActionResult> DeleteDeckGroupDeck(DeckgroupDeckFlashcardViewModel viewModel)
+        {
+            if (viewModel.DeckGroupId == 0 && viewModel.DeckId == 0)
+            {
+                return RedirectToAction("ErrorReply", "MyStudies", new { id = 0 });
+            }
+
+            DeckGroupDeck deckGroupDeck = new DeckGroupDeck();
+            deckGroupDeck.DeckId = viewModel.DeckId;
+            deckGroupDeck.DeckGroupId = viewModel.DeckGroupId;
+
+            await _deckGroupDeckService.DeleteDeckGroupDeck(deckGroupDeck);
+
+
+            return RedirectToAction("DeckGroups", "MyStudies");
+        }
+
+        [Authorize]
+        [HttpGet("DeckGroupDetails/{id:int}")]
         public IActionResult DeckGroupDetails(int id)
         {
             if (id == 0)
             {
-                return new ContentResult { Content = "Bummers! That Deckgroup ID does not exist. Go back and try again." };
+                return RedirectToAction("ErrorReply", "MyStudies", new { id = 0 });
             }
 
             DeckgroupDeckFlashcardViewModel model = new DeckgroupDeckFlashcardViewModel();
@@ -574,12 +623,12 @@ namespace StudyBuddyMVC.Controllers
         }
 
         [Authorize]
-        [HttpGet("DeckDetails")]
+        [HttpGet("DeckDetails/{id:int}")]
         public IActionResult DeckDetails(int id)
         {
             if (id == 0)
             {
-                return new ContentResult { Content = "Bummers! That Deck ID does not exist. Go back and try again." };
+                return RedirectToAction("ErrorReply", "MyStudies", new { id = 0 });
             }
 
             DeckgroupDeckFlashcardViewModel model = new DeckgroupDeckFlashcardViewModel();
@@ -609,5 +658,403 @@ namespace StudyBuddyMVC.Controllers
 
             return View(model);
         }
-    }
+
+        // ------------------------------------------ -------------- Share 
+        [Authorize]
+        [HttpGet("ShareDeckGroupAccess")]
+        public IActionResult ShareDeckGroupAccess()
+        {
+            DeckGroupsViewModel vm = new DeckGroupsViewModel();
+            vm.DeckGroups = new List<SelectListItem>();
+            vm.Users = new List<SelectListItem>();
+
+            var userid = _userService.GetUserId();
+            int id = System.Convert.ToInt32(userid);
+            User user = _userService.GetUser(id);
+
+            vm.DeckGroups.Add(new SelectListItem
+            {
+                Text = "Select a Deck Group",
+                Value = ""
+            });
+            foreach (var item in user.UserDeckGroups)
+            {
+                vm.DeckGroups.Add(new SelectListItem
+                {
+                    Text = item.DeckGroup.DeckGroupName,
+                    Value = Convert.ToString(item.DeckGroupId)
+                });
+            }
+
+            List<User> users = _userService.GetAllUsers();
+
+            vm.Users.Add(new SelectListItem
+            {
+                Text = "Select a user",
+                Value = "",
+                //Selected = false
+            });
+
+            foreach (var item in users)
+            {
+                // if not equal to myself
+                if (item.UserId != id)
+                {
+                    vm.Users.Add(new SelectListItem
+                    {
+                        Text = item.Username,
+                        Value = Convert.ToString(item.UserId)
+                    });
+                }           
+            }
+
+            return View(vm);
+        }
+
+        [Authorize]
+        [HttpPost("ShareDeckGroupAccess")]
+        public async Task<IActionResult> ShareDeckGroupAccessAsync(DeckGroupsViewModel viewModel)
+        {
+            List<UserDeckGroup> userDeckGroups = _userService.GetUserDeckGroups();
+
+            // Get the real deckgroup to ensure it exist.
+            DeckGroup deckGroup = _deckGroupService.GetDeckGroupByID(viewModel.DeckGroupId);
+
+            var userid = _userService.GetUserId();
+            int id = System.Convert.ToInt32(userid);
+
+            foreach (UserDeckGroup userdg in userDeckGroups)
+            {
+                if (userdg.UserId != id)
+                {
+                    if (userdg.DeckGroupId == viewModel.DeckGroupId && userdg.UserId == viewModel.UserId)
+                    {
+                        return RedirectToAction("ErrorReply", "MyStudies", new { id = 6 });
+                    }
+                }   
+            }
+
+            UserDeckGroup newUserDeckGroup = new UserDeckGroup();
+            newUserDeckGroup.DeckGroupId = deckGroup.DeckGroupId;
+            newUserDeckGroup.UserId = viewModel.UserId;
+
+            await _userService.AddUserDeckGroup(newUserDeckGroup);
+
+            return RedirectToAction("DeckGroups", "MyStudies");
+        }
+
+        [Authorize]
+        [HttpGet("ShareDeckAccess")]
+        public IActionResult ShareDeckAccess()
+        {
+            DecksViewModel vm = new DecksViewModel();
+            vm.Decks = new List<SelectListItem>();
+            vm.Users = new List<SelectListItem>();
+
+            // Get user 
+            var userid = _userService.GetUserId();
+            int Id = System.Convert.ToInt32(userid);
+            User user = _userService.GetUser(Id);
+
+            // Add an empty default list item.
+            vm.Decks.Add(new SelectListItem
+            {
+                Text = "Select a Deck",
+                Value = ""
+            });
+
+            foreach (var item in user.UserDecks)
+            {
+                vm.Decks.Add(new SelectListItem
+                {
+                    Text = item.Deck.DeckName,
+                    Value = Convert.ToString(item.DeckId)
+                });
+            }
+
+            List<User> users = _userService.GetAllUsers();
+
+            vm.Users.Add(new SelectListItem
+            {
+                Text = "Select a user",
+                Value = "",
+                //Selected = false
+            });
+
+            foreach (var item in users)
+            {
+                // if not equal to myself
+                if (item.UserId != Id)
+                {
+                    vm.Users.Add(new SelectListItem
+                    {
+                        Text = item.Username,
+                        Value = Convert.ToString(item.UserId)
+                    });
+                }
+            }
+            return View(vm);
+        }
+
+
+        [Authorize]
+        [HttpPost("ShareDeckAccess")]
+        public async Task<IActionResult> ShareDeckAccessAsync(DecksViewModel viewModel)
+        {
+            List<UserDeck> userDecks = _userService.GetUserDecks();
+
+            // Get the real deckgroup to ensure it exist.
+            Deck deck = _deckService.GetDeckByID(viewModel.DeckId);
+
+            // Get the user's own deck
+            var userid = _userService.GetUserId();
+            int id = System.Convert.ToInt32(userid);
+
+            foreach (UserDeck userdg in userDecks)
+            {
+                if (userdg.UserId != id)
+                {
+                    if (userdg.DeckId == viewModel.DeckId && userdg.UserId == viewModel.UserId)
+                    {
+                        return RedirectToAction("ErrorReply", "MyStudies", new { id = 7 });
+                    }
+                }
+            }
+
+            UserDeck newUserDeck = new UserDeck();
+            newUserDeck.DeckId = deck.DeckId;
+            newUserDeck.UserId = viewModel.UserId;
+
+            await _userService.AddUserDeck(newUserDeck);
+
+            return RedirectToAction("Decks", "MyStudies");
+        }
+
+        [Authorize]
+        [HttpGet("ShareDeckGroupClone")]
+        public IActionResult ShareDeckGroupClone()
+        {
+            DeckGroupsViewModel vm = new DeckGroupsViewModel();
+            vm.DeckGroups = new List<SelectListItem>();
+            vm.Users = new List<SelectListItem>();
+
+            var userid = _userService.GetUserId();
+            int id = System.Convert.ToInt32(userid);
+            User user = _userService.GetUser(id);
+
+            vm.DeckGroups.Add(new SelectListItem
+            {
+                Text = "Select a Deck Group",
+                Value = ""
+            });
+            foreach (var item in user.UserDeckGroups)
+            {
+                vm.DeckGroups.Add(new SelectListItem
+                {
+                    Text = item.DeckGroup.DeckGroupName,
+                    Value = Convert.ToString(item.DeckGroupId)
+                });
+            }
+
+            List<User> users = _userService.GetAllUsers();
+
+            vm.Users.Add(new SelectListItem
+            {
+                Text = "Select a user",
+                Value = "",
+                //Selected = false
+            });
+
+            foreach (var item in users)
+            {
+                // if not equal to myself
+                if (item.UserId != id)
+                {
+                    vm.Users.Add(new SelectListItem
+                    {
+                        Text = item.Username,
+                        Value = Convert.ToString(item.UserId)
+                    });
+                }
+            }
+
+            return View(vm);
+        }
+
+        [Authorize]
+        [HttpPost("ShareDeckGroupClone")]
+        public async Task<IActionResult> ShareDeckGroupCloneAsync(DeckGroupsViewModel viewModel)
+        {
+            List<UserDeckGroup> userDeckGroups = _userService.GetUserDeckGroups();
+
+            // Get the real deckgroup.
+            DeckGroup deckGroup = _deckGroupService.GetDeckGroupByID(viewModel.DeckGroupId);
+
+            var userid = _userService.GetUserId();
+            int id = System.Convert.ToInt32(userid);
+
+            // Check to make sure user isnt already assigned to that deckgroup.
+            foreach (UserDeckGroup userdg in userDeckGroups)
+            {
+                if (userdg.UserId != id)
+                {
+                    if (userdg.UserId == viewModel.UserId && userdg.DeckGroup.DeckGroupName == deckGroup.DeckGroupName)
+                    {
+                        return RedirectToAction("ErrorReply", "MyStudies", new { id = 6 });
+                    }
+                }
+            }  
+
+            // Set the new deck group's fields besides Id. 
+            DeckGroup newdeckGroup = new DeckGroup();
+            newdeckGroup.DeckGroupName = deckGroup.DeckGroupName;
+            newdeckGroup.DeckGroupDescription = deckGroup.DeckGroupDescription;
+            newdeckGroup.ReadOnly = true;
+
+            // Create the new cloned deckgroup
+            await _deckGroupService.CreateDeckGroup(newdeckGroup);
+
+            // Grab the last created deckgropu right away
+            newdeckGroup = _deckGroupService.RetrieveLastDeckGroup();
+            if (newdeckGroup.DeckGroupName != deckGroup.DeckGroupName && newdeckGroup.DeckGroupDescription != deckGroup.DeckGroupDescription)
+            {
+                return RedirectToAction("ErrorReply", "MyStudies", new { id = 8 });
+            }
+
+            UserDeckGroup newUserDeckGroup = new UserDeckGroup();
+            newUserDeckGroup.DeckGroupId = newdeckGroup.DeckGroupId;
+            newUserDeckGroup.UserId = viewModel.UserId;
+
+            await _userService.AddUserDeckGroup(newUserDeckGroup);
+
+            return RedirectToAction("DeckGroups", "MyStudies");
+        }
+
+        [Authorize]
+        [HttpGet("ShareDeckClone")]
+        public IActionResult ShareDeckClone()
+        {
+            DecksViewModel vm = new DecksViewModel();
+            vm.Decks = new List<SelectListItem>();
+            vm.Users = new List<SelectListItem>();
+
+            // Get user 
+            var userid = _userService.GetUserId();
+            int Id = System.Convert.ToInt32(userid);
+            User user = _userService.GetUser(Id);
+
+            // Add an empty default list item.
+            vm.Decks.Add(new SelectListItem
+            {
+                Text = "Select a Deck",
+                Value = ""
+            });
+
+            foreach (var item in user.UserDecks)
+            {
+                vm.Decks.Add(new SelectListItem
+                {
+                    Text = item.Deck.DeckName,
+                    Value = Convert.ToString(item.DeckId)
+                });
+            }
+
+            List<User> users = _userService.GetAllUsers();
+
+            vm.Users.Add(new SelectListItem
+            {
+                Text = "Select a user",
+                Value = "",
+                //Selected = false
+            });
+
+            foreach (var item in users)
+            {
+                // if not equal to myself
+                if (item.UserId != Id)
+                {
+                    vm.Users.Add(new SelectListItem
+                    {
+                        Text = item.Username,
+                        Value = Convert.ToString(item.UserId)
+                    });
+                }
+            }
+            return View(vm);
+        }
+
+        [Authorize]
+        [HttpPost("ShareDeckClone")]
+        public async Task<IActionResult> ShareDeckClone(DecksViewModel viewModel)
+        {
+            List<UserDeck> userDecks = _userService.GetUserDecks();
+
+            // Get the real deckgroup.
+            Deck deck = _deckService.GetDeckByID(viewModel.DeckId);
+
+            var userid = _userService.GetUserId();
+            int id = System.Convert.ToInt32(userid);
+
+            // Check to make sure user isnt already assigned to that deck.
+            foreach (UserDeck ud in userDecks)
+            {
+                if (ud.UserId != id)
+                {
+                    if (ud.UserId == viewModel.UserId && ud.Deck.DeckName == deck.DeckName)
+                    {
+                        return RedirectToAction("ErrorReply", "MyStudies", new { id = 7 });
+                    }
+                }
+            }
+
+            // Set the new deck fields besides Id. 
+            Deck newDeck = new Deck();
+            newDeck.DeckName = deck.DeckName;
+            newDeck.DeckDescription = deck.DeckDescription;
+            newDeck.ReadOnly = true;
+
+            // Create the new cloned deck
+            await _deckService.CreateDeck(newDeck);
+
+            // Grab the last created decku right away
+            newDeck = _deckService.RetrieveLastDeck();
+            if (newDeck.DeckName != deck.DeckName && newDeck.DeckDescription != deck.DeckDescription)
+            {
+                return RedirectToAction("ErrorReply", "MyStudies", new { id = 9 });
+            }
+
+            UserDeck newUserDeck = new UserDeck();
+            newUserDeck.DeckId = newDeck.DeckId;
+            newUserDeck.UserId = viewModel.UserId;
+
+            await _userService.AddUserDeck(newUserDeck);
+
+            return RedirectToAction("Decks", "MyStudies");
+        }
+
+        [Authorize]
+        [HttpPost("MakePublicFlashCard")]
+        public async Task<IActionResult> MakePublicFlashCard(int id)
+        {
+            FlashCard flashCard = _flashCardService.GetFlashCardById(id);
+            if (flashCard.IsPublic == true)
+            {
+                return RedirectToAction("ErrorReply", "MyStudies", new { id = 10 });
+            }
+
+            flashCard.IsPublic = true;
+            await _flashCardService.UpdateFlashCard(flashCard);
+
+            return RedirectToAction("Flashcards", "MyStudies");
+        }
+
+        [Authorize]
+        [HttpGet("ErrorReply")]
+        public async Task<IActionResult> ErrorReply(int id)
+        {
+            ErrorReplyViewModel errorReply = new ErrorReplyViewModel();
+            errorReply.ErrorNumber = id;
+            return View(errorReply);
+        }
+	}
 }

@@ -45,3 +45,10 @@ body {
     padding: 10px 20px;
 }
 
+#create-deck-group-btn, #shareDeckgroup-btn {
+    display: inline;
+}
+
+.button-container {
+    display: flex;
+}

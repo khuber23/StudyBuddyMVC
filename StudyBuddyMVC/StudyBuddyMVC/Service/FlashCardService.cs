@@ -67,5 +67,15 @@ namespace StudyBuddyMVC.Service
                 }
             }
         }
+
+        public async Task DeleteFlashCardById(int id)
+        {
+            HttpResponseMessage response = _client.DeleteAsync(_client.BaseAddress + "Flashcard/{id}?flashcardid=" + id).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+            }
+        }
     }
 }

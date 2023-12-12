@@ -20,7 +20,7 @@
             <input asp-for="FlashCardAnswer" class="form-control" />
             <span asp-validation-for="FlashCardAnswer"></span>
         </div>
-        <div>
+        @* <div>
             <input asp-for="IsPublic" data-val="true" type="checkbox" id="makepublic" value="True" checked="true">
             <input asp-for="IsPublic" type="hidden" id="makepublic" value="False">
             <label asp-for="IsPublic">Make it public</label><br>
@@ -34,7 +34,7 @@
                 <label asp-for="ReadOnly">No</label>
                 <input asp-for="ReadOnly" type="radio" id="no" value="False" />
                 <span asp-validation-for="ReadOnly" class="text-danger"></span>
-            </div>
+            </div> *@
             <div asp-validation-summary="All"></div>
             <p>
                 <button type="submit" class="btn btn-primary" role="button">Save</button>

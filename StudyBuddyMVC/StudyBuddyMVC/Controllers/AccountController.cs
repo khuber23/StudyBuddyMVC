@@ -17,6 +17,7 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 using Microsoft.AspNetCore.Identity;
 using System.Security.Claims;
 using System.Net.Mail;
+using StudyBuddyMVC.Service;
 
 namespace StudyBuddyMVC.Controllers
 {
@@ -25,10 +26,12 @@ namespace StudyBuddyMVC.Controllers
     {
         private readonly ILogger<AccountController> logger;
 		private readonly HttpClient _client;
-		public AccountController(ILogger<AccountController> logger)
+        private readonly IUserService _userService;
+		public AccountController(ILogger<AccountController> logger, IUserService userService)
 		{
 			this.logger = logger;
 			_client = new HttpClient();
+            _userService = userService;
 		}
 
 		// GET: Register
@@ -143,7 +146,82 @@ namespace StudyBuddyMVC.Controllers
             return Redirect("~/Dashboard/Index");
         }
 
-        [Authorize]
+		[HttpGet("profile")]
+		public IActionResult Profile()
+		{
+			// Get currently logged in user ID from the auth cookie.
+			int userId = Convert.ToInt32(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+
+			// Get user.
+			User u = _userService.GetUser(userId);
+
+			return View(u);
+		}
+
+        [HttpGet("EditProfile")]
+        public IActionResult EditProfile()
+        {
+            // Get user id.
+            int userId = Convert.ToInt32(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+
+            // Get user.
+            User u = _userService.GetUser(userId);
+
+            // Populate view model.
+            EditProfileViewModel vm = new EditProfileViewModel()
+            {
+                EmailAddress = u.Email,
+                FirstName = u.FirstName,
+                LastName = u.LastName,
+                Username = u.Username
+            };
+
+            return View(vm);
+        }
+
+		[HttpPost("EditProfile")]
+		public async Task<IActionResult> EditProfile(EditProfileViewModel vm)
+		{
+			if (!ModelState.IsValid)
+			{
+				return View(vm);
+			}
+
+			// Get user id.
+			int userId = Convert.ToInt32(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+			// Get current user.
+			User current = _userService.GetUser(userId);
+
+			PasswordHasher<string> hasher = new PasswordHasher<string>();
+
+			// Confirm password.
+			if (hasher.VerifyHashedPassword(null, current.PasswordHash, vm.OldPassword) == PasswordVerificationResult.Failed)
+			{
+				ModelState.AddModelError("OldPassword", "Your password is incorrect.");
+
+				return View(vm);
+			}
+
+			// Set user fields.
+			current.FirstName = vm.FirstName;
+			current.LastName = vm.LastName;
+            current.Username = vm.Username;
+            current.Email = vm.EmailAddress;
+
+			// Check if we should be updating the password.
+			if (!string.IsNullOrEmpty(vm.NewPassword))
+			{
+				// Hash password.
+				current.PasswordHash = hasher.HashPassword(null, vm.NewPassword);
+			}
+
+			// Update.
+			await _userService.UpdateUser(current);
+
+			return RedirectToAction(nameof(Profile));
+		}
+
+		[Authorize]
         [Route("logout")]
         public async Task<IActionResult> Logoff()
         {

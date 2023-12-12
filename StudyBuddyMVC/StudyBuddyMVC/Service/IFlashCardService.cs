@@ -11,5 +11,7 @@ namespace StudyBuddyMVC.Service
         public Task CreateFlashCard(FlashCard flashCard);
 
         public Task UpdateFlashCard(FlashCard flashCard);
+
+        Task DeleteFlashCardById(int id);
     }
 }
